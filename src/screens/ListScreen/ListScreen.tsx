@@ -12,10 +12,11 @@ const HomeScreen = () => {
     <ScrollView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
+      
+        <Image source={require('../../assets/images/studyList.png')} style={styles.avatarImage} />
         <View style={styles.profileContainer}>
-          <Image source={require('../../assets/images/textTest.png')} style={styles.avatarImageText} />
+          <Image source={require('../../assets/images/listText.png')} style={styles.avatarImageText} />
         </View>
-        <Image source={require('../../assets/images/duck.png')} style={styles.avatarImage} />
       </View>
       
      

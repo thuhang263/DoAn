@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 
-type DatePickerProps = {
-  onDateChange?: (date: Date) => void; // Thêm prop callback
-};
-
-const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
+const DatePicker = () => {
   const [dates, setDates] = useState<Date[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   useEffect(() => {
-    // Tạo danh sách tất cả các ngày trong tháng hiện tại
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
@@ -24,7 +19,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
     setDates(monthDates);
   }, []);
 
-  // Hàm lấy thứ (tên của ngày trong tuần)
   const getDayName = (date: Date) => {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     return days[date.getDay()];
@@ -32,9 +26,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
 
   const handleDatePress = (date: Date) => {
     setSelectedDate(date);
-    if (onDateChange) {
-      onDateChange(date); // Gọi callback nếu có
-    }
   };
 
   return (
@@ -43,23 +34,23 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
         data={dates}
         keyExtractor={(item, index) => index.toString()}
         horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.flatListContainer}
         renderItem={({ item }) => {
           const isSelected = selectedDate?.toDateString() === item.toDateString();
           return (
-            <TouchableOpacity onPress={() => handleDatePress(item)}>
-              <View
-                style={[
-                  styles.dateContainer,
-                  isSelected && { backgroundColor: '#FDD74B' },
-                ]}
-              >
-                <Text style={styles.dateText}>{item.getDate()}</Text>
-                <Text style={styles.dayText}>{getDayName(item)}</Text>
+            <TouchableOpacity onPress={() => handleDatePress(item)} style={styles.touchable}>
+              <View style={[styles.dateItem, isSelected && styles.activeDate]}>
+                <Text style={[styles.dayText, isSelected && styles.activeDayText]}>
+                  {getDayName(item)}
+                </Text>
+                <Text style={[styles.dateText, isSelected && styles.activeDateText]}>
+                  {item.getDate()}
+                </Text>
               </View>
             </TouchableOpacity>
           );
         }}
-        contentContainerStyle={styles.flatListContainer}
       />
     </View>
   );
@@ -73,21 +64,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
   },
-  dateContainer: {
+  touchable: {
+    marginHorizontal: 5,
+  },
+  dateItem: {
     width: 50,
-    height: 90,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 20,
+    height: 80,
+    borderRadius: 10,
     alignItems: 'center',
-    margin: 5,
+    justifyContent: 'center',
+    backgroundColor: '#F0F0F0',
+  },
+  activeDate: {
+    backgroundColor: '#78C257', // Màu xanh lá cây
+  },
+  dayText: {
+    fontSize: 14,
+    color: '#999',
   },
   dateText: {
     fontSize: 18,
-    marginVertical: 5,
+    fontWeight: 'bold',
+    color: '#999',
   },
-  dayText: {
-    fontSize: 16,
-    color: '#555',
+  activeDayText: {
+    color: '#000', // Màu chữ khi chọn
+    fontWeight: 'bold',
+  },
+  activeDateText: {
+    color: '#000', // Màu chữ khi chọn
   },
 });
 

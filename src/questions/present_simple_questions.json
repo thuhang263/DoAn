@@ -1,0 +1,104 @@
+{
+    "present_simple_fill_in_the_blank": [
+        {
+            "question": "______ she like ice cream?",
+            "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+            ],
+            "answer": "Does"
+        },
+        {
+            "question": "He ______ football every Sunday.",
+            "options": [
+                "play",
+                "plays",
+                "playing",
+                "played"
+            ],
+            "answer": "plays"
+        },
+        {
+            "question": "______ you go to school by bus?",
+            "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+            ],
+            "answer": "Do"
+        },
+        {
+            "question": "She always ______ up early in the morning.",
+            "options": [
+                "wake",
+                "wakes",
+                "waking",
+                "woke"
+            ],
+            "answer": "wakes"
+        },
+        {
+            "question": "______ your brother like reading books?",
+            "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+            ],
+            "answer": "Does"
+        },
+        {
+            "question": "My dad ______ coffee every morning.",
+            "options": [
+                "drink",
+                "drinks",
+                "drinking",
+                "drank"
+            ],
+            "answer": "drinks"
+        },
+        {
+            "question": "______ they watch TV in the evening?",
+            "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+            ],
+            "answer": "Do"
+        },
+        {
+            "question": "She ______ English very well.",
+            "options": [
+                "speak",
+                "speaks",
+                "speaking",
+                "spoken"
+            ],
+            "answer": "speaks"
+        },
+        {
+            "question": "______ your parents work on weekends?",
+            "options": [
+                "Do",
+                "Does",
+                "Is",
+                "Are"
+            ],
+            "answer": "Do"
+        },
+        {
+            "question": "Tom ______ to music in his free time.",
+            "options": [
+                "listen",
+                "listens",
+                "listening",
+                "listened"
+            ],
+            "answer": "listens"
+        }
+    ]
+}
