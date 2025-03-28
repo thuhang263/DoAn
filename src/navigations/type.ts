@@ -11,6 +11,8 @@ export enum Screens {
     TestScreen ='TestScreen',
     RootBottomNavigation = 'RootBottomNavigation',
     VoccalScreen = "VoccalScreen",
+    EndTest = "EndTest",
+    TestItem="TestItem",
     
 }
 
@@ -21,6 +23,7 @@ export type RootBottomParamList = {
  
     [Screens.ListScreen]: undefined;
     [Screens.TestScreen]: undefined;
+    [Screens.EndTest]: undefined;
  
  
 };
@@ -33,6 +36,9 @@ export type RootStackParamList = {
     SearchScreen:undefined;
     TestScreen:undefined;
     VoccalScreen:undefined;
+    GrammaScreen:undefined;
+    TestItem:undefined;
+    EndTest: { correctCount: number }; 
   };
 
 declare global {

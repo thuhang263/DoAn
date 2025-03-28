@@ -53,7 +53,7 @@ const HomeScreen = () => {
             <Image source={require('../../assets/images/voc.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Vocabulary</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox}>
+        <TouchableOpacity style={styles.categoryBox}  onPress={() => navigation.navigate('GrammaScreen')}>
             <Image source={require('../../assets/images/gram.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Grammar</Text>
         </TouchableOpacity>

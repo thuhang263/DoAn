@@ -13,7 +13,7 @@ const data = [
   { id: 8, title: 'We are off', image: require('../../assets/images/travel.png') },
 ];
 
-const VoccalScreen = () => {
+const GrammaScreen = () => {
     const navigation = useNavigation();
   const [selected, setSelected] = useState<number | null>(null);
   
@@ -29,7 +29,7 @@ const VoccalScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-        <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <View style={styles.container}>
         <View>
             <TouchableOpacity
@@ -47,17 +47,15 @@ const VoccalScreen = () => {
             source={require('../../assets/images/back.png')}
             />
             </TouchableOpacity>
-            <Text style={styles.header}>Vocabulary</Text>
+            <Text style={styles.header}>Grammar</Text>
         </View>
      
         <View style={styles.itemContent}>
-        <FlatList
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
-            numColumns={2}
-            columnWrapperStyle={styles.row}
-        />
+          <FlatList
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id.toString()}
+          />
         </View>
       
     </View>
@@ -73,7 +71,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   itemContent:{
-    marginTop:40,
+    marginTop:10,
+    width:369,
+    alignContent:'center',
+    left:20,
+
   },
   header: {
     paddingTop: 35, // Đẩy nội dung xuống 30
@@ -86,10 +88,6 @@ const styles = StyleSheet.create({
     height:100,
   },
   
-  row: {
-    justifyContent: 'space-around',
-    paddingHorizontal: 10,
-  },
   item: {
     flex: 1,
     margin: 10,
@@ -124,4 +122,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VoccalScreen;
+export default GrammaScreen;

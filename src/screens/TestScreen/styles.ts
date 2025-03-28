@@ -20,7 +20,36 @@ export const styles = StyleSheet.create({
     avatarImageText:{
         width: 100, height: 30 ,
         left:20,
-    }
+    },
+    avatarImageItem:{
+      width:200,
+      height:200,
+      top:150,
+      left:100,
+    },
+    btn:{
+      width:150,
+      height:50,
+      backgroundColor:'#5EBB1A',
+      left:130,
+      top:200,
+      alignContent:'center',
+      alignItems:'center',
+      borderRadius:20,
+    },
+    text:{
+      color:'#fff',
+      fontSize:25,
+     marginTop:5,
+    },
+    textContent:{
+      fontWeight: 'bold',
+      fontSize:20,
+      color:'black',
+      top:180,
+      left:80,
+
+    },
 
     
   });

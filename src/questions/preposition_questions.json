@@ -1,51 +1,61 @@
 {
     "preposition_questions": [
         {
+            "id": 1,
             "question": "She is interested ___ learning new languages.",
             "options": ["at", "of", "in", "about"],
             "answer": "in"
         },
         {
+            "id": 2,
             "question": "I am thinking ___ going on vacation next month.",
             "options": ["at", "of", "in", "about"],
             "answer": "about"
         },
         {
+            "id": 3,
             "question": "They arrived ___ the airport early in the morning.",
             "options": ["at", "of", "in", "about"],
             "answer": "at"
         },
         {
+            "id": 4,
             "question": "He is afraid ___ spiders.",
             "options": ["at", "of", "in", "about"],
             "answer": "of"
         },
         {
+            "id": 5,
             "question": "She stayed at home ___ she was sick.",
             "options": ["because", "so", "but", "although"],
             "answer": "because"
         },
         {
+            "id": 6,
             "question": "He was tired, ___ he continued working.",
             "options": ["because", "so", "but", "although"],
             "answer": "but"
         },
         {
+            "id": 7,
             "question": "___ it was raining, they went for a walk.",
             "options": ["Because", "So", "But", "Although"],
             "answer": "Although"
         },
         {
+            "id": 8,
             "question": "She was late ___ the traffic was bad.",
             "options": ["because", "so", "but", "although"],
             "answer": "because"
         },
         {
+            "id": 9,
             "question": "Would you like tea ___ coffee?",
             "options": ["at", "or", "in", "about"],
             "answer": "or"
         },
         {
+            "id": 10,
             "question": "He is smart ___ hardworking.",
             "options": ["at", "of", "in", "and"],
             "answer": "and"
