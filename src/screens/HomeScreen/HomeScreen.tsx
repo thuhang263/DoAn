@@ -57,7 +57,7 @@ const HomeScreen = () => {
             <Image source={require('../../assets/images/gram.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Grammar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBoxMovie}>
+        <TouchableOpacity style={styles.categoryBoxMovie} onPress={() => navigation.navigate('MovieScreen')}>
             <Image source={require('../../assets/images/movie.png')} style={styles.avatarImageItemMovie} />
             <Text style={styles.categoryTextMovie}>Movie</Text>
         </TouchableOpacity>

@@ -39,6 +39,8 @@ export type RootStackParamList = {
     GrammaScreen:undefined;
     TestItem:undefined;
     EndTest: { correctCount: number }; 
+    MovieScreen: undefined;
+    VideoScreen: { videoId: string }; // Đảm bảo có videoId
   };
 
 declare global {
