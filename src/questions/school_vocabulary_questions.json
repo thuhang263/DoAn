@@ -1,5 +1,7 @@
-{
-    "school_vocabulary_questions": [
+[{
+    "topicId": 1,
+    "topicName": "School Vocabulary",
+    "questions": [
         {
             "question": "The students usually ___ a uniform to school.",
             "options": ["wear", "use", "put", "carry"],
@@ -41,4 +43,53 @@
             "answer": "on"
         }
     ]
+    
+},
+{
+    "topicId": 2,
+    "topicName": "School Vocabulary",
+    "questions": [
+        {
+            "question": "The students usually ___ a uniform to school.",
+            "options": ["wear", "use", "put", "carry"],
+            "answer": "wear"
+        },
+        {
+            "question": "We have lunch in the school ___ every day.",
+            "options": ["classroom", "canteen", "office", "library"],
+            "answer": "canteen"
+        },
+        {
+            "question": "Students need to ___ their homework on time.",
+            "options": ["give in", "hand in", "take in", "turn in"],
+            "answer": "hand in"
+        },
+        {
+            "question": "Today, we are going on a school ___ to the museum.",
+            "options": ["trip", "event", "performance", "class"],
+            "answer": "trip"
+        },
+        {
+            "question": "Football matches are played on the school ___.",
+            "options": ["lab", "pitch", "hall", "classroom"],
+            "answer": "pitch"
+        },
+        {
+            "question": "In the science ___, we do many interesting experiments.",
+            "options": ["room", "office", "lab", "canteen"],
+            "answer": "lab"
+        },
+        {
+            "question": "She always tries to get good ___ in her exams.",
+            "options": ["marks", "grades", "scores", "points"],
+            "answer": "grades"
+        },
+        {
+            "question": "The school band usually performs ___ stage during events.",
+            "options": ["on", "in", "at", "over"],
+            "answer": "on"
+        }
+    ]
+    
 }
+]

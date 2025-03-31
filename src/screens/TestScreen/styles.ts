@@ -24,32 +24,66 @@ export const styles = StyleSheet.create({
     avatarImageItem:{
       width:200,
       height:200,
-      top:150,
+      top:80,
       left:100,
     },
-    btn:{
-      width:150,
-      height:50,
-      backgroundColor:'#5EBB1A',
-      left:130,
-      top:200,
-      alignContent:'center',
-      alignItems:'center',
-      borderRadius:20,
-    },
+
     text:{
       color:'#fff',
-      fontSize:25,
+      fontSize:23,
      marginTop:5,
     },
     textContent:{
       fontWeight: 'bold',
       fontSize:20,
       color:'black',
-      top:180,
+      top:100,
       left:80,
 
     },
+    btn:{
+      marginBottom:40,
+    },
+    btnVoc:{
+      width:150,
+      height:50,
+      backgroundColor:'#5EBB1A',
+      left:50,
+      top:150,
+      alignContent:'center',
+      alignItems:'center',
+      borderRadius:20,
+    },
+    btnGra:{
+      width:150,
+      height:50,
+      backgroundColor:'#5EBB1A',
+      left:220,
+      top:100,
+      alignContent:'center',
+      alignItems:'center',
+      borderRadius:20,
+    },
+    btnListen:{
+      width:150,
+      height:50,
+      backgroundColor:'#5EBB1A',
+      left:50,
+      top:120,
+      alignContent:'center',
+      alignItems:'center',
+      borderRadius:20,
+    },
+    btnRead:{
+      width:150,
+      height:50,
+      backgroundColor:'#5EBB1A',
+      left:220,
+      top:70,
+      alignContent:'center',
+      alignItems:'center',
+      borderRadius:20,
+    }
 
     
   });

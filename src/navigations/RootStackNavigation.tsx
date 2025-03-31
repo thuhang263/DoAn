@@ -9,6 +9,10 @@ import EndTest from '../screens/TestScreen/EndTest';
 import TestItem from '../screens/TestScreen/TestItem';
 import VideoScreen from '../screens/HomeScreen/VideoScreen';
 import MovieScreen from '../screens/HomeScreen/MovieScreen';
+import TestVoc from '../screens/TestScreen/TestVoc';
+import TestGrammar from '../screens/TestScreen/TestGramma';
+import TestListening from '../screens/TestScreen/TestListenning';
+import VocabularyDetailScreen from '../screens/TestScreen/VocabularyDetailScreen';
 
 
 const RootStackNavigation = () => {
@@ -27,8 +31,12 @@ const RootStackNavigation = () => {
       <Stack.Screen name="MovieScreen" component={MovieScreen} />
 
       <Stack.Screen name={Screens.TestItem} component={TestItem} />
+      <Stack.Screen name={Screens.TestVoc} component={TestVoc} />
+      <Stack.Screen name={Screens.TestGrammar} component={TestGrammar} />
+      <Stack.Screen name={Screens.TestListening} component={TestListening} />
       <Stack.Screen name={Screens.EndTest} component={EndTest} />
       <Stack.Screen name="VideoScreen" component={VideoScreen} />
+      <Stack.Screen name="VocabularyDetailScreen" component={VocabularyDetailScreen} />
     </Stack.Navigator>
   );
 };

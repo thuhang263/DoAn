@@ -1,0 +1,135 @@
+{
+    "listening_lessons": [
+      {
+        "id": 1,
+        "title": "Morning Routine",
+        "category": "Daily Life",
+        "text": "Every morning, I wake up at 6 AM. I brush my teeth, take a shower, and have breakfast. Then, I go to work by bus.",
+        "questions": [
+          {
+            "question": "What time does the speaker wake up?",
+            "options": ["5 AM", "6 AM", "7 AM"],
+            "answer": "6 AM"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "A Weekend Trip",
+        "category": "Travel",
+        "text": "Last weekend, I went to the mountains with my friends. We hiked all day and enjoyed the fresh air. At night, we sat around a campfire and told stories.",
+        "questions": [
+          {
+            "question": "Where did the speaker go last weekend?",
+            "options": ["The beach", "The mountains", "The city"],
+            "answer": "The mountains"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Job Interview Tips",
+        "category": "Workplace English",
+        "text": "In a job interview, it is important to be confident and prepared. Research the company, dress professionally, and practice answering common questions.",
+        "questions": [
+          {
+            "question": "What is important in a job interview?",
+            "options": ["Being nervous", "Being confident", "Being late"],
+            "answer": "Being confident"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Healthy Eating",
+        "category": "Health & Lifestyle",
+        "text": "Eating healthy food is important for our body. We should eat more fruits and vegetables and drink enough water every day.",
+        "questions": [
+          {
+            "question": "What should we eat more of?",
+            "options": ["Fruits and vegetables", "Fast food", "Candy"],
+            "answer": "Fruits and vegetables"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Shopping at the Supermarket",
+        "category": "Daily Life",
+        "text": "I go to the supermarket every Saturday. I buy fresh vegetables, fruits, and some snacks for the week. Sometimes, I also get a new book from the store next to it.",
+        "questions": [
+          {
+            "question": "When does the speaker go to the supermarket?",
+            "options": ["Every Monday", "Every Saturday", "Every Sunday"],
+            "answer": "Every Saturday"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "A Day at the Beach",
+        "category": "Travel",
+        "text": "Last summer, my family and I went to the beach. We swam in the ocean, built sandcastles, and enjoyed seafood at a nearby restaurant.",
+        "questions": [
+          {
+            "question": "What did the speaker do at the beach?",
+            "options": ["Went hiking", "Swam and built sandcastles", "Visited a museum"],
+            "answer": "Swam and built sandcastles"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "A Visit to the Doctor",
+        "category": "Health & Lifestyle",
+        "text": "I had a fever last week, so I went to the doctor. The doctor checked my temperature and gave me some medicine. Now, I feel much better.",
+        "questions": [
+          {
+            "question": "Why did the speaker visit the doctor?",
+            "options": ["To get a check-up", "Because of a fever", "To visit a friend"],
+            "answer": "Because of a fever"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "My Favorite Hobby",
+        "category": "Personal Interests",
+        "text": "I love painting in my free time. I usually paint landscapes and animals. It helps me relax and express my creativity.",
+        "questions": [
+          {
+            "question": "What does the speaker like to paint?",
+            "options": ["Cars", "Landscapes and animals", "Buildings"],
+            "answer": "Landscapes and animals"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "A School Project",
+        "category": "Education",
+        "text": "This week, my class is working on a science project. We are building a small volcano model using baking soda and vinegar. It is fun and exciting!",
+        "questions": [
+          {
+            "question": "What is the class building for the project?",
+            "options": ["A robot", "A volcano model", "A bridge"],
+            "answer": "A volcano model"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Visiting a New City",
+        "category": "Travel",
+        "text": "Last month, I visited a new city for the first time. I explored the local markets, tried new foods, and took many pictures.",
+        "questions": [
+          {
+            "question": "What did the speaker do in the new city?",
+            "options": ["Stayed at home", "Explored markets and tried new food", "Went skiing"],
+            "answer": "Explored markets and tried new food"
+          }
+        ]
+      }
+    ]
+  }
+  

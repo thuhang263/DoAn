@@ -13,7 +13,10 @@ export enum Screens {
     VoccalScreen = "VoccalScreen",
     EndTest = "EndTest",
     TestItem="TestItem",
-    
+    TestVoc ="TestVoc",
+    TestGrammar ="TestGrammar",
+    TestListening="TestListening",
+    VocabularyDetailScreen="VocabularyDetailScreen",
 }
 
 export type RootBottomParamList = {
@@ -24,7 +27,10 @@ export type RootBottomParamList = {
     [Screens.ListScreen]: undefined;
     [Screens.TestScreen]: undefined;
     [Screens.EndTest]: undefined;
- 
+    [Screens.TestVoc]: undefined;
+    [Screens.TestGrammar]: undefined;
+    [Screens.TestListening]: undefined;
+    [Screens.VocabularyDetailScreen]: { topicId: number };
  
 };
 
@@ -41,6 +47,10 @@ export type RootStackParamList = {
     EndTest: { correctCount: number }; 
     MovieScreen: undefined;
     VideoScreen: { videoId: string }; // Đảm bảo có videoId
+    TestVoc:undefined;
+    TestGrammar:undefined;
+    TestListening:undefined;
+    VocabularyDetailScreen: { topicId: number };
   };
 
 declare global {
