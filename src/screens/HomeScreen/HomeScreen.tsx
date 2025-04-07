@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 import DatePicker from '../../components/DatePicker'; 
 
 import { styles } from './styles';
@@ -9,6 +9,8 @@ import {  StackNavigationProp } from '@react-navigation/stack';
 const HomeScreen = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>(); // Sử dụng useNavigation
   return (
+    <SafeAreaView  style={{ flex: 1 }}>
+    <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
     <ScrollView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
@@ -63,6 +65,8 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
     </ScrollView>
+    </SafeAreaView>
+
   );
 };
 

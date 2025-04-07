@@ -18,11 +18,6 @@ const ListScreen = () => {
           <Image source={require('../../assets/images/listText.png')} style={styles.avatarImageText} />
         </View>
       </View>
-      
-     
-      
-     
-
     </ScrollView>
   );
 };

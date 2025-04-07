@@ -13,7 +13,7 @@ import TestVoc from '../screens/TestScreen/TestVoc';
 import TestGrammar from '../screens/TestScreen/TestGramma';
 import TestListening from '../screens/TestScreen/TestListenning';
 import VocabularyDetailScreen from '../screens/TestScreen/VocabularyDetailScreen';
-
+import TestReading from '../screens/TestScreen/TestReading';
 
 const RootStackNavigation = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -33,7 +33,8 @@ const RootStackNavigation = () => {
       <Stack.Screen name={Screens.TestItem} component={TestItem} />
       <Stack.Screen name={Screens.TestVoc} component={TestVoc} />
       <Stack.Screen name={Screens.TestGrammar} component={TestGrammar} />
-      <Stack.Screen name={Screens.TestListening} component={TestListening} />
+      <Stack.Screen name={Screens.TestListenning} component={TestListening} />
+      <Stack.Screen name={Screens.TestReading} component={TestReading} />
       <Stack.Screen name={Screens.EndTest} component={EndTest} />
       <Stack.Screen name="VideoScreen" component={VideoScreen} />
       <Stack.Screen name="VocabularyDetailScreen" component={VocabularyDetailScreen} />

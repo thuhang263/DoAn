@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import DatePicker from '../../components/DatePicker'; 
+
 
 import { styles } from './styles';
 import { RootStackParamList } from '../../navigations/type';
@@ -30,10 +30,10 @@ const TestScreen = () => {
         <TouchableOpacity style={styles.btnGra} onPress={() => navigation.navigate('TestGrammar')}>
           <Text style={styles.text}>Grammar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btnListen} onPress={() => navigation.navigate('TestListening')}>
+        <TouchableOpacity style={styles.btnListen} onPress={() => navigation.navigate('TestListenning')}>
           <Text style={styles.text}>Listening</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btnRead} onPress={() => navigation.navigate('TestItem')}>
+        <TouchableOpacity style={styles.btnRead} onPress={() => navigation.navigate('TestReading')}>
           <Text style={styles.text}>Reading</Text>
         </TouchableOpacity>
      </View>

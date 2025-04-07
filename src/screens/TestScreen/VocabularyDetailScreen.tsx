@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import topicData from '../../questions/preposition_questions.json';
+import topicData from '../../questions/school_vocabulary_questions.json';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Screens } from '../../navigations/type';
 
@@ -32,17 +32,15 @@ const TestItem: React.FC = () => {
 
   const question: Question | undefined = topic?.questions[currentIndex];
 
-
   const handleAnswer = (selectedOption: string) => {
-    if (!question) return; // Tránh lỗi nếu question là undefined
-  
+    if (!question) return;
+    
     if (selectedOption === question.answer) {
       setCorrectCount(prev => prev + 1);
     } else {
       setIncorrectCount(prev => prev + 1);
     }
   };
-  
 
   const handleAnswerPress = (answer: string) => {
     setSelectedAnswer(answer);
@@ -113,7 +111,17 @@ const TestItem: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff', alignItems: 'center' },
-  header: { paddingTop: 35, width: '100%', backgroundColor: '#78C93C', padding: 15, fontSize: 20, fontWeight: 'bold', textAlign: 'center', color: '#fff' },
+  header: {
+    width:360,
+    paddingTop: 35,
+    backgroundColor: '#78C93C',
+    padding: 15,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    height: 100,
+  },
   backButton: { position: 'absolute', top: 30, left: 10, zIndex: 10, padding: 5 },
   backIcon: { width: 30, height: 30, resizeMode: 'contain' },
   scoreContainer: { flexDirection: 'row', justifyContent: 'space-between', width: '80%', marginTop: 20 },

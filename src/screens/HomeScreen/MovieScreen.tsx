@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   TextInput,
   Button,
+  StyleSheet,
 } from "react-native";
 import axios from "axios";
 import { RouteProp, useNavigation } from "@react-navigation/native";
@@ -68,6 +69,25 @@ const MovieScreen = () => {
 
   return (
     <View style={{ flex: 1, padding: 20 }}>
+      <View>
+        <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => {
+            if (navigation.canGoBack()) {
+              navigation.goBack();
+                } else {
+                    navigation.navigate('HomeScreen'); // Chuyển về Home nếu không có màn nào để quay lại
+                  }
+                }}
+                  >
+                  <Image
+                  style={styles.backIcon}
+                  source={require('../../assets/images/back.png')}
+                  />
+                  </TouchableOpacity>
+                  <Text style={styles.header}>Movie</Text>
+      </View>
+      <View style={styles.input}>
       <TextInput
           style={{
             height: 40,
@@ -84,6 +104,8 @@ const MovieScreen = () => {
             console.log("Từ khóa nhập:", text);
           }}
         />
+      </View>
+      
 
       <Button title="Tìm kiếm" onPress={() => fetchVideos(searchQuery)} />
 
@@ -98,4 +120,32 @@ const MovieScreen = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  backButton: {
+    position: 'absolute', // Đặt vị trí tuyệt đối
+    top: 40,             // Khoảng cách từ đỉnh màn hình
+    left: 30,             // Khoảng cách từ trái màn hình
+    zIndex: 10,           // Hiển thị trên các thành phần khác
+    padding: 5,           // Thêm padding để dễ nhấn
+  },
+  backIcon: {
+    width: 30,  // Chiều rộng ảnh
+    height: 30, // Chiều cao ảnh
+    resizeMode: 'contain', // Duy trì tỉ lệ của ảnh
+  },
+  header: {
+    paddingTop: 35, // Đẩy nội dung xuống 30
+    width:410,
+    backgroundColor: '#78C93C',
+    padding: 15,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    height:100,
+  },
+  input:{
+    marginTop:40,
+  }
+  });
 export default MovieScreen;
