@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -7,6 +8,7 @@ import {
   StyleSheet,
   ScrollView,
   Alert,
+  Image,
 } from 'react-native';
 import Tts from 'react-native-tts';
 
@@ -31,7 +33,7 @@ const TestListenning = () => {
   const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
-
+  const navigation = useNavigation();
   // Cài đặt TTS 1 lần
   useEffect(() => {
     Tts.setDefaultLanguage('en-US');
@@ -52,7 +54,7 @@ const TestListenning = () => {
 
     setShowResult(true);
     const isCorrect = selectedOption === correctAnswer;
-    Alert.alert('Kết quả', isCorrect ? '🎉 Chính xác!' : `❌ Sai rồi! Đáp án đúng là: ${correctAnswer}`);
+    Alert.alert('Kết quả', isCorrect ? 'Chính xác!' : `Sai rồi! Đáp án đúng là: ${correctAnswer}`);
   };
 
   const renderLesson = ({ item }: { item: Lesson }) => (
@@ -74,11 +76,11 @@ const TestListenning = () => {
 
     return (
       <ScrollView style={styles.container}>
+        <View style={styles.content}>
         <Text style={styles.title}>{selectedLesson.title}</Text>
         <Text style={styles.text}>{selectedLesson.text}</Text>
-
         <TouchableOpacity style={styles.listenBtn} onPress={() => handleListen(selectedLesson.text)}>
-          <Text style={styles.listenText}>🔊 Nghe đoạn văn</Text>
+          <Text style={styles.listenText}>Nghe đoạn văn</Text>
         </TouchableOpacity>
 
         <View style={styles.questionContainer}>
@@ -108,20 +110,46 @@ const TestListenning = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.backBtn} onPress={() => setSelectedLesson(null)}>
-          <Text style={styles.backText}>⬅ Quay lại</Text>
+          <Text style={styles.backText}>Quay lại</Text>
         </TouchableOpacity>
+        </View>
+       
+
+        
       </ScrollView>
     );
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>🗣️ Bài nghe tiếng Anh</Text>
+
+       
+        <View>
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={() => {
+                if (navigation.canGoBack()) {
+                    navigation.goBack();
+                } else {
+                    navigation.navigate('HomeScreen'); 
+                }
+                }}
+              >
+              <Image
+                style={styles.backIcon}
+                source={require('../../assets/images/back.png')}
+              />
+                </TouchableOpacity>
+                <Text style={styles.header}>Listening Now!</Text>
+        </View>
+ 
+     
+      
       <FlatList
         data={lessons}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderLesson}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{ paddingBottom: 20,padding:20, }}
       />
     </View>
   );
@@ -130,7 +158,6 @@ const TestListenning = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     backgroundColor: '#fff',
   },
   title: {
@@ -163,6 +190,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   listenText: {
+   
     color: '#fff',
     textAlign: 'center',
   },
@@ -212,6 +240,33 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
   },
+  header: {
+    paddingTop: 35, // Đẩy nội dung xuống 30
+    width:410,
+    backgroundColor: '#78C93C',
+    padding: 15,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    height:100,
+  },
+  backButton: {
+    position: 'absolute', // Đặt vị trí tuyệt đối
+    top: 30,             // Khoảng cách từ đỉnh màn hình
+    left: 10,             // Khoảng cách từ trái màn hình
+    zIndex: 10,           // Hiển thị trên các thành phần khác
+    padding: 5,           // Thêm padding để dễ nhấn
+  },
+  backIcon: {
+    width: 30,  // Chiều rộng ảnh
+    height: 30, // Chiều cao ảnh
+    resizeMode: 'contain', // Duy trì tỉ lệ của ảnh
+  },
+  content:{
+    marginTop:40,
+    padding:20,
+  }
 });
 
 export default TestListenning;

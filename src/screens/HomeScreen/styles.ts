@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     attendanceButton: { backgroundColor: '#5EBB1A', padding: 10, alignSelf: 'center', borderRadius: 5 },
     attendanceText: { color: '#fff', fontWeight: 'bold' },
     lessonCard: { 
-      width:340,
+      width:390,
       height:200,
       flexDirection: 'row', 
       alignItems: 'center', 

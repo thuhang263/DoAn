@@ -1,0 +1,165 @@
+[
+    {
+      "grammarId": 1,
+      "grammarName": "Present Simple Tense",
+      "questions": [
+        {
+          "question": "She ___ to school every day.",
+          "options": ["go", "goes", "going", "gone"],
+          "answer": "goes"
+        },
+        {
+          "question": "They ___ football on Sundays.",
+          "options": ["plays", "play", "playing", "played"],
+          "answer": "play"
+        },
+        {
+          "question": "___ he work in a hospital?",
+          "options": ["Is", "Do", "Does", "Are"],
+          "answer": "Does"
+        },
+        {
+          "question": "I usually ___ up at 6 a.m.",
+          "options": ["woke", "wake", "wakes", "woken"],
+          "answer": "wake"
+        },
+        {
+          "question": "My brother ___ like pizza.",
+          "options": ["don’t", "doesn’t", "isn’t", "aren’t"],
+          "answer": "doesn’t"
+        },
+        {
+          "question": "She ___ English every day.",
+          "options": ["study", "studies", "studied", "studying"],
+          "answer": "studies"
+        },
+        {
+          "question": "___ you play the guitar?",
+          "options": ["Does", "Do", "Did", "Are"],
+          "answer": "Do"
+        },
+        {
+          "question": "They ___ in a big house.",
+          "options": ["live", "lives", "lived", "living"],
+          "answer": "live"
+        },
+        {
+          "question": "My mom always ___ breakfast.",
+          "options": ["make", "makes", "making", "made"],
+          "answer": "makes"
+        },
+        {
+          "question": "The sun ___ in the east.",
+          "options": ["rise", "rises", "rose", "raising"],
+          "answer": "rises"
+        }
+      ]
+    },
+    {
+      "grammarId": 2,
+      "grammarName": "Past Simple Tense",
+      "questions": [
+        {
+          "question": "She ___ to the market yesterday.",
+          "options": ["goes", "went", "gone", "going"],
+          "answer": "went"
+        },
+        {
+          "question": "I ___ a great movie last night.",
+          "options": ["see", "saw", "seen", "seeing"],
+          "answer": "saw"
+        },
+        {
+          "question": "They ___ their homework already.",
+          "options": ["did", "do", "done", "doing"],
+          "answer": "did"
+        },
+        {
+          "question": "We ___ in that house in 2005.",
+          "options": ["live", "lives", "lived", "living"],
+          "answer": "lived"
+        },
+        {
+          "question": "___ you watch the match yesterday?",
+          "options": ["Did", "Do", "Does", "Were"],
+          "answer": "Did"
+        },
+        {
+          "question": "He ___ me a letter last week.",
+          "options": ["send", "sends", "sent", "sending"],
+          "answer": "sent"
+        },
+        {
+          "question": "They ___ a lot of fun at the party.",
+          "options": ["have", "has", "had", "having"],
+          "answer": "had"
+        },
+        {
+          "question": "The dog ___ loudly last night.",
+          "options": ["bark", "barked", "barking", "barks"],
+          "answer": "barked"
+        },
+        {
+          "question": "She ___ very tired after the trip.",
+          "options": ["feel", "feels", "felt", "feeling"],
+          "answer": "felt"
+        },
+        {
+          "question": "We ___ a test last Monday.",
+          "options": ["had", "has", "have", "having"],
+          "answer": "had"
+        },
+        {
+          "question": "I ___ to the market yesterday.",
+          "options": ["go", "went", "gone", "going"],
+          "answer": "went"
+        },
+        {
+          "question": "She ___ the window last night.",
+          "options": ["close", "closed", "closes", "closing"],
+          "answer": "closed"
+        },
+        {
+          "question": "They ___ a great time at the party.",
+          "options": ["have", "had", "has", "having"],
+          "answer": "had"
+        },
+        {
+          "question": "We ___ our homework after dinner.",
+          "options": ["do", "did", "done", "doing"],
+          "answer": "did"
+        },
+        {
+          "question": "He ___ TV for three hours.",
+          "options": ["watch", "watched", "watches", "watching"],
+          "answer": "watched"
+        },
+        {
+          "question": "My parents ___ me a new bike.",
+          "options": ["buy", "bought", "buys", "buying"],
+          "answer": "bought"
+        },
+        {
+          "question": "They ___ late for school.",
+          "options": ["was", "were", "are", "is"],
+          "answer": "were"
+        },
+        {
+          "question": "I ___ English last year.",
+          "options": ["study", "studied", "studies", "studying"],
+          "answer": "studied"
+        },
+        {
+          "question": "He ___ the movie last weekend.",
+          "options": ["see", "saw", "seen", "sees"],
+          "answer": "saw"
+        },
+        {
+          "question": "We ___ in Paris for two weeks.",
+          "options": ["stay", "stayed", "stays", "staying"],
+          "answer": "stayed"
+        }
+      ]
+    }
+  ]
+  

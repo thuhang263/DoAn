@@ -54,6 +54,7 @@ export type RootStackParamList = {
     TestListenning:undefined;
     VocabularyDetailScreen: { topicId: number };
     TestReading:undefined;
+    GrammarDetail :{grammarId:number}
   };
 
 declare global {

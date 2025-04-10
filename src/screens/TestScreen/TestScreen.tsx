@@ -20,7 +20,7 @@ const TestScreen = () => {
       
      <View>
         <Image source={require('../../assets/images/testImage.png')} style={styles.avatarImageItem} />
-        <Text style={styles.textContent}>Take the test in 30 minutes</Text>
+       
      </View>
       
      <View>

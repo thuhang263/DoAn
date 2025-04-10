@@ -10,10 +10,11 @@ import TestItem from '../screens/TestScreen/TestItem';
 import VideoScreen from '../screens/HomeScreen/VideoScreen';
 import MovieScreen from '../screens/HomeScreen/MovieScreen';
 import TestVoc from '../screens/TestScreen/TestVoc';
-import TestGrammar from '../screens/TestScreen/TestGramma';
+import TestGrammar from '../screens/TestScreen/TestGrammar';
 import TestListening from '../screens/TestScreen/TestListenning';
 import VocabularyDetailScreen from '../screens/TestScreen/VocabularyDetailScreen';
 import TestReading from '../screens/TestScreen/TestReading';
+import GrammarDetail from '../screens/TestScreen/GrammarDetail';
 
 const RootStackNavigation = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -38,6 +39,7 @@ const RootStackNavigation = () => {
       <Stack.Screen name={Screens.EndTest} component={EndTest} />
       <Stack.Screen name="VideoScreen" component={VideoScreen} />
       <Stack.Screen name="VocabularyDetailScreen" component={VocabularyDetailScreen} />
+      <Stack.Screen name="GrammarDetail" component={GrammarDetail} />
     </Stack.Navigator>
   );
 };

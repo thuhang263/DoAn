@@ -1,37 +1,44 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
-
-const data = [
-  { id: 1, title: 'All about me', image: require('../../assets/images/sport.png') },
-  { id: 2, title: 'Winning and Losing', image: require('../../assets/images/champion.png') },
-  { id: 3, title: 'Let is Shop', image: require('../../assets/images/shop.png') },
-  { id: 4, title: 'Relax', image: require('../../assets/images/relax.png') },
-  { id: 5, title: 'Extreme Dief', image: require('../../assets/images/food.png') },
-  { id: 6, title: 'My Home', image: require('../../assets/images/house.png') },
-  { id: 7, title: 'Wild at heart', image: require('../../assets/images/animal.png') },
-  { id: 8, title: 'We are off', image: require('../../assets/images/travel.png') },
+interface Topic {
+  id: number;
+  title: string;
+  image: any;
+}
+const data: Topic[] =  [
+  { id: 1, title: 'Present Simple', image: require('../../assets/images/sport.png') },
+  { id: 3, title: 'Present Continuous', image: require('../../assets/images/champion.png') },
+  { id: 2, title: 'Past Simple', image: require('../../assets/images/shop.png') },
+  { id: 4, title: 'Past Continuous', image: require('../../assets/images/relax.png') },
+  { id: 5, title: 'Pronouns who, which, where', image: require('../../assets/images/food.png') },
+  { id: 6, title: 'Order of adjectives', image: require('../../assets/images/house.png') },
+  { id: 7, title: 'Present perfect', image: require('../../assets/images/animal.png') },
+  { id: 8, title: 'Used to', image: require('../../assets/images/travel.png') },
+  { id: 9, title: 'Future Form', image: require('../../assets/images/travel.png') },
+  { id: 10, title: 'Be going to', image: require('../../assets/images/travel.png') },
+  { id: 11, title: 'Pass Perfect', image: require('../../assets/images/travel.png') },
+  { id: 12, title: 'First Conditional and Second Conditinal', image: require('../../assets/images/travel.png') },
 ];
 
 const TestGrammar = () => {
-    const navigation = useNavigation();
-  const [selected, setSelected] = useState<number | null>(null);
+  const navigation = useNavigation();
   
-  const renderItem = ({ item }: { item: any }) => (
-    <TouchableOpacity
-      style={[styles.item, selected === item.id && styles.selectedItem]}
-      onPress={() => setSelected(item.id)}
-    >
-      <Image source={item.image} style={styles.image} />
-      <Text style={styles.text}>{item.title}</Text>
-    </TouchableOpacity>
-  );
+  const renderItem = ({ item }: { item: Topic }) => (
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => navigation.navigate('GrammarDetail', { grammarId: item.id })}
+        >
+        <Image source={item.image} style={styles.image} />
+        <Text style={styles.text}>{item.title}</Text>
+      </TouchableOpacity>
+    );
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
          <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <View style={styles.container}>
-        <View>
+          <View>
             <TouchableOpacity
                 style={styles.backButton}
                 onPress={() => {
@@ -48,17 +55,17 @@ const TestGrammar = () => {
             />
             </TouchableOpacity>
             <Text style={styles.header}>Grammar</Text>
-        </View>
-     
-        <View style={styles.itemContent}>
+            </View>
           <FlatList
-              data={data}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id.toString()}
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            numColumns={2}
+            columnWrapperStyle={styles.row}
           />
         </View>
       
-    </View>
+   
     </SafeAreaView>
     
   );
@@ -66,12 +73,11 @@ const TestGrammar = () => {
 
 const styles = StyleSheet.create({
   container: {
-
     flex: 1,
     backgroundColor: '#fff',
   },
+  row: { justifyContent: 'space-around', paddingHorizontal: 10 },
   itemContent:{
-    marginTop:10,
     width:369,
     alignContent:'center',
     left:20,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import topicData from '../../questions/school_vocabulary_questions.json';
+import topicData from '../../questions/gramma_lessions.json';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Screens } from '../../navigations/type';
 
@@ -13,9 +13,9 @@ interface Question {
 const TestItem: React.FC = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { topicId } = route.params as { topicId: number };
+  const { grammarId } = route.params as { grammarId: number };
 
-  const topic = Array.isArray(topicData) ? topicData.find(t => t.topicId === topicId) : null;
+  const topic = Array.isArray(topicData) ? topicData.find(t => t.grammarId === grammarId) : null;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -76,7 +76,7 @@ const TestItem: React.FC = () => {
           }}>
           <Image style={styles.backIcon} source={require('../../assets/images/back.png')} />
         </TouchableOpacity>
-        <Text style={styles.header}>{topic.topicName}</Text>
+        <Text style={styles.header}>{topic.grammarName}</Text>
       </View>
       <View style={styles.scoreContainer}>
         <Text style={styles.scoreText}>Correct: {correctCount}</Text>
