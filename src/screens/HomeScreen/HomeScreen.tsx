@@ -15,8 +15,10 @@ const HomeScreen = () => {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.profileContainer}>
-          <View style={styles.avatar} />
-          <Text style={styles.userName}>Thu Hằng</Text>
+          <Text style={styles.userName}>Welcome to your {'\n'}
+                English learning
+                journey!
+          </Text>
         </View>
         <Image source={require('../../assets/images/duck.png')} style={styles.avatarImage} />
       </View>

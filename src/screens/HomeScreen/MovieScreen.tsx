@@ -68,7 +68,7 @@ const MovieScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
+    <View style={{ flex: 1}}>
       <View>
         <TouchableOpacity
             style={styles.backButton}
@@ -80,12 +80,12 @@ const MovieScreen = () => {
                   }
                 }}
                   >
-                  <Image
-                  style={styles.backIcon}
-                  source={require('../../assets/images/back.png')}
-                  />
-                  </TouchableOpacity>
-                  <Text style={styles.header}>Movie</Text>
+            <Image
+              style={styles.backIcon}
+              source={require('../../assets/images/back.png')}
+                />
+        </TouchableOpacity>
+      <Text style={styles.header}>Movie</Text>
       </View>
       <View style={styles.input}>
       <TextInput
@@ -95,7 +95,9 @@ const MovieScreen = () => {
             borderWidth: 1,
             borderRadius: 5,
             marginBottom: 10,
-            paddingHorizontal: 10,
+            paddingHorizontal: 20,
+            width:360,
+            left:20,
           }}
           placeholder="Nhập từ khóa tìm kiếm..."
           value={searchQuery}
@@ -107,7 +109,9 @@ const MovieScreen = () => {
       </View>
       
 
-      <Button title="Tìm kiếm" onPress={() => fetchVideos(searchQuery)} />
+      <View style={styles.buttonContainer}>
+        <Button title="Tìm kiếm" onPress={() => fetchVideos(searchQuery)} />
+      </View>
 
       {loading && <ActivityIndicator size="large" color="green" />}
 
@@ -123,7 +127,7 @@ const MovieScreen = () => {
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute', // Đặt vị trí tuyệt đối
-    top: 40,             // Khoảng cách từ đỉnh màn hình
+    top: 30,             // Khoảng cách từ đỉnh màn hình
     left: 30,             // Khoảng cách từ trái màn hình
     zIndex: 10,           // Hiển thị trên các thành phần khác
     padding: 5,           // Thêm padding để dễ nhấn
@@ -132,6 +136,13 @@ const styles = StyleSheet.create({
     width: 30,  // Chiều rộng ảnh
     height: 30, // Chiều cao ảnh
     resizeMode: 'contain', // Duy trì tỉ lệ của ảnh
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+    width: 200, // Giới hạn độ rộng nút
+    alignSelf: 'center', // Căn giữa theo chiều ngang
   },
   header: {
     paddingTop: 35, // Đẩy nội dung xuống 30

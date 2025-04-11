@@ -15,10 +15,10 @@ const data: Topic[] =  [
   { id: 6, title: 'Order of adjectives', image: require('../../assets/images/house.png') },
   { id: 7, title: 'Present perfect', image: require('../../assets/images/animal.png') },
   { id: 8, title: 'Used to', image: require('../../assets/images/travel.png') },
-  { id: 9, title: 'Future Form', image: require('../../assets/images/travel.png') },
-  { id: 10, title: 'Be going to', image: require('../../assets/images/travel.png') },
-  { id: 11, title: 'Pass Perfect', image: require('../../assets/images/travel.png') },
-  { id: 12, title: 'First Conditional and Second Conditinal', image: require('../../assets/images/travel.png') },
+  { id: 9, title: 'Future Form', image: require('../../assets/images/image5.png') },
+  { id: 10, title: 'Be going to', image: require('../../assets/images/image2.png') },
+  { id: 11, title: 'Pass Perfect', image: require('../../assets/images/image3.png') },
+  { id: 12, title: 'First Conditional and Second Conditinal', image: require('../../assets/images/image4.png') },
 ];
 
 const TestGrammar = () => {

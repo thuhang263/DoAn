@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   
     profileContainer: { flexDirection: 'row', alignItems: 'center' },
     avatar: { width: 50, height: 50, borderRadius: 25, backgroundColor: '#ccc' },
-    userName: { marginLeft: 10, fontSize: 18, fontWeight: 'bold' },
+    userName: { marginLeft: 10, fontSize: 18, fontWeight: 'bold',color:'#fff' },
     avatarImage: { width: 80, height: 120 ,right:20,},
     dateContainer: { flexDirection: 'row', justifyContent: 'space-around', marginVertical: 10 },
     dateItem: { padding: 5 },
@@ -48,7 +48,9 @@ export const styles = StyleSheet.create({
     categoryContainer: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' },
     categoryBox: { backgroundColor: '#5EBB1A', padding: 30, borderRadius: 10, width: '40%', alignItems: 'center', marginVertical: 5 },
     categoryText: {  
-     fontWeight: 'bold' },
+     fontWeight: 'bold',
+     color:'#fff'
+     },
       avatarImageItem:{
       width:45,
       height:52,
@@ -73,6 +75,7 @@ export const styles = StyleSheet.create({
       left:130,
       top:10,
       alignItems:'center',
+      color:'#fff'
     }
   });
   
