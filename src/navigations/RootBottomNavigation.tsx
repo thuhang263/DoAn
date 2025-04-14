@@ -42,7 +42,7 @@ const RootBottomNavigation = () => {
               style={{
                 width: isTablet ? 24 * 1.5 : 24,
                 height: isTablet ? 24 * 1.5 : 24,
-                tintColor: focused ? '#008000' : '#558B71',
+                tintColor: focused ? '#61BFE7' : '#61BFE7',
                 opacity: focused ? 1 : 0.16,
               }}
             />

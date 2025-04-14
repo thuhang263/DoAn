@@ -18,6 +18,28 @@ const ListScreen = () => {
           <Image source={require('../../assets/images/listText.png')} style={styles.avatarImageText} />
         </View>
       </View>
+      <View>
+        <View style={styles.item}>
+            <Image
+             style ={styles.ImageItem}
+              source={require('../../assets/images/item2.png')}>
+            </Image>
+            <Text style={styles.text}>Learned</Text>
+            <TouchableOpacity style={styles.btn}>
+              <Text style={styles.TextBtn}>View</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.item}>
+          <Image
+            style ={styles.ImageItem}
+            source={require('../../assets/images/item1.png')}>
+            </Image>
+            <Text style={styles.text}>Unlearned</Text>
+            <TouchableOpacity style={styles.btn}>
+              <Text style={styles.TextBtn}>View</Text>
+            </TouchableOpacity>
+        </View>
+      </View>
     </ScrollView>
   );
 };

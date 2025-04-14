@@ -51,7 +51,7 @@ const TestGrammar = () => {
             >
             <Image
             style={styles.backIcon}
-            source={require('../../assets/images/back.png')}
+            source={require('../../assets/images/back1.png')}
             />
             </TouchableOpacity>
             <Text style={styles.header}>Grammar</Text>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingTop: 35, // Đẩy nội dung xuống 30
-    backgroundColor: '#78C93C',
+    backgroundColor: '#62D1F9',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',

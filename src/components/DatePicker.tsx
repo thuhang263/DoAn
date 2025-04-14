@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F0F0',
   },
   activeDate: {
-    backgroundColor: '#78C257', // Màu xanh lá cây
+    backgroundColor: '#61BFE7', // Màu xanh lá cây
   },
   dayText: {
     fontSize: 14,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet, TextInput } from 'react-native';
 
 
 import { styles } from './styles';
@@ -15,10 +15,21 @@ const SearchScreen = () => {
         <View style={styles.profileContainer}>
           <Image source={require('../../assets/images/Vocabulary.png')} style={styles.avatarImageText} />
         </View>
-        <Image source={require('../../assets/images/searchImage.png')} style={styles.avatarImage} />
-       
+        <Image source={require('../../assets/images/searchImage.png')} style={styles.avatarImage} />    
       </View>
-      
+      <View style={styles.searchContainer}>
+        <Image
+          source={require('../../assets/images/search2.png')}
+          style={styles.icon}
+        />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          placeholderTextColor="black"
+        />
+
+      </View>
+
      
       
      

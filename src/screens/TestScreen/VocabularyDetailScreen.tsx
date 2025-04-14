@@ -74,7 +74,7 @@ const TestItem: React.FC = () => {
               navigation.navigate('HomeScreen');
             }
           }}>
-          <Image style={styles.backIcon} source={require('../../assets/images/back.png')} />
+          <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
         </TouchableOpacity>
         <Text style={styles.header}>{topic.topicName}</Text>
       </View>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   header: {
     width:410,
     paddingTop: 35,
-    backgroundColor: '#78C93C',
+    backgroundColor: '#62D1F9',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',

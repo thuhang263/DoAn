@@ -20,7 +20,11 @@ const GrammaScreen = () => {
   const renderItem = ({ item }: { item: any }) => (
     <TouchableOpacity
       style={[styles.item, selected === item.id && styles.selectedItem]}
-      onPress={() => setSelected(item.id)}
+      onPress={() => {
+        setSelected(item.id);
+        navigation.navigate('GrammarTopicDetailScreen', { topicId: item.id, topicTitle: item.title });
+      }}
+      
     >
       <Image source={item.image} style={styles.image} />
       <Text style={styles.text}>{item.title}</Text>
@@ -44,7 +48,7 @@ const GrammaScreen = () => {
             >
             <Image
             style={styles.backIcon}
-            source={require('../../assets/images/back.png')}
+            source={require('../../assets/images/back1.png')}
             />
             </TouchableOpacity>
             <Text style={styles.header}>Grammar</Text>
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingTop: 35, // Đẩy nội dung xuống 30
-    backgroundColor: '#78C93C',
+    backgroundColor: '#61BFE7',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0e0e0',
   },
   selectedItem: {
-    backgroundColor: '#78C93C',
+    backgroundColor: '#61BFE7',
   },
   image: {
     width: 50,

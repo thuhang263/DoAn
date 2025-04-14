@@ -15,6 +15,7 @@ import TestListening from '../screens/TestScreen/TestListenning';
 import VocabularyDetailScreen from '../screens/TestScreen/VocabularyDetailScreen';
 import TestReading from '../screens/TestScreen/TestReading';
 import GrammarDetail from '../screens/TestScreen/GrammarDetail';
+import GrammarTopicDetailScreen from '../components/GrammarTopicDetailScreen';
 
 const RootStackNavigation = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -40,6 +41,8 @@ const RootStackNavigation = () => {
       <Stack.Screen name="VideoScreen" component={VideoScreen} />
       <Stack.Screen name="VocabularyDetailScreen" component={VocabularyDetailScreen} />
       <Stack.Screen name="GrammarDetail" component={GrammarDetail} />
+      <Stack.Screen name="GrammarTopicDetailScreen" component={GrammarTopicDetailScreen} />
+
     </Stack.Navigator>
   );
 };

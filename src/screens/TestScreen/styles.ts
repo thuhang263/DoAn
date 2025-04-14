@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
       height:160,
       flexDirection: 'row', 
       justifyContent: 'space-between', 
-      padding: 20, backgroundColor: '#5EBB1A', 
+      padding: 20, backgroundColor: '#61BFE7', 
       borderBottomLeftRadius: 50, 
       borderBottomRightRadius: 50 
       },
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     text:{
       color:'#fff',
       fontSize:23,
-     marginTop:5,
+     marginTop:30,
     },
     textContent:{
       fontWeight: 'bold',
@@ -42,47 +42,47 @@ export const styles = StyleSheet.create({
 
     },
     btn:{
-      marginBottom:40,
+      marginBottom:90,
     },
     btnVoc:{
       width:150,
-      height:50,
-      backgroundColor:'#5EBB1A',
-      left:50,
-      top:150,
-      alignContent:'center',
-      alignItems:'center',
-      borderRadius:20,
-    },
-    btnGra:{
-      width:150,
-      height:50,
-      backgroundColor:'#5EBB1A',
-      left:220,
-      top:100,
-      alignContent:'center',
-      alignItems:'center',
-      borderRadius:20,
-    },
-    btnListen:{
-      width:150,
-      height:50,
-      backgroundColor:'#5EBB1A',
+      height:100,
+      backgroundColor:'#78C93C',
       left:50,
       top:120,
       alignContent:'center',
       alignItems:'center',
       borderRadius:20,
     },
-    btnRead:{
+    btnGra:{
       width:150,
-      height:50,
-      backgroundColor:'#5EBB1A',
+      height:100,
+      backgroundColor:'#F66923',
       left:220,
-      top:70,
+      top:20,
       alignContent:'center',
       alignItems:'center',
       borderRadius:20,
+    },
+    btnListen:{
+      width:150,
+      height:100,
+      backgroundColor:'#F680D3',
+      left:50,
+      top:40,
+      alignContent:'center',
+      alignItems:'center',
+      borderRadius:20,
+    },
+    btnRead:{
+      width:150,
+      height:100,
+      backgroundColor:'#14C089',
+      left:220,
+      alignContent:'center',
+      alignItems:'center',
+      borderRadius:20,
+      bottom:60,
     }
 
     

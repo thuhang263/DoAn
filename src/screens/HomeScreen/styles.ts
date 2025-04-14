@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
       height:160,
       flexDirection: 'row', 
       justifyContent: 'space-between', 
-      padding: 20, backgroundColor: '#5EBB1A', 
+      padding: 20, backgroundColor: '#61BFE7', 
       borderBottomLeftRadius: 50, 
       borderBottomRightRadius: 50 
       },
@@ -26,9 +26,9 @@ export const styles = StyleSheet.create({
     avatarImage: { width: 80, height: 120 ,right:20,},
     dateContainer: { flexDirection: 'row', justifyContent: 'space-around', marginVertical: 10 },
     dateItem: { padding: 5 },
-    activeDate: { backgroundColor: '#5EBB1A', padding: 5, borderRadius: 5 },
+    activeDate: { backgroundColor: '#61BFE7', padding: 5, borderRadius: 5 },
     dateText: { fontSize: 16 },
-    attendanceButton: { backgroundColor: '#5EBB1A', padding: 10, alignSelf: 'center', borderRadius: 5 },
+    attendanceButton: { backgroundColor: '#61BFE7', padding: 10, alignSelf: 'center', borderRadius: 5 },
     attendanceText: { color: '#fff', fontWeight: 'bold' },
     lessonCard: { 
       width:390,
@@ -43,10 +43,18 @@ export const styles = StyleSheet.create({
     lessonTitle: { fontWeight: 'bold', fontSize: 16 },
     lessonSubText: { color: 'gray', },
     starContainer: {marginTop:100,right:150,},
-    studyButton: { backgroundColor: '#5EBB1A', padding: 10, alignSelf: 'center', borderRadius: 5, marginVertical: 10 },
+    studyButton: { backgroundColor: '#61BFE7', padding: 10, alignSelf: 'center', borderRadius: 5, marginVertical: 10 },
     studyButtonText: { color: '#fff', fontWeight: 'bold' },
     categoryContainer: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' },
-    categoryBox: { backgroundColor: '#5EBB1A', padding: 30, borderRadius: 10, width: '40%', alignItems: 'center', marginVertical: 5 },
+    categoryBox: { 
+      backgroundColor: '#61BFE7', 
+      padding: 30, 
+      borderRadius: 10, 
+      width: '40%', 
+      alignItems: 'center', 
+      marginVertical: 13, 
+      elevation: 8,
+    },
     categoryText: {  
      fontWeight: 'bold',
      color:'#fff'
@@ -60,7 +68,7 @@ export const styles = StyleSheet.create({
       marginTop:10,
       width:300,
       height:120,
-      backgroundColor:'#5EBB1A',
+      backgroundColor:'#61BFE7',
       borderRadius:20,
     },
     avatarImageItemMovie:{

@@ -66,6 +66,25 @@ const TestReading = () => {
   if (selectedLesson) {
     return (
       <ScrollView style={styles.container}>
+        <View style={styles.header}>
+        <TouchableOpacity
+            onPress={handleCheckAnswers}
+          >
+            <Image 
+              style={styles.checkBtn} 
+              source={require('../../assets/images/check.png')}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => setSelectedLesson(null)}
+          >
+            <Image 
+              style={styles.backBtn}
+              source={require('../../assets/images/back1.png')}
+            />
+          </TouchableOpacity>
+        </View>
         <View style={styles.content}>
           <Text style={styles.title}>{selectedLesson.title}</Text>
           <Text style={styles.text}>{selectedLesson.text}</Text>
@@ -100,19 +119,7 @@ const TestReading = () => {
             </View>
           ))}
 
-          <TouchableOpacity
-            style={styles.checkBtn}
-            onPress={handleCheckAnswers}
-          >
-            <Text style={styles.checkText}>Kiểm tra</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.backBtn}
-            onPress={() => setSelectedLesson(null)}
-          >
-            <Text style={styles.backText}>Quay lại</Text>
-          </TouchableOpacity>
+          
         </View>
       </ScrollView>
     );
@@ -133,7 +140,7 @@ const TestReading = () => {
         >
           <Image
             style={styles.backIcon}
-            source={require('../../assets/images/back.png')}
+            source={require('../../assets/images/back1.png')}
           />
         </TouchableOpacity>
         <Text style={styles.header}>Reading</Text>
@@ -208,29 +215,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   checkBtn: {
-    backgroundColor: '#28a745',
-    padding: 12,
-    borderRadius: 10,
-    marginBottom: 16,
-  },
+    left:280,
+    bottom:20,
+   },
   checkText: {
     color: '#fff',
     textAlign: 'center',
     fontWeight: '600',
   },
   backBtn: {
-    backgroundColor: '#6c757d',
-    padding: 10,
-    borderRadius: 10,
+    width:40,
+    height:40,
+    right:60,
   },
   backText: {
     color: '#fff',
     textAlign: 'center',
   },
   header: {
+    flexDirection:'row',
     paddingTop: 35,
     width: 410,
-    backgroundColor: '#78C93C',
+    backgroundColor: '#62D1F9',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',

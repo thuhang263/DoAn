@@ -76,11 +76,31 @@ const TestListenning = () => {
 
     return (
       <ScrollView style={styles.container}>
+        <View style={styles.header}>
+        <TouchableOpacity  onPress={() => setSelectedLesson(null)}>
+            <Image 
+            style={styles.backBtn}
+            source={require('../../assets/images/back1.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleCheckAnswer(question.answer)}>
+            <Image 
+            style={styles.checkBtn} 
+            source={require('../../assets/images/check.png')}
+            />
+          </TouchableOpacity>
+
+          
+        </View>
+        
         <View style={styles.content}>
         <Text style={styles.title}>{selectedLesson.title}</Text>
         <Text style={styles.text}>{selectedLesson.text}</Text>
-        <TouchableOpacity style={styles.listenBtn} onPress={() => handleListen(selectedLesson.text)}>
-          <Text style={styles.listenText}>Nghe đoạn văn</Text>
+        <TouchableOpacity  onPress={() => handleListen(selectedLesson.text)}>
+          <Image
+          style={styles.listenBtn}
+          source={require('../../assets/images/loa.png')}
+          />
         </TouchableOpacity>
 
         <View style={styles.questionContainer}>
@@ -105,13 +125,7 @@ const TestListenning = () => {
           })}
         </View>
 
-        <TouchableOpacity style={styles.checkBtn} onPress={() => handleCheckAnswer(question.answer)}>
-          <Text style={styles.checkText}>Kiểm tra</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.backBtn} onPress={() => setSelectedLesson(null)}>
-          <Text style={styles.backText}>Quay lại</Text>
-        </TouchableOpacity>
+        
         </View>
        
 
@@ -137,7 +151,7 @@ const TestListenning = () => {
               >
               <Image
                 style={styles.backIcon}
-                source={require('../../assets/images/back.png')}
+                source={require('../../assets/images/back1.png')}
               />
                 </TouchableOpacity>
                 <Text style={styles.header}>Listening Now!</Text>
@@ -184,10 +198,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   listenBtn: {
-    backgroundColor: '#007bff',
-    padding: 10,
-    borderRadius: 10,
-    marginBottom: 16,
+    width:50,
+    height:50,
+    alignSelf:'center'
   },
   listenText: {
    
@@ -221,10 +234,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   checkBtn: {
-    backgroundColor: '#28a745',
-    padding: 12,
-    borderRadius: 10,
-    marginBottom: 16,
+   left:250,
+   bottom:10,
   },
   checkText: {
     color: '#fff',
@@ -232,18 +243,18 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   backBtn: {
-    backgroundColor: '#6c757d',
-    padding: 10,
-    borderRadius: 10,
+   width:40,
+   height:40,
   },
   backText: {
     color: '#fff',
     textAlign: 'center',
   },
   header: {
+    flexDirection:'row',
     paddingTop: 35, // Đẩy nội dung xuống 30
     width:410,
-    backgroundColor: '#78C93C',
+    backgroundColor: '#62D1F9',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',
@@ -266,7 +277,8 @@ const styles = StyleSheet.create({
   content:{
     marginTop:40,
     padding:20,
-  }
+  },
+  
 });
 
 export default TestListenning;

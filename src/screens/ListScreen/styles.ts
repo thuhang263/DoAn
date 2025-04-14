@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
       height:160,
       flexDirection: 'row', 
       justifyContent: 'space-between', 
-      padding: 20, backgroundColor: '#5EBB1A', 
+      padding: 20, backgroundColor: '#61BFE7', 
       borderBottomLeftRadius: 50, 
       borderBottomRightRadius: 50 
       },
@@ -20,6 +20,38 @@ export const styles = StyleSheet.create({
     avatarImageText:{
         width: 170, height: 30 ,
         right:20,
+    },
+    item:{
+      backgroundColor:'#61BFE7',
+      marginTop:30,
+      width:280,
+      height:270,
+      borderRadius:20,
+      alignItems:'center',
+      alignSelf:'center',
+    },
+    ImageItem:{
+      width:130,
+      height:130,
+      marginTop:20,
+
+    },
+    text:{
+      color:'#fff',
+      fontSize:20,
+    },
+    btn:{
+      
+      width:200,
+      height:40,
+      backgroundColor:'#fff',
+      borderRadius:20,
+      marginTop:20,
+    },
+    TextBtn:{
+      fontSize:16,
+      textAlign:'center',
+      marginTop:10,
     }
 
     

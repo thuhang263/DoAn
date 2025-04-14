@@ -61,9 +61,13 @@ const HomeScreen = () => {
             <Image source={require('../../assets/images/gram.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Grammar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBoxMovie} onPress={() => navigation.navigate('MovieScreen')}>
-            <Image source={require('../../assets/images/movie.png')} style={styles.avatarImageItemMovie} />
-            <Text style={styles.categoryTextMovie}>Movie</Text>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('MovieScreen')}>
+            <Image source={require('../../assets/images/youtobe.png')} style={styles.avatarImageItem} />
+            <Text style={styles.categoryText}>Video</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('MovieScreen')}>
+            <Image source={require('../../assets/images/game.png')} style={styles.avatarImageItem} />
+            <Text style={styles.categoryText}>Games</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

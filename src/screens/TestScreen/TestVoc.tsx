@@ -41,7 +41,7 @@ const TestVoc = () => {
           style={styles.backButton}
           onPress={() => navigation.goBack()}
         >
-          <Image style={styles.backIcon} source={require('../../assets/images/back.png')} />
+          <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
         </TouchableOpacity>
         <Text style={styles.header}>Vocabulary</Text>
         <FlatList
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
   header: {
     paddingTop: 35,
-    backgroundColor: '#78C93C',
+    backgroundColor: '#62D1F9',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',
