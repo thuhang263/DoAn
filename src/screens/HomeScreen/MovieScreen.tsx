@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -19,7 +19,6 @@ type VideoScreenRouteProp = RouteProp<RootStackParamList, "VideoScreen">;
 const MovieScreen = () => {
   const [videos, setVideos] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const navigation = useNavigation();
 
   const fetchVideos = async (query: string) => {
@@ -36,36 +35,44 @@ const MovieScreen = () => {
     }
     setLoading(false);
   };
-
+  useEffect(() => {
+    fetchVideos("English for IT and Economics");
+  }, []);
   const renderItem = ({ item }: { item: any }) => {
     const videoId = item?.id?.videoId;
     const title = item?.snippet?.title || "Không có tiêu đề";
     const thumbnail = item?.snippet?.thumbnails?.medium?.url || "";
-
+  
     if (!videoId) return null;
-
+  
     return (
       <TouchableOpacity
         style={{
-          flexDirection: "row",
-          alignItems: "center",
+          width: '30%', // mỗi item chiếm khoảng 30%
+          margin: '1.5%', // để tạo khoảng cách giữa các cột
           backgroundColor: "#7CD33D",
-          padding: 10,
-          marginVertical: 5,
           borderRadius: 10,
+          overflow: 'hidden',
         }}
         onPress={() => navigation.navigate("VideoScreen", { videoId })}
       >
         <Image
           source={{ uri: thumbnail }}
-          style={{ width: 80, height: 60, borderRadius: 10, marginRight: 10 }}
+          style={{ width: '100%', height: 100 }}
+          resizeMode="cover"
         />
-        <Text style={{ color: "#fff", fontWeight: "bold", flexShrink: 1 }}>
+        <Text style={{
+          color: "#fff",
+          fontWeight: "bold",
+          fontSize: 12,
+          padding: 5,
+        }} numberOfLines={2}>
           {title}
         </Text>
       </TouchableOpacity>
     );
   };
+  
 
   return (
     <View style={{ flex: 1}}>
@@ -85,41 +92,18 @@ const MovieScreen = () => {
               source={require('../../assets/images/back1.png')}
                 />
         </TouchableOpacity>
-      <Text style={styles.header}>Movie</Text>
+      <Text style={styles.header}>Video</Text>
       </View>
-      <View style={styles.input}>
-      <TextInput
-          style={{
-            height: 40,
-            borderColor: "gray",
-            borderWidth: 1,
-            borderRadius: 5,
-            marginBottom: 10,
-            paddingHorizontal: 20,
-            width:360,
-            left:20,
-          }}
-          placeholder="Nhập từ khóa tìm kiếm..."
-          value={searchQuery}
-          onChangeText={(text) => {
-            setSearchQuery(text);
-            console.log("Từ khóa nhập:", text);
-          }}
-        />
-      </View>
-      
-
-      <View style={styles.buttonContainer}>
-        <Button title="Tìm kiếm" onPress={() => fetchVideos(searchQuery)} />
-      </View>
-
       {loading && <ActivityIndicator size="large" color="green" />}
 
       <FlatList
         data={videos}
         keyExtractor={(item) => item?.id?.videoId || Math.random().toString()}
         renderItem={renderItem}
+        numColumns={3} 
+        contentContainerStyle={{ paddingHorizontal: 10 }}
       />
+
     </View>
   );
 };

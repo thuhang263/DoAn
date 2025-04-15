@@ -27,7 +27,6 @@ const SearchScreen = () => {
           placeholder="Search..."
           placeholderTextColor="black"
         />
-
       </View>
 
      

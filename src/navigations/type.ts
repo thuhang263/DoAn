@@ -19,6 +19,7 @@ export enum Screens {
     TestReading ="TestReading",
     VocabularyDetailScreen="VocabularyDetailScreen",
     GrammarTopicDetailScreen="GrammarTopicDetailScreen",
+    ImageDetailScreen ="ImageDetailScreen",
 }
 
 export type RootBottomParamList = {
@@ -34,7 +35,8 @@ export type RootBottomParamList = {
     [Screens.TestListenning]: undefined;
     [Screens.TestReading]:undefined;
     [Screens.VocabularyDetailScreen]: { topicId: number };
-    [Screens.GrammarTopicDetailScreen]:{ topicId:number,topicTitle:string}
+    [Screens.GrammarTopicDetailScreen]:{ topicId:number,topicTitle:string};
+
 };
 
 export type RootStackParamList = {
@@ -57,6 +59,7 @@ export type RootStackParamList = {
     TestReading:undefined;
     GrammarDetail :{grammarId:number}
     GrammarTopicDetailScreen: { topicId: number; topicTitle: string }; 
+    ImageDetailScreen:undefined;
   };
 
 declare global {

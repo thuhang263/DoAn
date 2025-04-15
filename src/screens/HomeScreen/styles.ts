@@ -45,15 +45,21 @@ export const styles = StyleSheet.create({
     starContainer: {marginTop:100,right:150,},
     studyButton: { backgroundColor: '#61BFE7', padding: 10, alignSelf: 'center', borderRadius: 5, marginVertical: 10 },
     studyButtonText: { color: '#fff', fontWeight: 'bold' },
-    categoryContainer: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' },
+    categoryContainer: {
+       flexDirection: 'row', 
+       flexWrap: 'wrap', 
+       justifyContent: 'space-evenly',
+       
+      },
     categoryBox: { 
       backgroundColor: '#61BFE7', 
       padding: 30, 
-      borderRadius: 10, 
-      width: '40%', 
+      borderRadius: 30, 
+      width: 150,
+      height:140, 
       alignItems: 'center', 
-      marginVertical: 13, 
-      elevation: 8,
+      marginVertical: 10, 
+      elevation: 5,
     },
     categoryText: {  
      fontWeight: 'bold',
@@ -64,26 +70,35 @@ export const styles = StyleSheet.create({
       height:52,
       alignItems:'center',
     },
-    categoryBoxMovie:{
-      marginTop:10,
-      width:300,
-      height:120,
-      backgroundColor:'#61BFE7',
-      borderRadius:20,
-    },
-    avatarImageItemMovie:{
-      width:55,
-      height:62,
-      left:120,
-      top:10,
-      alignItems:'center',
-    },
+    
     categoryTextMovie:{
       fontWeight: 'bold' ,
       left:130,
       top:10,
       alignItems:'center',
       color:'#fff'
-    }
+    },
+    searchContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: '#E4ECEF',
+      borderRadius: 30,
+      paddingHorizontal: 10,
+      height:  40,
+      marginTop: 15,
+      borderWidth:1,
+      borderColor:'#61BFE7',
+      width:370,
+      left:20,
+    },
+    icon: {
+      width:  18,
+      height:  18,
+    },
+    searchInput: {
+      flex: 1,
+      fontSize:  14,
+      color: 'black',
+    },
   });
   
