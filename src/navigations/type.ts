@@ -20,6 +20,7 @@ export enum Screens {
     VocabularyDetailScreen="VocabularyDetailScreen",
     GrammarTopicDetailScreen="GrammarTopicDetailScreen",
     ImageDetailScreen ="ImageDetailScreen",
+    TopicVideo="TopicVideo",
 }
 
 export type RootBottomParamList = {
@@ -60,6 +61,7 @@ export type RootStackParamList = {
     GrammarDetail :{grammarId:number}
     GrammarTopicDetailScreen: { topicId: number; topicTitle: string }; 
     ImageDetailScreen:undefined;
+    TopicVideo:undefined;
   };
 
 declare global {

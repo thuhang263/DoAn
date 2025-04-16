@@ -34,19 +34,19 @@ const HomeScreen = () => {
             <Image source={require('../../assets/images/grama.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Ngữ pháp</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('MovieScreen')}>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('TopicVideo')}>
             <Image source={require('../../assets/images/youtobe.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Video</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('MovieScreen')}>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('TopicVideo')}>
             <Image source={require('../../assets/images/game.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Game</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('MovieScreen')}>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('TopicVideo')}>
             <Image source={require('../../assets/images/sach.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Luyện đọc song ngữ</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('MovieScreen')}>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('TopicVideo')}>
             <Image source={require('../../assets/images/viet.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Luyện viết</Text>
         </TouchableOpacity>
