@@ -47,7 +47,7 @@ const VoccalScreen = () => {
             source={require('../../assets/images/back1.png')}
             />
             </TouchableOpacity>
-            <Text style={styles.header}>Vocabulary</Text>
+            <Text style={styles.header}>Các bộ từ vựng</Text>
         </View>
      
         <View style={styles.itemContent}>

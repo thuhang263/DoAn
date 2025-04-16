@@ -43,12 +43,12 @@ const HomeScreen = () => {
             <Text style={styles.categoryText}>Game</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('MovieScreen')}>
-            <Image source={require('../../assets/images/truyen.png')} style={styles.avatarImageItem} />
-            <Text style={styles.categoryText}>Truyện chêm</Text>
+            <Image source={require('../../assets/images/sach.png')} style={styles.avatarImageItem} />
+            <Text style={styles.categoryText}>Luyện đọc song ngữ</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('MovieScreen')}>
-            <Image source={require('../../assets/images/sach.png')} style={styles.avatarImageItem} />
-            <Text style={styles.categoryText}>Sách</Text>
+            <Image source={require('../../assets/images/viet.png')} style={styles.avatarImageItem} />
+            <Text style={styles.categoryText}>Luyện viết</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

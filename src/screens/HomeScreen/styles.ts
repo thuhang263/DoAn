@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     categoryContainer: {
        flexDirection: 'row', 
        flexWrap: 'wrap', 
-       justifyContent: 'space-evenly',
+       left:30,
        
       },
     categoryBox: { 
@@ -59,7 +59,8 @@ export const styles = StyleSheet.create({
       height:140, 
       alignItems: 'center', 
       marginVertical: 10, 
-      elevation: 5,
+      elevation: 15,
+      margin:10,
     },
     categoryText: {  
      fontWeight: 'bold',

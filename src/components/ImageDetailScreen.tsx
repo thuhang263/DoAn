@@ -51,7 +51,7 @@ const ImageDetailScreen = () => {
               source={require('../assets/images/back1.png')}
               />
               </TouchableOpacity>
-              <Text style={styles.header}>100+ Từ vựng Hay Gặp {'\n'}Trong Môn Tiếng Anh 1 và Tiếng Anh 2 </Text>
+              <Text style={styles.header}> Bộ chủ đề từ vựng </Text>
           </View>
        
           <View style={styles.itemContent}>

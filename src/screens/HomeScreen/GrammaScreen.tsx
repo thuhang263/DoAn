@@ -2,19 +2,23 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 
-const data = [
-  { id: 1, title: 'All about me', image: require('../../assets/images/sport.png') },
-  { id: 2, title: 'Winning and Losing', image: require('../../assets/images/champion.png') },
-  { id: 3, title: 'Let is Shop', image: require('../../assets/images/shop.png') },
-  { id: 4, title: 'Relax', image: require('../../assets/images/relax.png') },
-  { id: 5, title: 'Extreme Dief', image: require('../../assets/images/food.png') },
-  { id: 6, title: 'My Home', image: require('../../assets/images/house.png') },
-  { id: 7, title: 'Wild at heart', image: require('../../assets/images/animal.png') },
-  { id: 8, title: 'We are off', image: require('../../assets/images/travel.png') },
+const data =  [
+  { id: 1, title: 'Present Simple',  },
+  { id: 3, title: 'Present Continuous' },
+  { id: 2, title: 'Past Simple' },
+  { id: 4, title: 'Past Continuous' },
+  { id: 5, title: 'Pronouns who, which, where' },
+  { id: 6, title: 'Order of adjectives' },
+  { id: 7, title: 'Present perfect' },
+  { id: 8, title: 'Used to' },
+  { id: 9, title: 'Future Form' },
+  { id: 10, title: 'Be going to' },
+  { id: 11, title: 'Pass Perfect' },
+  { id: 12, title: 'First Conditional and Second Conditinal' },
 ];
 
 const GrammaScreen = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
   const [selected, setSelected] = useState<number | null>(null);
   
   const renderItem = ({ item }: { item: any }) => (
@@ -26,7 +30,6 @@ const GrammaScreen = () => {
       }}
       
     >
-      <Image source={item.image} style={styles.image} />
       <Text style={styles.text}>{item.title}</Text>
     </TouchableOpacity>
   );
@@ -51,7 +54,7 @@ const GrammaScreen = () => {
             source={require('../../assets/images/back1.png')}
             />
             </TouchableOpacity>
-            <Text style={styles.header}>Grammar</Text>
+            <Text style={styles.header}>Ngữ Pháp</Text>
         </View>
      
         <View style={styles.itemContent}>
@@ -70,7 +73,6 @@ const GrammaScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-
     flex: 1,
     backgroundColor: '#fff',
   },
@@ -93,24 +95,20 @@ const styles = StyleSheet.create({
   },
   
   item: {
-    flex: 1,
-    margin: 10,
-    padding: 20,
+    margin:6,
+    padding:12,
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 30,
     backgroundColor: '#e0e0e0',
   },
   selectedItem: {
     backgroundColor: '#61BFE7',
   },
-  image: {
-    width: 50,
-    height: 50,
-    marginBottom: 10,
-  },
+  
   text: {
     fontSize: 16,
     fontWeight: 'bold',
+    
   },
   backButton: {
     position: 'absolute', // Đặt vị trí tuyệt đối

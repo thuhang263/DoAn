@@ -25,16 +25,16 @@ const TestScreen = () => {
       
      <View>
         <TouchableOpacity style={styles.btnVoc} onPress={() => navigation.navigate('TestVoc')}>
-          <Text style={styles.text}>Vocabulary</Text>
+          <Text style={styles.text}>Từ vựng</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.btnGra} onPress={() => navigation.navigate('TestGrammar')}>
-          <Text style={styles.text}>Grammar</Text>
+          <Text style={styles.text}>Ngữ pháp</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.btnListen} onPress={() => navigation.navigate('TestListenning')}>
-          <Text style={styles.text}>Listening</Text>
+          <Text style={styles.text}>Bài nghe</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.btnRead} onPress={() => navigation.navigate('TestReading')}>
-          <Text style={styles.text}>Reading</Text>
+          <Text style={styles.text}>Bài đọc</Text>
         </TouchableOpacity>
      </View>
 
