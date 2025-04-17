@@ -18,6 +18,8 @@ import GrammarDetail from '../screens/TestScreen/GrammarDetail';
 import GrammarTopicDetailScreen from '../components/GrammarTopicDetailScreen';
 import ImageDetailScreen from '../components/ImageDetailScreen';
 import TopicVideo from '../components/TopicVideo';
+import StoriesDetail from '../components/StoriesDetail';
+import StoriesScreen from '../screens/HomeScreen/StoriesScreen';
 
 const RootStackNavigation = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -46,6 +48,8 @@ const RootStackNavigation = () => {
       <Stack.Screen name="GrammarTopicDetailScreen" component={GrammarTopicDetailScreen} />
       <Stack.Screen name="ImageDetailScreen" component={ImageDetailScreen} />
       <Stack.Screen name="TopicVideo" component={TopicVideo} />
+      <Stack.Screen name="StoriesDetail" component={StoriesDetail} />
+      <Stack.Screen name="StoriesScreen" component={StoriesScreen} />
     </Stack.Navigator>
   );
 };

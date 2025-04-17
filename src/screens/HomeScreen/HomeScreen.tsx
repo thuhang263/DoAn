@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet, SafeAreaView, StatusBar, TextInput } from 'react-native';
-import DatePicker from '../../components/DatePicker'; 
+
 
 import { styles } from './styles';
 import { RootStackParamList } from '../../navigations/type';
@@ -42,7 +42,7 @@ const HomeScreen = () => {
             <Image source={require('../../assets/images/game.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Game</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('TopicVideo')}>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('StoriesScreen')}>
             <Image source={require('../../assets/images/sach.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Luyện đọc song ngữ</Text>
         </TouchableOpacity>
