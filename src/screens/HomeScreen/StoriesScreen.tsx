@@ -29,8 +29,8 @@ const StoriesScreen = () => {
           onPress={() =>
             navigation.navigate('StoriesDetail', {
               storiesID: item.id,
-              
-            })
+              storiesName:item.title
+            })  
           }
           >
         
