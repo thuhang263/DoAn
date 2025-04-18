@@ -1,0 +1,162 @@
+{
+  "tenses": [
+    { 
+      "topicId": 1,
+      "topicName": "Hiện tại đơn",
+      "structure": "S + V(s/es)",
+      "usage": [
+        "Diễn tả thói quen, sự thật hiển nhiên, lịch trình.",
+        "Dùng với các trạng từ chỉ tần suất như: always, usually, often, sometimes..."
+      ],
+      "rules": [
+        "Thêm 's' với hầu hết các động từ khi chủ ngữ là He/She/It.",
+        "Thêm 'es' với các động từ tận cùng bằng: -s, -x, -sh, -ch, -o.",
+        "Nếu động từ kết thúc bằng phụ âm + y: chuyển 'y' thành 'ies' (study → studies)."
+      ],
+      "signal_words": [
+        "always",
+        "usually",
+        "often",
+        "every day",
+        "sometimes",
+        "never"
+      ]
+      
+    },
+    {
+      "topicId": 2,
+      "topicName": "Hiện tại tiếp diễn",
+      "structure": "S + am/is/are + V-ing",
+      "usage": [
+        "Diễn tả hành động đang xảy ra tại thời điểm nói.",
+        "Hành động tạm thời hoặc đang diễn ra xung quanh thời điểm nói."
+      ],
+      "rules": [
+        "Thêm 'ing' vào động từ.",
+        "Nếu động từ kết thúc bằng 'e': bỏ 'e' rồi thêm 'ing' (make → making).",
+        "Nếu động từ kết thúc bằng một phụ âm sau một nguyên âm đơn và là âm cuối: gấp đôi phụ âm (run → running)."
+      ],
+      "signal_words": [
+        "now",
+        "at the moment",
+        "right now",
+        "Look!",
+        "Listen!"
+      ]
+      
+    },
+    {
+       "topicId": 3,
+      "topicName": "Quá khứ đơn",
+      "structure": "S + V2 / V-ed",
+      "usage": [
+        "Diễn tả hành động đã xảy ra và kết thúc trong quá khứ.",
+        "Xác định rõ thời gian quá khứ."
+      ],
+      "rules": [
+        "Động từ có quy tắc: thêm 'ed'.",
+        "Bất quy tắc: học thuộc dạng quá khứ (go → went, see → saw...)."
+      ],
+      "signal_words": [
+        "yesterday",
+        "last night",
+        "in 1990",
+        "ago",
+        "when"
+      ]
+     
+    },
+    {
+       "topicId": 4,
+      "topicName": "Quá khứ tiếp diễn",
+      "structure": "S + was/were + V-ing",
+      "usage": [
+        "Hành động đang xảy ra tại một thời điểm cụ thể trong quá khứ.",
+        "Hành động đang diễn ra thì hành động khác xen vào."
+      ],
+      "rules": [],
+      "signal_words": [
+        "while",
+        "when",
+        "at that moment",
+        "at 5 p.m. yesterday"
+      ]
+     
+    },
+    {
+      "topicId": 5,
+      "topicName": "Hiện tại hoàn thành",
+      "structure": "S + have/has + V3 (Past Participle)",
+      "usage": [
+        "Hành động đã xảy ra nhưng chưa xác định thời gian, kết quả còn ảnh hưởng hiện tại.",
+        "Trải nghiệm, hành động lặp lại nhiều lần trong quá khứ đến hiện tại."
+      ],
+      "rules": [],
+      "signal_words": [
+        "just",
+        "already",
+        "yet",
+        "ever",
+        "never",
+        "since",
+        "for",
+        "recently",
+        "so far"
+      ]
+      
+    },
+    {
+      "topicId": 6,
+      "topicName": "Quá khứ hoàn thành",
+      "structure": "S + had + V3 (Past Participle)",
+      "usage": [
+        "Diễn tả hành động đã hoàn thành trước một hành động khác trong quá khứ."
+      ],
+      "rules": [],
+      "signal_words": [
+        "before",
+        "after",
+        "by the time",
+        "when",
+        "already"
+      ]
+    
+    },
+    {
+      "topicId":7,
+      "topicName": "Câu điều kiện loại 1",
+      "structure": "If + S + V (hiện tại), S + will + V",
+      "usage": [
+        "Diễn tả điều kiện có thể xảy ra ở hiện tại hoặc tương lai thực tế."
+      ],
+      "signal_words": [
+        "if",
+        "unless",
+        "as long as",
+        "provided that"
+      ]
+      
+    },
+    {
+      "topicId": 8,
+      "topicName": "Câu điều kiện loại 2",
+      "structure": "If + S + V2, S + would + V",
+      "usage": [
+        "Diễn tả điều kiện không có thật ở hiện tại hoặc tương lai (giả định)."
+      ],
+      "signal_words": [
+        "if",
+        "were",
+        "would",
+        "could"
+      ]
+      
+    },
+    {
+      "topicId": 9,
+      "name":""
+
+    }
+  ]
+  
+}

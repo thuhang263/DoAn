@@ -44,11 +44,11 @@ const HomeScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('StoriesScreen')}>
             <Image source={require('../../assets/images/sach.png')} style={styles.avatarImageItem} />
-            <Text style={styles.categoryText}>Luyện đọc song ngữ</Text>
+            <Text style={styles.categoryText}>Song ngữ</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('TopicVideo')}>
             <Image source={require('../../assets/images/viet.png')} style={styles.avatarImageItem} />
-            <Text style={styles.categoryText}>Luyện viết</Text>
+            <Text style={styles.categoryText}>Luyện nghe</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

@@ -61,7 +61,7 @@ export type RootStackParamList = {
     VocabularyDetailScreen: { topicId: number };
     TestReading:undefined;
     GrammarDetail :{grammarId:number}
-    GrammarTopicDetailScreen: { topicId: number; topicTitle: string }; 
+    GrammarTopicDetailScreen: { topicId: number; topicName: string }; 
     ImageDetailScreen:undefined;
     TopicVideo:undefined;
     StoriesDetail:{storiesID:number, storiesName: string};

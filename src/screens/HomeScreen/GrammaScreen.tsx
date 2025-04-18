@@ -3,17 +3,17 @@ import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 
 const data =  [
-  { id: 1, title: 'Present Simple',  },
-  { id: 3, title: 'Present Continuous' },
-  { id: 2, title: 'Past Simple' },
-  { id: 4, title: 'Past Continuous' },
+  { id: 1, title: 'Hiện tại đơn',  },
+  { id: 3, title: 'Hiện tại tiếp diễn' },
+  { id: 2, title: 'Quá khứ đơn' },
+  { id: 4, title: 'Quá khử tiếp diễn' },
   { id: 5, title: 'Pronouns who, which, where' },
   { id: 6, title: 'Order of adjectives' },
-  { id: 7, title: 'Present perfect' },
+  { id: 7, title: 'Hiện tại hoàn thành' },
   { id: 8, title: 'Used to' },
   { id: 9, title: 'Future Form' },
   { id: 10, title: 'Be going to' },
-  { id: 11, title: 'Pass Perfect' },
+  { id: 11, title: 'Quá khứ hoàn thành' },
   { id: 12, title: 'First Conditional and Second Conditinal' },
 ];
 
@@ -26,7 +26,7 @@ const GrammaScreen = () => {
       style={[styles.item, selected === item.id && styles.selectedItem]}
       onPress={() => {
         setSelected(item.id);
-        navigation.navigate('GrammarTopicDetailScreen', { topicId: item.id, topicTitle: item.title });
+        navigation.navigate('GrammarTopicDetailScreen', { topicId: item.id, topicName: item.title });
       }}
       
     >
