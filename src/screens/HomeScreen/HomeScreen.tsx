@@ -38,7 +38,7 @@ const HomeScreen = () => {
             <Image source={require('../../assets/images/youtobe.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Video</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('TopicVideo')}>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('StoriesScreen')}>
             <Image source={require('../../assets/images/game.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Game</Text>
         </TouchableOpacity>
@@ -46,7 +46,7 @@ const HomeScreen = () => {
             <Image source={require('../../assets/images/sach.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Song ngữ</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('TopicVideo')}>
+        <TouchableOpacity style={styles.categoryBox} onPress={() => navigation.navigate('StoriesScreen')}>
             <Image source={require('../../assets/images/viet.png')} style={styles.avatarImageItem} />
             <Text style={styles.categoryText}>Luyện nghe</Text>
         </TouchableOpacity>
