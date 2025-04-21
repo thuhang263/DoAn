@@ -16,7 +16,7 @@ const HomeScreen = () => {
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.profileContainer}>
-            <Text style={styles.userName}>Welcome to TLEnglish!</Text>
+            <Text style={styles.userName}>Chúc bạn ôn tập tiếng anh vui vẻ {'\n'} với TLEnglish!</Text>
           </View>
           <Image source={require('../../assets/images/duck.png')} style={styles.avatarImage} />
         </View>
@@ -52,7 +52,7 @@ const HomeScreen = () => {
         <Text style={styles.sectionTitle2}>Song ngữ và Nghe</Text>
         <View style={styles.ReadContainer}>
           <TouchableOpacity  onPress={() => navigation.navigate('StoriesScreen')}>
-            <Image source={require('../../assets/images/reading2.jpg')} style={styles.avatarImageItem} />
+            <Image source={require('../../assets/images/doc.jpg')} style={styles.avatarImageItem} />
 
           </TouchableOpacity>
           <TouchableOpacity  onPress={() => navigation.navigate('StoriesScreen')}>

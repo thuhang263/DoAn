@@ -8,25 +8,28 @@ import { View, FlatList, Image, Dimensions, TouchableOpacity, Text, StyleSheet }
 const BannerCarousel = () => {
   const flatListRef = useRef<FlatList>(null);
   const navigation = useNavigation();
-  const images = [
-    require('../assets/images/cntt.jpg'),
-  ];
-
-
+  
   return (
     <View>
       <View style={styles.videoLabel}>
           <Text style={styles.verticalText}>100+ Từ vựng ôn thi đầu ra</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('ImageDetailScreen')}>
+            <Image
+            style={styles.image}
+            source={require('../assets/images/next.png')}
+            >
+            </Image>
+          </TouchableOpacity>  
       </View>
     <FlatList
       ref={flatListRef}
-      data={images}
+      data={null}
       horizontal
       pagingEnabled
       showsHorizontalScrollIndicator={false}
       keyExtractor={(_, index) => index.toString()}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate('ImageDetailScreen')}>
+        <TouchableOpacity >
           <Image
             source={item}
             style={{
@@ -50,16 +53,19 @@ const styles = StyleSheet.create({
     left:30,
     fontSize: 20,
     fontWeight: 'bold',
-    color:'#000'
-    
+    flexDirection:'row',
+    borderRadius:'30',
+    margin:15,
   },
   verticalText: {
-   
     fontSize: 20,
     fontWeight: 'bold',
     color:'#000'
-    
-
   },
+  image:{
+    width:30,
+    height:30,
+    left:60,
+  }
 });
 export default BannerCarousel;

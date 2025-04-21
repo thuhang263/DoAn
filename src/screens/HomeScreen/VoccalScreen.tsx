@@ -3,14 +3,15 @@ import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 
 const data = [
-  { id: 1, title: 'Công nghệ Thông Tin', image: require('../../assets/images/champion.png') },
-  { id: 2, title: 'Kế Toán và Kinh doanh', image: require('../../assets/images/champion.png') },
-  { id: 3, title: 'Cơ khí', image: require('../../assets/images/shop.png') },
-  { id: 4, title: 'Điện - Điện tử', image: require('../../assets/images/relax.png') },
-  { id: 5, title: 'Hóa - Môi trường', image: require('../../assets/images/food.png') },
-  { id: 6, title: 'Nước', image: require('../../assets/images/house.png') },
-  { id: 7, title: 'Công trình', image: require('../../assets/images/animal.png') },
-  { id: 8, title: 'Xây dựng', image: require('../../assets/images/travel.png') },
+  { id: 1, title: 'Khoa công nghệ thông tin', image: require('../../assets/images/champion.png') },
+  { id: 2, title: 'Khoa kỹ thuật tài nguyên nước', image: require('../../assets/images/champion.png') },
+  { id: 3, title: 'Khoa cơ khí', image: require('../../assets/images/shop.png') },
+  { id: 4, title: 'Khoa Điện - Điện tử', image: require('../../assets/images/relax.png') },
+  { id: 5, title: 'Khoa hóa - Môi trường', image: require('../../assets/images/food.png') },
+  { id: 6, title: 'Khoa kinh tế và quản lý', image: require('../../assets/images/house.png') },
+  { id: 7, title: 'Khoa kế toán và kinh doanh', image: require('../../assets/images/animal.png') },
+  { id: 8, title: 'Khoa công trình', image: require('../../assets/images/travel.png') },
+  { id: 8, title: 'Khoa luật và lý luận chính trị', image: require('../../assets/images/travel.png') },
 ];
 
 const VoccalScreen = () => {
@@ -18,6 +19,7 @@ const VoccalScreen = () => {
   const [selected, setSelected] = useState<number | null>(null);
   
   const renderItem = ({ item }: { item: any }) => (
+    
     <TouchableOpacity
       style={[styles.item, selected === item.id && styles.selectedItem]}
       onPress={() => setSelected(item.id)}
@@ -25,6 +27,8 @@ const VoccalScreen = () => {
       <Image source={item.image} style={styles.image} />
       <Text style={styles.text}>{item.title}</Text>
     </TouchableOpacity>
+   
+    
   );
 
   return (
@@ -74,7 +78,9 @@ const styles = StyleSheet.create({
   },
   itemContent:{
     marginTop:40,
+   
   },
+  
   header: {
     paddingTop: 35, // Đẩy nội dung xuống 30
     backgroundColor: '#61BFE7',
