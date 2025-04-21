@@ -1,11 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useRef, useState, useEffect } from "react";
-import { View, FlatList, Image, Dimensions, TouchableOpacity } from "react-native";
+import { View, FlatList, Image, Dimensions, TouchableOpacity, Text, StyleSheet } from "react-native";
+
 
 
 
 const BannerCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
   const navigation = useNavigation();
   const images = [
@@ -14,6 +14,10 @@ const BannerCarousel = () => {
 
 
   return (
+    <View>
+      <View style={styles.videoLabel}>
+          <Text style={styles.verticalText}>100+ Từ vựng ôn thi đầu ra</Text>
+      </View>
     <FlatList
       ref={flatListRef}
       data={images}
@@ -26,17 +30,36 @@ const BannerCarousel = () => {
           <Image
             source={item}
             style={{
-              width: 370,
+              width: 320,
               margin: 15,
               height: 150,
               resizeMode: 'cover',
               borderRadius: 30,
+              left:15,
             }}
           />
         </TouchableOpacity>
       )}
     />
+    </View>
+    
   );
 };
+const styles = StyleSheet.create({
+  videoLabel: {
+    left:30,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color:'#000'
+    
+  },
+  verticalText: {
+   
+    fontSize: 20,
+    fontWeight: 'bold',
+    color:'#000'
+    
 
+  },
+});
 export default BannerCarousel;
