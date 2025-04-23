@@ -19,17 +19,19 @@ const VoccalScreen = () => {
   const [selected, setSelected] = useState<number | null>(null);
   
   const renderItem = ({ item }: { item: any }) => (
-    
     <TouchableOpacity
       style={[styles.item, selected === item.id && styles.selectedItem]}
-      onPress={() => setSelected(item.id)}
+      onPress={() => {
+        setSelected(item.id);
+        // Điều hướng sang màn hiển thị ngành, truyền tên khoa
+        navigation.navigate('MajorListScreen', { facultyName: item.title });
+      }}
     >
       <Image source={item.image} style={styles.image} />
       <Text style={styles.text}>{item.title}</Text>
     </TouchableOpacity>
-   
-    
   );
+  
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

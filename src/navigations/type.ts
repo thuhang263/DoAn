@@ -23,6 +23,7 @@ export enum Screens {
     TopicVideo="TopicVideo",
     StoriesDetail ="StoriesDetail",
     StoriesScreen="StoriesScreen",
+    VocabularyItemScreen='VocabularyItemScreen',
 }
 
 export type RootBottomParamList = {
@@ -65,6 +66,14 @@ export type RootStackParamList = {
     TopicVideo:undefined;
     StoriesDetail:{storiesID:number, storiesName: string};
     StoriesScreen:undefined;
+    VocabularyListScreen: { majorName: string };
+    MajorListScreen: { facultyName: string };
+    VocabularyItemScreen: { word: {
+      word: string;
+      partOfSpeech: string;
+      phonetic: string;
+      definition: string;
+    }};
 
   };
 

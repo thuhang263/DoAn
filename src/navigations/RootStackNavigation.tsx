@@ -19,6 +19,8 @@ import ImageDetailScreen from '../components/ImageDetailScreen';
 import TopicVideo from '../components/TopicVideo';
 import StoriesDetail from '../components/StoriesDetail';
 import StoriesScreen from '../screens/HomeScreen/StoriesScreen';
+import VocabularyListScreen from '../Vocabulary/VocabularyListScreen';
+import MajorListScreen from '../Vocabulary/MajorListScreen';
 
 const RootStackNavigation = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -47,6 +49,8 @@ const RootStackNavigation = () => {
       <Stack.Screen name="TopicVideo" component={TopicVideo} />
       <Stack.Screen name="StoriesDetail" component={StoriesDetail} />
       <Stack.Screen name="StoriesScreen" component={StoriesScreen} />
+      <Stack.Screen name="VocabularyListScreen" component={VocabularyListScreen} />
+      <Stack.Screen name="MajorListScreen" component={MajorListScreen} />
     </Stack.Navigator>
   );
 };
