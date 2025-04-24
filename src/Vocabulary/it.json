@@ -1,9 +1,9 @@
 
-{
+[{
     "facultyName": "Khoa công nghệ thông tin",
     "majors": [
         {
-            "majorName": "Công Nghệ Phần Mềm",
+            "majorName": "Công Nghệ Thông Tin",
             "vocabulary": [
                 {
                     "word": "CPU",
@@ -113,8 +113,308 @@
                 "definition": "Kho dữ liệu"
               }
             ]
-          }
+        },
+        {
+          "majorName": "Trí tuệ nhân tạo",
+          "vocabulary": [
+            {
+              "word": "artificial intelligence",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˌɑː.tɪˈfɪʃ.əl ɪnˈtel.ɪ.dʒəns/",
+              "definition": "Trí tuệ nhân tạo"
+            },
+            {
+              "word": "machine learning",
+              "partOfSpeech": "noun",
+              "phonetic": "/məˈʃiːn ˈlɜː.nɪŋ/",
+              "definition": "Học máy"
+            },
+            {
+              "word": "deep learning",
+              "partOfSpeech": "noun",
+              "phonetic": "/diːp ˈlɜː.nɪŋ/",
+              "definition": "Học sâu"
+            },
+            {
+              "word": "neural network",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈnjʊə.rəl ˈnet.wɜːk/",
+              "definition": "Mạng nơ-ron"
+            },
+            {
+              "word": "natural language processing",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈnætʃ.ər.əl ˈlæŋ.ɡwɪdʒ ˈprəʊ.ses.ɪŋ/",
+              "definition": "Xử lý ngôn ngữ tự nhiên"
+            },
+            {
+              "word": "computer vision",
+              "partOfSpeech": "noun",
+              "phonetic": "/kəmˈpjuː.tər ˈvɪʒ.ən/",
+              "definition": "Thị giác máy tính"
+            },
+            {
+              "word": "supervised learning",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈsuː.pə.vaɪzd ˈlɜː.nɪŋ/",
+              "definition": "Học có giám sát"
+            },
+            {
+              "word": "unsupervised learning",
+              "partOfSpeech": "noun",
+              "phonetic": "/ʌnˈsuː.pə.vaɪzd ˈlɜː.nɪŋ/",
+              "definition": "Học không giám sát"
+            },
+            {
+              "word": "reinforcement learning",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˌriː.ɪnˈfɔːs.mənt ˈlɜː.nɪŋ/",
+              "definition": "Học tăng cường"
+            },
+            {
+              "word": "AI model",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˌeɪ.aɪ ˈmɒd.əl/",
+              "definition": "Mô hình AI"
+            }
+          ]
+        },
+        {
+          "majorName": "An ninh mạng",
+          "vocabulary": [
+            {
+              "word": "cybersecurity",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˌsaɪ.bə.sɪˈkjʊə.rə.ti/",
+              "definition": "An ninh mạng"
+            },
+            {
+              "word": "firewall",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈfaɪə.wɔːl/",
+              "definition": "Tường lửa"
+            },
+            {
+              "word": "encryption",
+              "partOfSpeech": "noun",
+              "phonetic": "/ɪnˈkrɪp.ʃən/",
+              "definition": "Mã hóa"
+            },
+            {
+              "word": "malware",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈmæl.weər/",
+              "definition": "Phần mềm độc hại"
+            },
+            {
+              "word": "phishing",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈfɪʃ.ɪŋ/",
+              "definition": "Giả mạo để đánh cắp thông tin"
+            },
+            {
+              "word": "DDoS attack",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈdiː.dɒs əˈtæk/",
+              "definition": "Tấn công từ chối dịch vụ phân tán"
+            },
+            {
+              "word": "vulnerability",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˌvʌl.nər.əˈbɪl.ə.ti/",
+              "definition": "Lỗ hổng bảo mật"
+            },
+            {
+              "word": "authentication",
+              "partOfSpeech": "noun",
+              "phonetic": "/ɔːˌθen.tɪˈkeɪ.ʃən/",
+              "definition": "Xác thực"
+            },
+            {
+              "word": "penetration testing",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˌpen.ɪˈtreɪ.ʃən ˈtes.tɪŋ/",
+              "definition": "Kiểm thử xâm nhập"
+            },
+            {
+              "word": "intrusion detection",
+              "partOfSpeech": "noun",
+              "phonetic": "/ɪnˈtruː.ʒən dɪˈtek.ʃən/",
+              "definition": "Phát hiện xâm nhập"
+            }
+          ]
+        },
+        {
+          "majorName": "Công nghệ phần mềm",
+          "vocabulary": [
+            {
+              "word": "software engineering",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈsɒft.weər ˌen.dʒɪˈnɪə.rɪŋ/",
+              "definition": "Công nghệ phần mềm"
+            },
+            {
+              "word": "software development life cycle",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈsɒft.weər dɪˈvel.əp.mənt ˈlaɪf ˌsaɪ.kəl/",
+              "definition": "Vòng đời phát triển phần mềm"
+            },
+            {
+              "word": "requirement analysis",
+              "partOfSpeech": "noun",
+              "phonetic": "/rɪˈkwaɪə.mənt əˈnæl.ə.sɪs/",
+              "definition": "Phân tích yêu cầu"
+            },
+            {
+              "word": "design pattern",
+              "partOfSpeech": "noun",
+              "phonetic": "/dɪˈzaɪn ˈpæt.ən/",
+              "definition": "Mẫu thiết kế"
+            },
+            {
+              "word": "version control",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈvɜː.ʃən kənˈtrəʊl/",
+              "definition": "Quản lý phiên bản"
+            },
+            {
+              "word": "agile methodology",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈædʒ.aɪl ˌmeθ.əˈdɒl.ə.dʒi/",
+              "definition": "Phương pháp Agile"
+            },
+            {
+              "word": "code refactoring",
+              "partOfSpeech": "noun",
+              "phonetic": "/kəʊd ˌriːˈfæk.tər.ɪŋ/",
+              "definition": "Tái cấu trúc mã nguồn"
+            },
+            {
+              "word": "unit testing",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˈjuː.nɪt ˈtes.tɪŋ/",
+              "definition": "Kiểm thử đơn vị"
+            },
+            {
+              "word": "debugging",
+              "partOfSpeech": "noun",
+              "phonetic": "/ˌdiːˈbʌɡ.ɪŋ/",
+              "definition": "Gỡ lỗi"
+            },
+            {
+              "word": "deployment",
+              "partOfSpeech": "noun",
+              "phonetic": "/dɪˈplɔɪ.mənt/",
+              "definition": "Triển khai"
+            }
+          ]
+        }
+        
+        
 
     ]
-  }
+    
+},
+{
+  "facultyName": "Khoa kinh tế và quản lý",
+  "majors": [
+    {
+      "majorName": "Quản Trị Kinh Doanh",
+      "vocabulary": [
+        {
+          "word": "business",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈbɪz.nɪs/",
+          "definition": "Doanh nghiệp"
+        },
+        {
+          "word": "entrepreneur",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˌɒn.trə.prəˈnɜːr/",
+          "definition": "Doanh nhân"
+        },
+        {
+          "word": "marketing",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈmɑː.kɪ.tɪŋ/",
+          "definition": "Tiếp thị"
+        },
+        {
+          "word": "strategy",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈstræt.ə.dʒi/",
+          "definition": "Chiến lược"
+        },
+        {
+          "word": "leadership",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈliː.də.ʃɪp/",
+          "definition": "Lãnh đạo"
+        },
+        {
+          "word": "budget",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈbʌdʒ.ɪt/",
+          "definition": "Ngân sách"
+        },
+        {
+          "word": "finance",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈfaɪ.næns/",
+          "definition": "Tài chính"
+        }
+      ]
+    },
+    {
+      "majorName": "Kinh Tế Quốc Tế",
+      "vocabulary": [
+        {
+          "word": "economy",
+          "partOfSpeech": "noun",
+          "phonetic": "/ɪˈkɒn.ə.mi/",
+          "definition": "Kinh tế"
+        },
+        {
+          "word": "trade",
+          "partOfSpeech": "noun",
+          "phonetic": "/treɪd/",
+          "definition": "Thương mại"
+        },
+        {
+          "word": "import",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈɪm.pɔːt/",
+          "definition": "Nhập khẩu"
+        },
+        {
+          "word": "export",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈek.spɔːt/",
+          "definition": "Xuất khẩu"
+        },
+        {
+          "word": "investment",
+          "partOfSpeech": "noun",
+          "phonetic": "/ɪnˈvest.mənt/",
+          "definition": "Đầu tư"
+        },
+        {
+          "word": "globalization",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˌɡləʊ.bəl.aɪˈzeɪ.ʃən/",
+          "definition": "Toàn cầu hóa"
+        },
+        {
+          "word": "tariff",
+          "partOfSpeech": "noun",
+          "phonetic": "/ˈtær.ɪf/",
+          "definition": "Thuế quan"
+        }
+      ]
+    }
+  ]
+}
+]
+
+
   

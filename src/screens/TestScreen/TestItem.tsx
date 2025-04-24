@@ -13,7 +13,7 @@ interface Question {
   answer: string;
 }
 
-const testItem: React.FC = () => {
+const TestItem: React.FC = () => {
   const navigation = useNavigation();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -231,4 +231,4 @@ const styles = StyleSheet.create({
       marginTop: 80,
     },
   });
-export default testItem;
+export default TestItem;

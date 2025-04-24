@@ -4,11 +4,11 @@ import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView
 
 const data = [
   { id: 1, title: 'Khoa công nghệ thông tin', image: require('../../assets/images/champion.png') },
-  { id: 2, title: 'Khoa kỹ thuật tài nguyên nước', image: require('../../assets/images/champion.png') },
+  { id: 2, title: 'Khoa kinh tế và quản lý', image: require('../../assets/images/champion.png') },
   { id: 3, title: 'Khoa cơ khí', image: require('../../assets/images/shop.png') },
   { id: 4, title: 'Khoa Điện - Điện tử', image: require('../../assets/images/relax.png') },
   { id: 5, title: 'Khoa hóa - Môi trường', image: require('../../assets/images/food.png') },
-  { id: 6, title: 'Khoa kinh tế và quản lý', image: require('../../assets/images/house.png') },
+  { id: 6, title: 'Khoa kỹ thuật tài nguyên nước', image: require('../../assets/images/house.png') },
   { id: 7, title: 'Khoa kế toán và kinh doanh', image: require('../../assets/images/animal.png') },
   { id: 8, title: 'Khoa công trình', image: require('../../assets/images/travel.png') },
   { id: 8, title: 'Khoa luật và lý luận chính trị', image: require('../../assets/images/travel.png') },
@@ -37,7 +37,7 @@ const VoccalScreen = () => {
     <SafeAreaView style={{ flex: 1 }}>
         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <View style={styles.container}>
-        <View>
+          <View>
             <TouchableOpacity
                 style={styles.backButton}
                 onPress={() => {
@@ -54,7 +54,7 @@ const VoccalScreen = () => {
             />
             </TouchableOpacity>
             <Text style={styles.header}>Các bộ từ vựng</Text>
-        </View>
+          </View>
      
         <View style={styles.itemContent}>
         <FlatList
@@ -72,6 +72,7 @@ const VoccalScreen = () => {
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
 
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   itemContent:{
-    marginTop:40,
+    marginTop:10,
    
   },
   
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
   item: {
     flex: 1,
     margin: 10,
-    padding: 20,
+    padding: 13,
     alignItems: 'center',
     borderRadius: 10,
     backgroundColor: '#e0e0e0',

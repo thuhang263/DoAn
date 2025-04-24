@@ -16,7 +16,7 @@ const HomeScreen = () => {
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.profileContainer}>
-            <Text style={styles.userName}>Chúc bạn ôn tập tiếng anh vui vẻ {'\n'} với TLEnglish!</Text>
+            <Text style={styles.userName}>Chúc bạn ôn tập tiếng anh {'\n'} hiệu quả với TLEnglish!</Text>
           </View>
           <Image source={require('../../assets/images/duck.png')} style={styles.avatarImage} />
         </View>

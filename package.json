@@ -24,7 +24,8 @@
     "react-native-svg-transformer": "^1.5.0",
     "react-native-tts": "^4.1.1",
     "react-native-webview": "^13.13.5",
-    "react-native-youtube-iframe": "^2.3.0"
+    "react-native-youtube-iframe": "^2.3.0",
+    "realm": "^12.14.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
