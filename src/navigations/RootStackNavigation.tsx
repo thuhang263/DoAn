@@ -21,6 +21,9 @@ import StoriesDetail from '../components/StoriesDetail';
 import StoriesScreen from '../screens/HomeScreen/StoriesScreen';
 import VocabularyListScreen from '../Vocabulary/VocabularyListScreen';
 import MajorListScreen from '../Vocabulary/MajorListScreen';
+import StoryContentScreen from '../components/StoryContentScreen';
+import ListeningScreen from '../screens/HomeScreen/ListeningScreen';
+
 
 const RootStackNavigation = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -51,6 +54,11 @@ const RootStackNavigation = () => {
       <Stack.Screen name="StoriesScreen" component={StoriesScreen} />
       <Stack.Screen name="VocabularyListScreen" component={VocabularyListScreen} />
       <Stack.Screen name="MajorListScreen" component={MajorListScreen} />
+      <Stack.Screen name="StoryContentScreen" component={StoryContentScreen} />
+      <Stack.Screen name="ListeningScreen" component={ListeningScreen} />
+
+      
+      
     </Stack.Navigator>
   );
 };

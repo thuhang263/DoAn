@@ -2,11 +2,33 @@
   "tenses": [
     { 
       "topicId": 1,
-      "topicName": "Hiện tại đơn",
-      "structure": "S + V(s/es)",
+      "topicName": "Thì hiện tại đơn",
+      "structure":[
+        "a. Câu khẳng định:  S + V + O ... \n",
+        " Cách chia động từ ở thì hiện tại đơn: \n",
+        "- Với động từ to be: \n",
+        "Chủ ngữ: I : am \n",
+        "                 he/ she: is \n",
+        "                 you/ we/ they: are \n",
+        "- Với động từ thường: \n",
+        "Chủ ngữ: i/ we/ you/ they: động btuwf thường \n",
+        " he/ she/ it: động từ thêm 's' hoặc 'es' \n\n",
+        "b. Câu phủ định: \n",
+        "- Với động từ to be:  S + is/am/are + not + O +...\n",
+        "- Với động từ khuyết thiếu: S + modal verb + not+ bare- + O + ...\n",
+        "- Với động từ thường: S + don't/doesn't + bare infinitve + O +...\n",
+        " Chủ ngữ: i/we/you/they: don't \n",
+        " he/she: doesn't \n\n",
+        "c. Câu nghi vấn: \n",
+        "- Yes/No question: - is/am/are + S + O + ....\n",
+        "- Wh-question: Từ để hỏi + is/am/are + S + O+ ..."
+      ] ,
       "usage": [
-        "Diễn tả thói quen, sự thật hiển nhiên, lịch trình.",
-        "Dùng với các trạng từ chỉ tần suất như: always, usually, often, sometimes..."
+        "Định nghĩa:  Hiện tại đơn là thì được sử dụng để diễn tả một thói quen/hành động lặp đi lặp lại \n trong hiện tại hoặc chân lý, điều hiển nhiên.",
+        "Diễn tả một thói quen hoặc hành động lặp đi lặp lại trong hiện tại",
+        "Diễn tả một chân lý, sự thật hiển nhiên ",
+        "Nói về một lịch trình có sẵn, chương trình, thời gian biểu cố định \n VD: train (tàu), plane (máy bay),...",
+        "Sử dụng trong câu điều kiện loại I "
       ],
       "rules": [
         "Thêm 's' với hầu hết các động từ khi chủ ngữ là He/She/It.",
@@ -26,10 +48,28 @@
     {
       "topicId": 2,
       "topicName": "Hiện tại tiếp diễn",
-      "structure": "S + am/is/are + V-ing",
+      "structure": [
+        "a. Câu khẳng định: S + am/is/are + V-ing \n",
+        "- Chủ ngữ I: am + V-ing \n",
+        "- Chủ ngữ he/she/it: is + V-ing \n",
+        "- Chủ ngữ you/we/they: are + V-ing\n \n",
+
+        "b. Câu phủ định: \n",
+        "S + am/is/are + not + V-ing \n",
+        "- Chủ ngữ I: am not + V-ing \n",
+        "- Chủ ngữ he/she/it: is not + V-ing \n",
+        "- Chủ ngữ you/we/they: are not + V-ing\n \n",
+
+        "c. Câu nghi vấn: \n",
+        "- Yes/No question: Am/Is/Are + S + V-ing? \n",
+        "- Wh-question: Wh + am/is/are + S + V-ing? "
+      ],
       "usage": [
+        "Định nghĩa: Thì Hiện tại tiếp diễn (Present Continuous tense) diễn tả những hành động hoặc sự việc diễn ra tại lúc đó hoặc xung quanh thời điểm nói. Những sự việc, hành động này vẫn chưa chấm dứt và vẫn tiếp tục diễn ra đến thời điểm hiện tại.",
         "Diễn tả hành động đang xảy ra tại thời điểm nói.",
-        "Hành động tạm thời hoặc đang diễn ra xung quanh thời điểm nói."
+        "Diễn tả một hành động hoặc sự việc đang diễn ra nhưng không nhất thiết phải xảy ra ngay lúc nói.",
+        "Diễn tả hành động sẽ xảy ra trong tương lai gần, thường là đề cập về kế hoạch đã được lên lịch sẵn.",
+        "Dùng để diễn tả một sự phàn nàn về hành động nào đó do người khác gây ra khiến người nói bực mình. Trong trường hợp này, câu văn sẽ có các trạng từ chỉ tần suất như continually, always"
       ],
       "rules": [
         "Thêm 'ing' vào động từ.",
@@ -48,10 +88,27 @@
     {
        "topicId": 3,
       "topicName": "Quá khứ đơn",
-      "structure": "S + V2 / V-ed",
+      "structure": [
+        "a. Câu khẳng định: S + V2 / V-ed \n",
+        "- Động từ có quy tắc: thêm 'ed' (work → worked) \n",
+        "- Động từ bất quy tắc: học thuộc (go → went, see → saw...)\n \n",
+
+        "b. Câu phủ định: \n",
+        "S + did not (didn't) + động từ nguyên thể (bare infinitive) \n",
+        "Ví dụ: I didn't go to school yesterday.\n \n",
+
+        "c. Câu nghi vấn: \n",
+        "- Yes/No question: Did + S + động từ nguyên thể? \n",
+        "- Wh-question: Wh + did + S + động từ nguyên thể?"
+      ],
       "usage": [
+        "Định nghĩa: Thì Quá khứ đơn (còn gọi là Past Simple hay Simple Past Tense) là thì mô tả hành động, sự việc hoặc một sự kiện đã diễn ra và kết thúc tại một thời điểm xác định trong quá khứ. ",
         "Diễn tả hành động đã xảy ra và kết thúc trong quá khứ.",
-        "Xác định rõ thời gian quá khứ."
+        "Diễn tả một hành động (thói quen) lặp đi lặp lại trong quá khứ.",
+        "Diễn tả một hành động xen vào một hành động đang diễn ra trong quá khứ.",
+        "Diễn đạt một chuỗi bao gồm các hành động xảy ra liên tiếp trong quá khứ.",
+        "Dùng trong câu ước không có thật.",
+        "Dùng trong câu điều kiện loại II (câu điều kiện không có thật ở hiện tại)."
       ],
       "rules": [
         "Động từ có quy tắc: thêm 'ed'.",
@@ -67,9 +124,23 @@
      
     },
     {
-       "topicId": 4,
+      "topicId": 4,
       "topicName": "Quá khứ tiếp diễn",
-      "structure": "S + was/were + V-ing",
+      "structure": [
+        "a. Câu khẳng định: S + was/were + V-ing \n",
+        "- Chủ ngữ I/he/she/it: was + V-ing \n",
+        "- Chủ ngữ you/we/they: were + V-ing\n \n",
+
+        "b. Câu phủ định: \n",
+        "S + was/were + not + V-ing \n",
+        "- Chủ ngữ I/he/she/it: was not + V-ing \n",
+        "- Chủ ngữ you/we/they: were not + V-ing\n \n",
+
+        "c. Câu nghi vấn: \n",
+        "- Yes/No question: Was/Were + S + V-ing? \n",
+        "- Wh-question: Wh + was/were + S + V-ing?"
+      ],
+
       "usage": [
         "Hành động đang xảy ra tại một thời điểm cụ thể trong quá khứ.",
         "Hành động đang diễn ra thì hành động khác xen vào."
@@ -86,7 +157,20 @@
     {
       "topicId": 5,
       "topicName": "Hiện tại hoàn thành",
-      "structure": "S + have/has + V3 (Past Participle)",
+      "structure": [
+        "a. Câu khẳng định: S + have/has + V3 (Past Participle)\n",
+        "- Chủ ngữ I/you/we/they: have + V3\n",
+        "- Chủ ngữ he/she/it: has + V3\n\n",
+
+        "b. Câu phủ định:\n",
+        "S + have/has + not + V3\n",
+        "- Chủ ngữ I/you/we/they: have not (haven't) + V3\n",
+        "- Chủ ngữ he/she/it: has not (hasn't) + V3\n\n",
+
+        "c. Câu nghi vấn:\n",
+        "- Yes/No question: Have/Has + S + V3?\n",
+        "- Wh-question: Wh + have/has + S + V3?\n"
+      ],
       "usage": [
         "Hành động đã xảy ra nhưng chưa xác định thời gian, kết quả còn ảnh hưởng hiện tại.",
         "Trải nghiệm, hành động lặp lại nhiều lần trong quá khứ đến hiện tại."
@@ -108,7 +192,16 @@
     {
       "topicId": 6,
       "topicName": "Quá khứ hoàn thành",
-      "structure": "S + had + V3 (Past Participle)",
+     "structure": [
+        "a. Câu khẳng định: S + had + V3 (Past Participle)\n",
+
+        "b. Câu phủ định:\n",
+        "S + had not (hadn't) + V3\n",
+
+        "c. Câu nghi vấn:",
+        "- Yes/No question: Had + S + V3?\n",
+        "- Wh-question: Wh + had + S + V3?"
+      ],
       "usage": [
         "Diễn tả hành động đã hoàn thành trước một hành động khác trong quá khứ."
       ],

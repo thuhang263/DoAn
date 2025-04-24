@@ -42,32 +42,14 @@ const StoriesDetail: React.FC = () => {
     );
   };
 
-  const renderItem = ({ item }: any) => {
-    const isExpanded = expandedItems.includes(item.id);
-
-    return (
-      <View style={styles.card}>
-        <Text style={styles.title}>{item.title_vi}</Text>
-
-        {isExpanded && (
-          <>
-            <Text style={styles.content}>{item.content_vi}</Text>
-            <Text style={styles.title}>{item.title_en}</Text>
-            <Text style={styles.content}>{item.content_en}</Text>
-          </>
-        )}
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => toggleExpand(item.id)}
-        >
-          <Text style={styles.buttonText}>
-            {isExpanded ? 'Ẩn bớt' : 'Xem thêm'}
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
+  const renderItem = ({ item }: any) => (
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => navigation.navigate('StoryContentScreen', { story: item })}
+    >
+      <Text style={styles.title}>{item.title_vi}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -81,7 +63,7 @@ const StoriesDetail: React.FC = () => {
                   if (navigation.canGoBack()) {
                     navigation.goBack();
                       } else {
-                      navigation.navigate('HomeScreen'); // Chuyển về Home nếu không có màn nào để quay lại
+                      navigation.navigate('HomeScreen'); 
                       }
                 }}
                 >
@@ -116,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
-    paddingTop: 35, // Đẩy nội dung xuống 30
+    paddingTop: 40, 
     backgroundColor: '#61BFE7',
     padding: 15,
     fontSize: 20,
@@ -124,13 +106,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#fff',
     height:100,
-    bottom:60,
+    bottom:30,
   },
   card: {
     marginBottom: 12,
     backgroundColor: '#8FE1FF',
     padding: 12,
     borderRadius: 8,
+    top:30,
   },
   title: {
     fontSize: 18,
@@ -159,7 +142,7 @@ const styles = StyleSheet.create({
     left: 10,            
     zIndex: 10,           
     padding: 5,   
-    top:-20,   
+    
   },
   backIcon: {
     width: 30,  

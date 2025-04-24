@@ -1,0 +1,37 @@
+{
+    "department": "Khoa Công nghệ thông tin",
+    "description": "Các đoạn văn luyện kỹ năng nghe – nói tiếng Anh chuyên ngành CNTT dành cho sinh viên Đại học Thủy lợi.",
+    "paragraphs": [
+      {
+        "id": 1,
+        "title": "Computer Networks",
+        "content_en": "A computer network allows devices to exchange data using wired or wireless connections.",
+        "content_vi": "Mạng máy tính cho phép các thiết bị trao đổi dữ liệu bằng kết nối có dây hoặc không dây."
+      },
+      {
+        "id": 2,
+        "title": "Database Systems",
+        "content_en": "The database system is used to store, manage, and retrieve information efficiently.",
+        "content_vi": "Hệ thống cơ sở dữ liệu được dùng để lưu trữ, quản lý và truy xuất thông tin một cách hiệu quả."
+      },
+      {
+        "id": 3,
+        "title": "Software Engineering",
+        "content_en": "Software engineers must understand algorithms, data structures, and system design.",
+        "content_vi": "Kỹ sư phần mềm cần hiểu về thuật toán, cấu trúc dữ liệu và thiết kế hệ thống."
+      },
+      {
+        "id": 4,
+        "title": "Artificial Intelligence",
+        "content_en": "Artificial intelligence is applied in image recognition, natural language processing, and robotics.",
+        "content_vi": "Trí tuệ nhân tạo được ứng dụng trong nhận diện hình ảnh, xử lý ngôn ngữ tự nhiên và robot."
+      },
+      {
+        "id": 5,
+        "title": "Cybersecurity",
+        "content_en": "Cybersecurity is crucial to protect information systems from unauthorized access and attacks.",
+        "content_vi": "An ninh mạng rất quan trọng để bảo vệ hệ thống thông tin khỏi truy cập trái phép và các cuộc tấn công."
+      }
+    ]
+  }
+  

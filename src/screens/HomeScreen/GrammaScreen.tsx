@@ -4,16 +4,16 @@ import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView
 
 const data =  [
   { id: 1, title: 'Hiện tại đơn',  },
-  { id: 3, title: 'Hiện tại tiếp diễn' },
-  { id: 2, title: 'Quá khứ đơn' },
+  { id: 3, title: 'Quá khứ đơn' },
+  { id: 2, title: 'Hiện tại tiếp diễn' },
   { id: 4, title: 'Quá khử tiếp diễn' },
-  { id: 5, title: 'Pronouns who, which, where' },
-  { id: 6, title: 'Order of adjectives' },
-  { id: 7, title: 'Hiện tại hoàn thành' },
+  { id: 5, title: 'Hiện tại hoàn thành' },
+  { id: 6, title: 'Quá khứ hoàn thành' },
+  { id: 7, title: 'Pronouns who, which, where'},
   { id: 8, title: 'Used to' },
   { id: 9, title: 'Future Form' },
   { id: 10, title: 'Be going to' },
-  { id: 11, title: 'Quá khứ hoàn thành' },
+  { id: 11, title: 'Order of adjectives' },
   { id: 12, title: 'First Conditional and Second Conditinal' },
 ];
 
@@ -36,7 +36,7 @@ const GrammaScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <View style={styles.container}>
         <View>
             <TouchableOpacity
@@ -111,16 +111,16 @@ const styles = StyleSheet.create({
     
   },
   backButton: {
-    position: 'absolute', // Đặt vị trí tuyệt đối
-    top: 30,             // Khoảng cách từ đỉnh màn hình
-    left: 10,             // Khoảng cách từ trái màn hình
-    zIndex: 10,           // Hiển thị trên các thành phần khác
-    padding: 5,           // Thêm padding để dễ nhấn
+    position: 'absolute', 
+    top: 30,            
+    left: 10,            
+    zIndex: 10,          
+    padding: 5,          
   },
   backIcon: {
-    width: 30,  // Chiều rộng ảnh
-    height: 30, // Chiều cao ảnh
-    resizeMode: 'contain', // Duy trì tỉ lệ của ảnh
+    width: 30,  
+    height: 30, 
+    resizeMode: 'contain', 
   },
 });
 

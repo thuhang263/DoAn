@@ -19,12 +19,12 @@ interface Topic {
 
 const data: Topic[] = [
   { id: 1, title: 'Khoa công nghệ thông tin' },
-  { id: 2, title: 'Khoa kỹ thuật tài nguyên nước ' },
+  { id: 2, title: 'Khoa kế toán và kinh doanh ' },
   { id: 3, title: 'Khoa cơ khí' },
   { id: 4, title: 'Khoa Điện - Điện tử' },
   { id: 5, title: 'Khoa hóa - Môi trường' },
   { id: 6, title: 'Khoa kinh tế và quản lý' },
-  { id: 7, title: 'Khoa kế toán và kinh doanh' },
+  { id: 7, title: 'Khoa kỹ thuật tài nguyên nước ' },
   { id: 8, title: 'Khoa công trình' },
   { id: 9, title: 'Khoa luật và lý luận chính trị' },
 ];

@@ -55,7 +55,7 @@ const HomeScreen = () => {
             <Image source={require('../../assets/images/doc.jpg')} style={styles.avatarImageItem} />
 
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate('StoriesScreen')}>
+          <TouchableOpacity  onPress={() => navigation.navigate('ListeningScreen')}>
           <Image source={require('../../assets/images/listen.png')} style={styles.avatarImageItem} />
 
           </TouchableOpacity>

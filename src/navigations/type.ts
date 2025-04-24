@@ -74,7 +74,8 @@ export type RootStackParamList = {
       phonetic: string;
       definition: string;
     }};
-
+    StoryContentScreen: { story: any };
+    ListeningScreen:undefined;
   };
 
 declare global {
