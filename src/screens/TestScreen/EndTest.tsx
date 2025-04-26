@@ -5,7 +5,7 @@ import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {RootStackParamList} from '../../navigations/type';
 import {Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
-const isTablet = width >= 768;
+
 const EndGame: React.FC = () => {
   const navigation = useNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'EndTest'>>();
@@ -24,16 +24,19 @@ const EndGame: React.FC = () => {
           <TouchableOpacity
             style={styles.playAgain}
             onPress={() => navigation.navigate('TestScreen')}>
-            <Text style={styles.buttonText}>Play Again</Text>
+            <Text style={styles.buttonText}>Trở về</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.homeButton}
-            onPress={() =>
-              navigation.navigate('RootBottomNavigation', {
-                screen: 'HomeScreen',
-              })
-            }>
-            <Text style={styles.buttonText}>Home</Text>
+            style={styles.playAgain}
+            onPress={() => {
+              if (navigation.canGoBack()) {
+                navigation.goBack();
+              } else {
+                navigation.navigate('HomeScreen'); 
+              }
+            }}
+            >
+            <Text style={styles.buttonText}>Làm lại</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -49,42 +52,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   resultBox: {
-    width: isTablet ? 360 * 1.5 : 360,
-    height: isTablet ? 393 * 1.5 : 393,
+    width: 360,
+    height: 393,
     backgroundColor: '#fff',
-    padding: isTablet ? 20 * 1.5 : 20,
+    padding:  20,
     borderRadius: 10,
     alignItems: 'center',
   },
   icon: {
-    width: isTablet ? 200 * 1.5 : 200,
-    height: isTablet ? 200 * 1.5 : 200,
+    width:  200,
+    height:  200,
     marginBottom: 10,
   },
   title: {
-    fontSize: isTablet ? 22 * 1.5 : 22,
+    fontSize: 22,
     fontWeight: 'bold',
     color: '#FAFAFA',
   },
   description: {
-    fontSize: isTablet ? 16 * 1.5 : 16,
+    fontSize: 16,
     color: '#000',
-    marginVertical: isTablet ? 10 * 1.5 : 10,
+    marginVertical: 10,
   },
   buttonContainer: {flexDirection: 'row', marginTop: 15},
   playAgain: {
     backgroundColor: '#78C93C',
-    padding: isTablet ? 10 * 1.5 : 10,
+    padding: 10,
     borderRadius: 5,
     marginRight: 10,
   },
   homeButton: {
     backgroundColor: '#78C93C',
-    padding: isTablet ? 10 * 1.5 : 10,
+    padding: 10,
     borderRadius: 5,
     borderColor:'#78C93C',
   },
-  buttonText: {color: '#fff', fontSize: isTablet ? 16 * 1.5 : 16},
+  buttonText: {color: '#fff', fontSize: 16},
 });
 
 export default EndGame;

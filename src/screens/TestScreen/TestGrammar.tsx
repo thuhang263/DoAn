@@ -45,7 +45,7 @@ const TestGrammar = () => {
                     if (navigation.canGoBack()) {
                     navigation.goBack();
                     } else {
-                    navigation.navigate('HomeScreen'); // Chuyển về Home nếu không có màn nào để quay lại
+                    navigation.navigate('HomeScreen'); 
                     }
                 }}
             >
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 
   },
   header: {
-    paddingTop: 35, // Đẩy nội dung xuống 30
+    paddingTop: 35, 
     backgroundColor: '#62D1F9',
     padding: 15,
     fontSize: 20,
@@ -115,16 +115,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   backButton: {
-    position: 'absolute', // Đặt vị trí tuyệt đối
-    top: 30,             // Khoảng cách từ đỉnh màn hình
-    left: 10,             // Khoảng cách từ trái màn hình
-    zIndex: 10,           // Hiển thị trên các thành phần khác
-    padding: 5,           // Thêm padding để dễ nhấn
+    position: 'absolute', 
+    top: 30,             
+    left: 10,          
+    zIndex: 10,           
+    padding: 5,           
   },
   backIcon: {
-    width: 30,  // Chiều rộng ảnh
-    height: 30, // Chiều cao ảnh
-    resizeMode: 'contain', // Duy trì tỉ lệ của ảnh
+    width: 30,  
+    height: 30,
+    resizeMode: 'contain',
   },
 });
 

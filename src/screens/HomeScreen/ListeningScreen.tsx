@@ -20,7 +20,7 @@ const ListenOnly = () => {
   const [currentParagraph, setCurrentParagraph] = useState<Paragraph | null>(null);
 
   useEffect(() => {
-    // Cài tốc độ nói chậm lại
+    
     Tts.setDefaultRate(0.5, true);
   }, []);
 

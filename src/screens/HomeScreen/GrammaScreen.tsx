@@ -45,7 +45,7 @@ const GrammaScreen = () => {
                     if (navigation.canGoBack()) {
                     navigation.goBack();
                     } else {
-                    navigation.navigate('HomeScreen'); // Chuyển về Home nếu không có màn nào để quay lại
+                    navigation.navigate('HomeScreen'); 
                     }
                 }}
             >
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 
   },
   header: {
-    paddingTop: 35, // Đẩy nội dung xuống 30
+    paddingTop: 35, 
     backgroundColor: '#61BFE7',
     padding: 15,
     fontSize: 20,

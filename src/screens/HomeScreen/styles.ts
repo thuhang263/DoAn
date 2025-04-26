@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     margin:10
   },
  
-  // 🌟 MỚI: Cho phần layout giống ảnh bạn gửi 🌟
+ 
   videoSection: {
     flexDirection: 'row',
     left:30

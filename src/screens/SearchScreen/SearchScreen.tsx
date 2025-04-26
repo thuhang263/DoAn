@@ -7,7 +7,7 @@ import { RootStackParamList } from '../../navigations/type';
 import { useNavigation } from '@react-navigation/native';
 import {  StackNavigationProp } from '@react-navigation/stack';
 const SearchScreen = () => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>(); // Sử dụng useNavigation
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>(); 
   return (
     <ScrollView style={styles.container}>
       {/* Header */}

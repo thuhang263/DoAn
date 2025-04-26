@@ -43,7 +43,7 @@ const TestVoc = () => {
         >
           <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
         </TouchableOpacity>
-        <Text style={styles.header}>Vocabulary</Text>
+        <Text style={styles.header}>Các bài từ vựng</Text>
         <FlatList
           data={data}
           renderItem={renderItem}

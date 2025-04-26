@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, Alert, ScrollView } from 'react-native';
 import topicData from '../../questions/gramma_lessions.json';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Screens } from '../../navigations/type';
 
 interface Question {
   question: string;
@@ -16,9 +15,8 @@ const TestItem: React.FC = () => {
   const { grammarId } = route.params as { grammarId: number };
 
   const topic = Array.isArray(topicData) ? topicData.find(t => t.grammarId === grammarId) : null;
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+
+  const [answers, setAnswers] = useState<{ [key: number]: string | null }>({});
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
 
@@ -30,37 +28,22 @@ const TestItem: React.FC = () => {
     );
   }
 
-  const question: Question | undefined = topic?.questions[currentIndex];
+  const handleAnswerPress = (questionIndex: number, selectedOption: string) => {
+    const isCorrect = selectedOption === topic.questions[questionIndex].answer;
 
-  const handleAnswer = (selectedOption: string) => {
-    if (!question) return;
-    
-    if (selectedOption === question.answer) {
+    setAnswers(prev => ({
+      ...prev,
+      [questionIndex]: selectedOption,
+    }));
+
+    if (isCorrect) {
       setCorrectCount(prev => prev + 1);
     } else {
       setIncorrectCount(prev => prev + 1);
     }
   };
 
-  const handleAnswerPress = (answer: string) => {
-    setSelectedAnswer(answer);
-    const isCorrectAnswer = question ? answer === question.answer : false;
-
-    setIsCorrect(isCorrectAnswer);
-    handleAnswer(answer);
-  };
-
-  const handleNextQuestion = () => {
-    if (currentIndex < topic.questions.length - 1) {
-      setCurrentIndex(prev => prev + 1);
-      setSelectedAnswer(null);
-      setIsCorrect(null);
-    } else {
-      setTimeout(() => {
-        navigation.navigate(Screens.EndTest, { correctCount });
-      }, 500);
-    }
-  };
+  
 
   return (
     <View style={styles.container}>
@@ -73,71 +56,88 @@ const TestItem: React.FC = () => {
             } else {
               navigation.navigate('HomeScreen');
             }
-          }}>
+          }}
+        >
           <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
         </TouchableOpacity>
         <Text style={styles.header}>{topic.grammarName}</Text>
       </View>
-      <View style={styles.scoreContainer}>
-        <Text style={styles.scoreText}>Correct: {correctCount}</Text>
-        <Text style={styles.scoreText}>Incorrect: {incorrectCount}</Text>
-      </View>
-      <Text style={styles.statusText}>Question {currentIndex + 1}/{topic.questions.length}</Text>
-      <Text style={styles.questionText}>{question?.question ?? "No question available"}</Text>
-      <View style={styles.optionsContainer}>
-        {question?.options?.map((option, index) => (
-            <TouchableOpacity
-            key={index}
-            style={[styles.optionButton, selectedAnswer === option && (isCorrect ? styles.correct : styles.incorrect)]}
-            onPress={() => handleAnswerPress(option)}
-            disabled={selectedAnswer !== null}>
-            <Text style={styles.optionText}>{option}</Text>
-            </TouchableOpacity>
-        )) ?? <Text style={styles.errorText}>No options available</Text>}
-        </View>
-      {selectedAnswer !== null && (
-        <Text style={isCorrect ? styles.correctText : styles.incorrectText}>
-          {isCorrect ? 'Correct' : 'Incorrect'}
-        </Text>
-      )}
-      {selectedAnswer !== null && (
-        <TouchableOpacity style={styles.nextButton} onPress={handleNextQuestion}>
-          <Text style={styles.nextButtonText}>{currentIndex < topic.questions.length - 1 ? 'Next' : 'Finish'}</Text>
-        </TouchableOpacity>
-      )}
+
+      <ScrollView style={styles.scrollContainer}>
+        {topic.questions.map((question, index) => (
+          <View key={index} style={styles.questionContainer}>
+            <Text style={styles.questionText}>{index + 1}. {question.question}</Text>
+            <View style={styles.optionsContainer}>
+              {question.options.map((option, optionIndex) => (
+                <TouchableOpacity
+                  key={optionIndex}
+                  style={[
+                    styles.optionButton,
+                    answers[index] === option
+                      ? option === question.answer
+                        ? styles.correct
+                        : styles.incorrect
+                      : null,
+                  ]}
+                  onPress={() => handleAnswerPress(index, option)}
+                  disabled={answers[index] !== undefined} 
+                >
+                  <Text style={styles.optionText}>{option}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        ))}
+      </ScrollView>
+
+      {/* Nút Finish */}
+      <TouchableOpacity
+        style={styles.finishButton}
+        onPress={() => {
+          navigation.navigate('EndTest', { correctCount });
+        }}
+              
+        >
+        <Text style={styles.finishButtonText}>Finish</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', alignItems: 'center' },
+  container: { flex: 1, backgroundColor: '#fff', paddingTop: 10 },
+  scrollContainer: { marginTop: 20, paddingHorizontal: 10 },
   header: {
-    width:410,
-    paddingTop: 35,
-    backgroundColor: '#62D1F9',
+    paddingTop: 35, 
+    backgroundColor: '#61BFE7',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#fff',
-    height: 100,
+    height:100,
   },
-  backButton: { position: 'absolute', top: 30, left: 10, zIndex: 10, padding: 5 },
+  backButton: { position: 'absolute', top: 40, left: 30, zIndex: 10 },
   backIcon: { width: 30, height: 30, resizeMode: 'contain' },
-  scoreContainer: { flexDirection: 'row', justifyContent: 'space-between', width: '80%', marginTop: 20 },
-  scoreText: { color: 'black', fontSize: 18 },
-  statusText: { color: 'black', fontSize: 16, marginTop: 20 },
-  questionText: { color: 'black', fontSize: 18, marginTop: 30, textAlign: 'center' },
-  optionsContainer: { width: '90%', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginTop: 20 },
-  optionButton: { width: '48%', padding: 10, borderWidth: 1, borderColor: 'black', borderRadius: 10, alignItems: 'center', marginBottom: 10 },
+  questionContainer: { marginBottom: 20, borderBottomWidth: 1, borderColor: '#ddd', paddingBottom: 10 },
+  questionText: { color: 'black', fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
+  optionsContainer: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' },
+  optionButton: {
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 5,
+    backgroundColor: '#f9f9f9',
+    marginBottom: 10,
+    width: '45%',
+    alignItems: 'center',
+  },
   optionText: { color: 'black', fontSize: 16 },
   correct: { backgroundColor: '#5EBB1A', borderColor: '#00ff00' },
   incorrect: { backgroundColor: '#E91D25', borderColor: '#ff0000' },
-  correctText: { color: '#00ff00', fontSize: 16, marginTop: 10 },
-  incorrectText: { color: '#ff0000', fontSize: 16, marginTop: 10 },
-  nextButton: { backgroundColor: '#5EBB1A', borderRadius: 10, padding: 12, marginTop: 15, width: '90%', alignItems: 'center' },
-  nextButtonText: { color: '#000', fontSize: 18, fontWeight: 'bold' },
-  errorText: { fontSize: 20, color: 'red', textAlign: 'center', marginTop: 50 }
+  finishButton: { backgroundColor: '#62D1F9', borderRadius: 10, padding: 12, marginTop: 15, width: '90%', alignItems: 'center', alignSelf: 'center' },
+  finishButtonText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
+  errorText: { fontSize: 20, color: 'red', textAlign: 'center', marginTop: 50 },
 });
 
 export default TestItem;

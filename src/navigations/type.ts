@@ -54,7 +54,7 @@ export type RootStackParamList = {
     GrammaScreen:undefined;
     TestItem:undefined;
     EndTest: { correctCount: number }; 
-    VideoScreen: { videoId: string }; // Đảm bảo có videoId
+    VideoScreen: { videoId: string };
     TestVoc:undefined;
     TestGrammar:undefined;
     TestListenning:undefined;

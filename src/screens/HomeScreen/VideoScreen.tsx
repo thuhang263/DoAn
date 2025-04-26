@@ -2,14 +2,13 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { WebView } from "react-native-webview";
 import { RouteProp, useRoute } from "@react-navigation/native";
-import { RootStackParamList } from "../../navigations/type"; // Đảm bảo import đúng
-
+import { RootStackParamList } from "../../navigations/type"; 
 type VideoScreenRouteProp = RouteProp<RootStackParamList, "VideoScreen">;
 
 const VideoScreen = () => {
   const route = useRoute<VideoScreenRouteProp>();
 
-  // Kiểm tra nếu route.params bị undefined
+  
   if (!route.params || !route.params.videoId) {
     return (
       <View style={styles.container}>
