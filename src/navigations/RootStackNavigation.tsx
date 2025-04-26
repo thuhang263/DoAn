@@ -24,6 +24,7 @@ import MajorListScreen from '../Vocabulary/MajorListScreen';
 import StoryContentScreen from '../components/StoryContentScreen';
 import ListeningScreen from '../screens/HomeScreen/ListeningScreen';
 import TestScreen from '../screens/TestScreen/TestScreen';
+import WordDetailScreen from '../screens/SearchScreen/WordDetailScreen';
 
 
 const RootStackNavigation = () => {
@@ -58,7 +59,7 @@ const RootStackNavigation = () => {
       <Stack.Screen name="StoryContentScreen" component={StoryContentScreen} />
       <Stack.Screen name="ListeningScreen" component={ListeningScreen} />
       <Stack.Screen name="TestScreen" component={TestScreen} />
-
+      <Stack.Screen name="WordDetailScreen" component={WordDetailScreen} />
       
       
     </Stack.Navigator>

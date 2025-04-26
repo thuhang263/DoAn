@@ -76,6 +76,14 @@ export type RootStackParamList = {
     }};
     StoryContentScreen: { story: any };
     ListeningScreen:undefined;
+    WordDetailScreen: {
+      word: string;
+      meaning: string;
+      partOfSpeech: string;
+      example: string;
+      phonetic: string;
+      audio: string;
+    };
   };
 
 declare global {

@@ -64,6 +64,55 @@ export const styles = StyleSheet.create({
       fontSize:  14,
       color: 'black',
     },
+    
+   
+    searchButton: {
+      backgroundColor: '#007bff',
+      borderRadius: 8,
+      width:100,
+      height:50,
+      alignSelf:'center',
+      top:10,
+    },
+    searchButtonText: {
+      color: '#fff',
+      fontSize: 16,
+      alignSelf:'center',
+      top:10,
+    },
+    historyContainer: {
+      marginTop: 10,
+    },
+    historyTitle: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 8,
+      color: '#333',
+    },
+    historyItem: {
+      fontSize: 16,
+      paddingVertical: 8,
+      color: '#007bff',
+    },
+    resultsContainer: {
+      marginTop: 20,
+      
+    },
+    resultsTitle: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 8,
+      color: '#333',
+    },
+    resultItem: {
+      paddingVertical: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#eee',
+    },
+    resultText: {
+      fontSize: 16,
+      color: '#333',
+    },
 
     
   });
