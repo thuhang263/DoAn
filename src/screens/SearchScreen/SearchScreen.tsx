@@ -152,7 +152,7 @@ const SearchScreen: React.FC = () => {
       </View>
 
       <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
-        <Text style={styles.searchButtonText}>Search</Text>
+        <Text style={styles.searchButtonText}>Tìm kiếm</Text>
       </TouchableOpacity>
 
       {loading && <ActivityIndicator size="large" color="#0000ff" />}

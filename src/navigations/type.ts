@@ -84,6 +84,7 @@ export type RootStackParamList = {
       phonetic: string;
       audio: string;
     };
+    SpeakingScreen:undefined;
   };
 
 declare global {

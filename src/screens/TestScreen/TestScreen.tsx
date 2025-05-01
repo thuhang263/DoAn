@@ -23,7 +23,7 @@ const TestScreen = () => {
        
      </View>
       
-     <View>
+     <View style={{right:30}}>
         <TouchableOpacity style={styles.btnVoc} onPress={() => navigation.navigate('TestVoc')}>
           <Text style={styles.text}>Từ vựng</Text>
         </TouchableOpacity>

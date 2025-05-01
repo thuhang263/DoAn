@@ -10,7 +10,7 @@ const HomeScreen = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1}}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
       <ScrollView style={styles.container}>
         {/* Header */}
@@ -49,12 +49,19 @@ const HomeScreen = () => {
         </View> 
           
         {/* Đọc và nghe */}
-        <Text style={styles.sectionTitle2}>Song ngữ và Nghe</Text>
+        <Text style={styles.sectionTitle2}>Luyện kỹ năng nghe, đọc, nói</Text>
         <View style={styles.ReadContainer}>
           <TouchableOpacity  onPress={() => navigation.navigate('StoriesScreen')}>
             <Image source={require('../../assets/images/doc.jpg')} style={styles.avatarImageItem} />
-
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SpeakingScreen')}
+          >
+            <Image source={require('../../assets/images/speak.jpg')} style={styles.avatarImageItem} />
+          </TouchableOpacity>
+        </View> 
+        <Text style={styles.sectionTitle2}>Giải trí</Text>
+        <View style={styles.ReadContainer}>
           <TouchableOpacity  onPress={() => navigation.navigate('ListeningScreen')}>
           <Image source={require('../../assets/images/listen.png')} style={styles.avatarImageItem} />
 
