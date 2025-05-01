@@ -34,9 +34,19 @@ const ListScreen = () => {
             style ={styles.ImageItem}
             source={require('../../assets/images/item1.png')}>
             </Image>
-            <Text style={styles.text}>Unlearned</Text>
+            <Text style={styles.text}>Video yêu thích</Text>
             <TouchableOpacity style={styles.btn}>
               <Text style={styles.TextBtn}>View</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.item}>
+          <Image
+            style ={styles.ImageItem}
+            source={require('../../assets/images/item1.png')}>
+            </Image>
+            <Text style={styles.text}>Mục tiêu mới của bạn là gì?</Text>
+            <TouchableOpacity style={styles.btn}>
+              <Text style={styles.TextBtn}>Thêm</Text>
             </TouchableOpacity>
         </View>
       </View>

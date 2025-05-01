@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff' },
+  container: { flex: 1, backgroundColor: '#fff'  },
   header: {
-    width: 415,
+    width: 360,
     height: 160,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -96,9 +96,6 @@ export const styles = StyleSheet.create({
   
   ReadContainer:{
     flexDirection: 'row',
-    
-    alignItems: 'center',
-    alignSelf:'center',
     borderRadius: 12,
     
   },
@@ -110,7 +107,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 8,
     marginHorizontal: 16,
-    left:190,
+    left:20,
     color:'#000'
   }
 });

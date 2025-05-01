@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998036465318",
+    "project_id": "doantotnghiep-thuhang",
+    "storage_bucket": "doantotnghiep-thuhang.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998036465318:android:06b25f87bf2ee6adb2f667",
+        "android_client_info": {
+          "package_name": "com.doan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa1iRpmXP6OKxoa1R2pWs5Y7YSKLQaoXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

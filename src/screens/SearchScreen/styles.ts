@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#fff' },
     header: {
-      width:415,
+      width: 360,
       height:160,
       flexDirection: 'row', 
       justifyContent: 'space-between', 
@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
       marginTop: 50,
       borderWidth:1,
       borderColor:'#61BFE7',
-      width:370,
+      width:320,
       left:20,
     },
     icon: {
@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
       color: '#fff',
       fontSize: 16,
       alignSelf:'center',
-      top:10,
+      top:13,
     },
     historyContainer: {
       marginTop: 10,

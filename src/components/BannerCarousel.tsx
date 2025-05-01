@@ -38,7 +38,7 @@ const BannerCarousel = () => {
               height: 150,
               resizeMode: 'cover',
               borderRadius: 30,
-              left:15,
+              
             }}
           />
         </TouchableOpacity>
@@ -50,7 +50,7 @@ const BannerCarousel = () => {
 };
 const styles = StyleSheet.create({
   videoLabel: {
-    left:30,
+    left:20,
     fontSize: 20,
     fontWeight: 'bold',
     flexDirection:'row',
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   image:{
     width:30,
     height:30,
-    left:60,
+    left:40,
   }
 });
 export default BannerCarousel;

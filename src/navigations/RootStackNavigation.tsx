@@ -22,9 +22,10 @@ import StoriesScreen from '../screens/HomeScreen/StoriesScreen';
 import VocabularyListScreen from '../Vocabulary/VocabularyListScreen';
 import MajorListScreen from '../Vocabulary/MajorListScreen';
 import StoryContentScreen from '../components/StoryContentScreen';
-import ListeningScreen from '../screens/HomeScreen/ListeningScreen';
+import ListeningScreen from '../screens/ListeningScreen/ListeningScreen';
 import TestScreen from '../screens/TestScreen/TestScreen';
 import WordDetailScreen from '../screens/SearchScreen/WordDetailScreen';
+import SpeakingScreen from '../screens/SpeakingScreen/SpeakingScreen';
 
 
 const RootStackNavigation = () => {
@@ -60,7 +61,8 @@ const RootStackNavigation = () => {
       <Stack.Screen name="ListeningScreen" component={ListeningScreen} />
       <Stack.Screen name="TestScreen" component={TestScreen} />
       <Stack.Screen name="WordDetailScreen" component={WordDetailScreen} />
-      
+   
+      <Stack.Screen name="SpeakingScreen" component={SpeakingScreen} />
       
     </Stack.Navigator>
   );
