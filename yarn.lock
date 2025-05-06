@@ -2042,12 +2042,17 @@
     prompts "^2.4.2"
     semver "^7.5.2"
 
-"@react-native-firebase/app@^22.0.0":
-  version "22.0.0"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-22.0.0.tgz#bf804cd68ad0245d4e9608b5e352344fee7c9c6f"
-  integrity sha512-fbagoIrTJy8edCTiEI7OeAUqO5XoifMirEKoXJDHlsFrPJBfxqMGDhSJutUoWLNHt8KxDtLG9JWnKuW23ISq2Q==
+"@react-native-firebase/app@^22.1.0":
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-22.1.0.tgz#d30f05414805716108a0b3b2709a3d3d37428ed9"
+  integrity sha512-s01yjF92Fpre7Ff5UzNpVE4q25x2eF+nD8SGzZzBp7nTQjK+4U+VllJ3ajvbjJkfIyMYNBowM135iK/DO5cwDA==
   dependencies:
     firebase "11.3.1"
+
+"@react-native-firebase/firestore@^22.1.0":
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-22.1.0.tgz#849f26b2a8b526da4aca17dfd32f6b5205c03705"
+  integrity sha512-jiizCp+XGMDy7FjuuSAOhjp6dgkFOgZZRoWnSYAOxo9kHJKkJqwtXTO3Bmc94nTGudQGoRVFWG2D8CPv+Cj7hA==
 
 "@react-native/assets-registry@0.76.0":
   version "0.76.0"

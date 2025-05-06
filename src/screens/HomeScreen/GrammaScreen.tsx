@@ -1,76 +1,70 @@
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView, StatusBar, ActivityIndicator } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
-
-const data =  [
-  { id: 1, title: 'Hiện tại đơn',  },
-  { id: 3, title: 'Quá khứ đơn' },
-  { id: 2, title: 'Hiện tại tiếp diễn' },
-  { id: 4, title: 'Quá khử tiếp diễn' },
-  { id: 5, title: 'Hiện tại hoàn thành' },
-  { id: 6, title: 'Quá khứ hoàn thành' },
-  { id: 7, title: 'Pronouns who, which, where'},
-  { id: 8, title: 'Used to' },
-  { id: 9, title: 'Future Form' },
-  { id: 10, title: 'Be going to' },
-  { id: 11, title: 'Order of adjectives' },
-  { id: 12, title: 'First Conditional and Second Conditinal' },
-];
 
 const GrammaScreen = () => {
   const navigation = useNavigation();
+  const [data, setData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<number | null>(null);
-  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await firestore().collection('tenses').orderBy('topicId').get();
+        const list = snapshot.docs.map(doc => ({
+          id: doc.data().topicId,
+          title: doc.data().topicName,
+        }));
+        setData(list);
+      } catch (error) {
+        console.error('Lỗi tải dữ liệu:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const renderItem = ({ item }: { item: any }) => (
     <TouchableOpacity
       style={[styles.item, selected === item.id && styles.selectedItem]}
       onPress={() => {
         setSelected(item.id);
-        navigation.navigate('GrammarTopicDetailScreen', { topicId: item.id, topicName: item.title });
+        navigation.navigate('GrammarTopicDetailScreen', {
+          topicId: item.id,
+          topicName: item.title,
+        });
       }}
-      
     >
       <Text style={styles.text}>{item.title}</Text>
     </TouchableOpacity>
   );
 
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <ActivityIndicator size="large" color="#61BFE7" />
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-        <View style={styles.container}>
-        <View>
-            <TouchableOpacity
-                style={styles.backButton}
-                onPress={() => {
-                    if (navigation.canGoBack()) {
-                    navigation.goBack();
-                    } else {
-                    navigation.navigate('HomeScreen'); 
-                    }
-                }}
-            >
-            <Image
-            style={styles.backIcon}
-            source={require('../../assets/images/back1.png')}
-            />
-            </TouchableOpacity>
-            <Text style={styles.header}>Ngữ Pháp</Text>
-        </View>
-     
-        <View style={styles.itemContent}>
-          <FlatList
-              data={data}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id.toString()}
-          />
-        </View>
-      
-    </View>
+      <View style={styles.container}>
+        {/* header + back button như cũ */}
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      </View>
     </SafeAreaView>
-    
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
