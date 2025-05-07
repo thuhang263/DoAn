@@ -1,79 +1,30 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+Đây là ứng dụng được phát triển bằng React Native CLI, hỗ trợ sinh viên ôn tập tiếng Anh chuyên ngành theo từng khoa tại Trường Đại học Thủy Lợi. Ứng dụng tích hợp các chức năng luyện ngữ pháp, từ vựng, nghe nói và làm bài kiểm tra.
 
-# Getting Started
+Thư viện sử dụng:
+React Native CLI – Khởi tạo và xây dựng ứng dụng
+React Navigation – Điều hướng giữa các màn hình
+Firebase Firestore – Lưu trữ nội dung ngữ pháp, từ vựng, bài kiểm tra
+react-native-tts – Chức năng phát âm (text-to-speech)
+react-native-audio-recorder-player	- Ghi âm và phát lại giọng nói người dùng
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Các API đã sử dụng:
+YouTube Data API v3 - Tìm và hiển thị video học tập theo từng ngành
+Google API - Tra cứu từ vựng online, hiển thị nghĩa, loại từ, phát âm
 
-## Step 1: Start the Metro Server
+Các chức năng chính:
+- Ôn tập từ vựng: Hiển thị từ vựng theo khoa – ngành – bài học, có nghĩa, phiên âm, phát âm
+- Ôn tập ngữ pháp: Cấu trúc, cách dùng, quy tắc, từ nhận biết
+- Làm bài kiểm tra: Theo chuyên ngành, theo cấu trúc chuẩn đề thi, theo cấu trúc đề thi tiếng anh đầu ra
+- Luyện đọc và nghe: Luyện đọc và nghe với các đoạn văn nhỏ song ngữ Anh-Việt
+- Luyện nói: Sử dụng phương pháp ghi âm, người học ghi âm giọng nói, nghe lại, luyện nói chuẩn
+- Ôn tập qua video chuyên ngành.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Các màn hình chính
+HomeScreen – Trang chủ
+GrammaScreen – Danh sách chủ đề ngữ pháp
+GrammarTopicDetailScreen – Chi tiết từng chủ đề
+VocabularyListScreen – Từ vựng chuyên ngành theo unit
+SpeakingScreen – Luyện nói + ghi âm
+VideoScreen – Danh sách video YouTube theo ngành
+TestScreen – Làm bài tập trắc nghiệm
+SeacrhScreen - Tìm kiếm từ vựng
