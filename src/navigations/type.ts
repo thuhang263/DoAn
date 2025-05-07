@@ -66,8 +66,13 @@ export type RootStackParamList = {
     TopicVideo:undefined;
     StoriesDetail:{storiesID:number, storiesName: string};
     StoriesScreen:undefined;
-    VocabularyListScreen: { majorName: string };
-    MajorListScreen: { facultyName: string };
+    MajorListScreen: { facultyName: string, };
+    VocabularyListScreen: {
+      majorName: string;
+      facultyName: string;
+      unitId: string;
+    };
+    
     VocabularyItemScreen: { word: {
       word: string;
       partOfSpeech: string;

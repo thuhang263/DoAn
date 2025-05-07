@@ -1,21 +1,23 @@
-import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image, SafeAreaView, StatusBar } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  StatusBar,
+  ActivityIndicator,
+} from 'react-native';
 import { RouteProp, useNavigation, NavigationProp } from '@react-navigation/native';
-import vocabularyData from '../Vocabulary/it.json'; // chỉnh đúng đường dẫn
+import firestore from '@react-native-firebase/firestore';
+import { RootStackParamList } from '../navigations/type'; 
 
-// Định nghĩa kiểu param cho navigation stack
-type RootStackParamList = {
-  MajorListScreen: { facultyName: string };
-  VocabularyListScreen: { majorName: string; vocabulary: VocabularyItem[] };
-};
 
-// Kiểu route prop cho màn MajorListScreen
 type MajorListScreenRouteProp = RouteProp<RootStackParamList, 'MajorListScreen'>;
-
-// Kiểu navigation prop rõ cho tránh lỗi
 type Navigation = NavigationProp<RootStackParamList, 'MajorListScreen'>;
 
-// Định nghĩa các interface
 interface VocabularyItem {
   word: string;
   partOfSpeech: string;
@@ -23,109 +25,115 @@ interface VocabularyItem {
   definition: string;
 }
 
-interface Major {
-  majorName: string;
+interface Unit {
+  unitName: string;
   vocabulary: VocabularyItem[];
 }
 
-interface Faculty {
-  facultyName: string;
-  majors: Major[];
-}
-
-// Props của component MajorListScreen
-interface Props {
-  route: MajorListScreenRouteProp;
-}
-
-const MajorListScreen: React.FC<Props> = ({ route }) => {
-  // Sử dụng useNavigation với kiểu Navigation
+const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route }) => {
   const navigation = useNavigation<Navigation>();
   const { facultyName } = route.params;
 
-  // Tìm đúng faculty dựa trên facultyName
-  // Vì dữ liệu bạn đưa chỉ có 1 khoa nên mình làm đơn giản
-  // Nếu có nhiều khoa thì sẽ dùng find()
-  const faculty: Faculty | undefined = vocabularyData.find(
-    (item) => item.facultyName === facultyName
-  );
+  const [units, setUnits] = useState<Unit[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  if (!faculty) {
-    return <Text>Không tìm thấy khoa</Text>;
+  useEffect(() => {
+    const fetchUnits = async () => {
+      try {
+        const unitsSnapshot = await firestore()
+          .collection('faculties')
+          .doc(facultyName)
+          .collection('units')
+          .get();
+
+          const fetchedUnits: Unit[] = unitsSnapshot.docs.map((doc) => ({
+            unitName: doc.data().unitName || doc.id, 
+            vocabulary: doc.data().vocabulary || [],
+          }));
+        setUnits(fetchedUnits);
+      } catch (error) {
+        console.error('Lỗi khi lấy units:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUnits();
+  }, [facultyName]);
+
+  if (loading) {
+    return (
+      <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#61BFE7" />
+      </SafeAreaView>
+    );
   }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-    <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      <View style = {styles.container}>
-      <View>
+      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <View style={styles.container}>
+        <View>
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => {
               if (navigation.canGoBack()) {
                 navigation.goBack();
               }
-              }}
-            >
-              <Image
-              style={styles.backIcon}
-                source={require('../assets/images/back1.png')}
-              />
-          </TouchableOpacity>
-            <Text style={styles.header}>{faculty.facultyName}</Text>
-      </View>
-                 
-      <FlatList
-        data={faculty.majors}
-        keyExtractor={(item) => item.majorName}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('VocabularyListScreen', {
-                majorName: item.majorName,
-                vocabulary: item.vocabulary,
-              })
-            }
-            style={{ marginTop: 30, padding: 20, borderBottomWidth: 1 }}
+            }}
           >
-            <Text style={{ fontSize: 18 }}>{item.majorName}</Text>
+            <Image style={styles.backIcon} source={require('../assets/images/back1.png')} />
           </TouchableOpacity>
-        )}
-      />
-    </View>
+          <Text style={styles.header}>{facultyName}</Text>
+        </View>
+
+        <FlatList
+          data={units}
+          keyExtractor={(item) => item.unitName}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('VocabularyListScreen', {
+                  majorName: item.unitName,
+                  facultyName: facultyName,
+                  unitId: item.unitName,
+                })
+              }
+              style={{ marginTop: 30, padding: 20, borderBottomWidth: 1 }}
+            >
+              <Text style={{ fontSize: 18 }}>{item.unitName}</Text>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </SafeAreaView>
-    
-    
   );
 };
 
 const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-  },
+  container: { flex: 1 },
   header: {
-    paddingTop: 35, // Đẩy nội dung xuống 30
+    paddingTop: 35,
     backgroundColor: '#61BFE7',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#fff',
-    height:100,
+    height: 100,
   },
   backButton: {
-    position: 'absolute', // Đặt vị trí tuyệt đối
-    top: 30,             // Khoảng cách từ đỉnh màn hình
-    left: 10,             // Khoảng cách từ trái màn hình
-    zIndex: 10,           // Hiển thị trên các thành phần khác
-    padding: 5,           // Thêm padding để dễ nhấn
+    position: 'absolute',
+    top: 30,
+    left: 10,
+    zIndex: 10,
+    padding: 5,
   },
   backIcon: {
-    width: 30,  // Chiều rộng ảnh
-    height: 30, // Chiều cao ảnh
-    resizeMode: 'contain', // Duy trì tỉ lệ của ảnh
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
-}
+});
 
-)
 export default MajorListScreen;
