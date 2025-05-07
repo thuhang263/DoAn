@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, SafeAreaView, StatusBar, ActivityIndicator } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, SafeAreaView, StatusBar, ActivityIndicator, TouchableOpacity, Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 
@@ -7,15 +7,15 @@ interface GrammarTopic {
   topicId: number;
   topicName: string;
   structure: string;
-  usage: string[];
-  rules?: string[];
-  signal_words?: string[];
+  usage: string;  // Chuyển thành chuỗi
+  rules?: string;  // Chuyển thành chuỗi
+  signal_words?: string;  // Chuyển thành chuỗi
 }
 
 const GrammarTopicDetailScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { topicId } = route.params as { topicId: number; topicName: string };
+  const { topicId, topicName } = route.params as { topicId: number; topicName: string };
 
   const [topic, setTopic] = useState<GrammarTopic | null>(null);
   const [loading, setLoading] = useState(true);
@@ -61,8 +61,49 @@ const GrammarTopicDetailScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+
       <ScrollView style={styles.container}>
-        {/* Header và phần nội dung giữ nguyên, dùng `topic` đã lấy từ Firestore */}
+        <View>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => {
+              if (navigation.canGoBack()) {
+                  navigation.goBack();
+              } else {
+                  navigation.navigate('HomeScreen'); 
+              }
+              }}
+            >
+            <Image
+              style={styles.backIcon}
+              source={require('../assets/images/back1.png')}
+            />
+            </TouchableOpacity>
+          <Text style={styles.header}>{topic.topicName}</Text>
+        </View>
+        {/* Nội dung chi tiết topic */}
+        <View style={styles.body}>
+          <Text style={styles.label}>Cấu trúc:</Text>
+          <Text style={styles.content}>{topic.structure}</Text>
+
+          <Text style={styles.label}>Cách sử dụng:</Text>
+          {/* Hiển thị trực tiếp usage vì nó là chuỗi */}
+          <Text style={styles.content}>{topic.usage}</Text>
+
+          {topic.rules && (
+            <>
+              <Text style={styles.label}>Quy tắc:</Text>
+              <Text style={styles.content}>{topic.rules}</Text>
+            </>
+          )}
+
+          {topic.signal_words && (
+            <>
+              <Text style={styles.label}>Từ tín hiệu:</Text>
+              <Text style={styles.content}>{topic.signal_words}</Text>
+            </>
+          )}
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -71,53 +112,53 @@ const GrammarTopicDetailScreen = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    flex: 1
+    
   },
   label: {
     fontSize: 18,
     fontWeight: 'bold',
-   
+    marginTop: 20,
   },
   content: {
     fontSize: 16,
-    marginBottom: 10
-  },
-  bullet: {
-    fontSize: 16,
-    marginLeft: 10,
-    marginBottom: 5
+    marginBottom: 10,
   },
   error: {
     fontSize: 18,
     color: 'red',
     textAlign: 'center',
-    marginTop: 50
+    marginTop: 50,
   },
   header: {
-    paddingTop: 35, 
+    paddingTop: 35,
     backgroundColor: '#61BFE7',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#fff',
-    height:100,
+    height: 100,
+  },
+  headerText: {
+    fontSize: 24,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  body: {
+    padding: 20,
   },
   backButton: {
     position: 'absolute', 
     top: 30,             
     left: 10,             
-    zIndex: 10,           
-    padding: 5,           
+    zIndex: 10,         
+    padding: 5,          
   },
   backIcon: {
     width: 30,  
     height: 30, 
     resizeMode: 'contain', 
   },
-  body:{
-    padding:20,
-  }
 });
 
 export default GrammarTopicDetailScreen;

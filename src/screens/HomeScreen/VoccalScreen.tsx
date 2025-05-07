@@ -56,17 +56,16 @@ const VoccalScreen = () => {
             <Text style={styles.header}>Các bộ từ vựng</Text>
           </View>
      
-        <View style={styles.itemContent}>
-        <FlatList
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
-            numColumns={2}
-            columnWrapperStyle={styles.row}
-        />
+          <View style={styles.itemContent}>
+          <FlatList
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={2}
+              columnWrapperStyle={styles.row}
+          />
+          </View>
         </View>
-      
-    </View>
     </SafeAreaView>
     
   );

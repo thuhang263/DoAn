@@ -55,7 +55,24 @@ const GrammaScreen = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
       <View style={styles.container}>
-        {/* header + back button như cũ */}
+        <View>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => {
+              if (navigation.canGoBack()) {
+              navigation.goBack();
+              } else {
+              navigation.navigate('HomeScreen'); 
+              }
+              }}
+                  >
+            <Image
+            style={styles.backIcon}
+            source={require('../../assets/images/back1.png')}
+            />
+          </TouchableOpacity>     
+          <Text style={styles.header}>Các bộ từ vựng</Text>
+        </View>
         <FlatList
           data={data}
           renderItem={renderItem}
