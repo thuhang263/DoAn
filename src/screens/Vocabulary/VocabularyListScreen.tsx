@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import { RouteProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../navigations/type';
+import { RootStackParamList } from '../../navigations/type';
 import Tts from 'react-native-tts';
 import firestore from '@react-native-firebase/firestore';
 
@@ -62,7 +62,7 @@ export default function VocabularyListScreen({ route }: Props) {
             if (navigation.canGoBack()) navigation.goBack();
           }}
         >
-          <Image source={require('../assets/images/back1.png')} style={{ width: 30, height: 30 }} />
+          <Image source={require('../../assets/images/back1.png')} style={{ width: 30, height: 30 }} />
         </TouchableOpacity>
       </View>
 
@@ -93,7 +93,7 @@ export default function VocabularyListScreen({ route }: Props) {
                 style={{ position: 'absolute', width: 20, height: 20 }}
               >
                 <Image
-                  source={require('../assets/images/sound.png')}
+                  source={require('../../assets/images/sound.png')}
                   style={{ width: 20, height: 20 }}
                 />
               </TouchableOpacity>

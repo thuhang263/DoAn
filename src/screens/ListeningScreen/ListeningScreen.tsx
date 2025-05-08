@@ -2,7 +2,6 @@ import React, {useEffect, useState, useRef, useCallback} from 'react';
 import {
   View,
   FlatList,
-  TouchableOpacity,
   Image,
   Text,
   Dimensions,
@@ -44,10 +43,8 @@ const ListeningScreen = () => {
     setPlaying(true);
   }, [videos]);
 
-  // Placeholder for share action if needed
-  const onShare = () => {
-    // Implement share logic here if cần
-  };
+ 
+  
 
   return (
     <View style={styles.container}>

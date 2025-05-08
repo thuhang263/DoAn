@@ -7,7 +7,7 @@ import {
 import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 import RNFS from 'react-native-fs';
 import { SafeAreaView } from 'react-native';
-import speakingData from '../SpeakingScreen/speaking_topics.json'; // ✅ Đường dẫn đúng tới file JSON
+import speakingData from '../SpeakingScreen/speaking_topics.json'; 
 
 const audioRecorderPlayer = new AudioRecorderPlayer();
 
@@ -124,7 +124,6 @@ const SpeakingScreen: React.FC = () => {
           <Text style={styles.header}>Speaking Practice</Text>
         </View>
 
-        {/* ✅ Hiển thị danh sách các đoạn văn */}
         {speakingData.map((item) => (
           <TouchableOpacity
             key={item.id}
@@ -135,7 +134,6 @@ const SpeakingScreen: React.FC = () => {
           </TouchableOpacity>
         ))}
 
-        {/* ✅ Hiển thị đoạn được chọn để luyện nói */}
         {selectedParagraph && (
           <>
             <Text style={[styles.paragraph, { fontWeight: 'bold', color: '#000' }]}>

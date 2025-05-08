@@ -1,0 +1,146 @@
+import React, { useEffect, useState } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  StatusBar,
+  Image,
+} from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { StackParamsType } from '../../navigations/type';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import firestore from '@react-native-firebase/firestore';
+
+const StoriesDetail: React.FC = () => {
+  const navigation = useNavigation<StackParamsType>();
+  const route = useRoute();
+
+  const { storiesID, storiesName } = route.params as {
+    storiesID: number;
+    storiesName: string;
+  };
+
+  const [paragraphs, setParagraphs] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchParagraphs = async () => {
+      try {
+        const snapshot = await firestore()
+          .collection('reading')
+          .doc(storiesName) // ví dụ: 'Khoa Công nghệ thông tin'
+          .collection('paragraphs')
+          .get();
+
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setParagraphs(data);
+      } catch (error) {
+        console.error('Error fetching paragraphs:', error);
+      }
+    };
+
+    fetchParagraphs();
+  }, [storiesName]);
+
+  const renderItem = ({ item }: any) => (
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() =>
+        navigation.navigate('StoryContentScreen', {
+          facultyId: storiesName,
+          paragraphId: item.id,
+          storyId: item.id,
+        })
+      }
+    >
+      <Text style={styles.title}>{item.id}</Text>
+    </TouchableOpacity>
+  );
+
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <View style={styles.container}>
+        <View>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => {
+              if (navigation.canGoBack()) {
+                navigation.goBack();
+              } else {
+                navigation.navigate('HomeScreen');
+              }
+            }}
+          >
+            <Image
+              style={styles.backIcon}
+              source={require('../../assets/images/back1.png')}
+            />
+          </TouchableOpacity>
+          <Text style={styles.header}>{storiesName}</Text>
+        </View>
+
+        <View style={styles.list}>
+          <FlatList
+            data={paragraphs}
+            keyExtractor={(item) => item.id}
+            renderItem={renderItem}
+            contentContainerStyle={{ paddingBottom: 16 }}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default StoriesDetail;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  header: {
+    paddingTop: 40,
+    backgroundColor: '#61BFE7',
+    padding: 15,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    height: 100,
+    bottom: 30,
+  },
+  card: {
+    marginBottom: 12,
+    backgroundColor: '#8FE1FF',
+    padding: 12,
+    borderRadius: 8,
+    top: 30,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginBottom: 6,
+  },
+  backButton: {
+    position: 'absolute',
+    left: 10,
+    zIndex: 10,
+    padding: 5,
+  },
+  backIcon: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
+  },
+  list: {
+    padding: 20,
+    bottom: 60,
+  },
+});

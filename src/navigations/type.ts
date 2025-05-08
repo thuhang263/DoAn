@@ -79,7 +79,11 @@ export type RootStackParamList = {
       phonetic: string;
       definition: string;
     }};
-    StoryContentScreen: { story: any };
+    StoryContentScreen: {
+      facultyId: string;
+      paragraphId: string;
+      storyId: string; 
+    };
     ListeningScreen:undefined;
     WordDetailScreen: {
       word: string;

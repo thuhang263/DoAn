@@ -7,9 +7,9 @@ interface GrammarTopic {
   topicId: number;
   topicName: string;
   structure: string;
-  usage: string;  // Chuyển thành chuỗi
-  rules?: string;  // Chuyển thành chuỗi
-  signal_words?: string;  // Chuyển thành chuỗi
+  usage: string;  
+  rules?: string; 
+  signal_words?: string;  
 }
 
 const GrammarTopicDetailScreen = () => {

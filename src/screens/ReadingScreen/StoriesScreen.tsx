@@ -1,40 +1,57 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-  SafeAreaView,
-  StatusBar,
-  ImageBackground,
+  View,Text, FlatList,TouchableOpacity,Image, StyleSheet, SafeAreaView, StatusBar, ImageBackground, ActivityIndicator,
 } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
 
 interface Topic {
   id: number;
   title: string;
 }
 
-const data: Topic[] = [
-  { id: 1, title: 'Khoa công nghệ thông tin' },
-  { id: 2, title: 'Khoa kế toán và kinh doanh ' },
-  { id: 3, title: 'Khoa cơ khí' },
-  { id: 4, title: 'Khoa Điện - Điện tử' },
-  { id: 5, title: 'Khoa hóa - Môi trường' },
-  { id: 6, title: 'Khoa kinh tế và quản lý' },
-  { id: 7, title: 'Khoa kỹ thuật tài nguyên nước ' },
-  { id: 8, title: 'Khoa công trình' },
-  { id: 9, title: 'Khoa luật và lý luận chính trị' },
-];
-
 const StoriesScreen = () => {
   const navigation = useNavigation();
+  const [topics, setTopics] = useState<Topic[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchFaculties = async () => {
+      try {
+        const snapshot = await firestore().collection('reading').get();
+        const data: Topic[] = snapshot.docs.map((doc, index) => ({
+          id: index + 1,
+          title: doc.data().title || doc.id, // Lấy title từ Firestore, nếu không có thì dùng doc.id
+        }));
+        setTopics(data);
+      } catch (error) {
+        console.error('Error fetching faculties: ', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchFaculties();
+  }, []);
+  
+
+  const getImageById = (id: number) => {
+    switch (id) {
+      case 1: return require('../../assets/stories/cntt.jpg');
+      case 2: return require('../../assets/stories/ketoan.jpg');
+      case 3: return require('../../assets/stories/cokhi.jpg');
+      case 4: return require('../../assets/stories/dien.jpg');
+      case 5: return require('../../assets/stories/hoa_moitrg.jpg');
+      case 6: return require('../../assets/stories/kinhte.jpg');
+      case 7: return require('../../assets/stories/nuoc.jpg');
+      case 8: return require('../../assets/stories/congtrinh.jpg');
+      case 9: return require('../../assets/stories/luat.jpg');
+      default: return require('../../assets/stories/cntt.jpg');
+    }
+  };
 
   const renderItem = ({ item }: { item: Topic }) => {
     const imageSource = getImageById(item.id);
-
     return (
       <TouchableOpacity
         style={styles.item}
@@ -54,20 +71,13 @@ const StoriesScreen = () => {
     );
   };
 
-  const getImageById = (id: number) => {
-    switch (id) {
-      case 1: return require('../../assets/stories/cntt.jpg');
-      case 2: return require('../../assets/stories/nuoc.jpg');
-      case 3: return require('../../assets/stories/cokhi.jpg');
-      case 4: return require('../../assets/stories/dien.jpg');
-      case 5: return require('../../assets/stories/hoa_moitrg.jpg');
-      case 6: return require('../../assets/stories/kinhte.jpg');
-      case 7: return require('../../assets/stories/ketoan.jpg');
-      case 8: return require('../../assets/stories/congtrinh.jpg');
-      case 9: return require('../../assets/stories/luat.jpg');
-      default: return require('../../assets/stories/cntt.jpg');
-    }
-  };
+  if (loading) {
+    return (
+      <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+        <ActivityIndicator size="large" color="#61BFE7" />
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -94,7 +104,7 @@ const StoriesScreen = () => {
 
         <View style={styles.itemContent}>
           <FlatList
-            data={data}
+            data={topics}
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
             numColumns={2}

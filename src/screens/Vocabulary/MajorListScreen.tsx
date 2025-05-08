@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { RouteProp, useNavigation, NavigationProp } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
-import { RootStackParamList } from '../navigations/type'; 
+import { RootStackParamList } from '../../navigations/type'; 
 
 
 type MajorListScreenRouteProp = RouteProp<RootStackParamList, 'MajorListScreen'>;
@@ -82,7 +82,7 @@ const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route 
               }
             }}
           >
-            <Image style={styles.backIcon} source={require('../assets/images/back1.png')} />
+            <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
           </TouchableOpacity>
           <Text style={styles.header}>{facultyName}</Text>
         </View>
