@@ -1,4 +1,4 @@
-// screens/ImageDetailScreen.tsx
+
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Text, SafeAreaView, StatusBar, TouchableOpacity, FlatList } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
@@ -42,7 +42,7 @@ const ImageDetailScreen = () => {
                       if (navigation.canGoBack()) {
                       navigation.goBack();
                       } else {
-                      navigation.navigate('HomeScreen'); // Chuyển về Home nếu không có màn nào để quay lại
+                      navigation.navigate('HomeScreen'); 
                       }
                   }}
               >
@@ -69,11 +69,6 @@ const ImageDetailScreen = () => {
       
     );
 
-  return (
-    <View style={styles.container}>
-      <Text>Hello</Text>
-    </View>
-  );
 };
 
 const styles = StyleSheet.create({

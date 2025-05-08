@@ -29,7 +29,7 @@ const StoriesDetail: React.FC = () => {
       try {
         const snapshot = await firestore()
           .collection('reading')
-          .doc(storiesName) // ví dụ: 'Khoa Công nghệ thông tin'
+          .doc(storiesName) 
           .collection('paragraphs')
           .get();
 

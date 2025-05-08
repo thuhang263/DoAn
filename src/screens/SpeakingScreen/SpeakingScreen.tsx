@@ -1,112 +1,40 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  View, Text, Button, StyleSheet, ScrollView, Alert, Platform,
-  PermissionsAndroid, Linking, TouchableOpacity, Image, StatusBar
+  View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, StatusBar, ActivityIndicator
 } from 'react-native';
-import AudioRecorderPlayer from 'react-native-audio-recorder-player';
-import RNFS from 'react-native-fs';
 import { SafeAreaView } from 'react-native';
-import speakingData from '../SpeakingScreen/speaking_topics.json'; 
-
-const audioRecorderPlayer = new AudioRecorderPlayer();
+import firestore from '@react-native-firebase/firestore';
 
 const SpeakingScreen: React.FC = () => {
   const navigation = useNavigation();
-  const [isRecording, setIsRecording] = useState(false);
-  const [recordedAudio, setRecordedAudio] = useState('');
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [selectedParagraph, setSelectedParagraph] = useState<string | null>(null);
+  const [documents, setDocuments] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const requestPermissions = async (): Promise<boolean> => {
-    try {
-      if (Platform.OS === 'android') {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-          {
-            title: 'Yêu cầu quyền ghi âm',
-            message: 'Ứng dụng cần quyền ghi âm để bạn luyện nói.',
-            buttonNeutral: 'Hỏi lại sau',
-            buttonNegative: 'Từ chối',
-            buttonPositive: 'Đồng ý',
-          }
-        );
-        return granted === PermissionsAndroid.RESULTS.GRANTED;
+  useEffect(() => {
+    const fetchDocuments = async () => {
+      try {
+        const snapshot = await firestore()
+          .collection('speaking') // Lấy tất cả documents trong collection "speaking"
+          .get();
+          
+    
+        const docs = snapshot.docs.map(doc => ({
+          id: doc.id, // Lấy ID của document
+          paragraph: doc.data().paragraph || '', // Lấy nội dung đoạn văn
+        }));
+    
+        setDocuments(docs); // Lưu danh sách documents vào state
+      } catch (error) {
+        console.error('Lỗi khi tải dữ liệu:', error);
+      } finally {
+        setLoading(false);
       }
-      return true;
-    } catch (err) {
-      console.warn('Lỗi xin quyền:', err);
-      return false;
-    }
-  };
+    };
 
-  const onStartRecord = async () => {
-    const hasPermission = await requestPermissions();
-    if (!hasPermission) {
-      Alert.alert(
-        'Không có quyền ghi âm',
-        'Hãy bật quyền ghi âm trong phần Cài đặt > Ứng dụng.',
-        [
-          { text: 'Mở cài đặt', onPress: () => Linking.openSettings() },
-          { text: 'Hủy', style: 'cancel' },
-        ]
-      );
-      return;
-    }
-
-    try {
-      const path = Platform.select({
-        ios: 'voice.m4a',
-        android: `${RNFS.ExternalDirectoryPath}/voice.mp4`,
-      });
-
-      const result = await audioRecorderPlayer.startRecorder(path);
-      setIsRecording(true);
-
-      audioRecorderPlayer.addRecordBackListener(() => {
-        return;
-      });
-    } catch (e: any) {
-      Alert.alert('Lỗi ghi âm', e.message || 'Không thể bắt đầu ghi âm');
-    }
-  };
-
-  const onStopRecord = async () => {
-    try {
-      const result = await audioRecorderPlayer.stopRecorder();
-      audioRecorderPlayer.removeRecordBackListener();
-      setRecordedAudio(result);
-      setIsRecording(false);
-    } catch (e: any) {
-      Alert.alert('Lỗi dừng ghi âm', e.message || 'Không thể dừng ghi âm');
-    }
-  };
-
-  const onStartPlay = async () => {
-    try {
-      if (!recordedAudio) return;
-      await audioRecorderPlayer.startPlayer(recordedAudio);
-      audioRecorderPlayer.addPlayBackListener((e) => {
-        if (e.currentPosition === e.duration) {
-          onStopPlay();
-        }
-      });
-      setIsPlaying(true);
-    } catch (e: any) {
-      Alert.alert('Lỗi phát lại', e.message || 'Không thể phát lại');
-    }
-  };
-
-  const onStopPlay = async () => {
-    try {
-      await audioRecorderPlayer.stopPlayer();
-      audioRecorderPlayer.removePlayBackListener();
-      setIsPlaying(false);
-    } catch (e: any) {
-      Alert.alert('Lỗi dừng phát', e.message || 'Không thể dừng phát');
-    }
-  };
-
+    fetchDocuments(); // Gọi hàm để lấy dữ liệu
+  }, []);
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
@@ -124,38 +52,18 @@ const SpeakingScreen: React.FC = () => {
           <Text style={styles.header}>Speaking Practice</Text>
         </View>
 
-        {speakingData.map((item) => (
-          <TouchableOpacity
-            key={item.id}
-            style={styles.paragraphBox}
-            onPress={() => setSelectedParagraph(item.paragraph)}
-          >
-            <Text style={styles.paragraph}>{item.paragraph}</Text>
-          </TouchableOpacity>
-        ))}
-
-        {selectedParagraph && (
-          <>
-            <Text style={[styles.paragraph, { fontWeight: 'bold', color: '#000' }]}>
-              {selectedParagraph}
-            </Text>
-
-            <View style={styles.buttonContainer}>
-              <Button
-                title={isRecording ? 'Stop Recording' : 'Start Recording'}
-                color={isRecording ? 'red' : 'blue'}
-                onPress={isRecording ? onStopRecord : onStartRecord}
-              />
-            </View>
-
-            <View style={styles.buttonContainer}>
-              <Button
-                title={isPlaying ? 'Stop Playback' : 'Play Recording'}
-                disabled={!recordedAudio}
-                onPress={isPlaying ? onStopPlay : onStartPlay}
-              />
-            </View>
-          </>
+        {loading ? (
+          <ActivityIndicator size="large" color="#61BFE7" />
+        ) : (
+          documents.map((doc) => (
+            <TouchableOpacity
+              key={doc.id}
+              style={styles.paragraphBox}
+              onPress={() => navigation.navigate('SpeakingDetailScreen', { paragraph: doc.paragraph, id: doc.id })}
+            >
+              <Text style={styles.paragraph}>{doc.id}</Text> 
+            </TouchableOpacity>
+          ))
         )}
       </ScrollView>
     </SafeAreaView>
@@ -165,8 +73,6 @@ const SpeakingScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-   
-    
   },
   paragraphBox: {
     backgroundColor: '#F0F0F0',
@@ -177,9 +83,6 @@ const styles = StyleSheet.create({
   paragraph: {
     fontSize: 16,
     lineHeight: 24,
-  },
-  buttonContainer: {
-    marginTop: 12,
   },
   header: {
     paddingTop: 35,

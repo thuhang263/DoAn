@@ -15,7 +15,7 @@ import VocabularyDetailScreen from '../screens/TestScreen/VocabularyDetailScreen
 import TestReading from '../screens/TestScreen/TestReading';
 import GrammarDetail from '../screens/TestScreen/GrammarDetail';
 import GrammarTopicDetailScreen from '../components/GrammarTopicDetailScreen';
-import ImageDetailScreen from '../components/ImageDetailScreen';
+import ImageDetailScreen from '../components/Vocab';
 import TopicVideo from '../components/TopicVideo';
 import StoriesDetail from '../screens/ReadingScreen/StoriesDetail';
 import StoriesScreen from '../screens/ReadingScreen/StoriesScreen';
@@ -26,6 +26,7 @@ import ListeningScreen from '../screens/ListeningScreen/ListeningScreen';
 import TestScreen from '../screens/TestScreen/TestScreen';
 import WordDetailScreen from '../screens/SearchScreen/WordDetailScreen';
 import SpeakingScreen from '../screens/SpeakingScreen/SpeakingScreen';
+import SpeakingDetailScreen from '../screens/SpeakingScreen/SpeakingDetailScreen';
 
 
 const RootStackNavigation = () => {
@@ -63,6 +64,7 @@ const RootStackNavigation = () => {
       <Stack.Screen name="WordDetailScreen" component={WordDetailScreen} />
    
       <Stack.Screen name="SpeakingScreen" component={SpeakingScreen} />
+      <Stack.Screen name="SpeakingDetailScreen" component={SpeakingDetailScreen} />
       
     </Stack.Navigator>
   );

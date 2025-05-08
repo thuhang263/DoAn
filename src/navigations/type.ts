@@ -94,6 +94,7 @@ export type RootStackParamList = {
       audio: string;
     };
     SpeakingScreen:undefined;
+    SpeakingDetailScreen:{ paragraph: string, id: number };
   };
 
 declare global {
