@@ -19,12 +19,21 @@ Các chức năng chính:
 - Luyện nói: Sử dụng phương pháp ghi âm, người học ghi âm giọng nói, nghe lại, luyện nói chuẩn
 - Ôn tập qua video chuyên ngành.
 
-Các màn hình chính
-HomeScreen – Trang chủ
-GrammaScreen – Danh sách chủ đề ngữ pháp
-GrammarTopicDetailScreen – Chi tiết từng chủ đề
-VocabularyListScreen – Từ vựng chuyên ngành theo unit
-SpeakingScreen – Luyện nói + ghi âm
-VideoScreen – Danh sách video YouTube theo ngành
-TestScreen – Làm bài tập trắc nghiệm
-SeacrhScreen - Tìm kiếm từ vựng
+Các màn hình chính:
+- HomeScreen – Trang chủ
+- GrammaScreen – Danh sách chủ đề ngữ pháp
+- GrammarTopicDetailScreen – Chi tiết từng chủ đề
+- VocabularyListScreen – Từ vựng chuyên ngành theo unit
+- SpeakingScreen – Luyện nói + ghi âm
+- VideoScreen – Danh sách video YouTube theo ngành
+- TestScreen – Làm bài tập trắc nghiệm
+- SeacrhScreen - Tìm kiếm từ vựng
+
+
+
+
+
+
+
+
+
