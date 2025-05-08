@@ -1,6 +1,6 @@
 Đây là ứng dụng được phát triển bằng React Native CLI, hỗ trợ sinh viên ôn tập tiếng Anh chuyên ngành theo từng khoa tại Trường Đại học Thủy Lợi. Ứng dụng tích hợp các chức năng luyện ngữ pháp, từ vựng, nghe nói và làm bài kiểm tra.
 
-Thư viện sử dụng:
+Thư viện và API sử dụng:
 - React Native CLI – Khởi tạo và xây dựng ứng dụng
 - React Navigation – Điều hướng giữa các màn hình
 - Firebase Firestore – Lưu trữ nội dung ngữ pháp, từ vựng, bài kiểm tra, các đoạn văn đọc, nghe
