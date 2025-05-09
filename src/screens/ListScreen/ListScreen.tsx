@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
 
 
 import { styles } from './styles';
@@ -9,15 +9,17 @@ import {  StackNavigationProp } from '@react-navigation/stack';
 const ListScreen = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>(); 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={{ flex: 1}}>
       {/* Header */}
       <View style={styles.header}>
       
-        <Image source={require('../../assets/images/studyList.png')} style={styles.avatarImage} />
+        <Image source={require('../../assets/images/ds.png')} style={styles.avatarImage} />
         <View style={styles.profileContainer}>
           <Image source={require('../../assets/images/listText.png')} style={styles.avatarImageText} />
         </View>
       </View>
+      <ScrollView style={styles.container}>
+      
       <View>
         <View style={styles.item}>
             <Image
@@ -34,7 +36,7 @@ const ListScreen = () => {
             style ={styles.ImageItem}
             source={require('../../assets/images/item1.png')}>
             </Image>
-            <Text style={styles.text}>Video yêu thích</Text>
+            <Text style={styles.text}>Sổ tay</Text>
             <TouchableOpacity style={styles.btn}>
               <Text style={styles.TextBtn}>View</Text>
             </TouchableOpacity>
@@ -51,6 +53,8 @@ const ListScreen = () => {
         </View>
       </View>
     </ScrollView>
+    </SafeAreaView>
+    
   );
 };
 

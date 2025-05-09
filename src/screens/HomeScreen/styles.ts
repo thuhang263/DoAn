@@ -21,8 +21,8 @@ export const styles = StyleSheet.create({
   },
   profileContainer: { flexDirection: 'row', alignItems: 'center' },
   avatar: { width: 50, height: 50, borderRadius: 25, backgroundColor: '#ccc' },
-  userName: { marginLeft: 10, fontSize: 18, fontWeight: 'bold', color: '#fff' },
-  avatarImage: { width: 80, height: 120, right: 20 },
+  userName: { fontSize: 17, fontWeight: 'bold', color: '#fff',top:30 },
+  avatarImage: { width: 100, height: 120, right: 20,top:20 },
   
   
   categoryBox: {
@@ -99,6 +99,11 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     
   },
+  avatarImageText:{
+    width: 102, height: 25 ,
+    left:30,
+    top:20,
+},
 
  
   sectionTitle2:{

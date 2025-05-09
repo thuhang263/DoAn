@@ -58,10 +58,16 @@ const StoriesDetail: React.FC = () => {
         })
       }
     >
-      <Text style={styles.title}>{item.id}</Text>
+      <Image
+        source={require('../../assets/images/read.png')} 
+        style={styles.image}
+      />
+      <View style={{ flex: 1 }}>
+        <Text style={styles.title}>{item.id}</Text>
+      </View>
     </TouchableOpacity>
   );
-
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
@@ -114,19 +120,39 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#fff',
     height: 100,
-    bottom: 30,
+    bottom: 40,
   },
   card: {
-    marginBottom: 12,
-    backgroundColor: '#8FE1FF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    marginBottom: 16,
     padding: 12,
-    borderRadius: 8,
-    top: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    top:20,
+  },
+  image: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: '#ddd',
   },
   title: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 6,
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#333',
+    marginTop: 4,
   },
   backButton: {
     position: 'absolute',

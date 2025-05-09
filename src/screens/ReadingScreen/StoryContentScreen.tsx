@@ -102,21 +102,26 @@ const StoryContentScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}
-      >
-        <Image
-          style={styles.backIcon}
-          source={require('../../assets/images/back1.png')}
-        />
-      </TouchableOpacity>
-
+      <View>
+        <View>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
+            <Image
+              style={styles.backIcon}
+              source={require('../../assets/images/back1.png')}
+            />
+          </TouchableOpacity>
+        </View>
+      <Text style={styles.header}>{story.title}</Text>
+      </View>
+      
       <ScrollView contentContainerStyle={styles.content}>
         <Image source={getImage(story.image)} style={styles.storyImage} />
-        <Text style={styles.title}>{story.title}</Text>
+        <Text style={styles.text}>En:</Text>
         <Text style={styles.text}>{story.content_en}</Text>
-        <Text style={styles.title}>{story.title}</Text>
+        <Text style={styles.text}>Vi:</Text>
         <Text style={styles.text}>{story.content_vi}</Text>
 
         <View style={styles.buttonRow}>
@@ -134,7 +139,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 50,
   },
   centered: {
     flex: 1,
@@ -162,9 +166,9 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 40,
-    left: 10,
+    left: 20,
     zIndex: 10,
+    top:40,
   },
   backIcon: {
     width: 30,
@@ -188,5 +192,16 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  header: {
+    paddingTop: 40,
+    backgroundColor: '#61BFE7',
+    padding: 15,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    height: 100,
+   
   },
 });

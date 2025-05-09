@@ -13,13 +13,14 @@ export const styles = StyleSheet.create({
       },
   
     profileContainer: { flexDirection: 'row', alignItems: 'center' },
-    userName: { marginLeft: 10, fontSize: 18, fontWeight: 'bold' },
-    avatarImage: { width: 80, height: 140 ,right:20,},
+   
+    avatarImage: { width: 100, height: 110,top:20,},
 
     dateContainer: { flexDirection: 'row', justifyContent: 'space-around', marginVertical: 10 },
     avatarImageText:{
-        width: 190, height: 52 ,
+        width: 150, height: 41 ,
         left:20,
+        top:20,
     },
     search:{
       width:30,
@@ -49,37 +50,28 @@ export const styles = StyleSheet.create({
       borderRadius: 8,
       paddingHorizontal: 10,
       height:  40,
-      marginTop: 50,
+      marginTop: 10,
       borderWidth:1,
       borderColor:'#61BFE7',
       width:320,
       left:20,
     },
     icon: {
-      width:  18,
-      height:  18,
+      width:  25,
+      height:  25,
     },
     searchInput: {
       flex: 1,
       fontSize:  14,
       color: 'black',
     },
-    
    
     searchButton: {
-      backgroundColor: '#007bff',
       borderRadius: 8,
-      width:100,
-      height:50,
       alignSelf:'center',
-      top:10,
+      right:20,
     },
-    searchButtonText: {
-      color: '#fff',
-      fontSize: 16,
-      alignSelf:'center',
-      top:13,
-    },
+
     historyContainer: {
       marginTop: 10,
     },
@@ -87,7 +79,7 @@ export const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 8,
-      color: '#333',
+      color: '#F66923',
     },
     historyItem: {
       fontSize: 16,
@@ -102,7 +94,7 @@ export const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 8,
-      color: '#333',
+      color:'#14C089'
     },
     resultItem: {
       paddingVertical: 10,
@@ -113,7 +105,63 @@ export const styles = StyleSheet.create({
       fontSize: 16,
       color: '#333',
     },
-
+    guideBox: {
+      backgroundColor: '#fff',
+      padding: 10,
+      borderRadius: 16,
+      shadowColor: '#000',
+      shadowOpacity: 0.05,
+      shadowRadius: 8,
+      elevation: 4,
+      width:320,
+      alignSelf:'center',
+      top:7
+    },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 12,
+    },
+    catImage: {
+      width: 80,
+      height: 80,
+      resizeMode: 'contain',
+      marginRight: 10,
+    },
+    guideText: {
+      flex: 1,
+      fontSize: 16,
+      color: '#333',
+    },
+    stepTitle: {
+      marginTop: 8,
+      fontWeight: 'bold',
+      fontSize: 16,
+      color: '#222',
+    },
+    stepText: {
+      fontSize: 14,
+      marginBottom: 8,
+      color: '#444',
+    },
+    saveButton: {
+      backgroundColor: '#28c76f',
+      width:100,
+      height:40,
+      alignItems: 'center',
+      marginTop: 8,
+      borderRadius:20,
+      alignSelf:'center'
+    },
+    savedButton: {
+      backgroundColor: '#aaa',
+    },
+    saveButtonText: {
+      color: '#fff',
+      fontWeight: 'bold',
+      fontSize: 16,
+      top:10,
+    },
     
   });
   

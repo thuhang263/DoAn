@@ -15,7 +15,7 @@ const TestScreen = () => {
         <View style={styles.profileContainer}>
           <Image source={require('../../assets/images/textTest.png')} style={styles.avatarImageText} />
         </View>
-        <Image source={require('../../assets/images/duck.png')} style={styles.avatarImage} />
+        <Image source={require('../../assets/images/lt.png')} style={styles.avatarImage} />
       </View>
       
      <View>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Image, Alert } from 'react-native';
 import { RouteProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigations/type';
 import Tts from 'react-native-tts';
@@ -22,12 +22,9 @@ export default function VocabularyListScreen({ route }: Props) {
   const navigation = useNavigation();
   const { majorName, facultyName, unitId } = route.params; 
   const [vocabulary, setVocabulary] = useState<VocabularyItem[]>([]);
+  const [favoriteWords, setFavoriteWords] = useState<string[]>([]);
 
   useEffect(() => {
-    console.log('facultyName:', facultyName);
-    console.log('unitId:', unitId);
-    console.log('majorName:', majorName); // Nếu cần
-  
     const fetchVocabulary = async () => {
       try {
         const snapshot = await firestore()
@@ -37,17 +34,30 @@ export default function VocabularyListScreen({ route }: Props) {
           .doc(unitId)
           .collection('vocal')
           .get();
-    
+
         const vocabList: VocabularyItem[] = snapshot.docs.map(doc => doc.data() as VocabularyItem);
         setVocabulary(vocabList);
       } catch (error) {
         console.error('Lỗi lấy dữ liệu Firestore:', error);
       }
     };
-  
+
     fetchVocabulary();
   }, []);
-  
+
+  const saveToFavorites = async (item: VocabularyItem) => {
+    try {
+      await firestore()
+        .collection('favoriteVoc')
+        .doc(item.word) // dùng word làm ID để tránh trùng
+        .set(item);
+      Alert.alert('Đã lưu vào Sổ tay');
+      setFavoriteWords(prev => [...prev, item.word]);
+    } catch (error) {
+      console.error('Lỗi khi lưu vào favoriteVoc:', error);
+    }
+  };
+
   const onPressWord = (word: VocabularyItem) => {
     navigation.navigate('VocabularyItemScreen', { word });
   };
@@ -84,22 +94,41 @@ export default function VocabularyListScreen({ route }: Props) {
           >
             <Text style={{ fontWeight: 'bold' }}>word: {item.word}</Text>
             <Text style={{ fontWeight: 'bold' }}>partOfSpeech: {item.partOfSpeech}</Text>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4 }}>
               <TouchableOpacity
                 onPress={(event) => {
                   event.stopPropagation();
                   Tts.speak(item.word);
                 }}
-                style={{ position: 'absolute', width: 20, height: 20 }}
               >
                 <Image
                   source={require('../../assets/images/sound.png')}
-                  style={{ width: 20, height: 20 }}
+                  style={{ width: 20, height: 20, marginRight: 8 }}
                 />
               </TouchableOpacity>
-              <Text style={{ fontStyle: 'italic', color: 'gray', left: 30 }}>{item.phonetic}</Text>
+              <Text style={{ fontStyle: 'italic', color: 'gray' }}>{item.phonetic}</Text>
             </View>
-            <Text numberOfLines={2} style={{ fontWeight: 'bold' }}>definition: {item.definition}</Text>
+            <Text numberOfLines={2} style={{ fontWeight: 'bold', marginTop: 5 }}>
+              definition: {item.definition}
+            </Text>
+
+            {/* Nút trái tim lưu từ */}
+            <TouchableOpacity
+              onPress={(event) => {
+                event.stopPropagation();
+                saveToFavorites(item);
+              }}
+              style={{ position: 'absolute', right: 10, top: 10 }}
+            >
+              <Image
+                source={
+                  favoriteWords.includes(item.word)
+                    ? require('../../assets/images/fill.png') // ảnh trái tim đã chọn
+                    : require('../../assets/images/love.png') // ảnh trái tim rỗng
+                }
+                style={{ width: 24, height: 24 }}
+              />
+            </TouchableOpacity>
           </TouchableOpacity>
         )}
       />

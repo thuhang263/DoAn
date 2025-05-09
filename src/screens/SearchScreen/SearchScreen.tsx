@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, FlatList, Image, ActivityIndicator } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, FlatList, Image, ActivityIndicator, Keyboard } from 'react-native';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import TrackPlayer, { State } from 'react-native-track-player';
+import firestore from '@react-native-firebase/firestore';
 interface WordItem {
   word: string;
   meaning: string;
@@ -18,8 +19,28 @@ const SearchScreen: React.FC = () => {
   const [searchResults, setSearchResults] = useState<WordItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
   const navigation = useNavigation();
+
+
+  const [saved, setSaved] = useState(false);
+
+  const handleSave = async () => {
+    if (!searchQuery.trim()) return;
+
+    const newWord = {
+      word: searchQuery.trim(),
+      createdAt: firestore.FieldValue.serverTimestamp(),
+    };
+
+    try {
+      await firestore().collection('notebook').add(newWord);
+      setSaved(true);
+      Keyboard.dismiss();
+    } catch (error) {
+      console.error('Lỗi khi lưu từ:', error);
+      alert(' Không thể lưu từ!');
+    }
+  };
 
   const playAudio = async (audioUrl: string) => {
     if (!audioUrl) {
@@ -136,24 +157,50 @@ const SearchScreen: React.FC = () => {
         <View style={styles.profileContainer}>
           <Image source={require('../../assets/images/Vocabulary.png')} style={styles.avatarImageText} />
         </View>
-        <Image source={require('../../assets/images/searchImage.png')} style={styles.avatarImage} />    
+        <Image source={require('../../assets/images/timkiem.png')} style={styles.avatarImage} />    
       </View>
-
       <View style={styles.searchContainer}>
-        <Image source={require('../../assets/images/search2.png')} style={styles.icon} />
         <TextInput
           style={styles.searchInput}
-          placeholder="Search..."
+          placeholder="Nhập từ vựng..."
           placeholderTextColor="#aaa"
           value={searchQuery}
           onChangeText={text => setSearchQuery(text)}
           onFocus={() => setSearchResults([])}
         />
+        <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
+        <Image source={require('../../assets/images/search2.png')} style={styles.icon} />
+        </TouchableOpacity>
       </View>
-
-      <TouchableOpacity onPress={handleSearch} style={styles.searchButton}>
-        <Text style={styles.searchButtonText}>Tìm kiếm</Text>
-      </TouchableOpacity>
+      <View>
+        
+        <TouchableOpacity
+          style={[styles.saveButton, saved && styles.savedButton]}
+          onPress={handleSave}
+        >
+          <Text style={styles.saveButtonText}>{saved ? '✓ Đã lưu' : '+ Save'}</Text>
+        </TouchableOpacity>
+      </View>
+      {/*check*/}
+      {!searchQuery.trim() && (
+        <View style={styles.guideBox}>
+          <View style={styles.row}>
+            <Image
+              source={require('../../assets/images/timkiem2.png')}
+              style={styles.catImage}
+            />
+            <Text style={styles.guideText}>
+              Dễ dàng tra cứu từ chưa biết {'\n'}và lưu lại từ vựng vào Sổ tay
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.stepTitle}>Step 1:</Text>
+            <Text style={styles.stepText}>Nhập từ cần tra vào ô dưới</Text>
+            <Text style={styles.stepTitle}>Step 2:</Text>
+            <Text style={styles.stepText}>Nhấn nút <Text style={{ fontWeight: 'bold' }}>+ Save</Text> để lưu từ vào Sổ tay</Text>
+          </View>
+        </View>
+      )}
 
       {loading && <ActivityIndicator size="large" color="#0000ff" />}
 
@@ -173,9 +220,15 @@ const SearchScreen: React.FC = () => {
           <Text style={styles.resultsTitle}>Kết quả tìm kiếm</Text>
           {renderSearchResults()}
         </View>
+        
       ))}
+      
     </View>
   );
 };
 
 export default SearchScreen;
+function alert(arg0: string) {
+  throw new Error('Function not implemented.');
+}
+

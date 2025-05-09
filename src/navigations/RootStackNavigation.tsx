@@ -27,16 +27,14 @@ import TestScreen from '../screens/TestScreen/TestScreen';
 import WordDetailScreen from '../screens/SearchScreen/WordDetailScreen';
 import SpeakingScreen from '../screens/SpeakingScreen/SpeakingScreen';
 import SpeakingDetailScreen from '../screens/SpeakingScreen/SpeakingDetailScreen';
+import WelcomeScreen from '../screens/WelcomeScreen/WelcomeScreen';
 
 
 const RootStackNavigation = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
   return (
-    <Stack.Navigator
-    screenOptions={{
-        headerShown:false
-    }}
-    >
+    <Stack.Navigator screenOptions={{headerShown:false }}>
+      <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name={Screens.RootBottomNavigation} component={RootBottomNavigation}/>
       <Stack.Screen name={Screens.DetailScreen} component={DetailScreen} />
   

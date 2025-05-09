@@ -14,12 +14,13 @@ export const styles = StyleSheet.create({
   
     profileContainer: { flexDirection: 'row', alignItems: 'center' },
     userName: { marginLeft: 10, fontSize: 18, fontWeight: 'bold' },
-    avatarImage: { width: 80, height: 130 ,left:20,},
+    avatarImage: { width: 100, height: 100 ,left:20,top:20,},
 
     dateContainer: { flexDirection: 'row', justifyContent: 'space-around', marginVertical: 10 },
     avatarImageText:{
         width: 170, height: 30 ,
         right:20,
+        top:20,
     },
     item:{
       backgroundColor:'#61BFE7',

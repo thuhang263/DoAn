@@ -15,16 +15,16 @@ const SpeakingScreen: React.FC = () => {
     const fetchDocuments = async () => {
       try {
         const snapshot = await firestore()
-          .collection('speaking') // Lấy tất cả documents trong collection "speaking"
+          .collection('speaking') 
           .get();
           
     
         const docs = snapshot.docs.map(doc => ({
-          id: doc.id, // Lấy ID của document
-          paragraph: doc.data().paragraph || '', // Lấy nội dung đoạn văn
+          id: doc.id, 
+          paragraph: doc.data().paragraph || '', 
         }));
     
-        setDocuments(docs); // Lưu danh sách documents vào state
+        setDocuments(docs); 
       } catch (error) {
         console.error('Lỗi khi tải dữ liệu:', error);
       } finally {
@@ -32,14 +32,13 @@ const SpeakingScreen: React.FC = () => {
       }
     };
 
-    fetchDocuments(); // Gọi hàm để lấy dữ liệu
+    fetchDocuments();
   }, []);
   
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      <ScrollView contentContainerStyle={styles.container}>
-        <View>
+      <View>
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => {
@@ -51,17 +50,25 @@ const SpeakingScreen: React.FC = () => {
           </TouchableOpacity>
           <Text style={styles.header}>Speaking Practice</Text>
         </View>
-
+      <ScrollView contentContainerStyle={styles.container}>
         {loading ? (
           <ActivityIndicator size="large" color="#61BFE7" />
         ) : (
           documents.map((doc) => (
             <TouchableOpacity
+           
               key={doc.id}
-              style={styles.paragraphBox}
+              style={styles.card}
               onPress={() => navigation.navigate('SpeakingDetailScreen', { paragraph: doc.paragraph, id: doc.id })}
             >
-              <Text style={styles.paragraph}>{doc.id}</Text> 
+              <Image
+                  source={require('../../assets/images/speak.png')} 
+                  style={styles.image}
+              />
+              <View style={{flex:1}}>
+                <Text style={styles.paragraph}>{doc.id}</Text> 
+              </View>
+             
             </TouchableOpacity>
           ))
         )}
@@ -74,12 +81,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
   },
-  paragraphBox: {
-    backgroundColor: '#F0F0F0',
-    padding: 12,
-    marginVertical: 8,
-    borderRadius: 8,
-  },
+  
   paragraph: {
     fontSize: 16,
     lineHeight: 24,
@@ -105,6 +107,30 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     resizeMode: 'contain',
+  },
+  image: {
+    width: 60,
+    height: 60,
+    borderRadius: 10,
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
+  card: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    marginBottom: 10,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    top:10,
+    width:320,
+    alignSelf:'center',
   },
 });
 

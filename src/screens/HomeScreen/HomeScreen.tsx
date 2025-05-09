@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, StatusBar } from 'react-native';
 import { styles } from './styles';
 import { RootStackParamList } from '../../navigations/type';
 import { useNavigation } from '@react-navigation/native';
@@ -12,15 +12,15 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1}}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      <ScrollView style={styles.container}>
-        {/* Header */}
+      {/* Header */}
+        
         <View style={styles.header}>
           <View style={styles.profileContainer}>
-            <Text style={styles.userName}>Chúc bạn ôn tập tiếng anh {'\n'} hiệu quả với TLEnglish!</Text>
+          <Image source={require('../../assets/images/home2.png')} style={styles.avatarImageText} />
           </View>
-          <Image source={require('../../assets/images/duck.png')} style={styles.avatarImage} />
+          <Image source={require('../../assets/images/learn.png')} style={styles.avatarImage} />
         </View>
-
+      <ScrollView style={styles.container}>
         <View style={{ marginTop: 10 }}>
           <BannerCarousel />
         </View>
@@ -63,8 +63,7 @@ const HomeScreen = () => {
         <Text style={styles.sectionTitle2}>Giải trí</Text>
         <View style={styles.ReadContainer}>
           <TouchableOpacity  onPress={() => navigation.navigate('ListeningScreen')}>
-          <Image source={require('../../assets/images/listen.png')} style={styles.avatarImageItem} />
-
+            <Image source={require('../../assets/images/listen.png')} style={styles.avatarImageItem} />
           </TouchableOpacity>
         </View> 
       </ScrollView>

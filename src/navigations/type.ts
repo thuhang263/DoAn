@@ -46,6 +46,7 @@ export type RootBottomParamList = {
 export type RootStackParamList = {
     [Screens.RootBottomNavigation]: NavigatorScreenParams<RootBottomParamList>;
     [Screens.DetailScreen]: { movieId: number };
+    WelcomeScreen:undefined;
     HomeScreen:undefined;
     ListScreen:undefined;
     SearchScreen:undefined;
