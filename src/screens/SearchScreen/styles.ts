@@ -160,7 +160,7 @@ export const styles = StyleSheet.create({
       color: '#fff',
       fontWeight: 'bold',
       fontSize: 16,
-      top:10,
+      top:8,
     },
     
   });

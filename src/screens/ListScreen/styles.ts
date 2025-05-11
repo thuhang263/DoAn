@@ -25,21 +25,27 @@ export const styles = StyleSheet.create({
     item:{
       backgroundColor:'#61BFE7',
       marginTop:30,
-      width:280,
-      height:270,
+      width:250,
+      height:230,
       borderRadius:20,
       alignItems:'center',
       alignSelf:'center',
+      shadowColor: '#20B5F5',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      elevation: 3,
     },
     ImageItem:{
-      width:130,
-      height:130,
+      width:80,
+      height:80,
       marginTop:20,
 
     },
     text:{
       color:'#fff',
-      fontSize:20,
+      fontSize:18,
+      top:5
     },
     btn:{
       

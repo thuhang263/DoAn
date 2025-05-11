@@ -92,6 +92,7 @@ const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route 
           keyExtractor={(item) => item.unitName}
           renderItem={({ item }) => (
             <TouchableOpacity
+           
               onPress={() =>
                 navigation.navigate('VocabularyListScreen', {
                   majorName: item.unitName,
@@ -99,8 +100,23 @@ const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route 
                   unitId: item.unitName,
                 })
               }
-              style={{ marginTop: 30, padding: 20, borderBottomWidth: 1 }}
+              style={{ marginTop: 10,
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: '#fff',
+                borderRadius: 12,
+                padding: 15,
+                shadowColor: '#000',
+                shadowOffset: { width: 1, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 4,
+                elevation: 3,
+               }}
             >
+              <Image
+                      source={require('../../assets/images/code.png')} 
+                      style={styles.image}
+                    />
               <Text style={{ fontSize: 18 }}>{item.unitName}</Text>
             </TouchableOpacity>
           )}
@@ -133,6 +149,14 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     resizeMode: 'contain',
+  },
+  image: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: '#ddd',
   },
 });
 

@@ -79,13 +79,13 @@ export const styles = StyleSheet.create({
   },
   verticalText: {
     transform: [{ rotate: '90deg' }],
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     color:'#000'
 
   },
   sectionTitle: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 8,
@@ -107,7 +107,7 @@ export const styles = StyleSheet.create({
 
  
   sectionTitle2:{
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 8,

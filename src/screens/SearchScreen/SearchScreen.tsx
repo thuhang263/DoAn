@@ -20,27 +20,72 @@ const SearchScreen: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigation = useNavigation();
-
+  const [phonetic, setPhonetic] = useState('');
+  const [partOfSpeech, setPartOfSpeech] = useState('');
+  const [meaning, setMeaning] = useState('');
+  
 
   const [saved, setSaved] = useState(false);
 
+  const handleSearch = async () => {
+    if (searchQuery.trim() === '') return;
+  
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchQuery}`);
+      if (!response.ok) {
+        throw new Error('Không tìm thấy từ');
+      }
+      const json = await response.json();
+      const entry = json[0];
+  
+      const wordItem: WordItem = {
+        word: entry.word,
+        meaning: entry.meanings[0]?.definitions[0]?.definition || '',
+        partOfSpeech: entry.meanings[0]?.partOfSpeech || '',
+        example: entry.meanings[0]?.definitions[0]?.example || 'No example available.',
+        phonetic: entry.phonetic || (entry.phonetics[0]?.text || ''),
+        audio: entry.phonetics[0]?.audio || '',
+      };
+      setPhonetic(wordItem.phonetic);
+      setPartOfSpeech(wordItem.partOfSpeech);
+      setMeaning(wordItem.meaning);
+      setSearchResults([wordItem]);
+      setSaved(false);
+      if (!searchHistory.includes(searchQuery)) {
+        setSearchHistory([searchQuery, ...searchHistory]);
+      }
+    } catch (err: any) {
+      console.error('Lỗi khi tìm kiếm:', err);
+      setError(err.message || 'Có lỗi xảy ra');
+      setSearchResults([]);
+    } finally {
+      setLoading(false);
+    }
+  };
   const handleSave = async () => {
     if (!searchQuery.trim()) return;
-
+  
     const newWord = {
       word: searchQuery.trim(),
+      phonetic: phonetic.trim(),
+      partOfSpeech: partOfSpeech.trim(),
+      meaning: meaning.trim(),
       createdAt: firestore.FieldValue.serverTimestamp(),
     };
-
+  
     try {
       await firestore().collection('notebook').add(newWord);
       setSaved(true);
       Keyboard.dismiss();
     } catch (error) {
       console.error('Lỗi khi lưu từ:', error);
-      alert(' Không thể lưu từ!');
+      alert('Không thể lưu từ!');
     }
   };
+  
+  
 
   const playAudio = async (audioUrl: string) => {
     if (!audioUrl) {
@@ -65,43 +110,6 @@ const SearchScreen: React.FC = () => {
     }
   };
   
-
-  const handleSearch = async () => {
-    if (searchQuery.trim() === '') return;
-  
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchQuery}`);
-      if (!response.ok) {
-        throw new Error('Không tìm thấy từ');
-      }
-      const json = await response.json();
-      const entry = json[0];
-  
-      const wordItem: WordItem = {
-        word: entry.word,
-        meaning: entry.meanings[0]?.definitions[0]?.definition || '',
-        partOfSpeech: entry.meanings[0]?.partOfSpeech || '',
-        example: entry.meanings[0]?.definitions[0]?.example || 'No example available.',
-        phonetic: entry.phonetic || (entry.phonetics[0]?.text || ''),
-        audio: entry.phonetics[0]?.audio || '',
-      };
-  
-      setSearchResults([wordItem]);
-  
-      if (!searchHistory.includes(searchQuery)) {
-        setSearchHistory([searchQuery, ...searchHistory]);
-      }
-    } catch (err: any) {
-      console.error('Lỗi khi tìm kiếm:', err);
-      setError(err.message || 'Có lỗi xảy ra');
-      setSearchResults([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const renderHistory = () => (
     <FlatList
       data={searchHistory}
@@ -173,12 +181,11 @@ const SearchScreen: React.FC = () => {
         </TouchableOpacity>
       </View>
       <View>
-        
         <TouchableOpacity
           style={[styles.saveButton, saved && styles.savedButton]}
           onPress={handleSave}
         >
-          <Text style={styles.saveButtonText}>{saved ? '✓ Đã lưu' : '+ Save'}</Text>
+          <Text style={styles.saveButtonText}>{saved ? '✓ Đã lưu' : '+ Lưu'}</Text>
         </TouchableOpacity>
       </View>
       {/*check*/}
@@ -194,10 +201,10 @@ const SearchScreen: React.FC = () => {
             </Text>
           </View>
           <View>
-            <Text style={styles.stepTitle}>Step 1:</Text>
-            <Text style={styles.stepText}>Nhập từ cần tra vào ô dưới</Text>
-            <Text style={styles.stepTitle}>Step 2:</Text>
-            <Text style={styles.stepText}>Nhấn nút <Text style={{ fontWeight: 'bold' }}>+ Save</Text> để lưu từ vào Sổ tay</Text>
+            <Text style={styles.stepTitle}>Bước 1:</Text>
+            <Text style={styles.stepText}>Nhập từ cần tra vào ô tìm kiếm</Text>
+            <Text style={styles.stepTitle}>Bước 2:</Text>
+            <Text style={styles.stepText}>Nhấn nút <Text style={{ fontWeight: 'bold' }}>+ Lưu</Text> để lưu từ vào Sổ tay</Text>
           </View>
         </View>
       )}

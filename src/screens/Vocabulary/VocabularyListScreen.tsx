@@ -25,6 +25,20 @@ export default function VocabularyListScreen({ route }: Props) {
   const [favoriteWords, setFavoriteWords] = useState<string[]>([]);
 
   useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        const snapshot = await firestore().collection('favoriteVoc').get();
+        const favorites = snapshot.docs.map(doc => doc.id); 
+        setFavoriteWords(favorites);
+      } catch (error) {
+        console.error('Lỗi khi lấy dữ liệu yêu thích:', error);
+      }
+    };
+  
+    fetchFavorites();
+  }, []); 
+  
+  useEffect(() => {
     const fetchVocabulary = async () => {
       try {
         const snapshot = await firestore()
@@ -51,14 +65,16 @@ export default function VocabularyListScreen({ route }: Props) {
         .collection('favoriteVoc')
         .doc(item.word) // dùng word làm ID để tránh trùng
         .set(item);
-      Alert.alert('Đã lưu vào Sổ tay');
+      Alert.alert('Đã lưu ');
       setFavoriteWords(prev => [...prev, item.word]);
+      
     } catch (error) {
       console.error('Lỗi khi lưu vào favoriteVoc:', error);
     }
   };
 
   const onPressWord = (word: VocabularyItem) => {
+  
     navigation.navigate('VocabularyItemScreen', { word });
   };
 
@@ -90,6 +106,7 @@ export default function VocabularyListScreen({ route }: Props) {
               borderWidth: 1,
               borderColor: '#ddd',
               position: 'relative',
+              
             }}
           >
             <Text style={{ fontWeight: 'bold' }}>word: {item.word}</Text>
@@ -123,8 +140,8 @@ export default function VocabularyListScreen({ route }: Props) {
               <Image
                 source={
                   favoriteWords.includes(item.word)
-                    ? require('../../assets/images/fill.png') // ảnh trái tim đã chọn
-                    : require('../../assets/images/love.png') // ảnh trái tim rỗng
+                    ? require('../../assets/images/fill.png') 
+                    : require('../../assets/images/love.png') 
                 }
                 style={{ width: 24, height: 24 }}
               />
