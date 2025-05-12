@@ -1,96 +1,143 @@
+import React, { useEffect, useState } from 'react';
+import {
+  View,
+  Image,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  StatusBar,
+  TouchableOpacity,
+  FlatList,
+  ActivityIndicator,
+} from 'react-native';
+import {
+  RouteProp,
+  useNavigation,
+  NavigationProp,
+} from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
+import { RootStackParamList } from '../navigations/type'; 
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import React, { useState } from 'react';
-import { View, Image, StyleSheet, Text, SafeAreaView, StatusBar, TouchableOpacity, FlatList } from 'react-native';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+// Định nghĩa kiểu điều hướng rõ ràng
+type NavigationType = NativeStackNavigationProp<RootStackParamList, 'ImageDetailScreen'>;
 
-type Props = {
-  route: RouteProp<{ params: { image: any } }, 'params'>;
+const imageMap: Record<string, any> = {
+  allAboutMe: require('../assets/images/sport.png'),
+  winningAndLosing: require('../assets/images/sport.png'),
+  letIsShop: require('../assets/images/shop.png'),
+  relax: require('../assets/images/relax.png'),
+  extremeDiets: require('../assets/images/food.png'),
+  myHome: require('../assets/images/house.png'),
+  wildAtHeart: require('../assets/images/animal.png'),
+  weAreOff: require('../assets/images/travel.png'),
 };
-const data = [
-  { id: 1, title: 'All about me', image: require('../assets/images/sport.png') },
-  { id: 2, title: 'Winning and Losing', image: require('../assets/images/sport.png') },
-  { id: 3, title: 'Let is Shop', image: require('../assets/images/shop.png') },
-  { id: 4, title: 'Relax', image: require('../assets/images/relax.png') },
-  { id: 5, title: 'Extreme Dief', image: require('../assets/images/food.png') },
-  { id: 6, title: 'My Home', image: require('../assets/images/house.png') },
-  { id: 7, title: 'Wild at heart', image: require('../assets/images/animal.png') },
-  { id: 8, title: 'We are off', image: require('../assets/images/travel.png') },
-];
 
 const ImageDetailScreen = () => {
-  const navigation = useNavigation();
-    const [selected, setSelected] = useState<number | null>(null);
-    
-    const renderItem = ({ item }: { item: any }) => (
-      <TouchableOpacity
-        style={[styles.item, selected === item.id && styles.selectedItem]}
-        onPress={() => setSelected(item.id)}
-      >
-        <Image source={item.image} style={styles.image} />
-        <Text style={styles.text}>{item.title}</Text>
-      </TouchableOpacity>
-    );
-  
-    return (
-      <SafeAreaView style={{ flex: 1 }}>
-          <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-          <View style={styles.container}>
-          <View>
-              <TouchableOpacity
-                  style={styles.backButton}
-                  onPress={() => {
-                      if (navigation.canGoBack()) {
-                      navigation.goBack();
-                      } else {
-                      navigation.navigate('HomeScreen'); 
-                      }
-                  }}
-              >
-              <Image
-              style={styles.backIcon}
-              source={require('../assets/images/back1.png')}
-              />
-              </TouchableOpacity>
-              <Text style={styles.header}> Bộ chủ đề từ vựng </Text>
-          </View>
-       
-          <View style={styles.itemContent}>
-          <FlatList
-              data={data}
+  const navigation = useNavigation<NavigationType>();
+  const [selected, setSelected] = useState<string | null>(null);
+  const [topics, setTopics] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchVocabTopics = async () => {
+    try {
+      const snapshot = await firestore().collection('vocab').get();
+      const fetched = snapshot.docs.map(doc => ({
+        id: doc.id,
+        title: formatTitle(doc.id),
+        image: imageMap[doc.id] || require('../assets/images/house.png'),
+      }));
+      setTopics(fetched);
+    } catch (error) {
+      console.error('Lỗi khi lấy dữ liệu vocab:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const formatTitle = (id: string) => {
+    return id
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/^./, str => str.toUpperCase())
+      .trim();
+  };
+
+  useEffect(() => {
+    fetchVocabTopics();
+  }, []);
+
+  const renderItem = ({ item }: { item: any }) => (
+    <TouchableOpacity
+      style={[styles.item, selected === item.id && styles.selectedItem]}
+      onPress={() => {
+        setSelected(item.id);
+        navigation.navigate('DetailVocab', {
+          topicId: item.id,
+          topicTitle: item.title,
+        });
+      }}
+    >
+      <Image source={item.image} style={styles.image} />
+      <Text style={styles.text}>{item.title}</Text>
+    </TouchableOpacity>
+  );
+
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <View style={styles.container}>
+        <View>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => {
+              if (navigation.canGoBack()) {
+                navigation.goBack();
+              } else {
+                navigation.navigate('HomeScreen');
+              }
+            }}
+          >
+            <Image style={styles.backIcon} source={require('../assets/images/back1.png')} />
+          </TouchableOpacity>
+          <Text style={styles.header}>Bộ chủ đề từ vựng</Text>
+        </View>
+
+        <View style={styles.itemContent}>
+          {loading ? (
+            <ActivityIndicator size="large" color="#61BFE7" />
+          ) : (
+            <FlatList
+              data={topics}
               renderItem={renderItem}
-              keyExtractor={(item) => item.id.toString()}
+              keyExtractor={(item) => item.id}
               numColumns={2}
               columnWrapperStyle={styles.row}
-          />
-          </View>
-        
+            />
+          )}
+        </View>
       </View>
-      </SafeAreaView>
-      
-    );
-
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
-
     flex: 1,
     backgroundColor: '#fff',
   },
-  itemContent:{
-    marginTop:40,
+  itemContent: {
+    marginTop: 40,
   },
   header: {
-    paddingTop: 35, // Đẩy nội dung xuống 30
+    paddingTop: 35,
     backgroundColor: '#61BFE7',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#fff',
-    height:100,
+    height: 100,
   },
-  
   row: {
     justifyContent: 'space-around',
     paddingHorizontal: 10,
@@ -116,16 +163,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   backButton: {
-    position: 'absolute', // Đặt vị trí tuyệt đối
-    top: 30,             // Khoảng cách từ đỉnh màn hình
-    left: 10,             // Khoảng cách từ trái màn hình
-    zIndex: 10,           // Hiển thị trên các thành phần khác
-    padding: 5,           // Thêm padding để dễ nhấn
+    position: 'absolute',
+    top: 30,
+    left: 10,
+    zIndex: 10,
+    padding: 5,
   },
   backIcon: {
-    width: 30,  // Chiều rộng ảnh
-    height: 30, // Chiều cao ảnh
-    resizeMode: 'contain', // Duy trì tỉ lệ của ảnh
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
 });
 

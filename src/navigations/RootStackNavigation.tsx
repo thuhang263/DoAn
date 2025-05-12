@@ -30,6 +30,8 @@ import SpeakingDetailScreen from '../screens/SpeakingScreen/SpeakingDetailScreen
 import WelcomeScreen from '../screens/WelcomeScreen/WelcomeScreen';
 import FavoriteVocabScreen from '../screens/ListScreen/FavoriteVocabScreen';
 import NotebookScreen from '../screens/ListScreen/NotebookScreen';
+import DetailVocab from '../components/DetailVocab';
+
 
 
 const RootStackNavigation = () => {
@@ -65,7 +67,8 @@ const RootStackNavigation = () => {
       <Stack.Screen name="SpeakingScreen" component={SpeakingScreen} />
       <Stack.Screen name="SpeakingDetailScreen" component={SpeakingDetailScreen} />
       <Stack.Screen name="FavoriteVocabScreen" component={FavoriteVocabScreen} />
-      <Stack.Screen name="NotebookScreen" component={NotebookScreen} />
+    <Stack.Screen name="DetailVocab" component={DetailVocab} />
+  
       
     </Stack.Navigator>
   );

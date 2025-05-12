@@ -63,7 +63,7 @@ export type RootStackParamList = {
     TestReading:undefined;
     GrammarDetail :{grammarId:number}
     GrammarTopicDetailScreen: { topicId: number; topicName: string }; 
-    ImageDetailScreen:undefined;
+    
     TopicVideo:undefined;
     StoriesDetail:{storiesID:number, storiesName: string};
     StoriesScreen:undefined;
@@ -98,6 +98,11 @@ export type RootStackParamList = {
     SpeakingDetailScreen:{ paragraph: string, id: number };
     FavoriteVocabScreen:undefined;
     NotebookScreen:undefined;
+    DetailVocab: {
+      topicId: string;
+      topicTitle: string;
+    };
+    ImageDetailScreen:undefined;
   };
 
 declare global {
