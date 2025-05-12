@@ -114,9 +114,9 @@ const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route 
                }}
             >
               <Image
-                      source={require('../../assets/images/code.png')} 
-                      style={styles.image}
-                    />
+                  source={require('../../assets/images/code.png')} 
+                  style={styles.image}
+              />
               <Text style={{ fontSize: 18 }}>{item.unitName}</Text>
             </TouchableOpacity>
           )}

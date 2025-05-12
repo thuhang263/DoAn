@@ -103,6 +103,8 @@ export type RootStackParamList = {
       topicTitle: string;
     };
     ImageDetailScreen:undefined;
+    TestBasic:undefined;
+    SpecializedEnglishScreen:undefined;
   };
 
 declare global {

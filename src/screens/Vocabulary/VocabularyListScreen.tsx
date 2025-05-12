@@ -58,12 +58,17 @@ export default function VocabularyListScreen({ route }: Props) {
 
     fetchVocabulary();
   }, []);
+  useEffect(() => {
+    Tts.setDefaultLanguage('en-US'); 
+    Tts.setDefaultRate(0.4);         
+    Tts.setDefaultPitch(1.0);      
+  }, []);
 
   const saveToFavorites = async (item: VocabularyItem) => {
     try {
       await firestore()
         .collection('favoriteVoc')
-        .doc(item.word) // dùng word làm ID để tránh trùng
+        .doc(item.word) 
         .set(item);
       Alert.alert('Đã lưu ');
       setFavoriteWords(prev => [...prev, item.word]);

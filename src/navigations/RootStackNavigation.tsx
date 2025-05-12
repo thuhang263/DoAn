@@ -31,6 +31,8 @@ import WelcomeScreen from '../screens/WelcomeScreen/WelcomeScreen';
 import FavoriteVocabScreen from '../screens/ListScreen/FavoriteVocabScreen';
 import NotebookScreen from '../screens/ListScreen/NotebookScreen';
 import DetailVocab from '../components/DetailVocab';
+import TestBasic from '../screens/TestScreen/TestBasic';
+import SpecializedEnglishScreen from '../screens/TestScreen/SpecializedEnglishScreen';
 
 
 
@@ -67,7 +69,9 @@ const RootStackNavigation = () => {
       <Stack.Screen name="SpeakingScreen" component={SpeakingScreen} />
       <Stack.Screen name="SpeakingDetailScreen" component={SpeakingDetailScreen} />
       <Stack.Screen name="FavoriteVocabScreen" component={FavoriteVocabScreen} />
-    <Stack.Screen name="DetailVocab" component={DetailVocab} />
+      <Stack.Screen name="DetailVocab" component={DetailVocab} />
+      <Stack.Screen name="TestBasic" component={TestBasic} />
+      <Stack.Screen name="SpecializedEnglishScreen" component={SpecializedEnglishScreen} />
   
       
     </Stack.Navigator>

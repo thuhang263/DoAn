@@ -30,8 +30,8 @@ export const styles = StyleSheet.create({
     },
 
     text:{
-      color:'#fff',
-      fontSize:23,
+      
+      fontSize:16,
      marginTop:30,
     },
     textContent:{

@@ -17,24 +17,61 @@ const TestScreen = () => {
         </View>
         <Image source={require('../../assets/images/lt.png')} style={styles.avatarImage} />
       </View>
-      
      <View>
-        <Image source={require('../../assets/images/testImage.png')} style={styles.avatarImageItem} />
+        
        
      </View>
       
-     <View style={{right:30}}>
-        <TouchableOpacity style={styles.btnVoc} onPress={() => navigation.navigate('TestVoc')}>
-          <Text style={styles.text}>Từ vựng</Text>
+     <View style={{top:120}}>
+         <TouchableOpacity
+         style={{ marginTop: 10,
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: '#fff',
+                borderRadius: 12,
+                padding: 15,
+                shadowColor: '#000',
+                shadowOffset: { width: 1, height: 3 },
+                shadowOpacity: 0.2,
+                shadowRadius: 4,
+                elevation: 3,
+               }}
+          onPress={() => navigation.navigate('SpecializedEnglishScreen')}>
+          <Image
+              source={require('../../assets/images/code.png')} 
+              style={{width: 60,
+              height: 60,
+              borderRadius: 30,
+              marginRight: 12,
+              borderWidth: 1,
+              borderColor: '#ddd',}}
+          />
+        <Text style={styles.text}>Kiểm tra tiếng Anh chuyên ngành</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btnGra} onPress={() => navigation.navigate('TestGrammar')}>
-          <Text style={styles.text}>Ngữ pháp</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btnListen} onPress={() => navigation.navigate('TestListenning')}>
-          <Text style={styles.text}>Bài nghe</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btnRead} onPress={() => navigation.navigate('TestReading')}>
-          <Text style={styles.text}>Bài đọc</Text>
+         <TouchableOpacity 
+         style={{ marginTop: 50,
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: '#fff',
+                borderRadius: 12,
+                padding: 15,
+                shadowColor: '#000',
+                shadowOffset: { width: 1, height: 3 },
+                shadowOpacity: 0.2,
+                shadowRadius: 4,
+                elevation: 3,
+               }}
+          onPress={() => navigation.navigate('TestBasic')}>
+          <Image
+              source={require('../../assets/images/code.png')} 
+              style={{width: 60,
+              height: 60,
+              borderRadius: 30,
+              marginRight: 12,
+              borderWidth: 1,
+              borderColor: '#ddd',}}
+          />
+          <Text style={styles.text}>Ôn tập cơ bản theo chứng chỉ B1</Text>
         </TouchableOpacity>
      </View>
 
