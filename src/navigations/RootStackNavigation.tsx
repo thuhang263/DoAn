@@ -33,6 +33,7 @@ import NotebookScreen from '../screens/ListScreen/NotebookScreen';
 import DetailVocab from '../components/DetailVocab';
 import TestBasic from '../screens/TestScreen/TestBasic';
 import SpecializedEnglishScreen from '../screens/TestScreen/SpecializedEnglishScreen';
+import ExerciseScreen from '../screens/TestScreen/ExerciseScreen';
 
 
 
@@ -72,6 +73,7 @@ const RootStackNavigation = () => {
       <Stack.Screen name="DetailVocab" component={DetailVocab} />
       <Stack.Screen name="TestBasic" component={TestBasic} />
       <Stack.Screen name="SpecializedEnglishScreen" component={SpecializedEnglishScreen} />
+      <Stack.Screen name="ExerciseScreen" component={ExerciseScreen} />
   
       
     </Stack.Navigator>

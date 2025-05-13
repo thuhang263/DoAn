@@ -105,6 +105,7 @@ export type RootStackParamList = {
     ImageDetailScreen:undefined;
     TestBasic:undefined;
     SpecializedEnglishScreen:undefined;
+    ExerciseScreen: { faculty: string, exerciseType: string };
   };
 
 declare global {

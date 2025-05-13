@@ -1,15 +1,84 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-const faculties = ['Công nghệ thông tin', 'Kinh tế và Quản lý', 'Xây dựng', 'Môi trường', 'Điện - Điện tử'];
-const exerciseTypes = ['Từ vựng', 'Ngữ pháp', 'Đọc hiểu', 'Nghe hiểu'];
+import firestore from '@react-native-firebase/firestore';
 
 const SpecializedEnglishScreen = () => {
   const navigation = useNavigation();
-  const [selectedFaculty, setSelectedFaculty] = useState(faculties[0]);
-  const [dropdownOpen, setDropdownOpen] = useState(false); // dropdown trạng thái
-  const [selectedExercise, setSelectedExercise] = useState(exerciseTypes[0]);
+  const [faculties, setFaculties] = useState<string[]>([]);
+  const [selectedFaculty, setSelectedFaculty] = useState<string | null>(null);
+  const [exerciseTypes, setExerciseTypes] = useState<string[]>([]);
+  const [selectedExercise, setSelectedExercise] = useState<string | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Lấy danh sách khoa
+  useEffect(() => {
+    const fetchFaculties = async () => {
+      try {
+        const snapshot = await firestore()
+          .collection('practice')
+          .doc('specialized')
+          .collection('faculties')
+          .get();
+
+        const facultyList = snapshot.docs.map((doc) => doc.id);
+        setFaculties(facultyList);
+        setSelectedFaculty(facultyList[0] || null);
+      } catch (error) {
+        console.error('Lỗi khi lấy danh sách khoa:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFaculties();
+  }, []);
+
+  // Lấy danh sách loại bài tập khi chọn khoa
+  useEffect(() => {
+    if (!selectedFaculty) return;
+
+    const fetchExerciseTypes = async () => {
+      try {
+        const snapshot = await firestore()
+          .collection('practice')
+          .doc('specialized')
+          .collection('faculties')
+          .doc(selectedFaculty)
+          .collection('exercises')
+          .get();
+
+        const types = snapshot.docs.map((doc) => doc.id);
+        setExerciseTypes(types);
+        setSelectedExercise(types[0] || null);
+      } catch (error) {
+        console.error('Lỗi khi lấy loại bài tập:', error);
+      }
+    };
+
+    fetchExerciseTypes();
+  }, [selectedFaculty]);
+
+  // Hàm xử lý khi bấm nút "Tiếp theo"
+  const handleNext = () => {
+    if (selectedFaculty && selectedExercise) {
+      navigation.navigate('ExerciseScreen', {
+        faculty: selectedFaculty,
+        exerciseType: selectedExercise,
+      });
+    } else {
+      alert('Vui lòng chọn khoa và loại bài tập');
+    }
+  };
+
+  if (loading) {
+    return (
+      <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+        <ActivityIndicator size="large" color="#007bff" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -18,13 +87,12 @@ const SpecializedEnglishScreen = () => {
         <Image style={{ width: 30, height: 30, resizeMode: 'contain' }} source={require('../../assets/images/back1.png')} />
       </TouchableOpacity>
 
-      {/* Tiêu đề */}
       <Text style={styles.title}>Tiếng Anh Chuyên Ngành</Text>
 
       {/* Dropdown chọn khoa */}
       <Text style={styles.sectionTitle}>Chọn khoa</Text>
       <TouchableOpacity style={styles.dropdownHeader} onPress={() => setDropdownOpen(!dropdownOpen)}>
-        <Text style={styles.dropdownText}>{selectedFaculty}</Text>
+        <Text style={styles.dropdownText}>{selectedFaculty || 'Đang tải...'}</Text>
         <Text style={styles.dropdownArrow}>▼</Text>
       </TouchableOpacity>
       {dropdownOpen && (
@@ -44,36 +112,32 @@ const SpecializedEnglishScreen = () => {
         </View>
       )}
 
-      {/* Section chọn loại bài */}
+      {/* Loại bài tập */}
       <Text style={styles.sectionTitle}>Loại bài tập</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
-        {exerciseTypes.map((type) => (
-          <TouchableOpacity
-            key={type}
-            style={[
-              styles.selectionButton,
-              selectedExercise === type && styles.selectedButton,
-            ]}
-            onPress={() => setSelectedExercise(type)}
-          >
-            <Text
-              style={[
-                styles.buttonText,
-                selectedExercise === type && styles.selectedText,
-              ]}
+      {exerciseTypes.length === 0 ? (
+        <Text style={{ color: 'gray', marginBottom: 10 }}>Không có loại bài tập nào.</Text>
+      ) : (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
+          {exerciseTypes.map((type) => (
+            <TouchableOpacity
+              key={type}
+              style={[styles.selectionButton, selectedExercise === type && styles.selectedButton]}
+              onPress={() => setSelectedExercise(type)}
             >
-              {type}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+              <Text
+                style={[styles.buttonText, selectedExercise === type && styles.selectedText]}
+              >
+                {type}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      )}
 
-      {/* Nội dung hiển thị */}
-      <View style={styles.content}>
-        <Text style={{ fontSize: 16 }}>
-          Hiển thị nội dung: {selectedFaculty} - {selectedExercise}
-        </Text>
-      </View>
+      {/* Nút Tiếp theo */}
+      <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
+        <Text style={styles.nextButtonText}>Tiếp theo</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -83,18 +147,19 @@ export default SpecializedEnglishScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
-    paddingHorizontal: 16,
     backgroundColor: '#f5f5f5',
+    paddingHorizontal: 16,
+    padding: 50,
   },
   backButton: {
+    top: 40,
+    left: 20,
     marginBottom: 10,
   },
   title: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-   
   },
   sectionTitle: {
     fontSize: 16,
@@ -131,11 +196,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   selectionButton: {
-    width:100,
-    height:50,
+    
+    width: 100,
+    height: 50,
     backgroundColor: '#e0e0e0',
     borderRadius: 20,
     marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   selectedButton: {
     backgroundColor: '#007bff',
@@ -143,15 +211,26 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 14,
     color: '#333',
-    alignSelf:'center',
-    top:10,
   },
   selectedText: {
     color: '#fff',
     fontWeight: 'bold',
   },
-  content: {
-    marginBottom:400,
-    alignItems: 'center',
+  nextButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    borderRadius: 6,
+    alignSelf: 'center',
+    marginBottom: 20, // Điều chỉnh khoảng cách
+  },
+  nextButtonText: {
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
+function alert(arg0: string) {
+  throw new Error('Function not implemented.');
+}
+

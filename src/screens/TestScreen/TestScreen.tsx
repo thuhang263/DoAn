@@ -7,7 +7,7 @@ import { RootStackParamList } from '../../navigations/type';
 import { useNavigation } from '@react-navigation/native';
 import {  StackNavigationProp } from '@react-navigation/stack';
 const TestScreen = () => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>(); // Sử dụng useNavigation
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>(); 
   return (
     <ScrollView style={styles.container}>
       {/* Header */}
@@ -49,7 +49,7 @@ const TestScreen = () => {
         <Text style={styles.text}>Kiểm tra tiếng Anh chuyên ngành</Text>
         </TouchableOpacity>
          <TouchableOpacity 
-         style={{ marginTop: 50,
+         style={{ marginTop: 30,
                 flexDirection: 'row',
                 alignItems: 'center',
                 backgroundColor: '#fff',
@@ -71,7 +71,7 @@ const TestScreen = () => {
               borderWidth: 1,
               borderColor: '#ddd',}}
           />
-          <Text style={styles.text}>Ôn tập cơ bản theo chứng chỉ B1</Text>
+          <Text style={styles.text}>Ôn tập các kỹ năng cơ bản</Text>
         </TouchableOpacity>
      </View>
 
