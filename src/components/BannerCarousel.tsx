@@ -2,9 +2,6 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useRef } from "react";
 import { View, FlatList, Image, TouchableOpacity, Text, StyleSheet } from "react-native";
 
-
-
-
 const BannerCarousel = () => {
   const flatListRef = useRef<FlatList>(null);
   const navigation = useNavigation();

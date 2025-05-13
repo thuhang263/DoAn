@@ -4,7 +4,9 @@ import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigations/type';
 import firestore from '@react-native-firebase/firestore';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import TrueFalseScreen from '../../components/TrueFalseScreen'; 
+import CollocationScreen from '../../components/CollocationScreen';
+import TranslationScreen from '../../components/TranslationScreen';
 // Định nghĩa kiểu cho route
 type ExerciseScreenRouteProp = RouteProp<RootStackParamList, 'ExerciseScreen'>;
 
@@ -75,8 +77,17 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
         <ActivityIndicator size="large" color="#007bff" />
       </View>
     );
+    
   }
-
+  if (exerciseType === 'True False') {
+    return <TrueFalseScreen faculty={faculty} />;
+  }
+  if (exerciseType === 'collocation') {
+    return <CollocationScreen faculty={faculty} />;
+  }
+  if (exerciseType === 'Translation') {
+    return <TranslationScreen faculty={faculty} />;
+  }
   return (
     <SafeAreaView style={{flex:1}}>
     <View style={styles.container}>
@@ -263,7 +274,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-   top:-10,
+    top:-10,
     left: 30,
     zIndex: 10,
     padding: 5,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, ActivityIndicator, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 
@@ -81,13 +81,28 @@ const SpecializedEnglishScreen = () => {
   }
 
   return (
+    <SafeAreaView style={{flex:1}}>
     <View style={styles.container}>
-      {/* Nút quay lại */}
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <Image style={{ width: 30, height: 30, resizeMode: 'contain' }} source={require('../../assets/images/back1.png')} />
-      </TouchableOpacity>
+      <View style={{width: 360,
+        height:140,
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        padding: 20,
+        backgroundColor: '#61BFE7', 
+        borderBottomLeftRadius: 50, 
+        borderBottomRightRadius: 50 
+      }}>
+        {/* Nút quay lại */}
+        <View>
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+            <Image style={{ width: 30, height: 30 }}
+            source={require('../../assets/images/back1.png')} />
+          </TouchableOpacity>
 
-      <Text style={styles.title}>Tiếng Anh Chuyên Ngành</Text>
+          <Text style={styles.title}>Tiếng Anh Chuyên Ngành</Text>
+        </View>
+      </View>
+     
 
       {/* Dropdown chọn khoa */}
       <Text style={styles.sectionTitle}>Chọn khoa</Text>
@@ -139,6 +154,8 @@ const SpecializedEnglishScreen = () => {
         <Text style={styles.nextButtonText}>Tiếp theo</Text>
       </TouchableOpacity>
     </View>
+    </SafeAreaView>
+    
   );
 };
 
@@ -148,8 +165,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-    paddingHorizontal: 16,
-    padding: 50,
   },
   backButton: {
     top: 40,
@@ -157,15 +172,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
+    left:70,
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center',
+    
   },
   sectionTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 8,
-    marginTop: 10,
+    marginTop: 20,
   },
   dropdownHeader: {
     flexDirection: 'row',
@@ -222,7 +238,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     borderRadius: 6,
     alignSelf: 'center',
-    marginBottom: 20, // Điều chỉnh khoảng cách
+    marginBottom: 300, // Điều chỉnh khoảng cách
   },
   nextButtonText: {
     fontSize: 18,
