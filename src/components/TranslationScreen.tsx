@@ -78,31 +78,38 @@ const TranslationScreen = ({ faculty }: { faculty: string }) => {
               <Text style={styles.questionText}>{index + 1}. {q.question}</Text>
 
               {Object.entries(q.options).map(([key, value]) => {
-                const isSelected = selected === key;
-                const isCorrect = submitted && key === correctAnswer;
-                const isWrongSelected = submitted && isSelected && key !== correctAnswer;
+                  const isSelected = selected === key;
+                  const isCorrect =
+                    submitted && q.options[selected || ''] === q.answer && value === q.answer;
+                  const isWrongSelected =
+                    submitted && isSelected && q.options[key] !== q.answer;
 
-                return (
-                  <TouchableOpacity
-                    key={key}
-                    onPress={() => handleSelect(q.id, key)}
-                    style={[
-                      styles.optionButton,
-                      isSelected && !submitted && { backgroundColor: '#2196F3' },
-                      isCorrect && { backgroundColor: '#4CAF50' },
-                      isWrongSelected && { backgroundColor: '#F44336' }
-                    ]}
-                  >
-                    <Text style={styles.optionText}>{key}. {value}</Text>
-                  </TouchableOpacity>
-                );
-              })}
+                  return (
+                    <TouchableOpacity
+                      key={key}
+                      onPress={() => handleSelect(q.id, key)}
+                      style={[
+                        styles.optionButton,
+                        isCorrect
+                          ? styles.correctOption
+                          : isWrongSelected
+                          ? styles.wrongOption
+                          : isSelected && !submitted
+                          ? styles.selectedOption
+                          : null,
+                      ]}
+                    >
+                      <Text style={styles.optionText}>{value}</Text>
+                    </TouchableOpacity>
+                  );
+                })}
 
-              {submitted && (
-                <Text style={styles.answerText}>
-                  Đáp án đúng: {correctAnswer}. {q.options[correctAnswer]}
-                </Text>
-              )}
+
+                {submitted && (
+                  <Text style={styles.answerText}>
+                    Đáp án đúng: {correctAnswer}. {q.options[correctAnswer]}
+                  </Text>
+                )}
             </View>
           );
         })}
@@ -124,6 +131,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 8,
     elevation: 2,
+  },
+   correctOption: {
+    backgroundColor: '#78C93C', // ✅ Xanh lá nếu đúng
+  },
+  wrongOption: {
+    backgroundColor: 'red', // ❌ Đỏ nếu sai
+  },
+  selectedOption: {
+    backgroundColor: '#2196F3', // 🔵 Xanh dương nếu đang chọn nhưng chưa nộp bài
   },
   questionText: {
     fontSize: 16,
@@ -166,7 +182,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 20,
+    top: 30,
     left: 20,
     zIndex: 10,
   },
