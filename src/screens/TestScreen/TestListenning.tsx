@@ -9,16 +9,14 @@ import {
   ScrollView,
   Alert,
   Image,
+  SafeAreaView,
 } from 'react-native';
 import Tts from 'react-native-tts';
-
-// Load danh sách bài nghe
-const lessons = require('../../questions/listening_lessons.json').listening_lessons;
+import firestore from '@react-native-firebase/firestore';
 
 interface Question {
   question: string;
-  options: string[];
-  answer: string;
+  answer: 'True' | 'False';
 }
 
 interface Lesson {
@@ -30,15 +28,53 @@ interface Lesson {
 }
 
 const TestListenning = () => {
+  const [lessons, setLessons] = useState<Lesson[]>([]);
   const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [showResult, setShowResult] = useState(false);
+
+  // selectedOptions lưu từng câu trả lời người dùng theo index câu hỏi (True hoặc False)
+  const [selectedOptions, setSelectedOptions] = useState<{ [key: number]: 'True' | 'False' | null }>({});
+
+  // showResults lưu trạng thái hiển thị kết quả cho từng câu
+  const [showResults, setShowResults] = useState<{ [key: number]: boolean }>({});
+
   const navigation = useNavigation();
-  // Cài đặt TTS 1 lần
+
   useEffect(() => {
     Tts.setDefaultLanguage('en-US');
-    Tts.setDefaultRate(0.5);
+    Tts.setDefaultRate(0.3);
     Tts.setDefaultPitch(1.2);
+  }, []);
+
+  useEffect(() => {
+    const fetchListeningParts = async () => {
+      try {
+        const snapshot = await firestore()
+          .collection('practice')
+          .doc('basic')
+          .collection('exercises')
+          .doc('Listening')
+          .collection('parts')
+          .get();
+
+        const partsData: Lesson[] = snapshot.docs.map(doc => {
+          const data = doc.data();
+
+          return {
+            id: Number(doc.id.replace('part', '')) || 0,
+            title: data.title,
+            category: data.category,
+            text: data.transcript,
+            questions: data.questions,
+          };
+        });
+
+        setLessons(partsData);
+      } catch (error) {
+        console.error('Lỗi khi lấy dữ liệu listening:', error);
+      }
+    };
+
+    fetchListeningParts();
   }, []);
 
   const handleListen = (text: string) => {
@@ -46,14 +82,21 @@ const TestListenning = () => {
     Tts.speak(text);
   };
 
-  const handleCheckAnswer = (correctAnswer: string) => {
-    if (!selectedOption) {
-      Alert.alert('Thông báo', 'Hãy chọn một đáp án!');
+  const handleSelectOption = (questionIndex: number, option: 'True' | 'False') => {
+    if (showResults[questionIndex]) return; // không cho đổi sau khi check
+    setSelectedOptions(prev => ({ ...prev, [questionIndex]: option }));
+  };
+
+  const handleCheckAnswer = (questionIndex: number) => {
+    if (selectedOptions[questionIndex] === undefined || selectedOptions[questionIndex] === null) {
+      Alert.alert('Thông báo', 'Hãy chọn True hoặc False!');
       return;
     }
 
-    setShowResult(true);
-    const isCorrect = selectedOption === correctAnswer;
+    setShowResults(prev => ({ ...prev, [questionIndex]: true }));
+
+    const correctAnswer = selectedLesson?.questions[questionIndex].answer;
+    const isCorrect = selectedOptions[questionIndex] === correctAnswer;
     Alert.alert('Kết quả', isCorrect ? 'Chính xác!' : `Sai rồi! Đáp án đúng là: ${correctAnswer}`);
   };
 
@@ -62,108 +105,121 @@ const TestListenning = () => {
       style={styles.lessonItem}
       onPress={() => {
         setSelectedLesson(item);
-        setSelectedOption(null);
-        setShowResult(false);
+        setSelectedOptions({});
+        setShowResults({});
       }}
+      
     >
+      <Image
+          source={require('../../assets/images/code.png')} 
+          style={{width: 60,
+          height: 60,
+          borderRadius: 30,
+          marginRight: 12,
+          borderWidth: 1,
+          borderColor: '#ddd',}}
+      />
       <Text style={styles.lessonTitle}>{item.title}</Text>
       <Text style={styles.lessonCategory}>{item.category}</Text>
     </TouchableOpacity>
   );
 
   if (selectedLesson) {
-    const question = selectedLesson.questions[0];
-
     return (
-      <ScrollView style={styles.container}>
+      <SafeAreaView style={{flex:1}}>
         <View style={styles.header}>
-        <TouchableOpacity  onPress={() => setSelectedLesson(null)}>
-            <Image 
-            style={styles.backBtn}
-            source={require('../../assets/images/back1.png')}
-            />
+          <TouchableOpacity onPress={() => setSelectedLesson(null)}>
+            <Image style={styles.backBtn} source={require('../../assets/images/back1.png')} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleCheckAnswer(question.answer)}>
-            <Image 
-            style={styles.checkBtn} 
-            source={require('../../assets/images/check.png')}
-            />
-          </TouchableOpacity>
-
-          
         </View>
+        <ScrollView style={styles.container}>
         
-        <View style={styles.content}>
-        <Text style={styles.title}>{selectedLesson.title}</Text>
-        <Text style={styles.text}>{selectedLesson.text}</Text>
-        <TouchableOpacity  onPress={() => handleListen(selectedLesson.text)}>
-          <Image
-          style={styles.listenBtn}
-          source={require('../../assets/images/loa.png')}
-          />
-        </TouchableOpacity>
 
-        <View style={styles.questionContainer}>
-          <Text style={styles.question}>{question.question}</Text>
-          {question.options.map((option, index) => {
-            const isSelected = selectedOption === option;
-            return (
-              <TouchableOpacity
-                key={index}
-                style={[
-                  styles.option,
-                  isSelected && styles.selectedOption,
-                  showResult && isSelected && option !== question.answer && styles.wrongOption,
-                  showResult && option === question.answer && styles.correctOption,
-                ]}
-                onPress={() => setSelectedOption(option)}
-                disabled={showResult}
-              >
-                <Text style={styles.optionText}>{option}</Text>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+          <View style={styles.content}>
+            <Text style={styles.title}>{selectedLesson.title}</Text>
+            <Text style={styles.text}>{selectedLesson.text}</Text>
 
-        
-        </View>
-       
+            <TouchableOpacity onPress={() => handleListen(selectedLesson.text)}>
+              <Image style={styles.listenBtn} source={require('../../assets/images/loa.png')} />
+            </TouchableOpacity>
 
-        
-      </ScrollView>
+            {selectedLesson.questions.map((question, index) => {
+              const selectedOption = selectedOptions[index];
+              const showResult = showResults[index];
+              const correctAnswer = question.answer;
+
+              return (
+                <View key={index} style={styles.questionContainer}>
+  <Text style={styles.question}>{`${index + 1}. ${question.question}`}</Text>
+
+                  {(['True', 'False'] as ('True' | 'False')[]).map((option, idx) => {
+                    const isSelected = selectedOption === option;
+                    const isCorrect = option === correctAnswer;
+
+                    return (
+                      <TouchableOpacity
+                        key={idx}
+                        style={[
+                          styles.option,
+                          isSelected && showResult && {
+                            backgroundColor: isCorrect ? '#4CAF50' : '#F44336',
+                          },
+                          isSelected && !showResult && {
+                            backgroundColor: '#2196F3',
+                          },
+                          !isSelected && showResult && isCorrect && {
+                            backgroundColor: '#4CAF50',
+                          },
+                        ]}
+                        onPress={() => handleSelectOption(index, option)}
+                        disabled={showResult}
+                      >
+                        <Text style={styles.optionText}>{option}</Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+
+                  <TouchableOpacity
+                    style={[styles.checkAnswerBtn, showResult && styles.disabledBtn]}
+                    onPress={() => handleCheckAnswer(index)}
+                    disabled={showResult}
+                  >
+                    <Text style={{ color: '#fff' }}>Kiểm tra</Text>
+                  </TouchableOpacity>
+                </View>
+
+              );
+            })}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+      
     );
   }
 
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => {
+            if (navigation.canGoBack()) {
+              navigation.goBack();
+            } else {
+              navigation.navigate('HomeScreen');
+            }
+          }}
+        >
+          <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
+        </TouchableOpacity>
+        <Text style={{color:'#fff', fontSize:18, left:110, top:10}}>Listening Now!</Text>
+      </View>
 
-       
-        <View>
-            <TouchableOpacity
-              style={styles.backButton}
-              onPress={() => {
-                if (navigation.canGoBack()) {
-                    navigation.goBack();
-                } else {
-                    navigation.navigate('HomeScreen'); 
-                }
-                }}
-              >
-              <Image
-                style={styles.backIcon}
-                source={require('../../assets/images/back1.png')}
-              />
-                </TouchableOpacity>
-                <Text style={styles.header}>Listening Now!</Text>
-        </View>
- 
-     
-      
       <FlatList
         data={lessons}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderLesson}
-        contentContainerStyle={{ paddingBottom: 20,padding:20, }}
+        contentContainerStyle={{  padding: 20 }}
       />
     </View>
   );
@@ -180,14 +236,20 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   lessonItem: {
-    backgroundColor: '#f1f1f1',
-    padding: 14,
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
     borderRadius: 12,
-    marginBottom: 10,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
   },
   lessonTitle: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 16,
   },
   lessonCategory: {
     color: 'gray',
@@ -198,17 +260,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   listenBtn: {
-    width:50,
-    height:50,
-    alignSelf:'center'
-  },
-  listenText: {
-   
-    color: '#fff',
-    textAlign: 'center',
+    width: 50,
+    height: 50,
+    alignSelf: 'center',
+    marginBottom: 20,
   },
   questionContainer: {
     marginBottom: 20,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#ccc',
+    paddingBottom: 10,
   },
   question: {
     fontSize: 16,
@@ -221,64 +282,50 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 8,
   },
-  selectedOption: {
-    backgroundColor: '#d0e8ff',
-  },
-  correctOption: {
-    backgroundColor: '#90ee90',
-  },
-  wrongOption: {
-    backgroundColor: '#ffcccb',
-  },
   optionText: {
     fontSize: 16,
   },
-  checkBtn: {
-   left:250,
-   bottom:10,
+  checkAnswerBtn: {
+    backgroundColor: '#62D1F9',
+    padding: 10,
+    borderRadius: 8,
+    alignSelf: 'flex-start',
   },
-  checkText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontWeight: '600',
+  disabledBtn: {
+    backgroundColor: '#a0cfee',
   },
   backBtn: {
-   width:40,
-   height:40,
-  },
-  backText: {
-    color: '#fff',
-    textAlign: 'center',
+    width: 40,
+    height: 40,
   },
   header: {
-    flexDirection:'row',
-    paddingTop: 35, 
-    width:410,
+    flexDirection: 'row',
+    paddingTop: 35,
+    width: 410,
     backgroundColor: '#62D1F9',
     padding: 15,
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#fff',
-    height:100,
+    height: 100,
   },
   backButton: {
     position: 'absolute',
-    top: 30,          
-    left: 10,             
-    zIndex: 10,          
-    padding: 5,          
+    top: 30,
+    left: 10,
+    zIndex: 10,
+    padding: 5,
   },
   backIcon: {
-    width: 30, 
-    height: 30, 
+    width: 30,
+    height: 30,
     resizeMode: 'contain',
   },
-  content:{
-    marginTop:40,
-    padding:20,
+  content: {
+    padding: 20,
   },
-  
+
 });
 
 export default TestListenning;

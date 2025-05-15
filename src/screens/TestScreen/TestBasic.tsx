@@ -1,60 +1,104 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-
-const faculties = ['Công nghệ thông tin', 'Kinh tế và Quản lý', 'Xây dựng', 'Môi trường', 'Điện - Điện tử'];
-const exerciseTypes = ['Từ vựng', 'Ngữ pháp', 'Đọc hiểu', 'Nghe hiểu'];
+import firestore from '@react-native-firebase/firestore';
 
 const SpecializedEnglishScreen = () => {
   const navigation = useNavigation();
-  const [selectedFaculty, setSelectedFaculty] = useState<string | null>(faculties[0]);
-  const [selectedExercise, setSelectedExercise] = useState<string | null>(exerciseTypes[0]);
+  
+  // State để lưu dữ liệu bài tập đọc
+  const [readingExercises, setReadingExercises] = useState<any[]>([]);
+ 
+
+  useEffect(() => {
+  const fetchExercises = async () => {
+    try {
+      const exercisesSnapshot = await firestore()
+        .collection('practice')
+        .doc('basic')
+        .collection('exercises')
+        .get(); 
+      if (!exercisesSnapshot.empty) {
+        const exercises = exercisesSnapshot.docs.map(doc => ({
+          id: doc.id, 
+          ...doc.data(), 
+        }));
+        setReadingExercises(exercises);
+        console.log('Fetched exercises:', exercises); 
+      } else {
+        console.log('No exercises found');
+      }
+    } catch (error) {
+      console.error('Error fetching exercises: ', error);
+    }
+  };
+
+  fetchExercises(); 
+}, []); 
+  const navigateToExerciseScreen = (exerciseId: string) => {
+      switch (exerciseId.toLowerCase()) {
+        case 'reading':
+          navigation.navigate('TestReading');
+          break;
+        case 'listening':
+          navigation.navigate('TestListenning');
+          break;
+        case 'writing':
+          navigation.navigate('TestReading');
+          break;
+        default:
+          console.warn('Không có màn hình tương ứng với:', exerciseId);
+      }
+    };
+
 
   return (
+    <SafeAreaView style={{flex:1}}>
     <View style={styles.container}>
-      {/* Nút quay lại */}
-        <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigation.goBack()}
-        >
-            <Image style={{width: 30, height: 30, resizeMode: 'contain'}} source={require('../../assets/images/back1.png')} />
-        </TouchableOpacity>
-
-      {/* Tiêu đề */}
-      <Text style={styles.title}>Ôn tập cơ bản</Text>      
-
-      {/* Section chọn loại bài */}
-      <Text style={styles.sectionTitle}>Loại bài tập</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
-        {exerciseTypes.map((type) => (
-          <TouchableOpacity
-            key={type}
-            style={[
-              styles.selectionButton,
-              selectedExercise === type && styles.selectedButton
-            ]}
-            onPress={() => setSelectedExercise(type)}
-          >
-            <Text
-              style={[
-                styles.buttonText,
-                selectedExercise === type && styles.selectedText
-              ]}
-            >
-              {type}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-
-      {/* Bạn có thể thêm nội dung bài tập tương ứng bên dưới */}
-      <View style={styles.content}>
-        <Text style={{ fontSize: 16 }}>
-          Hiển thị nội dung: {selectedFaculty} - {selectedExercise}
-        </Text>
+      <View style={{
+        width: 360,
+        height:140,
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        padding: 20,
+        backgroundColor: '#61BFE7', 
+        borderBottomLeftRadius: 50, 
+        borderBottomRightRadius: 50 
+      }}>
+          <View>
+              <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                <Image style={{ width: 30, height: 30,top:30, left:20, }}
+                  source={require('../../assets/images/back1.png')} />
+              </TouchableOpacity>
+                <Text style={styles.title}>Ôn tập cơ bản</Text>
+           </View>
       </View>
+     
+      <Text style={styles.sectionTitle}>Các bài tập</Text>
+      <View style={styles.content}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {readingExercises.length > 0 ? (
+            readingExercises.map((exercise) => (
+              <TouchableOpacity
+                key={exercise.id}
+                style={styles.selectionButton}
+                onPress={() => navigateToExerciseScreen(exercise.id)}
+              >
+                <Text style={styles.buttonText}>
+                  {exercise.id.charAt(0).toUpperCase() + exercise.id.slice(1)}
+                </Text>
+              </TouchableOpacity>
+            ))
+          ) : (
+            <Text>Chưa có bài tập nào</Text>
+          )}
+        </ScrollView>
     </View>
+
+
+    </View>
+    </SafeAreaView>
+    
   );
 };
 
@@ -63,8 +107,6 @@ export default SpecializedEnglishScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
-    paddingHorizontal: 16,
     backgroundColor: '#f5f5f5',
   },
   backButton: {
@@ -72,9 +114,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    
+    left:90,
   },
   sectionTitle: {
     fontSize: 16,
@@ -86,8 +126,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   selectionButton: {
-    width:100,
-    height:50,
+    width: 100,
+    height: 50,
     backgroundColor: '#e0e0e0',
     borderRadius: 20,
     marginRight: 10,
@@ -98,15 +138,26 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 14,
     color: '#333',
-    alignSelf  :'center',
-    top:10,
+    alignSelf: 'center',
+    top: 10,
   },
   selectedText: {
     color: '#fff',
     fontWeight: 'bold',
   },
   content: {
-    marginBottom:500,
+    top:30,
     alignItems: 'center',
   },
+  exerciseItem: {
+    marginBottom: 15,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+  },
+  
 });

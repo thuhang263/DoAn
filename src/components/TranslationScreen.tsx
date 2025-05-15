@@ -4,18 +4,18 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 
 interface Question {
-  id: string;
-  question: string;
-  options: { [key: string]: string }; // A, B, C, D
-  answer: string; // "A", "B", "C", "D"
+    id: string;
+    question: string;
+    options: { [key: string]: string }; 
+    answer: string; 
 }
 
 const TranslationScreen = ({ faculty }: { faculty: string }) => {
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string | null }>({});
-  const [submitted, setSubmitted] = useState(false);
-  const [title, setTitle] = useState<string>('');
-  const navigation = useNavigation();
+    const [questions, setQuestions] = useState<Question[]>([]);
+    const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string | null }>({});
+    const [submitted, setSubmitted] = useState(false);
+    const [title, setTitle] = useState<string>('');
+    const navigation = useNavigation();
 
   const fetchQuestions = async () => {
     try {
@@ -133,13 +133,13 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
    correctOption: {
-    backgroundColor: '#78C93C', // ✅ Xanh lá nếu đúng
+    backgroundColor: '#78C93C', 
   },
   wrongOption: {
-    backgroundColor: 'red', // ❌ Đỏ nếu sai
+    backgroundColor: 'red', 
   },
   selectedOption: {
-    backgroundColor: '#2196F3', // 🔵 Xanh dương nếu đang chọn nhưng chưa nộp bài
+    backgroundColor: '#2196F3', 
   },
   questionText: {
     fontSize: 16,

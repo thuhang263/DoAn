@@ -128,7 +128,7 @@ const SpecializedEnglishScreen = () => {
       )}
 
       {/* Loại bài tập */}
-      <Text style={styles.sectionTitle}>Loại bài tập</Text>
+      <Text style={styles.sectionTitle}>Chọn bài tập</Text>
       {exerciseTypes.length === 0 ? (
         <Text style={{ color: 'gray', marginBottom: 10 }}>Không có loại bài tập nào.</Text>
       ) : (

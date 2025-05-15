@@ -11,13 +11,8 @@ export enum Screens {
     TestScreen ='TestScreen',
     RootBottomNavigation = 'RootBottomNavigation',
     VoccalScreen = "VoccalScreen",
-    EndTest = "EndTest",
-    TestItem="TestItem",
-    TestVoc ="TestVoc",
-    TestGrammar ="TestGrammar",
     TestListenning="TestListenning",
     TestReading ="TestReading",
-    VocabularyDetailScreen="VocabularyDetailScreen",
     GrammarTopicDetailScreen="GrammarTopicDetailScreen",
     ImageDetailScreen ="ImageDetailScreen",
     TopicVideo="TopicVideo",
@@ -30,15 +25,10 @@ export type RootBottomParamList = {
     [Screens.HomeScreen]: undefined;
     [Screens.DetailScreen]: undefined;
     [Screens.SearchScreen]: undefined;
- 
     [Screens.ListScreen]: undefined;
     [Screens.TestScreen]: undefined;
-    [Screens.EndTest]: undefined;
-    [Screens.TestVoc]: undefined;
-    [Screens.TestGrammar]: undefined;
     [Screens.TestListenning]: undefined;
     [Screens.TestReading]:undefined;
-    [Screens.VocabularyDetailScreen]: { topicId: number };
     [Screens.GrammarTopicDetailScreen]:{ topicId:number,topicTitle:string};
     [Screens.StoriesDetail]: { storiesID:number };
 };
@@ -53,17 +43,10 @@ export type RootStackParamList = {
     TestScreen:undefined;
     VoccalScreen:undefined;
     GrammaScreen:undefined;
-    TestItem:undefined;
-    EndTest: { correctCount: number }; 
     VideoScreen: { videoId: string };
-    TestVoc:undefined;
-    TestGrammar:undefined;
     TestListenning:undefined;
-    VocabularyDetailScreen: { topicId: number };
     TestReading:undefined;
-    GrammarDetail :{grammarId:number}
     GrammarTopicDetailScreen: { topicId: number; topicName: string }; 
-    
     TopicVideo:undefined;
     StoriesDetail:{storiesID:number, storiesName: string};
     StoriesScreen:undefined;

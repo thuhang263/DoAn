@@ -46,7 +46,7 @@ const TestScreen = () => {
               borderWidth: 1,
               borderColor: '#ddd',}}
           />
-        <Text style={styles.text}>Kiểm tra tiếng Anh chuyên ngành</Text>
+        <Text style={styles.text}>Ôn tập tiếng anh chuyên ngành</Text>
         </TouchableOpacity>
          <TouchableOpacity 
          style={{ marginTop: 30,
@@ -71,7 +71,7 @@ const TestScreen = () => {
               borderWidth: 1,
               borderColor: '#ddd',}}
           />
-          <Text style={styles.text}>Ôn tập các kỹ năng cơ bản</Text>
+          <Text style={styles.text}>Ôn tập cơ bản</Text>
         </TouchableOpacity>
      </View>
 

@@ -5,15 +5,10 @@ import RootBottomNavigation from './RootBottomNavigation';
 import DetailScreen from '../screens/DetailScreen/DetailScreen';
 import VoccalScreen from '../screens/HomeScreen/VoccalScreen';
 import GrammaScreen from '../screens/HomeScreen/GrammaScreen';
-import EndTest from '../screens/TestScreen/EndTest';
-import TestItem from '../screens/TestScreen/TestItem';
 import VideoScreen from '../screens/HomeScreen/VideoScreen';
-import TestVoc from '../screens/TestScreen/TestVoc';
-import TestGrammar from '../screens/TestScreen/TestGrammar';
 import TestListening from '../screens/TestScreen/TestListenning';
-import VocabularyDetailScreen from '../screens/TestScreen/VocabularyDetailScreen';
+
 import TestReading from '../screens/TestScreen/TestReading';
-import GrammarDetail from '../screens/TestScreen/GrammarDetail';
 import GrammarTopicDetailScreen from '../components/GrammarTopicDetailScreen';
 import ImageDetailScreen from '../components/Vocab';
 import TopicVideo from '../components/TopicVideo';
@@ -44,18 +39,11 @@ const RootStackNavigation = () => {
       <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name={Screens.RootBottomNavigation} component={RootBottomNavigation}/>
       <Stack.Screen name={Screens.DetailScreen} component={DetailScreen} />
-  
       <Stack.Screen name="VoccalScreen" component={VoccalScreen} />
-      <Stack.Screen name="GrammaScreen" component={GrammaScreen} />
-      <Stack.Screen name={Screens.TestItem} component={TestItem} />
-      <Stack.Screen name={Screens.TestVoc} component={TestVoc} />
-      <Stack.Screen name={Screens.TestGrammar} component={TestGrammar} />
+      <Stack.Screen name="GrammaScreen" component={GrammaScreen} /> 
       <Stack.Screen name={Screens.TestListenning} component={TestListening} />
       <Stack.Screen name={Screens.TestReading} component={TestReading} />
-      <Stack.Screen name={Screens.EndTest} component={EndTest} />
       <Stack.Screen name="VideoScreen" component={VideoScreen} />
-      <Stack.Screen name="VocabularyDetailScreen" component={VocabularyDetailScreen} />
-      <Stack.Screen name="GrammarDetail" component={GrammarDetail} />
       <Stack.Screen name="GrammarTopicDetailScreen" component={GrammarTopicDetailScreen} />
       <Stack.Screen name="ImageDetailScreen" component={ImageDetailScreen} />
       <Stack.Screen name="TopicVideo" component={TopicVideo} />
