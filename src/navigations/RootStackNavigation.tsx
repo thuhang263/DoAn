@@ -19,7 +19,6 @@ import MajorListScreen from '../screens/Vocabulary/MajorListScreen';
 import StoryContentScreen from '../screens/ReadingScreen/StoryContentScreen';
 import ListeningScreen from '../screens/ListeningScreen/ListeningScreen';
 import TestScreen from '../screens/TestScreen/TestScreen';
-import WordDetailScreen from '../screens/SearchScreen/WordDetailScreen';
 import SpeakingScreen from '../screens/SpeakingScreen/SpeakingScreen';
 import SpeakingDetailScreen from '../screens/SpeakingScreen/SpeakingDetailScreen';
 import WelcomeScreen from '../screens/WelcomeScreen/WelcomeScreen';
@@ -29,6 +28,7 @@ import DetailVocab from '../components/DetailVocab';
 import TestBasic from '../screens/TestScreen/TestBasic';
 import SpecializedEnglishScreen from '../screens/TestScreen/SpecializedEnglishScreen';
 import ExerciseScreen from '../screens/TestScreen/ExerciseScreen';
+import TestWriting from '../screens/TestScreen/TestWritting';
 
 
 
@@ -54,7 +54,6 @@ const RootStackNavigation = () => {
       <Stack.Screen name="StoryContentScreen" component={StoryContentScreen} />
       <Stack.Screen name="ListeningScreen" component={ListeningScreen} />
       <Stack.Screen name="TestScreen" component={TestScreen} />
-      <Stack.Screen name="WordDetailScreen" component={WordDetailScreen} />
       <Stack.Screen name="SpeakingScreen" component={SpeakingScreen} />
       <Stack.Screen name="SpeakingDetailScreen" component={SpeakingDetailScreen} />
       <Stack.Screen name="FavoriteVocabScreen" component={FavoriteVocabScreen} />
@@ -62,8 +61,8 @@ const RootStackNavigation = () => {
       <Stack.Screen name="TestBasic" component={TestBasic} />
       <Stack.Screen name="SpecializedEnglishScreen" component={SpecializedEnglishScreen} />
       <Stack.Screen name="ExerciseScreen" component={ExerciseScreen} />
-  
-      
+      <Stack.Screen name="NotebookScreen" component={NotebookScreen} />
+      <Stack.Screen name="TestWriting" component={TestWriting} />
     </Stack.Navigator>
   );
 };

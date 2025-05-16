@@ -132,7 +132,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
                                 style={[
                                 styles.input,
                                 submitted && {
-                                    backgroundColor: isCorrect ? '#C8E6C9' : '#FFCDD2',
+                                    backgroundColor: isCorrect ? '#4CAF50' : '#F44336',
                                 },
                                 ]}
                                 onChangeText={(text) => handleInputChange(q.id, text)}

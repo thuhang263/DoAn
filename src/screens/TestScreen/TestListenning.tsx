@@ -22,7 +22,6 @@ interface Question {
 interface Lesson {
   id: number;
   title: string;
-  category: string;
   text: string;
   questions: Question[];
 }
@@ -30,13 +29,8 @@ interface Lesson {
 const TestListenning = () => {
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
-
-  // selectedOptions lưu từng câu trả lời người dùng theo index câu hỏi (True hoặc False)
   const [selectedOptions, setSelectedOptions] = useState<{ [key: number]: 'True' | 'False' | null }>({});
-
-  // showResults lưu trạng thái hiển thị kết quả cho từng câu
   const [showResults, setShowResults] = useState<{ [key: number]: boolean }>({});
-
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -83,7 +77,7 @@ const TestListenning = () => {
   };
 
   const handleSelectOption = (questionIndex: number, option: 'True' | 'False') => {
-    if (showResults[questionIndex]) return; // không cho đổi sau khi check
+    if (showResults[questionIndex]) return;
     setSelectedOptions(prev => ({ ...prev, [questionIndex]: option }));
   };
 
@@ -111,16 +105,15 @@ const TestListenning = () => {
       
     >
       <Image
-          source={require('../../assets/images/code.png')} 
+          source={require('../../assets/images/nghe2.png')} 
           style={{width: 60,
           height: 60,
-          borderRadius: 30,
+          borderRadius: 10,
           marginRight: 12,
           borderWidth: 1,
           borderColor: '#ddd',}}
       />
       <Text style={styles.lessonTitle}>{item.title}</Text>
-      <Text style={styles.lessonCategory}>{item.category}</Text>
     </TouchableOpacity>
   );
 
@@ -133,12 +126,9 @@ const TestListenning = () => {
           </TouchableOpacity>
         </View>
         <ScrollView style={styles.container}>
-        
-
           <View style={styles.content}>
             <Text style={styles.title}>{selectedLesson.title}</Text>
             <Text style={styles.text}>{selectedLesson.text}</Text>
-
             <TouchableOpacity onPress={() => handleListen(selectedLesson.text)}>
               <Image style={styles.listenBtn} source={require('../../assets/images/loa.png')} />
             </TouchableOpacity>
@@ -150,7 +140,7 @@ const TestListenning = () => {
 
               return (
                 <View key={index} style={styles.questionContainer}>
-  <Text style={styles.question}>{`${index + 1}. ${question.question}`}</Text>
+                  <Text style={styles.question}>{`${index + 1}. ${question.question}`}</Text>
 
                   {(['True', 'False'] as ('True' | 'False')[]).map((option, idx) => {
                     const isSelected = selectedOption === option;

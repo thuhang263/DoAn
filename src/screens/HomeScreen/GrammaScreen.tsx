@@ -30,7 +30,18 @@ const GrammaScreen = () => {
 
   const renderItem = ({ item }: { item: any }) => (
     <TouchableOpacity
-      style={[styles.item, selected === item.id && styles.selectedItem]}
+      style={{ marginTop: 10,
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: '#fff',
+                borderRadius: 12,
+                padding: 15,
+                shadowColor: '#000',
+                shadowOffset: { width: 1, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 4,
+                elevation: 3,
+               }}
       onPress={() => {
         setSelected(item.id);
         navigation.navigate('GrammarTopicDetailScreen', {
@@ -38,7 +49,12 @@ const GrammaScreen = () => {
           topicName: item.title,
         });
       }}
+      
     >
+      <Image
+          source={require('../../assets/images/code.png')} 
+          style={styles.image}
+      />
       <Text style={styles.text}>{item.title}</Text>
     </TouchableOpacity>
   );
@@ -104,7 +120,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     height:100,
   },
-  
+   image: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
   item: {
     margin:6,
     padding:12,

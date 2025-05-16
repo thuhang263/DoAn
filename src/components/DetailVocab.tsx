@@ -20,15 +20,14 @@ interface DetailVocab {
 }
 
 export default function DetailVocab({ route }: Props) {
-  const { topicId, topicTitle } = route.params; // Lấy topicId và topicTitle
+  const { topicId, topicTitle } = route.params; 
   const navigation = useNavigation();
   const [vocabulary, setVocabulary] = useState<DetailVocab[]>([]);
-  const [favoriteWords, setFavoriteWords] = useState<string[]>([]);
+
 
   useEffect(() => {
     const fetchVocabulary = async () => {
       try {
-        // Sử dụng topicId để lấy dữ liệu từ Firestore
         const snapshot = await firestore()
           .collection('vocab')
           .doc(topicId)
@@ -45,18 +44,6 @@ export default function DetailVocab({ route }: Props) {
     fetchVocabulary();
   }, [topicId]);
 
-  const saveToFavorites = async (item: DetailVocab) => {
-    try {
-      await firestore()
-        .collection('favoriteVoc')
-        .doc(item.word)
-        .set(item);
-      Alert.alert('Đã lưu từ vào yêu thích');
-      setFavoriteWords(prev => [...prev, item.word]);
-    } catch (error) {
-      console.error('Lỗi khi lưu vào favoriteVoc:', error);
-    }
-  };
 
   return (
     <View style={{ flex: 1, padding: 10, marginTop: 40 }}>
@@ -120,24 +107,6 @@ export default function DetailVocab({ route }: Props) {
             <Text numberOfLines={2} style={{ fontWeight: 'bold', marginTop: 5 }}>
               Definition: {String(item.definition)}
             </Text>
-
-            {/* Nút trái tim lưu từ */}
-            <TouchableOpacity
-              onPress={(event) => {
-                event.stopPropagation();
-                saveToFavorites(item);
-              }}
-              style={{ position: 'absolute', right: 10, top: 10 }}
-            >
-              <Image
-                source={
-                  favoriteWords.includes(item.word)
-                    ? require('../assets/images/fill.png')
-                    : require('../assets/images/love.png')
-                }
-                style={{ width: 24, height: 24 }}
-              />
-            </TouchableOpacity>
           </TouchableOpacity>
         )}
       />

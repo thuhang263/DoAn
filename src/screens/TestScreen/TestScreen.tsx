@@ -38,7 +38,7 @@ const TestScreen = () => {
                }}
           onPress={() => navigation.navigate('SpecializedEnglishScreen')}>
           <Image
-              source={require('../../assets/images/code.png')} 
+              source={require('../../assets/images/test2.png')} 
               style={{width: 60,
               height: 60,
               borderRadius: 30,
@@ -63,7 +63,7 @@ const TestScreen = () => {
                }}
           onPress={() => navigation.navigate('TestBasic')}>
           <Image
-              source={require('../../assets/images/code.png')} 
+              source={require('../../assets/images/test2.png')} 
               style={{width: 60,
               height: 60,
               borderRadius: 30,

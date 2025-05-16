@@ -11,9 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {
-  RouteProp,
   useNavigation,
-  NavigationProp,
 } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import { RootStackParamList } from '../navigations/type'; 

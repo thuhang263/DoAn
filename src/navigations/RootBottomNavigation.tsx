@@ -40,8 +40,8 @@ const RootBottomNavigation = () => {
             <Image
               source={imageSource}
               style={{
-                width: isTablet ? 24 * 1.5 : 24,
-                height: isTablet ? 24 * 1.5 : 24,
+                width: 24,
+                height: 24,
                 tintColor: focused ? '#61BFE7' : '#61BFE7',
                 opacity: focused ? 1 : 0.16,
               }}

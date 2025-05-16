@@ -15,9 +15,11 @@ import { useNavigation } from '@react-navigation/native';
 const API_KEY = 'AIzaSyBYx0VL_v8eB44_29m4PeeHgpNO797RgkA'; // Thay bằng API Key thật
 
 const majors = [
-  { id: 1, title: 'Công Nghệ Thông Tin', query: 'English for IT' },
-  { id: 2, title: 'Kinh Tế và Quản Lý', query: 'English for Economics' },
-  { id: 3, title: 'Cơ Khí', query: 'English for Mechanical Engineering' },
+  { id: 1, title: 'Khoa Công Nghệ Thông Tin', query: 'English for information technology' },
+  { id: 2, title: 'Khoa Kinh Tế và Quản Lý', query: 'English for Economics' },
+  { id: 3, title: 'Khoa Cơ Khí', query: 'English for Mechanical Engineering' },
+  { id: 4, title: 'Khoa Kế toán và Kinh doanh', query: 'English for Accounting and business' },
+
 ];
 
 const TopicVideo = () => {

@@ -134,17 +134,17 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
                               key={idx}
                               style={[
                                 styles.optionButton,
-                                { width: '48%', marginVertical: 5 }, // Đảm bảo mỗi nút chiếm gần 50% chiều rộng
+                                { width: '48%', marginVertical: 5 }, 
                                 selectedOption === option
                                   ? isChecked
                                     ? isCorrect
                                       ? styles.correctOption
                                       : styles.wrongOption
-                                    : styles.selectedOption // màu khi chỉ chọn nhưng chưa kiểm tra
+                                    : styles.selectedOption 
                                   : null,
                               ]}
                               onPress={() => handleSelectAnswer(key, option)}
-                              disabled={isChecked} // Không cho chọn lại sau khi kiểm tra
+                              disabled={isChecked} 
                             >
                               <Text style={styles.optionText}>{option}</Text>
                             </TouchableOpacity>
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   
   },
   selectedOption: {
-  backgroundColor: '#6BDBFB', 
+  backgroundColor: '#2196F3', 
 },
   unitList: {
     flex: 1,
@@ -233,13 +233,13 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between', // Giúp căn đều hai cột
+    justifyContent: 'space-between', 
   },
   optionButton: {
     width: '48%',
   paddingVertical: 10,
   marginVertical: 5,
-  marginHorizontal: '1%', // đảm bảo có khoảng cách giữa các cột
+  marginHorizontal: '1%', 
   backgroundColor: '#ddd',
   borderRadius: 6,
   alignItems: 'center',
@@ -249,10 +249,10 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   correctOption: {
-    backgroundColor: '#28a745', // Màu xanh khi đúng
+    backgroundColor: '#4CAF50', 
   },
   wrongOption: {
-    backgroundColor: '#dc3545', // Màu đỏ khi sai
+    backgroundColor: '#F44336', 
   },
   checkButton: {
     marginTop: 10,

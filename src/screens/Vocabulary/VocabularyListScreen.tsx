@@ -64,24 +64,6 @@ export default function VocabularyListScreen({ route }: Props) {
     Tts.setDefaultPitch(1.0);      
   }, []);
 
-  const saveToFavorites = async (item: VocabularyItem) => {
-    try {
-      await firestore()
-        .collection('favoriteVoc')
-        .doc(item.word) 
-        .set(item);
-      Alert.alert('Đã lưu ');
-      setFavoriteWords(prev => [...prev, item.word]);
-      
-    } catch (error) {
-      console.error('Lỗi khi lưu vào favoriteVoc:', error);
-    }
-  };
-
-  const onPressWord = (word: VocabularyItem) => {
-  
-    navigation.navigate('VocabularyItemScreen', { word });
-  };
 
   return (
     <View style={{ flex: 1, padding: 10, marginTop: 40 }}>
@@ -102,7 +84,6 @@ export default function VocabularyListScreen({ route }: Props) {
         keyExtractor={(item) => item.word}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => onPressWord(item)}
             style={{
               padding: 15,
               backgroundColor: '#fff',
@@ -134,23 +115,7 @@ export default function VocabularyListScreen({ route }: Props) {
               definition: {item.definition}
             </Text>
 
-            {/* Nút trái tim lưu từ */}
-            <TouchableOpacity
-              onPress={(event) => {
-                event.stopPropagation();
-                saveToFavorites(item);
-              }}
-              style={{ position: 'absolute', right: 10, top: 10 }}
-            >
-              <Image
-                source={
-                  favoriteWords.includes(item.word)
-                    ? require('../../assets/images/fill.png') 
-                    : require('../../assets/images/love.png') 
-                }
-                style={{ width: 24, height: 24 }}
-              />
-            </TouchableOpacity>
+            
           </TouchableOpacity>
         )}
       />

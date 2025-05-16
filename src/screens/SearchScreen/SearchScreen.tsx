@@ -134,14 +134,6 @@ const SearchScreen: React.FC = () => {
       renderItem={({ item }) => (
         <TouchableOpacity
           style={styles.resultItem}
-          onPress={() => navigation.navigate('WordDetailScreen', { 
-            word: item.word, 
-            meaning: item.meaning,
-            partOfSpeech: item.partOfSpeech,
-            example: item.example,
-            phonetic: item.phonetic,
-            audio: item.audio,
-          })}
         >
           <View>
             <Text style={styles.resultText}><Text style={{ fontWeight: 'bold' }}>Word:</Text> {item.word}</Text>

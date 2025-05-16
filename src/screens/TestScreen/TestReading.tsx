@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-  ActivityIndicator,
+import {View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator, Image,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 const ReadingScreen: React.FC = () => {
   const [parts, setParts] = useState<any[]>([]);
@@ -16,7 +11,7 @@ const ReadingScreen: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
   const [checkedAnswers, setCheckedAnswers] = useState<{ [key: string]: boolean }>({});
-
+  const navigation = useNavigation();
   useEffect(() => {
   const fetchParts = async () => {
     try {
@@ -34,9 +29,9 @@ const ReadingScreen: React.FC = () => {
           const data = doc.data();
           const part = {
             id: doc.id,
-            title: data.title || '',  // Title
-            paragraph: data.paragraph || '',  // Paragraph (if exists)
-            content: data.content || '',  // Content for Part 3 or any part
+            title: data.title || '',  
+            paragraph: data.paragraph || '',  
+            content: data.content || '',  
             questions: Object.entries(data)
               .filter(([key]) => key !== 'title' && key !== 'paragraph' && key !== 'content')
               .map(([key, value]) => ({
@@ -95,61 +90,74 @@ const ReadingScreen: React.FC = () => {
 
   return (
   <SafeAreaView style={{ flex: 1 }}>
-  <ScrollView style={styles.container}>
-    {parts.map((part, index) => {
-      const isPart3 = part.id === '3'; // hoặc part.title === 'Part 3'
+      <View style={styles.header}>
+             <TouchableOpacity
+               style={styles.backButton}
+               onPress={() => {
+                 if (navigation.canGoBack()) {
+                   navigation.goBack();
+                 } else {
+                   navigation.navigate('HomeScreen');
+                 }
+               }}
+             >
+               <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
+             </TouchableOpacity>
+             <Text style={{color:'#fff', fontSize:18, left:110, top:10}}>Reading!</Text>
+      </View>
+      <ScrollView style={styles.container}>
+      {parts.map((part, index) => {
+        return (
+          <View key={index} style={styles.partBox}>
+            <Text style={styles.partTitle}>{part.title || `Part ${index + 1}`}</Text>
 
-      return (
-        <View key={index} style={styles.partBox}>
-          <Text style={styles.partTitle}>{part.title || `Part ${index + 1}`}</Text>
+            {part.questions && part.questions.length > 0 && part.questions.map((q: any, idx: number) => {
+              const questionKey = `${part.id}_q${idx}`;
+              const selectedOption = selectedAnswers[questionKey];
+              const isChecked = checkedAnswers[questionKey];
+              const isCorrect = selectedOption === q.answer;
 
-          {part.questions && part.questions.length > 0 && part.questions.map((q: any, idx: number) => {
-            const questionKey = `${part.id}_q${idx}`;
-            const selectedOption = selectedAnswers[questionKey];
-            const isChecked = checkedAnswers[questionKey];
-            const isCorrect = selectedOption === q.answer;
-
-            return (
-              <View key={questionKey} style={styles.questionBox}>
-                <Text style={styles.questionText}>{q.question}</Text>
-                {q.options.map((option: string, opIndex: number) => (
+              return (
+                <View key={questionKey} style={styles.questionBox}>
+                  <Text style={styles.questionText}>{q.question}</Text>
+                  {q.options.map((option: string, opIndex: number) => (
+                    <TouchableOpacity
+                      key={opIndex}
+                      style={[
+                        styles.optionButton,
+                        selectedOption === option
+                          ? isChecked
+                            ? isCorrect
+                              ? styles.correctOption
+                              : styles.wrongOption
+                            : styles.selectedOption
+                          : null,
+                      ]}
+                      onPress={() => handleSelectAnswer(questionKey, option)}
+                      disabled={isChecked}
+                    >
+                      <Text style={styles.optionText}>{option}</Text>
+                    </TouchableOpacity>
+                  ))}
                   <TouchableOpacity
-                    key={opIndex}
-                    style={[
-                      styles.optionButton,
-                      selectedOption === option
-                        ? isChecked
-                          ? isCorrect
-                            ? styles.correctOption
-                            : styles.wrongOption
-                          : styles.selectedOption
-                        : null,
-                    ]}
-                    onPress={() => handleSelectAnswer(questionKey, option)}
+                    style={styles.checkButton}
+                    onPress={() => handleCheckAnswer(questionKey)}
                     disabled={isChecked}
                   >
-                    <Text style={styles.optionText}>{option}</Text>
+                    <Text style={styles.checkButtonText}>Kiểm tra</Text>
                   </TouchableOpacity>
-                ))}
-                <TouchableOpacity
-                  style={styles.checkButton}
-                  onPress={() => handleCheckAnswer(questionKey)}
-                  disabled={isChecked}
-                >
-                  <Text style={styles.checkButtonText}>Kiểm tra</Text>
-                </TouchableOpacity>
-                {isChecked && !isCorrect && (
-                  <Text style={styles.correctAnswerText}>
-                    Đáp án đúng: {q.answer}
-                  </Text>
-                )}
-              </View>
-            );
-          })}
-        </View>
-      );
-    })}
-  </ScrollView>
+                  {isChecked && !isCorrect && (
+                    <Text style={styles.correctAnswerText}>
+                      Đáp án đúng: {q.answer}
+                    </Text>
+                  )}
+                </View>
+              );
+            })}
+          </View>
+        );
+      })}
+    </ScrollView>
 </SafeAreaView>
 
 );
@@ -160,11 +168,10 @@ export default ReadingScreen;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+     flex: 1,
     backgroundColor: '#f9f9f9',
   },
   centered: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -177,7 +184,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 8,
     padding: 15,
-    marginBottom: 20,
     elevation: 3,
   },
   partTitle: {
@@ -231,5 +237,30 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: '#dc3545',
     fontWeight: 'bold',
+  },
+ header: {
+    flexDirection: 'row',
+    paddingTop: 35,
+    width: 410,
+    backgroundColor: '#62D1F9',
+    padding: 15,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+    height: 100,
+    bottom:40,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 30,
+    left: 10,
+    zIndex: 10,
+    padding: 5,
+  },
+  backIcon: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
 });

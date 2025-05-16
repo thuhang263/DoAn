@@ -20,22 +20,6 @@ const ListScreen = () => {
 
       <ScrollView style={styles.container}>
         <View>
-
-          {/* Favorite Vocabulary */}
-          <View style={styles.item}>
-            <Image
-              style={styles.ImageItem}
-              source={require('../../assets/images/item2.png')}
-            />
-            <Text style={styles.text}>Từ vựng yêu thích</Text>
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={() => navigation.navigate('FavoriteVocabScreen')}
-            >
-              <Text style={styles.TextBtn}>View</Text>
-            </TouchableOpacity>
-          </View>
-
           {/* Notebook */}
           <View style={styles.item}>
             <Image
@@ -50,19 +34,6 @@ const ListScreen = () => {
               <Text style={styles.TextBtn}>View</Text>
             </TouchableOpacity>
           </View>
-
-          {/* New Goal */}
-          <View style={styles.item}>
-            <Image
-              style={styles.ImageItem}
-              source={require('../../assets/images/item1.png')}
-            />
-            <Text style={styles.text}>Mục tiêu mới của bạn là gì?</Text>
-            <TouchableOpacity style={styles.btn}>
-              <Text style={styles.TextBtn}>Thêm</Text>
-            </TouchableOpacity>
-          </View>
-
         </View>
       </ScrollView>
     </SafeAreaView>

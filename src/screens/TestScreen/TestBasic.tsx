@@ -44,7 +44,7 @@ const SpecializedEnglishScreen = () => {
           navigation.navigate('TestListenning');
           break;
         case 'writing':
-          navigation.navigate('TestReading');
+          navigation.navigate('TestWriting');
           break;
         default:
           console.warn('Không có màn hình tương ứng với:', exerciseId);
@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     left:90,
+    color:'#fff'
   },
   sectionTitle: {
     fontSize: 16,
