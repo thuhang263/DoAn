@@ -41,7 +41,7 @@ const TestScreen = () => {
               source={require('../../assets/images/test2.png')} 
               style={{width: 60,
               height: 60,
-              borderRadius: 30,
+              borderRadius: 20,
               marginRight: 12,
               borderWidth: 1,
               borderColor: '#ddd',}}
@@ -66,7 +66,7 @@ const TestScreen = () => {
               source={require('../../assets/images/test2.png')} 
               style={{width: 60,
               height: 60,
-              borderRadius: 30,
+              borderRadius: 20,
               marginRight: 12,
               borderWidth: 1,
               borderColor: '#ddd',}}

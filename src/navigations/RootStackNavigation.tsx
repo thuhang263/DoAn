@@ -28,7 +28,7 @@ import DetailVocab from '../components/DetailVocab';
 import TestBasic from '../screens/TestScreen/TestBasic';
 import SpecializedEnglishScreen from '../screens/TestScreen/SpecializedEnglishScreen';
 import ExerciseScreen from '../screens/TestScreen/ExerciseScreen';
-import TestWriting from '../screens/TestScreen/TestWritting';
+import TestWriting from '../screens/TestScreen/TestWriting';
 
 
 

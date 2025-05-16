@@ -52,7 +52,7 @@ const GrammaScreen = () => {
       
     >
       <Image
-          source={require('../../assets/images/code.png')} 
+          source={require('../../assets/images/nguphap.png')} 
           style={styles.image}
       />
       <Text style={styles.text}>{item.title}</Text>
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
    image: {
     width: 60,
     height: 60,
-    borderRadius: 30,
+    borderRadius: 20,
     marginRight: 12,
     borderWidth: 1,
     borderColor: '#ddd',
