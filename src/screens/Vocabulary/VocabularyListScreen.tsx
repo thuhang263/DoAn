@@ -67,10 +67,13 @@ export default function VocabularyListScreen({ route }: Props) {
 
   return (
     <View style={{ flex: 1, padding: 10, marginTop: 40 }}>
-      <View>
-        <Text style={{ fontSize: 20, marginBottom: 10, alignSelf: 'center' }}>{unitId}</Text>
+      <View >
+        <View style={{marginTop:30,}}>
+            <Text style={{ fontSize: 18, marginBottom: 10, alignSelf: 'center' }}>{unitId}</Text>
+        </View>
+       
         <TouchableOpacity
-          style={{ position: 'absolute', left: 10 }}
+          style={{ position: 'absolute', left: 10,}}
           onPress={() => {
             if (navigation.canGoBack()) navigation.goBack();
           }}

@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
+import { useTranslation } from 'react-i18next';
 
 const SpecializedEnglishScreen = () => {
   const navigation = useNavigation();
   
   // State để lưu dữ liệu bài tập đọc
   const [readingExercises, setReadingExercises] = useState<any[]>([]);
- 
+  const { t } = useTranslation();
 
   useEffect(() => {
   const fetchExercises = async () => {
@@ -70,11 +71,11 @@ const SpecializedEnglishScreen = () => {
                 <Image style={{ width: 30, height: 30,top:30, left:20, }}
                   source={require('../../assets/images/back1.png')} />
               </TouchableOpacity>
-                <Text style={styles.title}>Ôn tập cơ bản</Text>
+                <Text style={styles.title}>{t('coban')}</Text>
            </View>
       </View>
      
-      <Text style={styles.sectionTitle}>Các bài tập</Text>
+      <Text style={styles.sectionTitle}>{t('loaibaitap')}</Text>
       <View style={styles.content}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {readingExercises.length > 0 ? (
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    left:90,
+    left:60,
     color:'#fff'
   },
   sectionTitle: {

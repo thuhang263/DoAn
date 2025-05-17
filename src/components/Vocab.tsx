@@ -16,6 +16,7 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import { RootStackParamList } from '../navigations/type'; 
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 
 // Định nghĩa kiểu điều hướng rõ ràng
 type NavigationType = NativeStackNavigationProp<RootStackParamList, 'ImageDetailScreen'>;
@@ -36,7 +37,7 @@ const ImageDetailScreen = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const [topics, setTopics] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const { t } = useTranslation();
   const fetchVocabTopics = async () => {
     try {
       const snapshot = await firestore().collection('vocab').get();
@@ -97,7 +98,7 @@ const ImageDetailScreen = () => {
           >
             <Image style={styles.backIcon} source={require('../assets/images/back1.png')} />
           </TouchableOpacity>
-          <Text style={styles.header}>Bộ chủ đề từ vựng</Text>
+          <Text style={styles.header}>{t('tuvung')}</Text>
         </View>
 
         <View style={styles.itemContent}>

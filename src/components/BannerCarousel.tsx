@@ -1,23 +1,26 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { View, FlatList, Image, TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const BannerCarousel = () => {
   const flatListRef = useRef<FlatList>(null);
   const navigation = useNavigation();
-  
+  const { t } = useTranslation();
   return (
     <View>
-      <View style={styles.videoLabel}>
-          <Text style={styles.verticalText}>100+ Từ vựng ôn thi đầu ra</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('ImageDetailScreen')}>
+      <View style={styles.banner}>
+        <TouchableOpacity onPress={() => navigation.navigate('ImageDetailScreen')}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+            <Text style={styles.verticalText}>{t('banner')}</Text>
             <Image
-            style={styles.image}
-            source={require('../assets/images/next.png')}
-            >
-            </Image>
-          </TouchableOpacity>  
-      </View>
+              style={styles.image}
+              source={require('../assets/images/next.png')}
+            />
+          </View>
+        </TouchableOpacity>
+    </View>
+
     <FlatList
       ref={flatListRef}
       data={null}
@@ -46,23 +49,20 @@ const BannerCarousel = () => {
   );
 };
 const styles = StyleSheet.create({
-  videoLabel: {
-    left:20,
-    fontSize: 20,
-    fontWeight: 'bold',
-    flexDirection:'row',
-    borderRadius:'30',
-    margin:15,
+  banner:{
+    flexDirection:"row",
+    left:30,
+    marginBottom:10,
   },
   verticalText: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     color:'#000'
   },
   image:{
-    width:30,
-    height:30,
-    left:40,
+    width:20,
+    height:20,
+    left:100,
   }
 });
 export default BannerCarousel;

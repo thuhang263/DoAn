@@ -1,0 +1,32 @@
+{
+  "welcome": "Chào mừng",
+  "chooseLanguage": "Chọn ngôn ngữ hiển thị",
+  "vietnamese": "Tiếng Việt",
+  "english": "Tiếng Anh",
+  "review": "Ôn tập từ vựng chuyên ngành và ngữ pháp",
+  "practiceSkills": "Luyện kỹ năng nghe, đọc, nói",
+  "entertainment": "Giải trí",
+  "banner":"100+ từ vựng cơ bản",
+   "search":"Nhập từ vựng...",
+   "huongdan":"Dễ dàng tra cứu từ chưa biết và lưu lại từ vựng vào Sổ tay",
+   "buoc1":"Bước 1",
+  "buoc2":"Bước 2",
+  "buoc1.1":"Nhập từ cần tra vào ô tìm kiếm",
+  "buoc2.1":"Nhấn nút Lưu để lưu từ vào Sổ tay",
+   "lichsu":"Lịch sử tìm kiếm",
+  "ketqua":"Kết quả tìm kiếm",
+  "saved": "✓ Đã lưu",
+  "save": "+ Lưu",
+   "tuvung":"Các bộ từ vựng",
+  "nguphap":"Các bộ ngữ pháp",
+  "coban":"Luyện tập tiếng Anh cơ bản",
+  "chuyennganh":"Luyện tập tiếng Anh chuyên ngành",
+  "testtacn":"Tiếng Anh chuyên ngành",
+  "chonkhoa":"Chọn khoa",
+  "chonbaitap":"Chọn bài tập",
+  "khongcobaitapnao":"Không có bài tập nào",
+  "tieptheo":"Tiếp theo",
+  "loaibaitap":"Các loại bài tập"
+  
+
+}

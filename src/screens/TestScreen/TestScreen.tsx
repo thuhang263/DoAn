@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-
-
 import { styles } from './styles';
 import { RootStackParamList } from '../../navigations/type';
 import { useNavigation } from '@react-navigation/native';
 import {  StackNavigationProp } from '@react-navigation/stack';
+import { useTranslation } from 'react-i18next';
 const TestScreen = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>(); 
+  const { t } = useTranslation();
   return (
     <ScrollView style={styles.container}>
       {/* Header */}
@@ -46,7 +46,7 @@ const TestScreen = () => {
               borderWidth: 1,
               borderColor: '#ddd',}}
           />
-        <Text style={styles.text}>Ôn tập tiếng anh chuyên ngành</Text>
+        <Text style={styles.text}>{t('chuyennganh')}</Text>
         </TouchableOpacity>
          <TouchableOpacity 
          style={{ marginTop: 30,
@@ -71,7 +71,7 @@ const TestScreen = () => {
               borderWidth: 1,
               borderColor: '#ddd',}}
           />
-          <Text style={styles.text}>Ôn tập cơ bản</Text>
+          <Text style={styles.text}>{t('coban')}</Text>
         </TouchableOpacity>
      </View>
 

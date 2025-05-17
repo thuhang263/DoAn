@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, ActivityIndicator, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
+import { useTranslation } from 'react-i18next';
 
 const SpecializedEnglishScreen = () => {
   const navigation = useNavigation();
@@ -11,7 +12,7 @@ const SpecializedEnglishScreen = () => {
   const [selectedExercise, setSelectedExercise] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  const { t } = useTranslation();
   // Lấy danh sách khoa
   useEffect(() => {
     const fetchFaculties = async () => {
@@ -99,13 +100,13 @@ const SpecializedEnglishScreen = () => {
             source={require('../../assets/images/back1.png')} />
           </TouchableOpacity>
 
-          <Text style={styles.title}>Tiếng Anh Chuyên Ngành</Text>
+          <Text style={styles.title}>{t('testtacn')}</Text>
         </View>
       </View>
      
 
       {/* Dropdown chọn khoa */}
-      <Text style={styles.sectionTitle}>Chọn khoa</Text>
+      <Text style={styles.sectionTitle}>{t('chonkhoa')}</Text>
       <TouchableOpacity style={styles.dropdownHeader} onPress={() => setDropdownOpen(!dropdownOpen)}>
         <Text style={styles.dropdownText}>{selectedFaculty || 'Đang tải...'}</Text>
         <Text style={styles.dropdownArrow}>▼</Text>
@@ -128,9 +129,9 @@ const SpecializedEnglishScreen = () => {
       )}
 
       {/* Loại bài tập */}
-      <Text style={styles.sectionTitle}>Chọn bài tập</Text>
+      <Text style={styles.sectionTitle}>{t('chonbaitap')}</Text>
       {exerciseTypes.length === 0 ? (
-        <Text style={{ color: 'gray', marginBottom: 10 }}>Không có loại bài tập nào.</Text>
+        <Text style={{ color: 'gray', marginBottom: 10 }}>{t('khongcobaitapnao')}</Text>
       ) : (
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
           {exerciseTypes.map((type) => (
@@ -151,7 +152,7 @@ const SpecializedEnglishScreen = () => {
 
       {/* Nút Tiếp theo */}
       <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-        <Text style={styles.nextButtonText}>Tiếp theo</Text>
+        <Text style={styles.nextButtonText}>{t('tieptheo')}</Text>
       </TouchableOpacity>
     </View>
     </SafeAreaView>

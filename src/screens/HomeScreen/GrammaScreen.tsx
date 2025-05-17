@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView, StatusBar, ActivityIndicator } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 const GrammaScreen = () => {
   const navigation = useNavigation();
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<number | null>(null);
-
+  const { t } = useTranslation();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -87,7 +88,7 @@ const GrammaScreen = () => {
             source={require('../../assets/images/back1.png')}
             />
           </TouchableOpacity>     
-          <Text style={styles.header}>Các bộ từ vựng</Text>
+          <Text style={styles.header}>{t('nguphap')}</Text>
         </View>
         <FlatList
           data={data}

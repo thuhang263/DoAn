@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import TrackPlayer, { State } from 'react-native-track-player';
 import firestore from '@react-native-firebase/firestore';
+import { useTranslation } from 'react-i18next';
 interface WordItem {
   word: string;
   meaning: string;
@@ -19,14 +20,11 @@ const SearchScreen: React.FC = () => {
   const [searchResults, setSearchResults] = useState<WordItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const navigation = useNavigation();
   const [phonetic, setPhonetic] = useState('');
   const [partOfSpeech, setPartOfSpeech] = useState('');
   const [meaning, setMeaning] = useState('');
-  
-
   const [saved, setSaved] = useState(false);
-
+  const { t } = useTranslation();
   const handleSearch = async () => {
     if (searchQuery.trim() === '') return;
   
@@ -162,7 +160,7 @@ const SearchScreen: React.FC = () => {
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
-          placeholder="Nhập từ vựng..."
+          placeholder={t('search')}
           placeholderTextColor="#aaa"
           value={searchQuery}
           onChangeText={text => setSearchQuery(text)}
@@ -177,7 +175,8 @@ const SearchScreen: React.FC = () => {
           style={[styles.saveButton, saved && styles.savedButton]}
           onPress={handleSave}
         >
-          <Text style={styles.saveButtonText}>{saved ? '✓ Đã lưu' : '+ Lưu'}</Text>
+          
+          <Text style={styles.saveButtonText}>{saved ? t('saved') : t('save')}</Text>
         </TouchableOpacity>
       </View>
       {/*check*/}
@@ -189,14 +188,14 @@ const SearchScreen: React.FC = () => {
               style={styles.catImage}
             />
             <Text style={styles.guideText}>
-              Dễ dàng tra cứu từ chưa biết {'\n'}và lưu lại từ vựng vào Sổ tay
+              {t('huongdan')}
             </Text>
           </View>
           <View>
-            <Text style={styles.stepTitle}>Bước 1:</Text>
-            <Text style={styles.stepText}>Nhập từ cần tra vào ô tìm kiếm</Text>
-            <Text style={styles.stepTitle}>Bước 2:</Text>
-            <Text style={styles.stepText}>Nhấn nút <Text style={{ fontWeight: 'bold' }}>+ Lưu</Text> để lưu từ vào Sổ tay</Text>
+            <Text style={styles.stepTitle}>{t('buoc1')}</Text>
+            <Text style={styles.stepText}>{t('buoc1.1')}</Text>
+            <Text style={styles.stepTitle}>{t('buoc2')}</Text>
+            <Text style={styles.stepText}>{t('buoc2.1')}</Text>
           </View>
         </View>
       )}
@@ -211,12 +210,12 @@ const SearchScreen: React.FC = () => {
 
       {!loading && !error && (searchResults.length === 0 ? (
         <View style={styles.historyContainer}>
-          <Text style={styles.historyTitle}>Lịch sử tìm kiếm</Text>
+          <Text style={styles.historyTitle}>{t('lichsu')}</Text>
           {renderHistory()}
         </View>
       ) : (
         <View style={styles.resultsContainer}>
-          <Text style={styles.resultsTitle}>Kết quả tìm kiếm</Text>
+          <Text style={styles.resultsTitle}>{t('ketqua')}</Text>
           {renderSearchResults()}
         </View>
         
