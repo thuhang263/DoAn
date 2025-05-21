@@ -60,7 +60,16 @@
    "headerspeack":"Luyện nói",
   "ghiam":"Bắt đầu ghi âm",
   "dungghiam":"Dừng ghi âm",
-  "playrecording":"Phát"
+  "playrecording":"Phát",
+  "writing":"Viết ngay!",
+  "kiemtra":"kiểm tra",
+  "lesson":{
+    "Bài 1":"Bài 1",
+    "Bài 2":"Bài 2",
+    "Bài 3":"Bài 3",
+    "Bài 4":"Bài 4"
+   }
+
 
   
 

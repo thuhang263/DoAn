@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Tts from 'react-native-tts';
 import firestore from '@react-native-firebase/firestore';
+import { t } from 'i18next';
 
 interface Question {
   question: string;
@@ -104,7 +105,7 @@ const TestWriting = () => {
             borderWidth: 1,
             borderColor: '#ddd',}}
         />
-        <Text style={styles.lessonTitle}>{item.title}</Text>
+        <Text style={styles.lessonTitle}>{t(`lesson ${item.id}`)}</Text>
         </TouchableOpacity>
     );
 
@@ -118,8 +119,6 @@ const TestWriting = () => {
             </View>
         <ScrollView style={styles.container}>
           <View style={styles.content}>
-            <Text style={styles.title}>{selectedLesson.title}</Text>
-
             {selectedLesson.questions.map((question, index) => {
                 const userAnswer = selectedOptions[index] || '';
                 const showResult = showResults[index];
@@ -153,7 +152,7 @@ const TestWriting = () => {
                                 onPress={() => handleCheckAnswer(index)}
                                 disabled={showResult}
                             >
-                                <Text style={{ color: '#fff' }}>Kiểm tra</Text>
+                                <Text style={{ color: '#fff' }}>{t('kiemtra')}</Text>
                             </TouchableOpacity>
                             </View>
                         );
@@ -179,7 +178,7 @@ const TestWriting = () => {
         >
           <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
         </TouchableOpacity>
-        <Text style={{color:'#fff', fontSize:18, left:110, top:10}}>Writting Now!</Text>
+        <Text style={{color:'#fff', fontSize:18, left:110, top:10}}>{t('writing')}</Text>
       </View>
 
       <FlatList
