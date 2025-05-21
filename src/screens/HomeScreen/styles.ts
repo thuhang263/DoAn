@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff'  },
+  container: { flex: 1, backgroundColor: '#fff',alignSelf:"center"  },
   header: {
-    width: 360,
+   width: '100%',
     height: 160,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
   
   categoryBox: {
     backgroundColor: '#61BFE7',
-    padding: 30,
+    padding: 20,
     borderRadius: 30,
     width: 150,
     height: 140,

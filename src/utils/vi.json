@@ -26,7 +26,42 @@
   "chonbaitap":"Chọn bài tập",
   "khongcobaitapnao":"Không có bài tập nào",
   "tieptheo":"Tiếp theo",
-  "loaibaitap":"Các loại bài tập"
+  "loaibaitap":"Các loại bài tập",
+  "sotay":"Sổ tay",
+  "view":"Xem",
+  "faculties": {
+  "Khoa Công nghệ thông tin": "Khoa Công nghệ thông tin",
+  "Khoa Cơ khí": "Khoa Cơ khí",
+  "Khoa Điện - Điện tử": "Khoa Điện - Điện tử",
+  "Khoa Hóa - Môi trường": "Khoa Hóa - Môi trường",
+  "Khoa Kỹ thuật tài nguyên nước": "Kỹ thuật tài nguyên nước",
+  "Khoa Kế toán và Kinh doanh": "Kế toán và kinh doanh",
+  "Khoa Công trình": "Khoa Công trình",
+  "Khoa Luật và Lý luận chính trị": "Khoa Luật và Lý luận chính trị",
+  "Khoa Kinh tế và Quản lý":"Khoa Kinh tế và Quản lý"
+  },
+  "botuvung":"Các bộ từ vựng chuyên ngành",
+  "docsongngu":"Đọc song ngữ",
+  "topicName": {
+    "topic1": "Hiện tại đơn",
+    "topic2": "Hiện tại tiếp diễn",
+    "topic5": "Hiện tại hoàn thành",
+    "topic3": "Quá khứ đơn",
+    "topic4": "Quá khứ tiếp diễn",
+    "topic6": "Quá khứ hoàn thành",
+    "topic7": "Câu điều kiện loại 1",
+    "topic8": "Câu điều kiện loại 2"
+  },
+  "cautruc":"Cấu trúc",
+  "cachsudung":"Cách sử dụng",
+  "quytac":"Quy tắc",
+  "dauhieu":"Dấu hiệu nhận biết",
+  "phataudio": "Phát audio",
+   "headerspeack":"Luyện nói",
+  "ghiam":"Bắt đầu ghi âm",
+  "dungghiam":"Dừng ghi âm",
+  "playrecording":"Phát"
+
   
 
 }

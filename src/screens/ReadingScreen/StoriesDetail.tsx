@@ -12,6 +12,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackParamsType } from '../../navigations/type';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import firestore from '@react-native-firebase/firestore';
+import { t } from 'i18next';
 
 const StoriesDetail: React.FC = () => {
   const navigation = useNavigation<StackParamsType>();
@@ -72,7 +73,7 @@ const StoriesDetail: React.FC = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
       <View style={styles.container}>
-        <View>
+        <View style={styles.header}>
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => {
@@ -88,7 +89,7 @@ const StoriesDetail: React.FC = () => {
               source={require('../../assets/images/back1.png')}
             />
           </TouchableOpacity>
-          <Text style={styles.header}>{storiesName}</Text>
+           <Text style={{color:'#fff', fontSize:18,alignSelf:'center'}}>{t(`faculties.${storiesName}`)}</Text>
         </View>
 
         <View style={styles.list}>
@@ -115,12 +116,12 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     backgroundColor: '#61BFE7',
     padding: 15,
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#fff',
     height: 100,
     bottom: 40,
+  },
+  title:{
+    fontSize:16,
+    color:'black'
   },
   card: {
     flexDirection: 'row',
@@ -144,11 +145,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ddd',
   },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000',
-  },
   subtitle: {
     fontSize: 14,
     color: '#333',
@@ -159,6 +155,7 @@ const styles = StyleSheet.create({
     left: 10,
     zIndex: 10,
     padding: 5,
+    top:35,
   },
   backIcon: {
     width: 30,

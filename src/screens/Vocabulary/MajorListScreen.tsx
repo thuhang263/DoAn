@@ -13,6 +13,7 @@ import {
 import { RouteProp, useNavigation, NavigationProp } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import { RootStackParamList } from '../../navigations/type'; 
+import { useTranslation } from 'react-i18next';
 
 
 type MajorListScreenRouteProp = RouteProp<RootStackParamList, 'MajorListScreen'>;
@@ -33,7 +34,7 @@ interface Unit {
 const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route }) => {
   const navigation = useNavigation<Navigation>();
   const { facultyName } = route.params;
-
+  const { t } = useTranslation();
   const [units, setUnits] = useState<Unit[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -84,7 +85,8 @@ const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route 
           >
             <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
           </TouchableOpacity>
-          <Text style={styles.header}>{facultyName}</Text>
+         <Text style={styles.header}>{t(`faculties.${facultyName}`)}</Text>
+
         </View>
 
         <FlatList
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
     paddingTop: 35,
     backgroundColor: '#61BFE7',
     padding: 15,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#fff',

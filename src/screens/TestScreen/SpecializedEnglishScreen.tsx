@@ -84,7 +84,7 @@ const SpecializedEnglishScreen = () => {
   return (
     <SafeAreaView style={{flex:1}}>
     <View style={styles.container}>
-      <View style={{width: 360,
+      <View style={{width: 420,
         height:140,
         flexDirection: 'row', 
         justifyContent: 'space-between', 
@@ -173,9 +173,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
+    top:20,
     left:70,
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
+    color:"#fff"
     
   },
   sectionTitle: {

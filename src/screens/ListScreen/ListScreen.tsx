@@ -4,10 +4,11 @@ import { styles } from './styles';
 import { RootStackParamList } from '../../navigations/type';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useTranslation } from 'react-i18next';
 
 const ListScreen = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'HomeScreen'>>();
-
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* Header */}
@@ -26,12 +27,12 @@ const ListScreen = () => {
               style={styles.ImageItem}
               source={require('../../assets/images/item1.png')}
             />
-            <Text style={styles.text}>Sổ tay</Text>
+            <Text style={styles.text}>{t('sotay')}</Text>
             <TouchableOpacity
               style={styles.btn}
               onPress={() => navigation.navigate('NotebookScreen')}
             >
-              <Text style={styles.TextBtn}>View</Text>
+              <Text style={styles.TextBtn}>{t('view')}</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 interface Topic {
   id: number;
@@ -14,7 +15,7 @@ const StoriesScreen = () => {
   const navigation = useNavigation();
   const [topics, setTopics] = useState<Topic[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const { t } = useTranslation();
   useEffect(() => {
     const fetchFaculties = async () => {
       try {
@@ -64,7 +65,7 @@ const StoriesScreen = () => {
       >
         <ImageBackground source={imageSource} style={styles.image} imageStyle={{ borderRadius: 10 }}>
           <View style={styles.overlay}>
-            <Text style={styles.text}>{item.title}</Text>
+           <Text style={styles.text}>{t(`faculties.${item.title}`)}</Text>
           </View>
         </ImageBackground>
       </TouchableOpacity>
@@ -99,7 +100,7 @@ const StoriesScreen = () => {
               source={require('../../assets/images/back1.png')}
             />
           </TouchableOpacity>
-          <Text style={styles.header}>Đọc song ngữ Anh - Việt</Text>
+          <Text style={styles.header}>{t('docsongngu')}</Text>
         </View>
 
         <View style={styles.itemContent}>

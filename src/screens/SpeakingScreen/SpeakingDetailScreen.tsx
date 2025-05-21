@@ -11,6 +11,7 @@ import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 import RNFS from 'react-native-fs';
 import { SafeAreaView } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
+import { t } from 'i18next';
 
 const audioRecorderPlayer = new AudioRecorderPlayer();
 
@@ -18,7 +19,6 @@ const SpeakingDetailScreen: React.FC = () => {
     const navigation = useNavigation();
     const route = useRoute();
     const { id } = route.params as { id: string };
-  
     const [paragraph, setParagraph] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
     const [isRecording, setIsRecording] = useState(false);
@@ -169,14 +169,14 @@ const SpeakingDetailScreen: React.FC = () => {
       <SafeAreaView style={{ flex: 1 }}>
         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <ScrollView contentContainerStyle={styles.container}>
-          <View>
+          <View style={styles.header}>
             <TouchableOpacity
               style={styles.backButton}
               onPress={() => navigation.goBack()}
             >
               <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
             </TouchableOpacity>
-            <Text style={styles.header}>Speaking Practice</Text>
+
           </View>
   
           {loading ? (
@@ -189,7 +189,7 @@ const SpeakingDetailScreen: React.FC = () => {
   
           <View style={styles.buttonContainer}>
             <Button
-              title={isRecording ? 'Stop Recording' : 'Start Recording'}
+              title={isRecording ? t('dungghiam') : t('ghiam')}
               color={isRecording ? 'red' : 'blue'}
               onPress={isRecording ? onStopRecord : onStartRecord}
               disabled={loading}
@@ -198,13 +198,11 @@ const SpeakingDetailScreen: React.FC = () => {
   
           <View style={styles.buttonContainer}>
             <Button
-              title={isPlaying ? 'Stop Playback' : 'Play Recording'}
+              title={isPlaying ? t('dungghiam') : t('playrecording')}
               disabled={!recordedAudio}
               onPress={isPlaying ? onStopPlay : onStartPlay}
             />
           </View>
-  
-          
         </ScrollView>
       </SafeAreaView>
     );
@@ -222,15 +220,14 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 12,
+    width:200,
+    alignSelf:'center',
+    borderRadius:20,
   },
   header: {
     paddingTop: 35,
     backgroundColor: '#61BFE7',
     padding: 15,
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#fff',
     height: 100,
   },
   backButton: {
@@ -248,7 +245,5 @@ const styles = StyleSheet.create({
 });
 
 export default SpeakingDetailScreen;
-function alert(arg0: string) {
-    throw new Error('Function not implemented.');
-}
+
 

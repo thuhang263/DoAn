@@ -11,54 +11,57 @@ const GrammaScreen = () => {
   const [selected, setSelected] = useState<number | null>(null);
   const { t } = useTranslation();
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const snapshot = await firestore().collection('tenses').orderBy('topicId').get();
-        const list = snapshot.docs.map(doc => ({
-          id: doc.data().topicId,
-          title: doc.data().topicName,
-        }));
-        setData(list);
-      } catch (error) {
-        console.error('Lỗi tải dữ liệu:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+ const fetchData = async () => {
+  try {
+    const snapshot = await firestore().collection('tenses').orderBy('topicId').get();
+    const list = snapshot.docs.map(doc => ({
+      id: doc.data().topicId,
+      title: `topic${doc.data().topicId}`, // Định dạng đúng khóa JSON
+    }));
+    setData(list);
+  } catch (error) {
+    console.error('Lỗi tải dữ liệu:', error);
+  } finally {
+    setLoading(false);
+  }
+  };
 
-    fetchData();
-  }, []);
+
+  fetchData();
+}, []);
+
 
   const renderItem = ({ item }: { item: any }) => (
-    <TouchableOpacity
-      style={{ marginTop: 10,
-                flexDirection: 'row',
-                alignItems: 'center',
-                backgroundColor: '#fff',
-                borderRadius: 12,
-                padding: 15,
-                shadowColor: '#000',
-                shadowOffset: { width: 1, height: 2 },
-                shadowOpacity: 0.2,
-                shadowRadius: 4,
-                elevation: 3,
-               }}
-      onPress={() => {
-        setSelected(item.id);
-        navigation.navigate('GrammarTopicDetailScreen', {
-          topicId: item.id,
-          topicName: item.title,
-        });
-      }}
-      
-    >
-      <Image
-          source={require('../../assets/images/nguphap.png')} 
-          style={styles.image}
-      />
-      <Text style={styles.text}>{item.title}</Text>
-    </TouchableOpacity>
+  <TouchableOpacity
+    style={{
+      marginTop: 10,
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: '#fff',
+      borderRadius: 12,
+      padding: 15,
+      shadowColor: '#000',
+      shadowOffset: { width: 1, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 4,
+      elevation: 3,
+    }}
+    onPress={() => {
+      setSelected(item.id);
+      navigation.navigate('GrammarTopicDetailScreen', {
+        topicId: item.id,
+         topicName: t(`topicName.${item.title}`), // Hiển thị bằng ngôn ngữ người dùng chọn
+      });
+    }}
+  >
+    <Image
+      source={require('../../assets/images/nguphap.png')}
+      style={styles.image}
+    />
+   <Text style={styles.text}>{t(`topicName.${item.title}`)}</Text> 
+  </TouchableOpacity>
   );
+
 
   if (loading) {
     return (

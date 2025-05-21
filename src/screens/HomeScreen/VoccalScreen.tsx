@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, SafeAreaView, StatusBar, ActivityIndicator } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 const VoccalScreen = () => {
   const navigation = useNavigation();
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchFaculties = async () => {
@@ -53,7 +55,7 @@ const VoccalScreen = () => {
       }}
     >
       <Image source={item.image} style={styles.image} />
-      <Text style={styles.text}>{item.title}</Text>
+      <Text style={styles.text}>{t(`faculties.${item.title}`)}</Text>
     </TouchableOpacity>
   );
 
@@ -85,7 +87,7 @@ const VoccalScreen = () => {
               source={require('../../assets/images/back1.png')}
             />
           </TouchableOpacity>
-          <Text style={styles.header}>Các bộ từ vựng</Text>
+          <Text style={styles.header}>{t('botuvung')}</Text>
         </View>
 
         <FlatList

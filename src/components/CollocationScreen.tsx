@@ -87,7 +87,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
     return (
         <SafeAreaView style={{flex:1}}>
             <View style={{flex:1}}>
-                <View style={{width:360,height:70, backgroundColor:'#62D1F9' }}>
+                <View style={{width: '100%',height:70, backgroundColor:'#62D1F9' }}>
                     <View>
                         <TouchableOpacity
                             style={styles.backButton}

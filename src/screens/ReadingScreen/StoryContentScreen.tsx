@@ -11,9 +11,11 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Tts from 'react-native-tts';
 import firestore from '@react-native-firebase/firestore';
+import { t } from 'i18next';
 
 interface Story {
-  title: string;
+  title_en: string;
+  title_vi: string;
   content_en: string;
   content_vi: string;
   image?: string;
@@ -81,7 +83,7 @@ const StoryContentScreen: React.FC = () => {
   };
 
   const getImage = (imageName?: string) => {
-    return require('../../assets/images/ai.jpg'); 
+    return require('../../assets/images/doc.png'); 
   };
 
   if (loading) {
@@ -103,7 +105,7 @@ const StoryContentScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View>
-        <View>
+        <View style={styles.header}>
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => navigation.goBack()}
@@ -114,19 +116,18 @@ const StoryContentScreen: React.FC = () => {
             />
           </TouchableOpacity>
         </View>
-      <Text style={styles.header}>{story.title}</Text>
       </View>
       
       <ScrollView contentContainerStyle={styles.content}>
         <Image source={getImage(story.image)} style={styles.storyImage} />
-        <Text style={styles.text}>En:</Text>
+        <Text style={styles.text}>En: {story.title_en}</Text>
         <Text style={styles.text}>{story.content_en}</Text>
-        <Text style={styles.text}>Vi:</Text>
+        <Text style={styles.text}>Vi: {story.title_vi}</Text>
         <Text style={styles.text}>{story.content_vi}</Text>
 
         <View style={styles.buttonRow}>
           <TouchableOpacity style={styles.button} onPress={speakStory}>
-            <Text style={styles.buttonText}>Phát Audio</Text>
+            <Text style={styles.buttonText}>{t('phataudio')}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

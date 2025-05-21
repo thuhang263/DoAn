@@ -12,6 +12,7 @@ const ReadingScreen: React.FC = () => {
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
   const [checkedAnswers, setCheckedAnswers] = useState<{ [key: string]: boolean }>({});
   const navigation = useNavigation();
+  
   useEffect(() => {
   const fetchParts = async () => {
     try {

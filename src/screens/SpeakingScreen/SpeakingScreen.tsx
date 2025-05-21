@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
+import { t } from 'i18next';
 
 const SpeakingScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -48,7 +49,7 @@ const SpeakingScreen: React.FC = () => {
           >
             <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
           </TouchableOpacity>
-          <Text style={styles.header}>Speaking Practice</Text>
+          <Text style={styles.header}>{t('headerspeack')}</Text>
         </View>
       <ScrollView contentContainerStyle={styles.container}>
         {loading ? (

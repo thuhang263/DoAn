@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, SafeAreaView, StatusBar, ActivityIndicator, TouchableOpacity, Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
+import { t } from 'i18next';
 
 interface GrammarTopic {
   topicId: number;
@@ -61,8 +62,6 @@ const GrammarTopicDetailScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-
-      <ScrollView style={styles.container}>
         <View>
           <TouchableOpacity
             style={styles.backButton}
@@ -79,27 +78,28 @@ const GrammarTopicDetailScreen = () => {
               source={require('../assets/images/back1.png')}
             />
             </TouchableOpacity>
-          <Text style={styles.header}>{topic.topicName}</Text>
+            <Text style={styles.header}>{t(`topicName.topic${topic.topicId}`)}</Text>
         </View>
+      <ScrollView style={styles.container}>
         {/* Nội dung chi tiết topic */}
         <View style={styles.body}>
-          <Text style={styles.label}>Cấu trúc:</Text>
+          <Text style={styles.label}>{t('cautruc')}</Text>
           <Text style={styles.content}>{topic.structure}</Text>
 
-          <Text style={styles.label}>Cách sử dụng:</Text>
+          <Text style={styles.label}>{t('cachsudung')}</Text>
           {/* Hiển thị trực tiếp usage vì nó là chuỗi */}
           <Text style={styles.content}>{topic.usage}</Text>
 
           {topic.rules && (
             <>
-              <Text style={styles.label}>Quy tắc:</Text>
+              <Text style={styles.label}>{t('quytac')}</Text>
               <Text style={styles.content}>{topic.rules}</Text>
             </>
           )}
 
           {topic.signal_words && (
             <>
-              <Text style={styles.label}>Từ tín hiệu:</Text>
+              <Text style={styles.label}>{t('dauhieu')}</Text>
               <Text style={styles.content}>{topic.signal_words}</Text>
             </>
           )}
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 20,
   },
   content: {
     fontSize: 16,
@@ -145,7 +144,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   body: {
-    padding: 20,
+    padding: 10,
   },
   backButton: {
     position: 'absolute', 

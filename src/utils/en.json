@@ -3,7 +3,7 @@
   "chooseLanguage": "Choose your language",
   "vietnamese": "Vietnamese",
   "english": "English",
-  "review": "Review specialized vocabulary and grammar",
+  "review": "Specialized vocabulary and grammar",
   "practiceSkills": "Practice Listening, Reading, Speaking",
   "entertainment": "Entertainment",
   "banner": "100+ basic vocabulary",
@@ -22,10 +22,45 @@
   "coban":"Basic English Practice",
   "chuyennganh":"Practice specialized English",
   "testtacn":"Professional English",
-  "chonkhoa":"Select department",
+  "chonkhoa":"Select faculties",
   "chonbaitap":"Choose exercises",
   "khongcobaitapnao":"No exercises",
   "tieptheo":"Next",
-  "loaibaitap":"Types of exercises"
+  "loaibaitap":"Types of exercises",
+  "sotay":"Handbook",
+  "view":"View",
+  "faculties": {
+    "Khoa Công nghệ thông tin": "Faculty Information Technology",
+    "Khoa Cơ khí": "Faculty Mechanical Engineering",
+    "Khoa Điện - Điện tử": "Faculty Electrical and Electronic Engineering",
+    "Khoa Hóa - Môi trường": "Faculty Environmental and Chemical Engineering",
+    "Khoa Kỹ thuật tài nguyên nước": "Faculty Water Resources Engineering",
+    "Khoa Kế toán và Kinh doanh": "Faculty Accounting and Business",
+    "Khoa Công trình": "Faculty Civil Engineering",
+    "Khoa Luật và Lý luận chính trị": "Faculty Law and Political Theory",
+    "Khoa Kinh tế và Quản lý":"Faculty of Economics and Management"
+  },
+  "botuvung":"Specialized vocabulary sets",
+  "docsongngu":"Bilingual reading",
+  "topicName": {
+    "topic1": "Present Simple",
+    "topic2": "Present Continuous",
+    "topic5": "Present Perfect",
+    "topic3": "Past Simple",
+    "topic4": "Past Continuous",
+    "topic6": "Past Perfect",
+    "topic7": "First Conditional",
+    "topic8": "Second Conditional"
+
+  },
+   "cautruc":"Structure",
+  "cachsudung":"How to use",
+  "quytac":"Rules",
+  "dauhieu":"Identification signs",
+  "phataudio": "Play audio",
+  "headerspeack":"Speaking Practice",
+  "ghiam":"Start Recording",
+  "dungghiam":"Stop Recording",
+  "playrecording":"Play Recording"
   
 }
