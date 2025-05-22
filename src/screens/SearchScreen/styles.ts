@@ -3,18 +3,18 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#fff' },
     header: {
-      width: 420,
+      width: '100%',
       height:160,
       flexDirection: 'row', 
       justifyContent: 'space-between', 
       padding: 20, backgroundColor: '#61BFE7', 
       borderBottomLeftRadius: 50, 
       borderBottomRightRadius: 50 
-      },
+    },
   
     profileContainer: { flexDirection: 'row', alignItems: 'center' },
    
-    avatarImage: { width: 100, height: 110,top:20,},
+    avatarImage: { width: 100, height: 110,top:20, right:10,},
 
     dateContainer: { flexDirection: 'row', justifyContent: 'space-around', marginVertical: 10 },
     avatarImageText:{

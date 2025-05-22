@@ -1,21 +1,29 @@
 import Realm from 'realm';
 
-export class FavoriteWord extends Realm.Object<FavoriteWord> {
+export class SearchedWord extends Realm.Object<SearchedWord> {
   word!: string;
-  majorName!: string;
-  favoriteWords!: string[];
+  meaning!: string;
+  partOfSpeech!: string;
+  example!: string;
+  phonetic!: string;
+  audio!: string;
+  searchedAt!: Date;
 
   static schema: Realm.ObjectSchema = {
-    name: 'FavoriteWord', 
+    name: 'SearchedWord',
     primaryKey: 'word',
     properties: {
       word: 'string',
-      majorName: 'string',
+      meaning: 'string',
+      partOfSpeech: 'string',
+      example: 'string',
+      phonetic: 'string',
+      audio: 'string',
+      searchedAt: 'date',
     },
   };
 }
 
-// Singleton instance
 let realmInstance: Realm | null = null;
 
 export const getRealm = async (): Promise<Realm> => {
@@ -24,8 +32,8 @@ export const getRealm = async (): Promise<Realm> => {
   }
 
   realmInstance = await Realm.open({
-    schema: [FavoriteWord], 
-    schemaVersion: 1,
+    schema: [SearchedWord],
+    schemaVersion: 2, // tăng version khi thay đổi schema
   });
 
   return realmInstance;

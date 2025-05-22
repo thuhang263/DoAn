@@ -7,7 +7,6 @@ export enum Screens {
     HomeScreen = 'HomeScreen',
     ListScreen = 'ListScreen',
     SearchScreen ='SearchScreen',
-    DetailScreen = 'DetailScreen',
     TestScreen ='TestScreen',
     RootBottomNavigation = 'RootBottomNavigation',
     VoccalScreen = "VoccalScreen",
@@ -23,7 +22,6 @@ export enum Screens {
 
 export type RootBottomParamList = {
     [Screens.HomeScreen]: undefined;
-    [Screens.DetailScreen]: undefined;
     [Screens.SearchScreen]: undefined;
     [Screens.ListScreen]: undefined;
     [Screens.TestScreen]: undefined;
@@ -35,7 +33,6 @@ export type RootBottomParamList = {
 
 export type RootStackParamList = {
     [Screens.RootBottomNavigation]: NavigatorScreenParams<RootBottomParamList>;
-    [Screens.DetailScreen]: { movieId: number };
     WelcomeScreen:undefined;
     HomeScreen:undefined;
     ListScreen:undefined;
@@ -81,7 +78,6 @@ export type RootStackParamList = {
     SpeakingScreen:undefined;
     SpeakingDetailScreen:{ paragraph: string, id: number };
     FavoriteVocabScreen:undefined;
-    NotebookScreen:undefined;
     DetailVocab: {
       topicId: string;
       topicTitle: string;

@@ -2,7 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList, Screens} from './type';
 import RootBottomNavigation from './RootBottomNavigation';
-import DetailScreen from '../screens/DetailScreen/DetailScreen';
+
 import VoccalScreen from '../screens/HomeScreen/VoccalScreen';
 import GrammaScreen from '../screens/HomeScreen/GrammaScreen';
 import VideoScreen from '../screens/HomeScreen/VideoScreen';
@@ -22,8 +22,6 @@ import TestScreen from '../screens/TestScreen/TestScreen';
 import SpeakingScreen from '../screens/SpeakingScreen/SpeakingScreen';
 import SpeakingDetailScreen from '../screens/SpeakingScreen/SpeakingDetailScreen';
 import WelcomeScreen from '../screens/WelcomeScreen/WelcomeScreen';
-import FavoriteVocabScreen from '../screens/ListScreen/FavoriteVocabScreen';
-import NotebookScreen from '../screens/ListScreen/NotebookScreen';
 import DetailVocab from '../components/DetailVocab';
 import TestBasic from '../screens/TestScreen/TestBasic';
 import SpecializedEnglishScreen from '../screens/TestScreen/SpecializedEnglishScreen';
@@ -38,7 +36,7 @@ const RootStackNavigation = () => {
     <Stack.Navigator screenOptions={{headerShown:false }}>
       <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name={Screens.RootBottomNavigation} component={RootBottomNavigation}/>
-      <Stack.Screen name={Screens.DetailScreen} component={DetailScreen} />
+  
       <Stack.Screen name="VoccalScreen" component={VoccalScreen} />
       <Stack.Screen name="GrammaScreen" component={GrammaScreen} /> 
       <Stack.Screen name={Screens.TestListenning} component={TestListening} />
@@ -56,12 +54,10 @@ const RootStackNavigation = () => {
       <Stack.Screen name="TestScreen" component={TestScreen} />
       <Stack.Screen name="SpeakingScreen" component={SpeakingScreen} />
       <Stack.Screen name="SpeakingDetailScreen" component={SpeakingDetailScreen} />
-      <Stack.Screen name="FavoriteVocabScreen" component={FavoriteVocabScreen} />
       <Stack.Screen name="DetailVocab" component={DetailVocab} />
       <Stack.Screen name="TestBasic" component={TestBasic} />
       <Stack.Screen name="SpecializedEnglishScreen" component={SpecializedEnglishScreen} />
       <Stack.Screen name="ExerciseScreen" component={ExerciseScreen} />
-      <Stack.Screen name="NotebookScreen" component={NotebookScreen} />
       <Stack.Screen name="TestWriting" component={TestWriting} />
     </Stack.Navigator>
   );
