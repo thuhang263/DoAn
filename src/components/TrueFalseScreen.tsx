@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
+import { t } from 'i18next';
 
 // Khai báo kiểu Question
 interface Question {
@@ -123,7 +124,7 @@ const ExerciseScreen = ({ faculty }: { faculty: string }) => {
 
                     {submitted && (
                     <Text style={styles.answerText}>
-                        Đáp án đúng: {q.answer ? 'True' : 'False'}
+                        {t('DapAn')}: {q.answer ? 'True' : 'False'}
                     </Text>
                     )}
                 </View>
@@ -132,7 +133,7 @@ const ExerciseScreen = ({ faculty }: { faculty: string }) => {
 
             {!submitted && (
                 <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-                    <Text style={styles.submitButtonText}>Nộp bài</Text>
+                    <Text style={styles.submitButtonText}>{t('kiemtra')}</Text>
                 </TouchableOpacity>
             )}
             </ScrollView>

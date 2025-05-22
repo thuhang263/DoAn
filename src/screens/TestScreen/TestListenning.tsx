@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import Tts from 'react-native-tts';
 import firestore from '@react-native-firebase/firestore';
+import { t } from 'i18next';
 
 interface Question {
   question: string;
@@ -174,7 +175,7 @@ const TestListenning = () => {
                     onPress={() => handleCheckAnswer(index)}
                     disabled={showResult}
                   >
-                    <Text style={{ color: '#fff' }}>Kiểm tra</Text>
+                    <Text style={{ color: '#fff' }}>{t('kiemtra')}</Text>
                   </TouchableOpacity>
                 </View>
 

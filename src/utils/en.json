@@ -63,12 +63,16 @@
   "dungghiam":"Stop Recording",
   "playrecording":"Play Recording",
    "writing":"Writing now!",
-   "kiemtra":"test",
+   "kiemtra":"Check",
    "lesson":{
     "Bài 1":"Lesson 1",
     "Bài 2":"Lesson 2",
     "Bài 3":"Lesson 3",
     "Bài 4":"Lesson 4"
-   }
+   },
+   "DapAn":"Correct answer",
+   "danhsach":"List of options",
+   "nhapdapan":"Enter the answer",
+   "khongcounits":"There are no units."
   
 }

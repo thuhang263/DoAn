@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import TrueFalseScreen from '../../components/TrueFalseScreen'; 
 import CollocationScreen from '../../components/CollocationScreen';
 import TranslationScreen from '../../components/TranslationScreen';
+import { t } from 'i18next';
 // Định nghĩa kiểu cho route
 type ExerciseScreenRouteProp = RouteProp<RootStackParamList, 'ExerciseScreen'>;
 
@@ -107,7 +108,7 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
 
       <ScrollView style={styles.unitList}>
         {units.length === 0 ? (
-          <Text style={{ color: 'gray' }}>Không có unit nào.</Text>
+          <Text style={{ color: 'gray' }}>{t('khongcounits')}</Text>
         ) : (
           units.map((unit, index) => (
             <View key={index} style={styles.unitItem}>
@@ -155,15 +156,15 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
                       <TouchableOpacity
                         style={styles.checkButton}
                         onPress={() => handleCheckAnswer(key)}
-                        disabled={isChecked} // Không cho kiểm tra lại
+                        disabled={isChecked} 
                       >
-                        <Text style={styles.checkButtonText}>Kiểm tra</Text>
+                        <Text style={styles.checkButtonText}>{t('kiemtra')}</Text>
                       </TouchableOpacity>
 
                       {/* Hiển thị đáp án đúng nếu sai */}
                       {isChecked && !isCorrect && (
                         <Text style={styles.correctAnswerText}>
-                          Đáp án đúng: {question.answer}
+                          {t('DapAn')}: {question.answer}
                         </Text>
                       )}
                     </View>

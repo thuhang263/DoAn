@@ -62,13 +62,17 @@
   "dungghiam":"Dừng ghi âm",
   "playrecording":"Phát",
   "writing":"Viết ngay!",
-  "kiemtra":"kiểm tra",
+  "kiemtra":"Kiểm tra",
   "lesson":{
     "Bài 1":"Bài 1",
     "Bài 2":"Bài 2",
     "Bài 3":"Bài 3",
     "Bài 4":"Bài 4"
-   }
+   },
+   "DapAn":"Đáp án đúng",
+   "danhsach":"Danh sách lựa chọn",
+   "nhapdapan":"Nhập đáp án",
+   "khongcounits":"Không có units nào"
 
 
   

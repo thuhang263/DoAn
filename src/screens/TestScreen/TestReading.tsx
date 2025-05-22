@@ -4,6 +4,7 @@ import {View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator,
 import firestore from '@react-native-firebase/firestore';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import { t } from 'i18next';
 
 const ReadingScreen: React.FC = () => {
   const [parts, setParts] = useState<any[]>([]);
@@ -145,11 +146,11 @@ const ReadingScreen: React.FC = () => {
                     onPress={() => handleCheckAnswer(questionKey)}
                     disabled={isChecked}
                   >
-                    <Text style={styles.checkButtonText}>Kiểm tra</Text>
+                    <Text style={styles.checkButtonText}>{t('kiemtra')}</Text>
                   </TouchableOpacity>
                   {isChecked && !isCorrect && (
                     <Text style={styles.correctAnswerText}>
-                      Đáp án đúng: {q.answer}
+                     {t('DapAn')}: {q.answer}
                     </Text>
                   )}
                 </View>

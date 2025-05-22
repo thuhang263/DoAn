@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView, Image } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
+import { t } from 'i18next';
 
 interface Question {
   id: string;
   number: number;
   left: string;
-  answer: string; // Dùng để so sánh
+  answer: string;
 }
 
 interface Pair {
@@ -106,7 +107,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
                     
                 </View>
                 <View style={{ marginTop: 16,left:10 }}>
-                    <Text style={{ fontWeight: 'bold', marginBottom: 8,fontSize:16 }}>Danh sách các lựa chọn:</Text>
+                    <Text style={{ fontWeight: 'bold', marginBottom: 8,fontSize:16 }}>{t('danhsach')}:</Text>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {pairs.map((p, idx) => (
                         <View key={idx} style={{ flexDirection: 'row', marginRight: 12, marginBottom: 8 }}>
@@ -137,7 +138,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
                                 ]}
                                 onChangeText={(text) => handleInputChange(q.id, text)}
                                 value={answers[q.id] || ''}
-                                placeholder="Nhập chữ cái"
+                                placeholder={t('nhapdapan')}
                             />
                             
                             </View>
@@ -148,7 +149,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
                     </View>
                     {!submitted && (
                         <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-                        <Text style={styles.submitButtonText}>Nộp bài</Text>
+                        <Text style={styles.submitButtonText}>{t("kiemtra")}</Text>
                         </TouchableOpacity>
                     )}
                 </ScrollView>
@@ -181,7 +182,7 @@ const styles = StyleSheet.create({
     },
     input: {
         backgroundColor: '#eee',
-        width:100,
+        width:150,
         height:50,
         borderRadius: 6,
     },
