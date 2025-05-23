@@ -73,6 +73,10 @@
    "DapAn":"Correct answer",
    "danhsach":"List of options",
    "nhapdapan":"Enter the answer",
-   "khongcounits":"There are no units."
+   "khongcounits":"There are no units.",
+    "nhapcautraloi":"Enter your answer...",
+     "result": "Result",
+  "correct": "Correct!",
+  "incorrectWithAnswer": "Incorrect! The correct answer is: {{answer}}"
   
 }

@@ -72,7 +72,11 @@
    "DapAn":"Đáp án đúng",
    "danhsach":"Danh sách lựa chọn",
    "nhapdapan":"Nhập đáp án",
-   "khongcounits":"Không có units nào"
+   "khongcounits":"Không có units nào",
+   "nhapcautraloi":"Nhập câu trả lời của bạn...",
+    "result": "Kết quả",
+  "correct": "Chính xác!",
+  "incorrectWithAnswer": "Sai rồi! Đáp án đúng là: {{answer}}"
 
 
   

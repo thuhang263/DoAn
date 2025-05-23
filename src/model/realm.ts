@@ -33,7 +33,7 @@ export const getRealm = async (): Promise<Realm> => {
 
   realmInstance = await Realm.open({
     schema: [SearchedWord],
-    schemaVersion: 2, // tăng version khi thay đổi schema
+    schemaVersion: 2, 
   });
 
   return realmInstance;

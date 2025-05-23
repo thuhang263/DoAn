@@ -77,13 +77,18 @@ const TestWriting = () => {
 
     if (!userAnswer) {
         Alert.alert('Thông báo', 'Hãy nhập câu trả lời!');
-        return;
+    return;
     }
 
     setShowResults(prev => ({ ...prev, [questionIndex]: true }));
 
     const isCorrect = userAnswer === correctAnswer;
-    Alert.alert('Kết quả', isCorrect ? 'Chính xác!' : `Sai rồi! Đáp án đúng là: ${correctAnswer}`);
+        Alert.alert(
+        t('result'),
+        isCorrect
+            ? t('correct')
+            : t('incorrectWithAnswer', { answer: correctAnswer })
+        );
     };
 
     const renderLesson = ({ item }: { item: Lesson }) => (
@@ -144,7 +149,7 @@ const TestWriting = () => {
                                 }
                                 }}
                                 editable={!showResult}
-                                placeholder="Nhập câu trả lời của bạn..."
+                                placeholder={t('nhapcautraloi')}
                             />
 
                             <TouchableOpacity
