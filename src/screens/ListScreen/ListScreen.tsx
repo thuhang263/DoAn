@@ -34,17 +34,15 @@ const ListScreen = () => {
   loadWords();
 
   return () => {
-  if (results && results.isValid()) {  
-    results.removeListener(listener);
-  }
-  if (realm && !realm.isClosed) {
-    realm.close();
+    if (results && results.isValid()) {  
+      results.removeListener(listener);
+    }
+    if (realm && !realm.isClosed) {
+      realm.close();
   }
 };
 
 }, []);
-
-
   const deleteWord = async (word: string) => {
     const realm = await getRealm();
     realm.write(() => {
