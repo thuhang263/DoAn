@@ -22,7 +22,7 @@ const StoriesScreen = () => {
         const snapshot = await firestore().collection('reading').get();
         const data: Topic[] = snapshot.docs.map((doc, index) => ({
           id: index + 1,
-          title: doc.data().title || doc.id, // Lấy title từ Firestore, nếu không có thì dùng doc.id
+          title: doc.data().title || doc.id, 
         }));
         setTopics(data);
       } catch (error) {
@@ -36,23 +36,24 @@ const StoriesScreen = () => {
   }, []);
   
 
-  const getImageById = (id: number) => {
-    switch (id) {
-      case 1: return require('../../assets/stories/cntt.jpg');
-      case 2: return require('../../assets/stories/ketoan.jpg');
-      case 3: return require('../../assets/stories/cokhi.jpg');
-      case 4: return require('../../assets/stories/dien.jpg');
-      case 5: return require('../../assets/stories/hoa_moitrg.jpg');
-      case 6: return require('../../assets/stories/kinhte.jpg');
-      case 7: return require('../../assets/stories/nuoc.jpg');
-      case 8: return require('../../assets/stories/congtrinh.jpg');
-      case 9: return require('../../assets/stories/luat.jpg');
+  
+  const getImageById = (title: string) => {
+    switch (title) {
+      case 'Khoa Công nghệ thông tin': return require('../../assets/stories/cntt.jpg');
+      case 'Khoa Cơ khí': return require('../../assets/stories/cokhi.jpg');
+      case 'Khoa Điện - Điện tử': return require('../../assets/stories/dien.jpg');
+      case 'Khoa Hóa - Môi trường': return require('../../assets/stories/hoa_moitrg.jpg');
+      case 'Khoa Kỹ thuật tài nguyên nước': return require('../../assets/stories/nuoc.jpg');
+      case 'Khoa Kế toán và Kinh doanh': return require('../../assets/stories/ketoan.jpg');
+      case 'Khoa Công trình': return require('../../assets/stories/congtrinh.jpg');
+      case 'Khoa Luật và Lý luận chính trị': return require('../../assets/stories/luat.jpg');
+       case 'Khoa Kinh tế và Quản lý': return require('../../assets/stories/kinhte.jpg');
       default: return require('../../assets/stories/cntt.jpg');
     }
   };
 
   const renderItem = ({ item }: { item: Topic }) => {
-    const imageSource = getImageById(item.id);
+   const imageSource = getImageById(item.title);
     return (
       <TouchableOpacity
         style={styles.item}

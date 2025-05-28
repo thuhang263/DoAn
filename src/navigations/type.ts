@@ -18,6 +18,7 @@ export enum Screens {
     StoriesDetail ="StoriesDetail",
     StoriesScreen="StoriesScreen",
     VocabularyItemScreen='VocabularyItemScreen',
+    EntertainmentScreen='EntertainmentScreen',
 }
 
 export type RootBottomParamList = {
@@ -86,6 +87,7 @@ export type RootStackParamList = {
     TestBasic:undefined;
     SpecializedEnglishScreen:undefined;
     ExerciseScreen: { faculty: string, exerciseType: string };
+    EntertainmentScreen:undefined;
   };
 
 declare global {

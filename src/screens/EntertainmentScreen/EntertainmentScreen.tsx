@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import {getMoviesWithTrailers} from '../../api/tmdbApi';
-import styles from '../ListeningScreen/styles';
+import styles from './styles';
 
 const {width, height} = Dimensions.get('window');
 
@@ -21,7 +21,7 @@ interface MovieTrailer {
   year: string;
 }
 
-const ListeningScreen = () => {
+const EntertainmentScreen = () => {
   const [videos, setVideos] = useState<MovieTrailer[]>([]);
   const [playing, setPlaying] = useState(false);
   const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
@@ -92,4 +92,4 @@ const ListeningScreen = () => {
   );
 };
 
-export default ListeningScreen;
+export default EntertainmentScreen;

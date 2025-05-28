@@ -17,7 +17,6 @@ import StoriesScreen from '../screens/ReadingScreen/StoriesScreen';
 import VocabularyListScreen from '../screens/Vocabulary/VocabularyListScreen';
 import MajorListScreen from '../screens/Vocabulary/MajorListScreen';
 import StoryContentScreen from '../screens/ReadingScreen/StoryContentScreen';
-import ListeningScreen from '../screens/ListeningScreen/ListeningScreen';
 import TestScreen from '../screens/TestScreen/TestScreen';
 import SpeakingScreen from '../screens/SpeakingScreen/SpeakingScreen';
 import SpeakingDetailScreen from '../screens/SpeakingScreen/SpeakingDetailScreen';
@@ -27,6 +26,7 @@ import TestBasic from '../screens/TestScreen/TestBasic';
 import SpecializedEnglishScreen from '../screens/TestScreen/SpecializedEnglishScreen';
 import ExerciseScreen from '../screens/TestScreen/ExerciseScreen';
 import TestWriting from '../screens/TestScreen/TestWriting';
+import EntertainmentScreen from '../screens/EntertainmentScreen/EntertainmentScreen';
 
 
 
@@ -50,7 +50,7 @@ const RootStackNavigation = () => {
       <Stack.Screen name="VocabularyListScreen" component={VocabularyListScreen} />
       <Stack.Screen name="MajorListScreen" component={MajorListScreen} />
       <Stack.Screen name="StoryContentScreen" component={StoryContentScreen} />
-      <Stack.Screen name="ListeningScreen" component={ListeningScreen} />
+      <Stack.Screen name="EntertainmentScreen" component={EntertainmentScreen} />
       <Stack.Screen name="TestScreen" component={TestScreen} />
       <Stack.Screen name="SpeakingScreen" component={SpeakingScreen} />
       <Stack.Screen name="SpeakingDetailScreen" component={SpeakingDetailScreen} />

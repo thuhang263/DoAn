@@ -32,16 +32,16 @@ const VoccalScreen = () => {
   }, []);
 
   const getImageByFaculty = (facultyId: string) => {
-    // Bạn có thể gán ảnh theo tên khoa
     switch (facultyId) {
-      case 'CNTT': return require('../../assets/images/champion.png');
-      case 'Cơ khí': return require('../../assets/images/shop.png');
-      case 'Khoa Điện - Điện tử': return require('../../assets/images/relax.png');
-      case 'Khoa Hóa - Môi trường': return require('../../assets/images/food.png');
-      case 'Khoa kỹ thuật tài nguyên nước': return require('../../assets/images/house.png');
-      case 'Khoa kế toán và kinh doanh': return require('../../assets/images/animal.png');
-      case 'Khoa công trình': return require('../../assets/images/travel.png');
-      case 'Khoa luật và lý luận chính trị': return require('../../assets/images/travel.png');
+      case 'Khoa Công nghệ thông tin': return require('../../assets/images/cntt.png');
+      case 'Khoa Cơ khí': return require('../../assets/images/cokhi.png');
+      case 'Khoa Điện - Điện tử': return require('../../assets/images/dientu.png');
+      case 'Khoa Hóa - Môi trường': return require('../../assets/images/moitrg.png');
+      case 'Khoa Kỹ thuật tài nguyên nước': return require('../../assets/images/nuoc.png');
+      case 'Khoa Kế toán và Kinh doanh': return require('../../assets/images/ketoan.png');
+      case 'Khoa Công trình': return require('../../assets/images/congtrinh.png');
+      case 'Khoa Luật và Lý luận chính trị': return require('../../assets/images/luat.png');
+      case 'Khoa Kinh tế và Quản lý': return require('../../assets/images/kinhte.png');
       default: return require('../../assets/images/champion.png');
     }
   };

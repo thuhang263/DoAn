@@ -42,8 +42,7 @@ const StoryContentScreen: React.FC = () => {
           .doc(facultyId)
           .collection('paragraphs')
           .doc(paragraphId)
-          .collection('stories')
-          .doc(storyId);
+          
 
         const docSnap = await docRef.get();
 

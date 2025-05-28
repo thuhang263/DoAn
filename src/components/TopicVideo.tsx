@@ -19,6 +19,12 @@ const majors = [
   { id: 2, title: 'Khoa Kinh Tế và Quản Lý', query: 'English for Economics' },
   { id: 3, title: 'Khoa Cơ Khí', query: 'English for Mechanical Engineering' },
   { id: 4, title: 'Khoa Kế toán và Kinh doanh', query: 'English for Accounting and business' },
+  { id: 5, title: 'Khoa Kỹ thuật Tài nguyên nước', query: 'English for Water Resources Engineering' },
+  { id: 6, title: 'Khoa Hóa - Môi trường', query: 'English for Environmental Engineering' },
+  { id: 7, title: 'Khoa Điện - Điện tử', query: 'English for Electrical and Electronic Engineering' },
+  { id: 8, title: 'Khoa Lý luận Chính trị', query: 'English for Political Theory' },
+  { id: 9, title: 'Khoa Công trình', query: 'English for Civil Engineering' }
+
 
 ];
 

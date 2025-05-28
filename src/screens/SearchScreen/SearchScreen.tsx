@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  TextInput,
-  TouchableOpacity,
-  Text,
-  FlatList,
-  Image,
-  ActivityIndicator,
-  Keyboard,
-  Alert,
+import {View,TextInput,TouchableOpacity,Text,FlatList,Image,ActivityIndicator,Keyboard,Alert,
 } from 'react-native';
 import { styles } from './styles';
 import { useTranslation } from 'react-i18next';
@@ -42,7 +33,6 @@ const SearchScreen: React.FC = () => {
 
       realm.write(() => {
         if (existing) {
-          // Cập nhật thông tin và thời gian tìm kiếm mới
           existing.meaning = wordItem.meaning;
           existing.partOfSpeech = wordItem.partOfSpeech;
           existing.example = wordItem.example;
