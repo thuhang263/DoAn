@@ -22,22 +22,7 @@ export default function VocabularyListScreen({ route }: Props) {
   const navigation = useNavigation();
   const { majorName, facultyName, unitId } = route.params; 
   const [vocabulary, setVocabulary] = useState<VocabularyItem[]>([]);
-
-
-  useEffect(() => {
-    const fetchFavorites = async () => {
-      try {
-        const snapshot = await firestore().collection('favoriteVoc').get();
-        const favorites = snapshot.docs.map(doc => doc.id); 
-       
-      } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu yêu thích:', error);
-      }
-    };
-  
-    fetchFavorites();
-  }, []); 
-  
+ 
   useEffect(() => {
     const fetchVocabulary = async () => {
       try {

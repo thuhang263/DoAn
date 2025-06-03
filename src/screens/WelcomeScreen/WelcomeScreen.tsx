@@ -14,6 +14,7 @@ const WelcomeScreen = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <Image source={require('../../assets/images/hello.png')} style={styles.catImage} />
+      <Image source={require('../../assets/images/welcome.png')} style={styles.welcomeImage} />
       <Text style={styles.subtitle}>{t('chooseLanguage')}</Text>
 
       <TouchableOpacity style={styles.button} onPress={() => handleLanguageSelect('vi')}>
@@ -33,6 +34,13 @@ const styles = StyleSheet.create({
   subtitle: { fontSize: 16, color: '#666', marginBottom: 40 },
   button: { width: '80%', padding: 15, backgroundColor: '#E9ECED', borderRadius: 12, alignItems: 'center', marginBottom: 15 },
   buttonText: { fontSize: 18 },
+  welcomeImage:{
+    width:310,
+    height:80,
+    alignSelf:'center',
+    alignContent:'center',
+    left:60,
+  }
 });
 
 export default WelcomeScreen;

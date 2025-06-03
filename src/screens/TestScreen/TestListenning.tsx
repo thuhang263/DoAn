@@ -203,7 +203,7 @@ const TestListenning = () => {
         >
           <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
         </TouchableOpacity>
-        <Text style={{color:'#fff', fontSize:18, left:110, top:10}}>Listening Now!</Text>
+        <Text style={{color:'#fff', fontSize:18, left:130, top:10}}>{t('listening')}</Text>
       </View>
 
       <FlatList

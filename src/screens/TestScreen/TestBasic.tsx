@@ -79,24 +79,25 @@ const SpecializedEnglishScreen = () => {
       <View style={styles.content}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {readingExercises.length > 0 ? (
-            readingExercises.map((exercise) => (
-              <TouchableOpacity
-                key={exercise.id}
-                style={styles.selectionButton}
-                onPress={() => navigateToExerciseScreen(exercise.id)}
-              >
-                <Text style={styles.buttonText}>
-                  {exercise.id.charAt(0).toUpperCase() + exercise.id.slice(1)}
-                </Text>
-              </TouchableOpacity>
-            ))
+            readingExercises.map((exercise) => {
+              const translationKey = `exerciseTitles.${exercise.id}`;
+              return (
+                <TouchableOpacity
+                  key={exercise.id}
+                  style={styles.selectionButton}
+                  onPress={() => navigateToExerciseScreen(exercise.id)}
+                >
+                  <Text style={styles.buttonText}>
+                    {t(translationKey)}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })
           ) : (
-            <Text>Chưa có bài tập nào</Text>
+            <Text>{t('noExercises')}</Text>
           )}
         </ScrollView>
     </View>
-
-
     </View>
     </SafeAreaView>
     

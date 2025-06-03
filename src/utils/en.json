@@ -77,6 +77,19 @@
     "nhapcautraloi":"Enter your answer...",
      "result": "Result",
   "correct": "Correct!",
-  "incorrectWithAnswer": "Incorrect! The correct answer is: {{answer}}"
+  "incorrectWithAnswer": "Incorrect! The correct answer is: {{answer}}",
+  "confirmDelete":"Confirm delete?",
+  "cancel":"No",
+  "delete":"Yes",
+  "listening":"Listening",
   
+  "noExercises": "No exercises available",
+  "exerciseTitles": {
+    "Reading": "Reading",
+    "Listening": "Listening",
+    "Writing": "Writing"
+  }
 }
+
+  
+

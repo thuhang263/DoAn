@@ -76,7 +76,18 @@
    "nhapcautraloi":"Nhập câu trả lời của bạn...",
     "result": "Kết quả",
   "correct": "Chính xác!",
-  "incorrectWithAnswer": "Sai rồi! Đáp án đúng là: {{answer}}"
+  "incorrectWithAnswer": "Sai rồi! Đáp án đúng là: {{answer}}",
+  "confirmDelete":"Bạn có chắc chắn muốn xóa từ vựng không?",
+  "cancel":"không",
+  "delete":"Có",
+  "reading":"Bài đọc",
+  "listening":"Bài nghe",
+  "noExercises": "Không có dạng bài tập nào",
+  "exerciseTitles": {
+    "Reading": "Bài đọc",
+    "Listening": "Bài nghe",
+    "Writing": "Bài viết"
+  }
 
 
   

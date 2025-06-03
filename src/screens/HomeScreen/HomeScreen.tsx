@@ -60,7 +60,7 @@ const HomeScreen = () => {
 
         <Text style={styles.sectionTitle2}>{t('entertainment')}</Text>
         <View style={styles.ReadContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('ListeningScreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('EntertainmentScreen')}>
             <Image source={require('../../assets/images/listen.png')} style={styles.avatarImageItem} />
           </TouchableOpacity>
           

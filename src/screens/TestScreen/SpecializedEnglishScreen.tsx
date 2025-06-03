@@ -84,7 +84,8 @@ const SpecializedEnglishScreen = () => {
   return (
     <SafeAreaView style={{flex:1}}>
     <View style={styles.container}>
-      <View style={{width: 420,
+      <View style={{
+       width: '100%',
         height:140,
         flexDirection: 'row', 
         justifyContent: 'space-between', 

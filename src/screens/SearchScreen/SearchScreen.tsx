@@ -48,7 +48,7 @@ const SearchScreen: React.FC = () => {
       });
 
       setSaved(true);
-      Alert.alert(t('saved'), t('tuvungdadulieu'));
+      Alert.alert(t('saved'));
       Keyboard.dismiss();
     } catch (err) {
       console.error('Lỗi khi lưu từ vào Realm:', err);

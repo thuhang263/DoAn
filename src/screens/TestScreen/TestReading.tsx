@@ -105,7 +105,7 @@ const ReadingScreen: React.FC = () => {
              >
                <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
              </TouchableOpacity>
-             <Text style={{color:'#fff', fontSize:18, left:110, top:10}}>Reading!</Text>
+             <Text style={{color:'#fff', fontSize:18, alignContent:'center',alignItems:'center',left:130, top:10}}>{t('reading')}</Text>
       </View>
       <ScrollView style={styles.container}>
       {parts.map((part, index) => {
