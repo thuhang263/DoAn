@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ListScreen from '../screens/ListScreen/ListScreen';
 import SearchScreen from '../screens/SearchScreen/SearchScreen';
 import TestScreen from '../screens/TestScreen/TestScreen';
+import SettingScreen from '../screens/SettingScreen/SettingScreen';
 import {Image} from 'react-native';
 import {Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
@@ -34,6 +35,8 @@ const RootBottomNavigation = () => {
             imageSource = require('../assets/images/list.png');
           } else if (route.name === Screens.TestScreen) {
             imageSource = require('../assets/images/test.png');
+          }else if (route.name === Screens.SettingScreen) {
+            imageSource = require('../assets/images/setting.png');
           }
 
           return (
@@ -67,6 +70,11 @@ const RootBottomNavigation = () => {
       <Tab.Screen
         name={Screens.TestScreen}
         component={TestScreen}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name={Screens.SettingScreen}
+        component={SettingScreen}
         options={{headerShown: false}}
       />
       

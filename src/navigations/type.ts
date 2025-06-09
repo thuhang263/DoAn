@@ -19,6 +19,7 @@ export enum Screens {
     StoriesScreen="StoriesScreen",
     VocabularyItemScreen='VocabularyItemScreen',
     EntertainmentScreen='EntertainmentScreen',
+    SettingScreen ='SettingScreen',
 }
 
 export type RootBottomParamList = {
@@ -28,6 +29,7 @@ export type RootBottomParamList = {
     [Screens.TestScreen]: undefined;
     [Screens.TestListenning]: undefined;
     [Screens.TestReading]:undefined;
+    [Screens.SettingScreen]:undefined;
     [Screens.GrammarTopicDetailScreen]:{ topicId:number,topicTitle:string};
     [Screens.StoriesDetail]: { storiesID:number };
 };
