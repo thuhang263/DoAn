@@ -22,7 +22,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
     const [answers, setAnswers] = useState<{ [key: string]: string }>({});
     const [submitted, setSubmitted] = useState(false);
     const navigation = useNavigation();
-     const [title, setTitle] = useState<string>('');
+    const [title, setTitle] = useState<string>('');
     const fetchQuestions = async () => {
     try {
         const docSnapshot = await firestore()
@@ -103,9 +103,6 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
                     </View>
                          <Text style={styles.titleText}>{title}</Text>
                 </View>
-                <View>
-                    
-                </View>
                 <View style={{ marginTop: 16,left:10 }}>
                     <Text style={{ fontWeight: 'bold', marginBottom: 8,fontSize:16 }}>{t('danhsach')}:</Text>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -139,18 +136,16 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
                                 onChangeText={(text) => handleInputChange(q.id, text)}
                                 value={answers[q.id] || ''}
                                 placeholder={t('nhapdapan')}
-                            />
-                            
-                            </View>
-                            
+                            />                           
+                            </View>                           
                         );
                         })}
                        
                     </View>
                     {!submitted && (
-                        <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+                    <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                         <Text style={styles.submitButtonText}>{t("kiemtra")}</Text>
-                        </TouchableOpacity>
+                    </TouchableOpacity>
                     )}
                 </ScrollView>
             </View>

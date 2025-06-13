@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootStackParamList, Screens} from './type';
 import RootBottomNavigation from './RootBottomNavigation';
 
-import VoccalScreen from '../screens/HomeScreen/VoccalScreen';
+import VocabScreen from '../screens/HomeScreen/VocabScreen';
 import GrammaScreen from '../screens/HomeScreen/GrammaScreen';
 import VideoScreen from '../screens/HomeScreen/VideoScreen';
 import TestListening from '../screens/TestScreen/TestListenning';
@@ -37,7 +37,7 @@ const RootStackNavigation = () => {
       <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name={Screens.RootBottomNavigation} component={RootBottomNavigation}/>
   
-      <Stack.Screen name="VoccalScreen" component={VoccalScreen} />
+      <Stack.Screen name="VocabScreen" component={VocabScreen} />
       <Stack.Screen name="GrammaScreen" component={GrammaScreen} /> 
       <Stack.Screen name={Screens.TestListenning} component={TestListening} />
       <Stack.Screen name={Screens.TestReading} component={TestReading} />

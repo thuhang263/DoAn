@@ -4,7 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
-const VoccalScreen = () => {
+const VocabScreen = () => {
   const navigation = useNavigation();
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -156,4 +156,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VoccalScreen;
+export default VocabScreen;

@@ -12,7 +12,7 @@ import {
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
-const API_KEY = 'AIzaSyBYx0VL_v8eB44_29m4PeeHgpNO797RgkA'; // Thay bằng API Key thật
+const API_KEY = 'AIzaSyBYx0VL_v8eB44_29m4PeeHgpNO797RgkA'; 
 
 const majors = [
   { id: 1, title: 'Khoa Công Nghệ Thông Tin', query: 'English for information technology' },

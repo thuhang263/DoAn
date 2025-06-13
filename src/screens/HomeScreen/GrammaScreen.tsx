@@ -11,19 +11,19 @@ const GrammaScreen = () => {
   const [selected, setSelected] = useState<number | null>(null);
   const { t } = useTranslation();
   useEffect(() => {
- const fetchData = async () => {
-  try {
-    const snapshot = await firestore().collection('tenses').orderBy('topicId').get();
-    const list = snapshot.docs.map(doc => ({
-      id: doc.data().topicId,
-      title: `topic${doc.data().topicId}`, // Định dạng đúng khóa JSON
-    }));
-    setData(list);
-  } catch (error) {
-    console.error('Lỗi tải dữ liệu:', error);
-  } finally {
-    setLoading(false);
-  }
+    const fetchData = async () => {
+      try {
+        const snapshot = await firestore().collection('tenses').orderBy('topicId').get();
+        const list = snapshot.docs.map(doc => ({
+          id: doc.data().topicId,
+          title: `topic${doc.data().topicId}`, 
+        }));
+        setData(list);
+      } catch (error) {
+        console.error('Lỗi tải dữ liệu:', error);
+      } finally {
+      setLoading(false);
+    }
   };
 
 

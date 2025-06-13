@@ -22,32 +22,32 @@ const ExerciseScreen = ({ faculty }: { faculty: string }) => {
     const fetchQuestions = async () => {
     try {
         const docSnapshot = await firestore()
-        .collection('practice')
-        .doc('specialized')
-        .collection('faculties')
-        .doc(faculty)
-        .collection('exercises')
-        .doc('True False')
-        .get();
+            .collection('practice')
+            .doc('specialized')
+            .collection('faculties')
+            .doc(faculty)
+            .collection('exercises')
+            .doc('True False')
+            .get();
 
-        if (!docSnapshot.exists) {
-        console.error('Không tìm thấy dữ liệu!');
-        return;
+            if (!docSnapshot.exists) {
+            console.error('Không tìm thấy dữ liệu!');
+            return;
         }
 
         const data = docSnapshot.data();
-        if (!data || !data.questions) {
-        console.error('Dữ liệu không hợp lệ hoặc không có câu hỏi!');
-        return;
+            if (!data || !data.questions) {
+            console.error('Dữ liệu không hợp lệ hoặc không có câu hỏi!');
+            return;
         }
 
         setTitle(data.title || ''); // Cập nhật tiêu đề từ Firestore
 
         const questions = data.questions.map((q: any, index: number) => ({
-        id: index.toString(),
-        question: q.statement,
-        answer: q.answer === 'T',
-        }));
+            id: index.toString(),
+            question: q.statement,
+            answer: q.answer === 'T',
+            }));
 
         setQuestions(questions);
     } catch (error) {

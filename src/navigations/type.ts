@@ -9,7 +9,7 @@ export enum Screens {
     SearchScreen ='SearchScreen',
     TestScreen ='TestScreen',
     RootBottomNavigation = 'RootBottomNavigation',
-    VoccalScreen = "VoccalScreen",
+    VocabScreen = "VocabScreen",
     TestListenning="TestListenning",
     TestReading ="TestReading",
     GrammarTopicDetailScreen="GrammarTopicDetailScreen",
@@ -41,7 +41,7 @@ export type RootStackParamList = {
     ListScreen:undefined;
     SearchScreen:undefined;
     TestScreen:undefined;
-    VoccalScreen:undefined;
+    VocabScreen:undefined;
     GrammaScreen:undefined;
     VideoScreen: { videoId: string };
     TestListenning:undefined;

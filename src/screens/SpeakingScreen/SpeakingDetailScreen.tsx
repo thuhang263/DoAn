@@ -198,7 +198,7 @@ const SpeakingDetailScreen: React.FC = () => {
   
           <View style={styles.buttonContainer}>
             <Button
-              title={isPlaying ? t('dungghiam') : t('playrecording')}
+              title={isPlaying ? t('dungphat') : t('playrecording')}
               disabled={!recordedAudio}
               onPress={isPlaying ? onStopPlay : onStartPlay}
             />

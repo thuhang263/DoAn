@@ -42,8 +42,6 @@ const StoryContentScreen: React.FC = () => {
           .doc(facultyId)
           .collection('paragraphs')
           .doc(paragraphId)
-          
-
         const docSnap = await docRef.get();
 
         if (docSnap.exists()) {

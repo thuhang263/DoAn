@@ -20,7 +20,7 @@ interface VocabularyItem {
 
 export default function VocabularyListScreen({ route }: Props) {
   const navigation = useNavigation();
-  const { majorName, facultyName, unitId } = route.params; 
+  const { facultyName, unitId } = route.params; 
   const [vocabulary, setVocabulary] = useState<VocabularyItem[]>([]);
  
   useEffect(() => {
