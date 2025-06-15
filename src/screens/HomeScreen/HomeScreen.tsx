@@ -40,7 +40,7 @@ const HomeScreen = () => {
 
         <Text style={styles.sectionTitle}>{t('review')}</Text>
         <View style={styles.ReadContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('VoccalScreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('VocabScreen')}>
             <Image source={require('../../assets/images/tvcn3.jpg')} style={styles.avatarImageItem} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('GrammaScreen')}>

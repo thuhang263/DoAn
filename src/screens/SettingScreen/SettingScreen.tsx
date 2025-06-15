@@ -17,7 +17,7 @@ import i18n from '../../utils/i18n';
 import { useTranslation } from 'react-i18next';
 import firestore from '@react-native-firebase/firestore';
 
-export default function DetailsScreen() {    
+export default function SettingScreen() {    
   const navigation = useNavigation();
   const { t } = useTranslation();
   const [message,setMessage] = useState('');
