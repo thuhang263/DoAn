@@ -90,9 +90,14 @@
   },
   "huongdandoiNN":"Đổi ngôn ngữ tại đây!",
   "huongdandoiNNN":"Viết nhận xét cho ứng dụng của mình nhé!",
-  "dungphat":"Dừng phát"
+  "dungphat":"Dừng phát",
+  "enteryourmessage": "Vui lòng viết góp ý",
+    "camon":"Cảm ơn những góp ý của bạn!",
+  "loigui":"Lỗi gửi góp ý",
+   "guilaisau":"Vui lòng gửi lại sau"
+}
 
 
   
 
-}
+

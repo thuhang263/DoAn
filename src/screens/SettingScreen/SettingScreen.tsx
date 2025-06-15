@@ -8,8 +8,6 @@ import {
   Text,
   TextInput,
   Platform,
-  Button,
-  TouchableNativeFeedback,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { setAppLanguage } from '../../utils/i18n';
@@ -31,7 +29,7 @@ export default function SettingScreen() {
 
   const handleSubmit = async () => {
     if (message.trim().length === 0) {
-      Alert.alert(t('Please enter your message'));
+      Alert.alert(t('enteryourmessage'));
       return;
     }
 
@@ -42,11 +40,11 @@ export default function SettingScreen() {
         platform: Platform.OS,
         language: i18n.language,
       });
-      Alert.alert(t('Thank you for your message!'));
+      Alert.alert(t('camon'));
       setMessage('');
     } catch (error) {
-      console.error('Error sending message:', error);
-      Alert.alert(t('An error occurred. Please try again later.'));
+      console.error('loigui', error);
+      Alert.alert(t('guilaisau'));
     }
   };
   return (
@@ -89,7 +87,7 @@ export default function SettingScreen() {
           <TextInput
           style={styles.input}
           multiline
-          placeholder={t('Write your secret message here...')}
+          placeholder={t('enteryourmessage')}
           value={message}
           onChangeText={setMessage}
           />
