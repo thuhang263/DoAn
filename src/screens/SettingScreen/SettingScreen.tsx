@@ -8,13 +8,18 @@ import {
   Text,
   TextInput,
   Platform,
+  ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { setAppLanguage } from '../../utils/i18n';
 import i18n from '../../utils/i18n';
 import { useTranslation } from 'react-i18next';
 import firestore from '@react-native-firebase/firestore';
-
+import {
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 export default function SettingScreen() {    
   const navigation = useNavigation();
   const { t } = useTranslation();
@@ -48,62 +53,66 @@ export default function SettingScreen() {
     }
   };
   return (
-    <View style={styles.container}>
-      <View style={styles.layoutContainerTop}>
-        <View style={styles.textContain}>
-          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-            <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
-          </TouchableOpacity>
-          <Image
-          style={styles.imageText} 
-          source={require('../../assets/images/setText.png')}
-          >
-          </Image>
-        </View>
-        <Image style={styles.image} source={require('../../assets/images/cat.png')} />
-      </View>
-
-
-      <View style={styles.content}>
-        <View style={styles.row}>
-          <Image source={require('../../assets/images/cat3.png')} style={styles.catImage} />
-          <Text style={styles.guideText}>{t('huongdandoiNN')}</Text>
-        </View>
-        <TouchableOpacity style={styles.button}  onPress={() => changeLanguage('vi')}>
-          <Text style={styles.buttonText}>🇻🇳 {t('vietnamese')}</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.button}  onPress={() => changeLanguage('en')}>
-            <Text style={styles.buttonText}>🇺🇸 {t('english')}</Text>
-        </TouchableOpacity>
-      </View>
-
-
-      <View style={styles.content2}>
-        <View style={styles.row}>
-            <Image source={require('../../assets/images/comment.png')} style={styles.catImage} />
-            <Text style={styles.guideText}>{t('huongdandoiNNN')}</Text>
+  <KeyboardAvoidingView
+    style={{ flex: 1 }}
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20} // tuỳ chỉnh offset nếu cần
+  >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={styles.container}>
+          <View style={styles.layoutContainerTop}>
+            <View style={styles.textContain}>
+              <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+                <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
+              </TouchableOpacity>
+              <Image
+                style={styles.imageText}
+                source={require('../../assets/images/setText.png')}
+              />
+            </View>
+            <Image style={styles.image} source={require('../../assets/images/cat.png')} />
           </View>
-          <TextInput
-          style={styles.input}
-          multiline
-          placeholder={t('enteryourmessage')}
-          value={message}
-          onChangeText={setMessage}
-          />
+
+          <View style={styles.content}>
+            <View style={styles.row}>
+              <Image source={require('../../assets/images/cat3.png')} style={styles.catImage} />
+              <Text style={styles.guideText}>{t('huongdandoiNN')}</Text>
+            </View>
+            <TouchableOpacity style={styles.button} onPress={() => changeLanguage('vi')}>
+              <Text style={styles.buttonText}>🇻🇳 {t('vietnamese')}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button} onPress={() => changeLanguage('en')}>
+              <Text style={styles.buttonText}>🇺🇸 {t('english')}</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.content2}>
+            <View style={styles.row}>
+              <Image source={require('../../assets/images/comment.png')} style={styles.catImage} />
+              <Text style={styles.guideText}>{t('huongdandoiNNN')}</Text>
+            </View>
+            <TextInput
+              style={styles.input}
+              multiline
+              placeholder={t('enteryourmessage')}
+              value={message}
+              onChangeText={setMessage}
+            />
+          </View>
+
+          <TouchableOpacity onPress={handleSubmit} style={styles.sentbtn}>
+            <Text style={{ color: '#fff', alignSelf: 'center', top: 5 }}>Gửi ngay!</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-         onPress={handleSubmit}
-         style={styles.sentbtn}
-         >
-          <Text style={{color:'#fff', alignSelf:'center',top:5}}>Gửi ngay!</Text>
-        </TouchableOpacity>
-        
-      <View>
-        
-      </View>
-    </View>
-  );
+      </ScrollView>
+    </TouchableWithoutFeedback>
+  </KeyboardAvoidingView>
+);
 }
 
 const styles = StyleSheet.create({
@@ -118,8 +127,7 @@ const styles = StyleSheet.create({
       elevation: 4,
       width:320,
       alignSelf:'center',
-      top:20,
-      margin:20,
+      marginTop:20,
   },
    input: {
     height: 150,
@@ -149,7 +157,7 @@ const styles = StyleSheet.create({
       elevation: 4,
       width:320,
       alignSelf:'center',
-      marginTop:30,
+      marginTop:10,
   },
   guideText: {
       flex: 1,
