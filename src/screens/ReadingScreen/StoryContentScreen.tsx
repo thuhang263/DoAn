@@ -34,32 +34,34 @@ const StoryContentScreen: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchStory = async () => {
+    const getStory = async () => {
       try {
         setLoading(true);
         const docRef = firestore()
           .collection('reading')
           .doc(facultyId)
           .collection('paragraphs')
-          .doc(paragraphId)
+          .doc(paragraphId); // chính là document chứa đoạn văn
+  
         const docSnap = await docRef.get();
-
+  
         if (docSnap.exists()) {
           setStory(docSnap.data() as Story);
         } else {
-          console.warn('Document not found.');
+          console.warn('Không tìm thấy tài liệu.');
           setStory(null);
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Lỗi khi tải dữ liệu:', error);
         setStory(null);
       } finally {
         setLoading(false);
       }
     };
-
-    fetchStory();
-  }, [facultyId, paragraphId, storyId]);
+  
+    getStory();
+  }, [facultyId, paragraphId]);
+  
 
   useEffect(() => {
     return () => {

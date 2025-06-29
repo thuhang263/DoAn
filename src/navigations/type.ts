@@ -49,9 +49,9 @@ export type RootStackParamList = {
     TestWriting:undefined;
     GrammarTopicDetailScreen: { topicId: number; topicName: string }; 
     TopicVideo:undefined;
-    StoriesDetail:{storiesID:number, storiesName: string};
+    StoriesDetail:{storiesID:string, storiesName: string};
     StoriesScreen:undefined;
-    MajorListScreen: { facultyName: string, };
+    UnitScreen: { facultyName: string, };
     VocabularyListScreen: {
       majorName: string;
       facultyName: string;

@@ -6,8 +6,23 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18next';
 
+interface Question {
+  question: string;
+  options: string[];
+  answer: string;
+}
+
+interface LessonReading {
+  id: string;
+  title: string;
+  paragraph: string;
+  content: string;
+  questions: Question[];
+}
+
+
 const ReadingScreen: React.FC = () => {
-  const [parts, setParts] = useState<any[]>([]);
+  const [parts, setParts] = useState<LessonReading[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
@@ -26,7 +41,7 @@ const ReadingScreen: React.FC = () => {
         .get();
 
       if (!snapshot.empty) {
-        const partsData: any[] = [];
+       const partsData: LessonReading[] = [];
         for (const doc of snapshot.docs) {
           const data = doc.data();
           const part = {
@@ -113,7 +128,7 @@ const ReadingScreen: React.FC = () => {
           <View key={index} style={styles.partBox}>
             <Text style={styles.partTitle}>{part.title || `Part ${index + 1}`}</Text>
 
-            {part.questions && part.questions.length > 0 && part.questions.map((q: any, idx: number) => {
+            {part.questions && part.questions.length > 0 && part.questions.map((q: Question, idx: number) => {
               const questionKey = `${part.id}_q${idx}`;
               const selectedOption = selectedAnswers[questionKey];
               const isChecked = checkedAnswers[questionKey];

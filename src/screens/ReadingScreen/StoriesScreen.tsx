@@ -1,44 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View,Text, FlatList,TouchableOpacity,Image, StyleSheet, SafeAreaView, StatusBar, ImageBackground, ActivityIndicator,
+  View, Text, FlatList, TouchableOpacity, Image, StyleSheet,
+  SafeAreaView, StatusBar, ImageBackground, ActivityIndicator,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
-interface Topic {
-  id: number;
+interface Read {
+  id: string; 
   title: string;
+  image: any;
 }
 
 const StoriesScreen = () => {
   const navigation = useNavigation();
-  const [topics, setTopics] = useState<Topic[]>([]);
+  const [data, setData] = useState<Read[]>([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
+
   useEffect(() => {
-    const fetchFaculties = async () => {
+    const getFaculties = async () => {
       try {
-        const snapshot = await firestore().collection('reading').get();
-        const data: Topic[] = snapshot.docs.map((doc, index) => ({
-          id: index + 1,
-          title: doc.data().title || doc.id, 
+        const snapshot = await firestore().collection('faculties').get();
+        const list = snapshot.docs.map(doc => ({
+          id: doc.id, 
+          title: doc.id,
+          image: getImageByFaculty(doc.id),
         }));
-        setTopics(data);
+        setData(list);
       } catch (error) {
-        console.error('Error fetching faculties: ', error);
+        console.error('Lỗi tải danh sách khoa:', error);
       } finally {
         setLoading(false);
       }
     };
-  
-    fetchFaculties();
-  }, []);
-  
 
-  
-  const getImageById = (title: string) => {
-    switch (title) {
+    getFaculties();
+  }, []);
+
+  const getImageByFaculty = (facultyId: string) => {
+    switch (facultyId) {
       case 'Khoa Công nghệ thông tin': return require('../../assets/stories/cntt.jpg');
       case 'Khoa Cơ khí': return require('../../assets/stories/cokhi.jpg');
       case 'Khoa Điện - Điện tử': return require('../../assets/stories/dien.jpg');
@@ -47,13 +49,13 @@ const StoriesScreen = () => {
       case 'Khoa Kế toán và Kinh doanh': return require('../../assets/stories/ketoan.jpg');
       case 'Khoa Công trình': return require('../../assets/stories/congtrinh.jpg');
       case 'Khoa Luật và Lý luận chính trị': return require('../../assets/stories/luat.jpg');
-       case 'Khoa Kinh tế và Quản lý': return require('../../assets/stories/kinhte.jpg');
+      case 'Khoa Kinh tế và Quản lý': return require('../../assets/stories/kinhte.jpg');
       default: return require('../../assets/stories/cntt.jpg');
     }
   };
 
-  const renderItem = ({ item }: { item: Topic }) => {
-   const imageSource = getImageById(item.title);
+  const renderItem = ({ item }: { item: Read }) => {
+    const imageSource = getImageByFaculty(item.title);
     return (
       <TouchableOpacity
         style={styles.item}
@@ -66,7 +68,7 @@ const StoriesScreen = () => {
       >
         <ImageBackground source={imageSource} style={styles.image} imageStyle={{ borderRadius: 10 }}>
           <View style={styles.overlay}>
-           <Text style={styles.text}>{t(`faculties.${item.title}`)}</Text>
+            <Text style={styles.text}>{t(`faculties.${item.title}`)}</Text>
           </View>
         </ImageBackground>
       </TouchableOpacity>
@@ -106,9 +108,9 @@ const StoriesScreen = () => {
 
         <View style={styles.itemContent}>
           <FlatList
-            data={topics}
+            data={data}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.id}
             numColumns={2}
             columnWrapperStyle={styles.row}
           />

@@ -40,6 +40,10 @@
     "Khoa Luật và Lý luận chính trị": "Faculty Law and Political Theory",
     "Khoa Kinh tế và Quản lý":"Faculty of Economics and Management"
   },
+   "test": {
+    "basic": "Basic Test",
+    "specialized": "Specialized Test"
+  },
   "botuvung":"Specialized vocabulary sets",
   "docsongngu":"Bilingual reading",
   "topicName": {
@@ -50,7 +54,8 @@
     "topic4": "Past Continuous",
     "topic6": "Past Perfect",
     "topic7": "First Conditional",
-    "topic8": "Second Conditional"
+    "topic8": "Second Conditional",
+    "topic9":"Simple Future"
 
   },
    "cautruc":"Structure",

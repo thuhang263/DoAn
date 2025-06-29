@@ -4,7 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import { t } from 'i18next';
 
-interface GrammarTopic {
+interface Grammar {
   topicId: number;
   topicName: string;
   structure: string;
@@ -18,11 +18,11 @@ const GrammarTopicDetailScreen = () => {
   const route = useRoute();
   const { topicId, topicName } = route.params as { topicId: number; topicName: string };
 
-  const [topic, setTopic] = useState<GrammarTopic | null>(null);
+  const [topic, setTopic] = useState<Grammar | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTopic = async () => {
+    const getGrammarDetail = async () => {
       try {
         const snapshot = await firestore()
           .collection('tenses')
@@ -30,7 +30,7 @@ const GrammarTopicDetailScreen = () => {
           .get();
 
         if (!snapshot.empty) {
-          const data = snapshot.docs[0].data() as GrammarTopic;
+          const data = snapshot.docs[0].data() as Grammar;
           setTopic(data);
         }
       } catch (error) {
@@ -40,7 +40,7 @@ const GrammarTopicDetailScreen = () => {
       }
     };
 
-    fetchTopic();
+    getGrammarDetail();
   }, [topicId]);
 
   if (loading) {

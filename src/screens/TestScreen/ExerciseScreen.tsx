@@ -27,7 +27,7 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
   useEffect(() => {
     if (!faculty || !exerciseType) return;
 
-    const fetchUnits = async () => {
+    const getQuestions = async () => {
       try {
         const snapshot = await firestore()
           .collection('practice')
@@ -53,7 +53,7 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
       }
     };
 
-    fetchUnits();
+    getQuestions();
   }, [faculty, exerciseType]);
 
   // Xử lý chọn đáp án

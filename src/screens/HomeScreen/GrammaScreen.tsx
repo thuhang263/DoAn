@@ -4,14 +4,20 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
+interface GrammarTopic {
+  id: number;
+  title: string;
+}
+
+
 const GrammaScreen = () => {
   const navigation = useNavigation();
-  const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<GrammarTopic[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<number | null>(null);
   const { t } = useTranslation();
   useEffect(() => {
-    const fetchData = async () => {
+    const getGrammar = async () => {
       try {
         const snapshot = await firestore().collection('tenses').orderBy('topicId').get();
         const list = snapshot.docs.map(doc => ({
@@ -27,11 +33,11 @@ const GrammaScreen = () => {
   };
 
 
-  fetchData();
+  getGrammar();
 }, []);
 
 
-  const renderItem = ({ item }: { item: any }) => (
+  const renderItem = ({ item }: { item: GrammarTopic }) => (
   <TouchableOpacity
     style={{
       marginTop: 10,

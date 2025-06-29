@@ -8,18 +8,17 @@ import { t } from 'i18next';
 interface Question {
   id: string;
   question: string;
-  answer: boolean; // true hoặc false
+  answer: boolean; 
 }
 
 const ExerciseScreen = ({ faculty }: { faculty: string }) => {
-  // Khai báo state cho câu hỏi
-    const [questions, setQuestions] = useState<Question[]>([]); // Cần khai báo setQuestions ở đây
+ 
+    const [questions, setQuestions] = useState<Question[]>([]); 
     const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string | null }>({});
     const [submitted, setSubmitted] = useState(false);
-    const [title, setTitle] = useState<string>(''); // Khai báo state cho tiêu đề
+    const [title, setTitle] = useState<string>('');
     const navigation = useNavigation();
-  // Hàm fetch dữ liệu câu hỏi
-    const fetchQuestions = async () => {
+    const getQuestions = async () => {
     try {
         const docSnapshot = await firestore()
             .collection('practice')
@@ -59,7 +58,7 @@ const ExerciseScreen = ({ faculty }: { faculty: string }) => {
 
   // Gọi hàm fetch khi component mount
     useEffect(() => {
-        fetchQuestions();
+        getQuestions();
     }, [faculty]);
 
     const handleSelect = (questionId: string, answer: string) => {

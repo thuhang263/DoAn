@@ -7,7 +7,7 @@ import { t } from 'i18next';
 interface Question {
   id: string;
   number: number;
-  left: string;
+  option: string;
   answer: string;
 }
 
@@ -52,7 +52,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
         const questions = Object.entries(data.questions).map(([key, q]: [string, any]) => ({
             id: key,
             number: q.number,
-            left: q.left,
+            option: q.option,
             answer: q.answer,
             }));
 
@@ -123,7 +123,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
 
                         return (
                             <View key={q.id} style={styles.rowContainer}>
-                                <Text style={styles.leftText}>{q.number}. {q.left}</Text>
+                                <Text style={styles.leftText}>{q.number}. {q.option}</Text>
                             
                             <TextInput
                                 editable={!submitted}

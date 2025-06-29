@@ -20,7 +20,7 @@ interface Question {
   answer: 'True' | 'False';
 }
 
-interface Lesson {
+interface Lesson_listening {
   id: number;
   title: string;
   text: string;
@@ -28,8 +28,8 @@ interface Lesson {
 }
 
 const TestListenning = () => {
-  const [lessons, setLessons] = useState<Lesson[]>([]);
-  const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
+  const [lessons, setLessons] = useState<Lesson_listening[]>([]);
+  const [selectedLesson, setSelectedLesson] = useState<Lesson_listening | null>(null);
   const [selectedOptions, setSelectedOptions] = useState<{ [key: number]: 'True' | 'False' | null }>({});
   const [showResults, setShowResults] = useState<{ [key: number]: boolean }>({});
   const navigation = useNavigation();
@@ -41,7 +41,7 @@ const TestListenning = () => {
   }, []);
 
   useEffect(() => {
-    const fetchListeningParts = async () => {
+    const getListeningParts = async () => {
       try {
         const snapshot = await firestore()
           .collection('practice')
@@ -51,7 +51,7 @@ const TestListenning = () => {
           .collection('parts')
           .get();
 
-        const partsData: Lesson[] = snapshot.docs.map(doc => {
+        const partsData: Lesson_listening[] = snapshot.docs.map(doc => {
           const data = doc.data();
 
           return {
@@ -69,7 +69,7 @@ const TestListenning = () => {
       }
     };
 
-    fetchListeningParts();
+    getListeningParts();
   }, []);
 
   const handleListen = (text: string) => {
@@ -95,7 +95,7 @@ const TestListenning = () => {
     Alert.alert('Kết quả', isCorrect ? 'Chính xác!' : `Sai rồi! Đáp án đúng là: ${correctAnswer}`);
   };
 
-  const renderLesson = ({ item }: { item: Lesson }) => (
+  const renderLesson = ({ item }: { item: Lesson_listening }) => (
     <TouchableOpacity
       style={styles.lessonItem}
       onPress={() => {

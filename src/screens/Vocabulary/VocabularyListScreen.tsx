@@ -24,7 +24,7 @@ export default function VocabularyListScreen({ route }: Props) {
   const [vocabulary, setVocabulary] = useState<VocabularyItem[]>([]);
  
   useEffect(() => {
-    const fetchVocabulary = async () => {
+    const getVocabulary = async () => {
       try {
         const snapshot = await firestore()
           .collection('faculties')
@@ -41,7 +41,7 @@ export default function VocabularyListScreen({ route }: Props) {
       }
     };
 
-    fetchVocabulary();
+    getVocabulary();
   }, []);
   useEffect(() => {
     Tts.setDefaultLanguage('en-US'); 

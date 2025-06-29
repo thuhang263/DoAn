@@ -4,15 +4,22 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
+
+interface Faculty {
+  id: string;
+  title: string;
+  image: any;
+}
 const VocabScreen = () => {
   const navigation = useNavigation();
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Faculty[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<string | null>(null);
   const { t } = useTranslation();
 
+
   useEffect(() => {
-    const fetchFaculties = async () => {
+    const getFaculties = async () => {
       try {
         const snapshot = await firestore().collection('faculties').get();
         const list = snapshot.docs.map(doc => ({
@@ -28,7 +35,7 @@ const VocabScreen = () => {
       }
     };
 
-    fetchFaculties();
+    getFaculties();
   }, []);
 
   const getImageByFaculty = (facultyId: string) => {
@@ -46,12 +53,12 @@ const VocabScreen = () => {
     }
   };
 
-  const renderItem = ({ item }: { item: any }) => (
+  const renderItem = ({ item }: { item: Faculty }) => (
     <TouchableOpacity
       style={[styles.item, selected === item.id && styles.selectedItem]}
       onPress={() => {
         setSelected(item.id);
-        navigation.navigate('MajorListScreen', { facultyName: item.title });
+        navigation.navigate('UnitScreen', { facultyName: item.title });
       }}
     >
       <Image source={item.image} style={styles.image} />

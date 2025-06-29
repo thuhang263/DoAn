@@ -4,15 +4,21 @@ import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import { useTranslation } from 'react-i18next';
 
-const SpecializedEnglishScreen = () => {
+
+interface Exercise {
+  exerciseId: string;
+
+}
+
+const TestBasic = () => {
   const navigation = useNavigation();
   
   // State để lưu dữ liệu bài tập đọc
-  const [readingExercises, setReadingExercises] = useState<any[]>([]);
+  const [readingExercises, setReadingExercises] = useState<Exercise[]>([]);
   const { t } = useTranslation();
 
   useEffect(() => {
-  const fetchExercises = async () => {
+  const getBasicTest = async () => {
     try {
       const exercisesSnapshot = await firestore()
         .collection('practice')
@@ -21,7 +27,7 @@ const SpecializedEnglishScreen = () => {
         .get(); 
       if (!exercisesSnapshot.empty) {
         const exercises = exercisesSnapshot.docs.map(doc => ({
-          id: doc.id, 
+          exerciseId: doc.id, 
           ...doc.data(), 
         }));
         setReadingExercises(exercises);
@@ -34,7 +40,7 @@ const SpecializedEnglishScreen = () => {
     }
   };
 
-  fetchExercises(); 
+  getBasicTest(); 
 }, []); 
   const navigateToExerciseScreen = (exerciseId: string) => {
       switch (exerciseId.toLowerCase()) {
@@ -48,7 +54,7 @@ const SpecializedEnglishScreen = () => {
           navigation.navigate('TestWriting');
           break;
         default:
-          console.warn('Không có màn hình tương ứng với:', exerciseId);
+          console.warn('Không có bài kiểm tra tương ứng với:', exerciseId);
       }
     };
 
@@ -80,12 +86,12 @@ const SpecializedEnglishScreen = () => {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {readingExercises.length > 0 ? (
             readingExercises.map((exercise) => {
-              const translationKey = `exerciseTitles.${exercise.id}`;
+              const translationKey = `exerciseTitles.${exercise.exerciseId}`;
               return (
                 <TouchableOpacity
-                  key={exercise.id}
+                  key={exercise.exerciseId}
                   style={styles.selectionButton}
-                  onPress={() => navigateToExerciseScreen(exercise.id)}
+                  onPress={() => navigateToExerciseScreen(exercise.exerciseId)}
                 >
                   <Text style={styles.buttonText}>
                     {t(translationKey)}
@@ -104,7 +110,7 @@ const SpecializedEnglishScreen = () => {
   );
 };
 
-export default SpecializedEnglishScreen;
+export default TestBasic;
 
 const styles = StyleSheet.create({
   container: {

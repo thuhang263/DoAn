@@ -26,27 +26,29 @@ const StoriesDetail: React.FC = () => {
   const [paragraphs, setParagraphs] = useState<any[]>([]);
 
   useEffect(() => {
-    const fetchParagraphs = async () => {
+    const getStories = async () => {
       try {
         const snapshot = await firestore()
           .collection('reading')
-          .doc(storiesName) 
+          .doc(storiesName)
           .collection('paragraphs')
           .get();
-
+    
         const data = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
+          docId: doc.id,// Ví dụ: "Challenges and Opportunities in the Industry"
+          ...doc.data(), // gồm: title_en, title_vi, content_en, ...
         }));
-
+    
         setParagraphs(data);
       } catch (error) {
         console.error('Error fetching paragraphs:', error);
       }
     };
-
-    fetchParagraphs();
+    
+  
+    getStories();
   }, [storiesName]);
+  
 
   const renderItem = ({ item }: any) => (
     <TouchableOpacity
@@ -54,7 +56,7 @@ const StoriesDetail: React.FC = () => {
       onPress={() =>
         navigation.navigate('StoryContentScreen', {
           facultyId: storiesName,
-          paragraphId: item.id,
+         paragraphId: item.docId,
           storyId: item.id,
         })
       }

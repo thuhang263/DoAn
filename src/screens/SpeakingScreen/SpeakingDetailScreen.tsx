@@ -13,6 +13,13 @@ import { SafeAreaView } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { t } from 'i18next';
 
+interface SpeakingTopic {
+  id: string;
+  topicName: string;
+  paragraph: string;
+}
+
+
 const audioRecorderPlayer = new AudioRecorderPlayer();
 
 const SpeakingDetailScreen: React.FC = () => {
@@ -20,39 +27,44 @@ const SpeakingDetailScreen: React.FC = () => {
     const route = useRoute();
     const { id } = route.params as { id: string };
     const [paragraph, setParagraph] = useState<string | null>(null);
+    const [title, setTitle] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
     const [isRecording, setIsRecording] = useState(false);
     const [recordedAudio, setRecordedAudio] = useState('');
     const [isPlaying, setIsPlaying] = useState(false);
   
-    useEffect(() => {
-      console.log('useEffect chạy với id:', id);
-      const fetchParagraph = async () => {
-        try {
-          setLoading(true);
-          console.log('Bắt đầu truy vấn Firestore...');
-          const querySnapshot = await firestore()
-            .collection('speaking')
-            .doc(id)
-            .collection('topic')
-            .get();
-  
-          if (!querySnapshot.empty) {
-            const document = querySnapshot.docs[0];
-            console.log('Dữ liệu Firestore:', document.data());
-            setParagraph(document.data()?.paragraph || '');
-          } else {
-            console.log('Không tìm thấy tài liệu!');
-          }
-        } catch (error) {
-          console.error('Lỗi khi tải nội dung:', error);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchParagraph();
-    }, [id]);
+   useEffect(() => {
+  const getSpeak = async () => {
+  try {
+    setLoading(true);
+    console.log('useEffect chạy với id:', id);
+    console.log('Bắt đầu truy vấn Firestore từ speaking/', id);
+
+    const docSnapshot = await firestore()
+      .collection('speaking')
+      .doc(id)
+      .get();
+
+    if (docSnapshot.exists()) {
+      const data = docSnapshot.data() as SpeakingTopic;
+      console.log('Dữ liệu Firestore:', data);
+
+      setParagraph(data.paragraph || '');
+      setTitle(data.topicName);
+    } else {
+      console.log('Không tìm thấy document với id:', id);
+    }
+  } catch (error) {
+    console.error('Lỗi khi tải nội dung:', error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+  getSpeak();
+}, [id]);
+
   
     const requestPermissions = async (): Promise<boolean> => {
       try {
@@ -176,6 +188,7 @@ const SpeakingDetailScreen: React.FC = () => {
             >
               <Image style={styles.backIcon} source={require('../../assets/images/back1.png')} />
             </TouchableOpacity>
+            <Text style={{alignSelf:'center', color:'#FFF',fontSize:20}}>{title}</Text>
 
           </View>
   

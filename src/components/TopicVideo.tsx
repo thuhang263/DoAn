@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
-
+import { Alert } from 'react-native'; 
 const API_KEY = 'AIzaSyBYx0VL_v8eB44_29m4PeeHgpNO797RgkA'; 
 
 const majors = [
@@ -39,7 +39,7 @@ const TopicVideo = () => {
       );
       return response.data.items || [];
     } catch (error) {
-      console.error('Lỗi khi fetch video:', error);
+       Alert.alert('Lỗi', 'Không thể tải danh sách video. Vui lòng thử lại sau.');
       return [];
     }
   };
@@ -90,7 +90,7 @@ const TopicVideo = () => {
           if (navigation.canGoBack()) {
             navigation.goBack();
           } else {
-            navigation.navigate('HomeScreen'); // Chuyển về Home nếu không có màn nào để quay lại
+            navigation.navigate('HomeScreen'); 
           }
           }}
           >
@@ -173,16 +173,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   backButton: {
-    position: 'absolute', // Đặt vị trí tuyệt đối
-    top: 30,             // Khoảng cách từ đỉnh màn hình
-    left: 30,             // Khoảng cách từ trái màn hình
-    zIndex: 10,           // Hiển thị trên các thành phần khác
-    padding: 5,           // Thêm padding để dễ nhấn
+    position: 'absolute', 
+    top: 30,             
+    left: 30,            
+    zIndex: 10,          
+    padding: 5,          
   },
   backIcon: {
-    width: 30,  // Chiều rộng ảnh
-    height: 30, // Chiều cao ảnh
-    resizeMode: 'contain', // Duy trì tỉ lệ của ảnh
+    width: 30,  
+    height: 30, 
+    resizeMode: 'contain', 
   },
 });
 

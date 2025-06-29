@@ -21,15 +21,15 @@ interface Question {
   answer: 'True' | 'False';
 }
 
-interface Lesson {
+interface Lesson_writing {
   id: number;
   title: string;
   questions: Question[];
 }
 
 const TestWriting = () => {
-    const [lessons, setLessons] = useState<Lesson[]>([]);
-    const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
+    const [lessons, setLessons] = useState<Lesson_writing[]>([]);
+    const [selectedLesson, setSelectedLesson] = useState<Lesson_writing | null>(null);
     const [selectedOptions, setSelectedOptions] = useState<{ [key: number]: string }>({});
     const [showResults, setShowResults] = useState<{ [key: number]: boolean }>({});
 
@@ -52,7 +52,7 @@ const TestWriting = () => {
             .collection('parts')
             .get();
 
-            const partsData: Lesson[] = snapshot.docs.map(doc => {
+            const partsData: Lesson_writing[] = snapshot.docs.map(doc => {
             const data = doc.data();
 
             return {
@@ -91,7 +91,7 @@ const TestWriting = () => {
         );
     };
 
-    const renderLesson = ({ item }: { item: Lesson }) => (
+    const renderLesson = ({ item }: { item: Lesson_writing }) => (
         <TouchableOpacity
         style={styles.lessonItem}
         onPress={() => {

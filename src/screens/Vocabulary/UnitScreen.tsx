@@ -16,8 +16,8 @@ import { RootStackParamList } from '../../navigations/type';
 import { useTranslation } from 'react-i18next';
 
 
-type MajorListScreenRouteProp = RouteProp<RootStackParamList, 'MajorListScreen'>;
-type Navigation = NavigationProp<RootStackParamList, 'MajorListScreen'>;
+type MajorListScreenRouteProp = RouteProp<RootStackParamList, 'UnitScreen'>;
+type Navigation = NavigationProp<RootStackParamList, 'UnitScreen'>;
 
 interface VocabularyItem {
   word: string;
@@ -31,7 +31,7 @@ interface Unit {
   vocabulary: VocabularyItem[];
 }
 
-const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route }) => {
+const UnitScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route }) => {
   const navigation = useNavigation<Navigation>();
   const { facultyName } = route.params;
   const { t } = useTranslation();
@@ -39,7 +39,7 @@ const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUnits = async () => {
+    const getUnits = async () => {
       try {
         const unitsSnapshot = await firestore()
           .collection('faculties')
@@ -59,7 +59,7 @@ const MajorListScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route 
       }
     };
 
-    fetchUnits();
+    getUnits();
   }, [facultyName]);
 
   if (loading) {
@@ -162,4 +162,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MajorListScreen;
+export default UnitScreen;

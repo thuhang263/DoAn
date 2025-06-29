@@ -13,13 +13,11 @@ const SpeakingScreen: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchDocuments = async () => {
+    const getSpeakTopic = async () => {
       try {
         const snapshot = await firestore()
           .collection('speaking') 
           .get();
-          
-    
         const docs = snapshot.docs.map(doc => ({
           id: doc.id, 
           paragraph: doc.data().paragraph || '', 
@@ -33,7 +31,7 @@ const SpeakingScreen: React.FC = () => {
       }
     };
 
-    fetchDocuments();
+    getSpeakTopic();
   }, []);
   
   return (

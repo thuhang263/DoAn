@@ -50,7 +50,12 @@
     "topic4": "Quá khứ tiếp diễn",
     "topic6": "Quá khứ hoàn thành",
     "topic7": "Câu điều kiện loại 1",
-    "topic8": "Câu điều kiện loại 2"
+    "topic8": "Câu điều kiện loại 2",
+    "topic9":"Tương lai đơn"
+  },
+   "test": {
+    "basic": "Bài kiểm tra cơ bản",
+    "specialized": "Bài kiểm tra chuyên ngành"
   },
   "cautruc":"Cấu trúc",
   "cachsudung":"Cách sử dụng",

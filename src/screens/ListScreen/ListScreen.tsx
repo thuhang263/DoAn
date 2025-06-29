@@ -19,7 +19,7 @@ const ListScreen = () => {
   let results: Realm.Results<SearchedWord>;
   let listener: Realm.CollectionChangeCallback<SearchedWord>;
 
-  const loadWords = async () => {
+  const getWordsSearch = async () => {
     realm = await getRealm();
     results = realm.objects<SearchedWord>('SearchedWord').sorted('searchedAt', true);
     setWords([...results]);
@@ -31,7 +31,7 @@ const ListScreen = () => {
     results.addListener(listener);
   };
 
-  loadWords();
+  getWordsSearch();
 
   return () => {
     if (results && results.isValid()) {  
