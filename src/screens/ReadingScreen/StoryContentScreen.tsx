@@ -41,7 +41,7 @@ const StoryContentScreen: React.FC = () => {
           .collection('reading')
           .doc(facultyId)
           .collection('paragraphs')
-          .doc(paragraphId); // chính là document chứa đoạn văn
+          .doc(paragraphId); 
   
         const docSnap = await docRef.get();
   

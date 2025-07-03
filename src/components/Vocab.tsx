@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   FlatList,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import {
   useNavigation,
@@ -38,7 +39,7 @@ const ImageDetailScreen = () => {
   const [topics, setTopics] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
-  const fetchVocabTopics = async () => {
+  const getVocabTopics = async () => {
     try {
       const snapshot = await firestore().collection('vocab').get();
       const fetched = snapshot.docs.map(doc => ({
@@ -48,7 +49,8 @@ const ImageDetailScreen = () => {
       }));
       setTopics(fetched);
     } catch (error) {
-      console.error('Lỗi khi lấy dữ liệu vocab:', error);
+      console.error('Lỗi khi lấy chủ đề vocab:', error);
+        Alert.alert('Lỗi', 'Không thể tải chủ đề từ vựng. Vui lòng thử lại sau.');
     } finally {
       setLoading(false);
     }
@@ -62,7 +64,7 @@ const ImageDetailScreen = () => {
   };
 
   useEffect(() => {
-    fetchVocabTopics();
+    getVocabTopics();
   }, []);
 
   const renderItem = ({ item }: { item: any }) => (

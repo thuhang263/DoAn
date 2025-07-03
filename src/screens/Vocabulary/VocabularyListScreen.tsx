@@ -37,7 +37,8 @@ export default function VocabularyListScreen({ route }: Props) {
         const vocabList: VocabularyItem[] = snapshot.docs.map(doc => doc.data() as VocabularyItem);
         setVocabulary(vocabList);
       } catch (error) {
-        console.error('Lỗi lấy dữ liệu Firestore:', error);
+        console.error('Lỗi khi lấy từ vựng', error);
+        Alert.alert('Lỗi lấy từ vựng chuyên ngành. Vui lòng thử lại sau.');
       }
     };
 

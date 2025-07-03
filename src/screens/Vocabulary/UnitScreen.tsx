@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   StatusBar,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import { RouteProp, useNavigation, NavigationProp } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
@@ -54,6 +55,7 @@ const UnitScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route }) =>
         setUnits(fetchedUnits);
       } catch (error) {
         console.error('Lỗi khi lấy units:', error);
+        Alert.alert('Lỗi khi lấy units. Vui lòng thử lại sau.');
       } finally {
         setLoading(false);
       }

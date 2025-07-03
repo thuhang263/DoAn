@@ -26,7 +26,7 @@ export default function DetailVocab({ route }: Props) {
 
 
   useEffect(() => {
-    const fetchVocabulary = async () => {
+    const getVocabulary = async () => {
       try {
         const snapshot = await firestore()
           .collection('vocab')
@@ -38,10 +38,11 @@ export default function DetailVocab({ route }: Props) {
         setVocabulary(vocabList);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu:', error);
+        Alert.alert('Lỗi', 'Không thể tải danh sách từ vựng. Vui lòng thử lại sau.');
       }
     };
 
-    fetchVocabulary();
+    getVocabulary();
   }, [topicId]);
 
 

@@ -35,8 +35,8 @@ const StoriesDetail: React.FC = () => {
           .get();
     
         const data = snapshot.docs.map((doc) => ({
-          docId: doc.id,// Ví dụ: "Challenges and Opportunities in the Industry"
-          ...doc.data(), // gồm: title_en, title_vi, content_en, ...
+          docId: doc.id,
+          ...doc.data(), 
         }));
     
         setParagraphs(data);

@@ -44,14 +44,24 @@ const ListScreen = () => {
 
 }, []);
   const deleteWord = async (word: string) => {
+  try {
     const realm = await getRealm();
+
     realm.write(() => {
       const item = realm.objectForPrimaryKey<SearchedWord>('SearchedWord', word);
-      if (item) realm.delete(item);
+      if (!item) throw new Error('Không tìm thấy từ');
+      realm.delete(item);
     });
+
     const data = realm.objects<SearchedWord>('SearchedWord').sorted('searchedAt', true);
     setWords([...data]);
-  };
+
+    Alert.alert('Xóa thành công');
+  } catch (error) {
+    console.error('Lỗi khi xóa từ:', error);
+    Alert.alert('Xóa thất bại, vui lòng xóa lại sau');
+  }
+};
 
   const playAudio = async (audioUrl: string) => {
     try {
