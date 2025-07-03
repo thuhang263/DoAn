@@ -7,9 +7,10 @@ import { t } from 'i18next';
 interface Question {
   id: string;
   number: number;
-  option: string;
+  left: string;
   answer: string;
 }
+
 
 interface Pair {
   letter: string;
@@ -49,12 +50,13 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
         }
 
         // Xử lý câu hỏi
-        const questions = Object.entries(data.questions).map(([key, q]: [string, any]) => ({
+       const questions = Object.entries(data.questions).map(([key, q]: [string, any]) => ({
             id: key,
             number: q.number,
-            option: q.option,
+            left: q.left,
             answer: q.answer,
             }));
+
 
         // Xử lý pairs từ object thành array
         const pairObject = data.pairs;
@@ -118,28 +120,29 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
                 <ScrollView>
                     <View style={styles.tableContainer}>
                         {questions.map((q) => {
-                        const userAnswer = answers[q.id];
-                        const isCorrect = userAnswer === q.answer?.toLowerCase();
+  const userAnswer = answers[q.id];
+  const isCorrect = userAnswer === q.answer?.toLowerCase();
 
-                        return (
-                            <View key={q.id} style={styles.rowContainer}>
-                                <Text style={styles.leftText}>{q.number}. {q.option}</Text>
-                            
-                            <TextInput
-                                editable={!submitted}
-                                style={[
-                                styles.input,
-                                submitted && {
-                                    backgroundColor: isCorrect ? '#4CAF50' : '#F44336',
-                                },
-                                ]}
-                                onChangeText={(text) => handleInputChange(q.id, text)}
-                                value={answers[q.id] || ''}
-                                placeholder={t('nhapdapan')}
-                            />                           
-                            </View>                           
-                        );
-                        })}
+  return (
+    <View key={q.id} style={styles.rowContainer}>
+      <Text style={styles.leftText}>{q.number}. {q.left}</Text>
+
+      <TextInput
+        editable={!submitted}
+        style={[
+          styles.input,
+          submitted && {
+            backgroundColor: isCorrect ? '#4CAF50' : '#F44336',
+          },
+        ]}
+        onChangeText={(text) => handleInputChange(q.id, text)}
+        value={answers[q.id] || ''}
+        placeholder={t('nhapdapan')}
+      />
+    </View>
+  );
+})}
+
                        
                     </View>
                     {!submitted && (
