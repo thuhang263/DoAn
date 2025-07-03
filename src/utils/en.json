@@ -100,7 +100,8 @@
   "enteryourmessage": "Enter your message",
   "camon":"Thank you for your message!",
   "loigui":"Error sending message:",
-  "guilaisau":"An error occurred. Please try again later"
+  "guilaisau":"An error occurred. Please try again later",
+  "deleteSuccess":"Delete Success"
 }
 
   

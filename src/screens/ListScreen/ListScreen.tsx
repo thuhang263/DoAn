@@ -56,7 +56,7 @@ const ListScreen = () => {
     const data = realm.objects<SearchedWord>('SearchedWord').sorted('searchedAt', true);
     setWords([...data]);
 
-    Alert.alert('Xóa thành công');
+    Alert.alert(t('deleteSuccess'));
   } catch (error) {
     console.error('Lỗi khi xóa từ:', error);
     Alert.alert('Xóa thất bại, vui lòng xóa lại sau');
