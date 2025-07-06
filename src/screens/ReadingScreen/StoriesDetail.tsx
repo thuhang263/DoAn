@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  FlatList,
-  StatusBar,
-  Image,
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, StatusBar, Image,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackParamsType } from '../../navigations/type';

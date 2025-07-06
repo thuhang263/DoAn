@@ -4,7 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18next';
 
-// Khai báo kiểu Question
+
 interface Question {
   id: string;
   question: string;

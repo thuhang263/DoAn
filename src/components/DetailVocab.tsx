@@ -5,7 +5,7 @@ import { RootStackParamList } from '../navigations/type';
 import Tts from 'react-native-tts';
 import firestore from '@react-native-firebase/firestore';
 
-// Cập nhật RouteProp để bao gồm topicId và topicTitle
+
 type DetailVocabRouteProp = RouteProp<RootStackParamList, 'DetailVocab'>;
 
 type Props = {

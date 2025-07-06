@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Alert,
-  Text,
-  TextInput,
-  Platform,
-  ScrollView,
+import { View, StyleSheet, Image, TouchableOpacity, Alert, Text, TextInput, Platform, ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { setAppLanguage } from '../../utils/i18n';
@@ -56,7 +47,7 @@ export default function SettingScreen() {
   <KeyboardAvoidingView
     style={{ flex: 1 }}
     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20} // tuỳ chỉnh offset nếu cần
+    keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20} 
   >
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ScrollView

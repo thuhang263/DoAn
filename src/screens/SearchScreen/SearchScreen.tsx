@@ -24,7 +24,7 @@ const SearchScreen: React.FC = () => {
   const [saved, setSaved] = useState(false);
   const { t } = useTranslation();
 
-  // Lưu từ tìm kiếm vào Realm
+
   const saveSearchedWord = async (wordItem: WordItem) => {
     try {
       const realm = await getRealm();

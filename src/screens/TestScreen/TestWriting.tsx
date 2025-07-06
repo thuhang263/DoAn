@@ -118,9 +118,9 @@ const TestWriting = () => {
         return (
         <SafeAreaView style={{flex:1}}>
             <View style={styles.header}>
-            <TouchableOpacity onPress={() => setSelectedLesson(null)}>
-                <Image style={styles.backBtn} source={require('../../assets/images/back1.png')} />
-            </TouchableOpacity>
+                <TouchableOpacity onPress={() => setSelectedLesson(null)}>
+                    <Image style={styles.backBtn} source={require('../../assets/images/back1.png')} />
+                </TouchableOpacity>
             </View>
         <ScrollView style={styles.container}>
           <View style={styles.content}>

@@ -25,7 +25,7 @@ const VocabScreen = () => {
         const list = snapshot.docs.map(doc => ({
           id: doc.id,
           title: doc.id,
-          image: getImageByFaculty(doc.id), // tùy chọn ảnh
+          image: getImageByFaculty(doc.id), 
         }));
         setData(list);
       } catch (error) {

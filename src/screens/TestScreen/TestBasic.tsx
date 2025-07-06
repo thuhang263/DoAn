@@ -12,8 +12,6 @@ interface Exercise {
 
 const TestBasic = () => {
   const navigation = useNavigation();
-  
-  // State để lưu dữ liệu bài tập đọc
   const [readingExercises, setReadingExercises] = useState<Exercise[]>([]);
   const { t } = useTranslation();
 

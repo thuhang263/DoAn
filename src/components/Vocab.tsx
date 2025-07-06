@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Image,
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  StatusBar,
-  TouchableOpacity,
-  FlatList,
-  ActivityIndicator,
-  Alert,
+  View, Image, StyleSheet, Text, SafeAreaView, StatusBar, TouchableOpacity, FlatList, ActivityIndicator, Alert,
 } from 'react-native';
 import {
   useNavigation,
@@ -19,7 +10,6 @@ import { RootStackParamList } from '../navigations/type';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 
-// Định nghĩa kiểu điều hướng rõ ràng
 type NavigationType = NativeStackNavigationProp<RootStackParamList, 'ImageDetailScreen'>;
 
 const imageMap: Record<string, any> = {

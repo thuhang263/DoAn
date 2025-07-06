@@ -23,7 +23,7 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: string]: string }>({});
   const [checkedAnswers, setCheckedAnswers] = useState<{ [key: string]: boolean }>({});
 
-  // Lấy danh sách các unit từ Firestore
+ 
   useEffect(() => {
     if (!faculty || !exerciseType) return;
 

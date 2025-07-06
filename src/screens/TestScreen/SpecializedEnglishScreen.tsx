@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-  Image,
-  ActivityIndicator,
-  SafeAreaView,
+  View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, ActivityIndicator, SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
@@ -35,7 +28,6 @@ const SpecializedEnglishScreen = () => {
     loading: true,
   });
 
-  // Lấy danh sách khoa
   useEffect(() => {
     const getFaculties = async () => {
       try {
@@ -132,7 +124,7 @@ const SpecializedEnglishScreen = () => {
           <Text style={styles.dropdownText}>
             {state.selectedFaculty || 'Đang tải...'}
           </Text>
-          <Text style={styles.dropdownArrow}>▼</Text>
+          <Text style={styles.dropdownArrow}>v</Text>
         </TouchableOpacity>
         {state.dropdownOpen && (
           <View style={styles.dropdownList}>

@@ -56,7 +56,7 @@ const GrammaScreen = () => {
       setSelected(item.id);
       navigation.navigate('GrammarTopicDetailScreen', {
         topicId: item.id,
-         topicName: t(`topicName.${item.title}`), // Hiển thị bằng ngôn ngữ người dùng chọn
+         topicName: t(`topicName.${item.title}`), 
       });
     }}
   >

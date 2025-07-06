@@ -1,10 +1,5 @@
 import React, {useEffect, useState, useRef, useCallback} from 'react';
-import {
-  View,
-  FlatList,
-  Image,
-  Text,
-  Dimensions,
+import {View, FlatList, Image, Text, Dimensions,
 } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import {getMoviesWithTrailers} from '../../api/tmdbApi';

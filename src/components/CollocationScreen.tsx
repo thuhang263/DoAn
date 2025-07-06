@@ -58,7 +58,6 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
             }));
 
 
-        // Xử lý pairs từ object thành array
         const pairObject = data.pairs;
         const pairs = Object.entries(pairObject)
             .map(([letter, word]) => ({
@@ -120,30 +119,29 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
                 <ScrollView>
                     <View style={styles.tableContainer}>
                         {questions.map((q) => {
-  const userAnswer = answers[q.id];
-  const isCorrect = userAnswer === q.answer?.toLowerCase();
+                            const userAnswer = answers[q.id];
+                            const isCorrect = userAnswer === q.answer?.toLowerCase();
 
-  return (
-    <View key={q.id} style={styles.rowContainer}>
-      <Text style={styles.leftText}>{q.number}. {q.left}</Text>
+                            return (
+                                <View key={q.id} style={styles.rowContainer}>
+                                <Text style={styles.leftText}>{q.number}. {q.left}</Text>
 
-      <TextInput
-        editable={!submitted}
-        style={[
-          styles.input,
-          submitted && {
-            backgroundColor: isCorrect ? '#4CAF50' : '#F44336',
-          },
-        ]}
-        onChangeText={(text) => handleInputChange(q.id, text)}
-        value={answers[q.id] || ''}
-        placeholder={t('nhapdapan')}
-      />
-    </View>
-  );
-})}
-
-                       
+                                <TextInput
+                                    editable={!submitted}
+                                    style={[
+                                    styles.input,
+                                    submitted && {
+                                        backgroundColor: isCorrect ? '#4CAF50' : '#F44336',
+                                    },
+                                    ]}
+                                    onChangeText={(text) => handleInputChange(q.id, text)}
+                                    value={answers[q.id] || ''}
+                                    placeholder={t('nhapdapan')}
+                                />
+                                </View>
+                            );
+                        })}
+       
                     </View>
                     {!submitted && (
                     <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>

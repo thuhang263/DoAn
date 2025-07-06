@@ -104,7 +104,7 @@ const SpeakingDetailScreen: React.FC = () => {
       }
   
       try {
-        // Dừng phiên ghi âm trước nếu đang chạy
+       
         if (isRecording) {
           console.log('Đang ghi âm, dừng phiên trước...');
           await audioRecorderPlayer.stopRecorder();
@@ -117,7 +117,7 @@ const SpeakingDetailScreen: React.FC = () => {
           android: `${RNFS.DocumentDirectoryPath}/voice.m4a`,
         });
   
-        // Kiểm tra thư mục
+       
         const dirPath = Platform.OS === 'ios' ? RNFS.DocumentDirectoryPath : RNFS.DocumentDirectoryPath;
         await RNFS.mkdir(dirPath);
   
