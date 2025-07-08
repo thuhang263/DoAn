@@ -121,6 +121,9 @@ const StoryContentScreen: React.FC = () => {
           <TouchableOpacity style={styles.button} onPress={speakStory}>
             <Text style={styles.buttonText}>{t('phataudio')}</Text>
           </TouchableOpacity>
+           <TouchableOpacity onPress={() => Tts.stop()} style={styles.button}>
+              <Text style={styles.buttonText}>{t('dungaudio')}</Text>
+            </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -133,6 +136,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  stopBtn: {
+  backgroundColor: '#f44336',
+  padding: 10,
+  borderRadius: 8,
+  alignSelf: 'center',
+  marginBottom: 20,
+},
   centered: {
     flex: 1,
     justifyContent: 'center',

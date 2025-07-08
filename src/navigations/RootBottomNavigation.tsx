@@ -9,7 +9,7 @@ import SettingScreen from '../screens/SettingScreen/SettingScreen';
 import {Image} from 'react-native';
 import {Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
-const isTablet = width >= 768;
+
 const RootBottomNavigation = () => {
   const Tab = createBottomTabNavigator<RootBottomParamList>();
   return (

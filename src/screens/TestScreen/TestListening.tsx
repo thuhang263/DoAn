@@ -133,6 +133,9 @@ const TestListenning = () => {
             <TouchableOpacity onPress={() => handleListen(selectedLesson.text)}>
               <Image style={styles.listenBtn} source={require('../../assets/images/loa.png')} />
             </TouchableOpacity>
+            <TouchableOpacity onPress={() => Tts.stop()} style={styles.stopBtn}>
+              <Text style={{ color: '#fff', fontWeight: '600' }}>Stop</Text>
+            </TouchableOpacity>
 
             {selectedLesson.questions.map((question, index) => {
               const selectedOption = selectedOptions[index];
@@ -316,6 +319,14 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
   },
+  stopBtn: {
+  backgroundColor: '#f44336',
+  padding: 10,
+  borderRadius: 8,
+  alignSelf: 'center',
+  marginBottom: 20,
+},
+
 
 });
 
