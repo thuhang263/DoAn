@@ -56,7 +56,6 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
     getQuestions();
   }, [faculty, exerciseType]);
 
-  // Xử lý chọn đáp án
   const handleSelectAnswer = (questionKey: string, option: string) => {
     setSelectedAnswers((prev) => ({
       ...prev,
@@ -64,7 +63,6 @@ const ExerciseScreen: React.FC<Props> = ({ route, navigation }) => {
     }));
   };
 
-  // Xử lý kiểm tra đáp án
   const handleCheckAnswer = (questionKey: string) => {
     setCheckedAnswers((prev) => ({
       ...prev,

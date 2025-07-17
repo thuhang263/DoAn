@@ -90,6 +90,7 @@ export default function VocabularyListScreen({ route }: Props) {
               <TouchableOpacity
                 onPress={(event) => {
                   event.stopPropagation();
+                  Tts.stop(); 
                   Tts.speak(item.word);
                 }}
               >

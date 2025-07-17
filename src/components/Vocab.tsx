@@ -23,7 +23,7 @@ const imageMap: Record<string, any> = {
   weAreOff: require('../assets/images/travel.png'),
 };
 
-const ImageDetailScreen = () => {
+const VocabScreen = () => {
   const navigation = useNavigation<NavigationType>();
   const [selected, setSelected] = useState<string | null>(null);
   const [topics, setTopics] = useState<any[]>([]);
@@ -167,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ImageDetailScreen;
+export default VocabScreen;

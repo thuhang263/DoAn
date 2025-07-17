@@ -101,7 +101,7 @@ const ExerciseScreen = ({ faculty }: { faculty: string }) => {
                     <View style={styles.optionsContainer}>
                     {['True', 'False'].map((label) => {
                         const isSelected = selected === label;
-                        const isAnswer = submitted && label === (q.answer ? 'True' : 'False');
+                       
 
                         return (
                         <TouchableOpacity

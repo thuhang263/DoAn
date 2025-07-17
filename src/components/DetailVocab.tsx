@@ -70,7 +70,7 @@ export default function DetailVocab({ route }: Props) {
         <Text style={{ fontSize: 20, marginBottom: 10, alignSelf: 'center' }}>
         {String(topicTitle)}
       </Text>
-        </View>
+      </View>
         
      
 
@@ -95,6 +95,7 @@ export default function DetailVocab({ route }: Props) {
               <TouchableOpacity
                 onPress={(event) => {
                   event.stopPropagation();
+                  Tts.stop(); 
                   Tts.speak(String(item.word));
                 }}
               >

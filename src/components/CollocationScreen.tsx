@@ -24,7 +24,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
     const [submitted, setSubmitted] = useState(false);
     const navigation = useNavigation();
     const [title, setTitle] = useState<string>('');
-    const fetchQuestions = async () => {
+    const getQuestions = async () => {
     try {
         const docSnapshot = await firestore()
             .collection('practice')
@@ -50,7 +50,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
         }
 
         // Xử lý câu hỏi
-       const questions = Object.entries(data.questions).map(([key, q]: [string, any]) => ({
+        const questions = Object.entries(data.questions).map(([key, q]: [string, any]) => ({
             id: key,
             number: q.number,
             left: q.left,
@@ -74,7 +74,7 @@ const CollocationScreen = ({ faculty }: { faculty: string }) => {
 
 
     useEffect(() => {
-        fetchQuestions();
+        getQuestions();
     }, [faculty]);
 
     const handleInputChange = (questionId: string, text: string) => {

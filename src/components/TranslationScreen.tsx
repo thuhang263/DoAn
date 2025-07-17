@@ -18,7 +18,7 @@ const TranslationScreen = ({ faculty }: { faculty: string }) => {
     const [title, setTitle] = useState<string>('');
     const navigation = useNavigation();
 
-  const fetchQuestions = async () => {
+  const getQuestions = async () => {
     try {
       const docSnapshot = await firestore()
         .collection('practice')
@@ -48,7 +48,7 @@ const TranslationScreen = ({ faculty }: { faculty: string }) => {
   };
 
   useEffect(() => {
-    fetchQuestions();
+    getQuestions();
   }, [faculty]);
 
   const handleSelect = (questionId: string, choice: string) => {

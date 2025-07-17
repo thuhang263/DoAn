@@ -17,7 +17,7 @@ import { RootStackParamList } from '../../navigations/type';
 import { useTranslation } from 'react-i18next';
 
 
-type MajorListScreenRouteProp = RouteProp<RootStackParamList, 'UnitScreen'>;
+type UnitScreenRouteProp = RouteProp<RootStackParamList, 'UnitScreen'>;
 type Navigation = NavigationProp<RootStackParamList, 'UnitScreen'>;
 
 interface VocabularyItem {
@@ -32,7 +32,7 @@ interface Unit {
   vocabulary: VocabularyItem[];
 }
 
-const UnitScreen: React.FC<{ route: MajorListScreenRouteProp }> = ({ route }) => {
+const UnitScreen: React.FC<{ route: UnitScreenRouteProp }> = ({ route }) => {
   const navigation = useNavigation<Navigation>();
   const { facultyName } = route.params;
   const { t } = useTranslation();

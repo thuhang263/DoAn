@@ -101,7 +101,9 @@
   "loigui":"Lỗi gửi góp ý",
    "guilaisau":"Vui lòng gửi lại sau",
    "deleteSuccess":"Xóa thành công",
-   "dungaudio":"Dừng phát"
+   "dungaudio":"Dừng phát",
+   "ngonnguthaydoi":"Ngôn ngữ đã thay đổi",
+   "doiNN":"Ứng dụng bây giờ sẽ hiển thị bằng ngôn ngữ bạn đã chọn"
 }
 
 

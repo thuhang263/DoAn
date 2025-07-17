@@ -102,7 +102,9 @@
   "loigui":"Error sending message:",
   "guilaisau":"An error occurred. Please try again later",
   "deleteSuccess":"Delete Success",
-  "dungaudio":"Stop"
+  "dungaudio":"Stop",
+  "ngonnguthaydoi":"Language has changed",
+  "doiNN":"The app will now display in the language you selected."
 }
 
   

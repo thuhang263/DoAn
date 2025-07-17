@@ -18,8 +18,8 @@ export default function SettingScreen() {
   const changeLanguage = async (lang: string) => {
     await setAppLanguage(lang);
     Alert.alert(
-      i18n.t('Ngôn ngữ đã thay đổi'),
-      i18n.t('Ứng dụng bây giờ sẽ hiển thị bằng ngôn ngữ bạn đã chọn')
+      i18n.t('ngonnguthaydoi'),
+      i18n.t('doiNN')
     );
   };
 
