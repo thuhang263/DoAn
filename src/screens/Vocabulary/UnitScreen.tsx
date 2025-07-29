@@ -55,7 +55,7 @@ const UnitScreen: React.FC<{ route: UnitScreenRouteProp }> = ({ route }) => {
         setUnits(fetchedUnits);
       } catch (error) {
         console.error('Lỗi khi lấy units:', error);
-        Alert.alert('Lỗi khi lấy units. Vui lòng thử lại sau.');
+        Alert.alert('Lỗi khi lấy chủ đề. Vui lòng thử lại sau.');
       } finally {
         setLoading(false);
       }

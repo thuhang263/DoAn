@@ -26,10 +26,10 @@ const WelcomeScreen = ({ navigation }: any) => {
 
   const handleVerifyEmail = () => {
     if (checkEmailDomain(email.trim().toLowerCase())) {
-      Alert.alert('✅ Thành công', 'Chào mừng bạn đến với ứng dụng ôn tập tiếng Anh!');
+      Alert.alert('Thành công', 'Chào mừng bạn đến với ứng dụng ôn tập tiếng Anh!');
       setIsVerified(true);
     } else {
-      Alert.alert('❌ Thất bại', 'Rất tiếc, vui lòng nhập email sinh viên Thủy Lợi hợp lệ (@e.tlu.edu.vn).');
+      Alert.alert('Thất bại', 'Vui lòng nhập email sinh viên Thủy Lợi.');
       setIsVerified(false);
     }
   };
@@ -51,7 +51,7 @@ const WelcomeScreen = ({ navigation }: any) => {
 
         <TextInput
           style={styles.input}
-          placeholder="Nhập email Thủy Lợi (VD: abc@e.tlu.edu.vn)"
+          placeholder="Nhập email sinh viên trường Đại học Thủy Lợi"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -59,7 +59,7 @@ const WelcomeScreen = ({ navigation }: any) => {
         />
 
         <TouchableOpacity style={styles.verifyButton} onPress={handleVerifyEmail}>
-          <Text style={styles.buttonText}>🔐 Xác minh email</Text>
+          <Text style={styles.buttonText}>Xác minh email</Text>
         </TouchableOpacity>
 
         {isVerified && (
@@ -80,8 +80,8 @@ const WelcomeScreen = ({ navigation }: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' },
-  catAnimation: { width: 550, height: 300, marginBottom: 10 },
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff',marginBottom:300, },
+  catAnimation: { width: 550, height: 500, marginBottom: 10 },
   subtitle: { fontSize: 16, color: '#666', marginVertical: 20 },
   button: {
     width: 300,
